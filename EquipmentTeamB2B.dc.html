@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="./support.js"></script>
+</head>
+
+<body>
+  <x-dc>
+    <helmet>
+      <script src="./image-slot.js"></script>
+      <style>
+        body {
+          margin: 0;
+          background: #F8F9FA;
+        }
+
+        a {
+          color: inherit;
+        }
+
+        /* ── Equipment / Team / B2B — Light Swiss Modernism ── */
+        .etb {
+          --etb-bg: #F8F9FA;
+          --etb-surface: #FFFFFF;
+          --etb-ink: #0F172A;
+          --etb-ink-soft: #18181B;
+          --etb-muted: #525252;
+          --etb-dim: #737373;
+          --etb-line: #E5E7EB;
+          --etb-line-mid: #D1D5DB;
+          --etb-red: #C41E2A;
+          --etb-red-bright: #E63946;
+          --etb-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+          --etb-sans: Inter, Helvetica Neue, Helvetica, Arial, sans-serif;
+          --ft-mono: var(--etb-mono);
+          background: var(--etb-bg);
+          color: var(--etb-ink);
+          font-family: var(--etb-sans);
+          padding: 88px 24px 96px;
+          position: relative;
+          isolation: isolate;
+        }
+
+        .etb-inner {
+          position: relative;
+          z-index: 1;
+          max-width: 1240px;
+          margin: 0 auto;
+          border-left: 1px solid var(--etb-line-mid);
+          border-right: 1px solid var(--etb-line-mid);
+          padding: 0 44px;
+          background: var(--etb-surface);
+        }
+
+        /* ── TEXTURE-01 islands (Patterns.dc.html) — sparse, low opacity ── */
+        .etb-pattern-defs {
+          position: absolute;
+          width: 0;
+          height: 0;
+          overflow: hidden;
+        }
+
+        .etb-fill {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          display: block;
+        }
+
+        /* Local islands only — never full-section wallpaper */
+        .etb-island {
+          position: absolute;
+          pointer-events: none;
+          z-index: 0;
+          overflow: hidden;
+        }
+
+        .etb-island--header {
+          right: 0;
+          top: 8px;
+          width: min(220px, 32%);
+          height: 120px;
+          opacity: 0.09;
+        }
+
+        .etb-island--label {
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 56px;
+          height: 56px;
+          opacity: 0.1;
+        }
+
+        .etb-island--card {
+          right: 12px;
+          bottom: 12px;
+          width: 72px;
+          height: 72px;
+          opacity: 0.07;
+        }
+
+        .etb-island--b2b {
+          right: 0;
+          top: 0;
+          bottom: 0;
+          width: min(280px, 34%);
+          opacity: 0.1;
+        }
+
+        /* Breathing room between blocks: mostly empty, thin pattern band in the middle */
+        .etb-breath {
+          height: 56px;
+          display: flex;
+          align-items: center;
+          margin: 8px 0 0;
+        }
+
+        .etb-breath-band {
+          position: relative;
+          width: 100%;
+          height: 14px;
+          opacity: 0.08;
+          overflow: hidden;
+        }
+
+        .etb-breath-band--short {
+          max-width: 40%;
+          margin-left: auto;
+        }
+
+        /* Precision tick rail */
+        .etb-ticks {
+          display: flex;
+          gap: 0;
+          padding-top: 36px;
+          opacity: 0.45;
+          color: var(--etb-ink);
+        }
+
+        .etb-tick {
+          width: 1px;
+          height: 10px;
+          background: currentColor;
+          margin-right: calc((100% - 28px) / 27);
+          opacity: 0.35;
+        }
+
+        .etb-tick:nth-child(7n) {
+          height: 14px;
+          opacity: 0.55;
+        }
+
+        /* Section header */
+        .etb-header {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          padding: 28px 0 40px;
+          border-bottom: 1px solid var(--etb-line-mid);
+          position: relative;
+        }
+
+        .etb-header>*:not(.etb-island) {
+          position: relative;
+          z-index: 1;
+        }
+
+        .etb-header::after {
+          content: '';
+          position: absolute;
+          right: 0;
+          bottom: -1px;
+          width: 48px;
+          height: 2px;
+          background: var(--etb-red-bright);
+          z-index: 2;
+        }
+
+        .etb-kicker {
+          font-size: 11px;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: var(--etb-dim);
+          font-family: var(--etb-mono);
+          font-weight: 500;
+        }
+
+        .etb-title {
+          margin: 0;
+          font-size: clamp(30px, 4.4vw, 50px);
+          font-weight: 800;
+          letter-spacing: -0.025em;
+          text-transform: uppercase;
+          color: var(--etb-ink);
+          line-height: 1.02;
+        }
+
+        .etb-lead {
+          margin: 0;
+          max-width: 720px;
+          font-size: 15px;
+          line-height: 1.65;
+          color: var(--etb-muted);
+        }
+
+        /* Block labels */
+        .etb-block {
+          padding-top: 56px;
+          display: flex;
+          flex-direction: column;
+          gap: 22px;
+        }
+
+        .etb-block-label {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+          flex-wrap: wrap;
+          position: relative;
+          padding-left: 68px;
+          min-height: 56px;
+        }
+
+        .etb-block-label>*:not(.etb-island) {
+          position: relative;
+          z-index: 1;
+        }
+
+        .etb-block-title {
+          font-size: 11px;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: var(--etb-ink);
+          font-weight: 700;
+          font-family: var(--etb-sans);
+        }
+
+        .etb-block-meta {
+          font-size: 10px;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: var(--etb-dim);
+          font-family: var(--etb-mono);
+        }
+
+        /* Shared grid shells — 1px hairlines, zero radius */
+        .etb-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 1px;
+          background: var(--etb-line-mid);
+          border: 1px solid var(--etb-line-mid);
+        }
+
+        .etb-card {
+          display: flex;
+          flex-direction: column;
+          background: var(--etb-surface);
+          border-radius: 0;
+          position: relative;
+          min-width: 0;
+        }
+
+        .etb-card-media {
+          position: relative;
+          overflow: hidden;
+          background: #F1F5F9;
+        }
+
+        .etb-card-media--equip {
+          aspect-ratio: 4/3;
+        }
+
+        .etb-card-media--team {
+          aspect-ratio: 3/4;
+        }
+
+        .etb-card-media image-slot,
+        .etb-card-media>image-slot,
+        .etb-card-media>img {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+
+        .etb-card-tag {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          z-index: 2;
+          width: auto;
+          height: auto;
+          background: var(--etb-ink);
+          color: #FFFFFF;
+          font-size: 10px;
+          font-family: var(--etb-mono);
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          padding: 7px 12px;
+          border-radius: 0;
+        }
+
+        .etb-card-body {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          padding: 20px 20px 24px;
+          border-top: 1px solid var(--etb-line);
+          position: relative;
+        }
+
+        .etb-card-body>*:not(.etb-island) {
+          position: relative;
+          z-index: 1;
+        }
+
+        .etb-card-name {
+          font-size: 13px;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.02em;
+          color: var(--etb-ink);
+        }
+
+        .etb-card-spec {
+          font-size: 12.5px;
+          line-height: 1.55;
+          color: var(--etb-muted);
+          display: flex;
+          gap: 8px;
+        }
+
+        .etb-card-spec-num {
+          font-family: var(--etb-mono);
+          font-size: 11px;
+          color: var(--etb-dim);
+          flex: 0 0 auto;
+        }
+
+        .etb-member-name {
+          font-size: 16px;
+          font-weight: 800;
+          text-transform: uppercase;
+          color: var(--etb-ink);
+          letter-spacing: 0.01em;
+        }
+
+        .etb-member-role {
+          font-size: 11px;
+          font-family: var(--etb-mono);
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--etb-muted);
+        }
+
+        .etb-member-exp {
+          font-size: 11px;
+          font-family: var(--etb-mono);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: var(--etb-dim);
+          margin-top: 4px;
+        }
+
+        /* Corner marks on cards */
+        .etb-card-corner {
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          pointer-events: none;
+          z-index: 3;
+          border-color: var(--etb-ink);
+          opacity: 0.35;
+        }
+
+        .etb-card-corner--tl {
+          left: 0;
+          top: 0;
+          border-left: 1.5px solid;
+          border-top: 1.5px solid;
+        }
+
+        .etb-card-corner--br {
+          right: 0;
+          bottom: 0;
+          border-right: 1.5px solid;
+          border-bottom: 1.5px solid;
+        }
+
+        /* ── B2B anodized industrial banner ── */
+        .etb-b2b {
+          margin-top: 64px;
+          margin-bottom: 0;
+          position: relative;
+          overflow: hidden;
+          border: 1px solid rgba(0, 0, 0, 0.55);
+          border-radius: 0;
+          color: #F4F5F6;
+          background:
+            linear-gradient(165deg, rgba(255, 255, 255, 0.06) 0%, transparent 40%),
+            linear-gradient(145deg, #1A0305 0%, #4A0C11 45%, #2A0609 100%);
+          box-shadow:
+            0 0 0 1px rgba(255, 80, 80, 0.08),
+            0 16px 48px rgba(0, 0, 0, 0.28),
+            inset 0 1px 0 rgba(255, 255, 255, 0.08),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+          padding: 44px 40px;
+          display: flex;
+          flex-direction: column;
+          gap: 28px;
+        }
+
+        .etb-b2b::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          opacity: 0.12;
+          background-image:
+            repeating-linear-gradient(90deg,
+              transparent 0px,
+              transparent 1px,
+              rgba(255, 255, 255, 0.04) 1px,
+              rgba(255, 255, 255, 0.04) 2px,
+              transparent 2px,
+              transparent 4px);
+        }
+
+        .etb-b2b>*:not(.etb-island) {
+          position: relative;
+          z-index: 1;
+        }
+
+        .etb-b2b-sight {
+          position: absolute;
+          z-index: 2;
+          pointer-events: none;
+          width: 18px;
+          height: 18px;
+        }
+
+        .etb-b2b-sight--tl {
+          left: 8px;
+          top: 8px;
+        }
+
+        .etb-b2b-sight--br {
+          right: 8px;
+          bottom: 8px;
+        }
+
+        .etb-b2b-sight span {
+          position: absolute;
+          background: linear-gradient(145deg, #6e1219, #E63946, #4a0c11);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .etb-b2b-sight--tl .h {
+          top: 0;
+          left: 0;
+          width: 16px;
+          height: 2px;
+        }
+
+        .etb-b2b-sight--tl .v {
+          top: 0;
+          left: 0;
+          width: 2px;
+          height: 16px;
+        }
+
+        .etb-b2b-sight--br .h {
+          bottom: 0;
+          right: 0;
+          width: 16px;
+          height: 2px;
+        }
+
+        .etb-b2b-sight--br .v {
+          bottom: 0;
+          right: 0;
+          width: 2px;
+          height: 16px;
+        }
+
+        .etb-b2b-kicker {
+          font-size: 11px;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: rgba(255, 255, 255, 0.55);
+          font-family: var(--etb-mono);
+        }
+
+        .etb-b2b-title {
+          margin: 0;
+          font-size: clamp(24px, 3.4vw, 36px);
+          font-weight: 800;
+          letter-spacing: -0.02em;
+          text-transform: uppercase;
+          line-height: 1.1;
+          color: #FFFFFF;
+        }
+
+        .etb-b2b-list {
+          display: flex;
+          flex-direction: column;
+          border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .etb-b2b-row {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          padding: 20px 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .etb-b2b-num {
+          font-family: var(--etb-mono);
+          font-size: 11px;
+          letter-spacing: 0.08em;
+          color: rgba(255, 255, 255, 0.4);
+          flex: 0 0 auto;
+        }
+
+        .etb-b2b-icon {
+          flex: 0 0 auto;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #E63946;
+          background: rgba(230, 57, 70, 0.12);
+          border: 1px solid rgba(230, 57, 70, 0.35);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .etb-b2b-icon svg {
+          width: 22px;
+          height: 22px;
+          stroke-width: 1.6;
+        }
+
+        .etb-b2b-text {
+          margin: 0;
+          font-size: 14px;
+          line-height: 1.6;
+          color: rgba(255, 255, 255, 0.88);
+        }
+
+        .etb-b2b-actions {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          flex-wrap: wrap;
+          padding-top: 8px;
+        }
+
+        /* Secondary outline CTA on dark banner */
+        .etb-btn-ghost {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 10.5px;
+          font-weight: 700;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          font-family: var(--etb-mono);
+          text-decoration: none;
+          color: #fff5f5;
+          padding: 10px 16px 9px;
+          white-space: nowrap;
+          border: 1px solid rgba(255, 255, 255, 0.28);
+          background: transparent;
+          border-radius: 0;
+          transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+        }
+
+        .etb-btn-ghost:hover {
+          border-color: rgba(255, 255, 255, 0.75);
+          background: rgba(255, 255, 255, 0.06);
+        }
+
+        /* Anodized red metallic engraved button — EXACT footer CTA */
+        .ft-maps-btn {
+          align-self: flex-start;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 10.5px;
+          font-weight: 700;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          font-family: var(--ft-mono, monospace);
+          text-decoration: none;
+          color: #fff5f5;
+          padding: 10px 16px 9px;
+          white-space: nowrap;
+          position: relative;
+          border: none;
+          cursor: pointer;
+          background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, transparent 40%),
+            linear-gradient(145deg, #6e1219 0%, #C41E2A 30%, #E63946 50%, #9a1a24 75%, #4a0c11 100%);
+          box-shadow:
+            0 0 0 1px rgba(0, 0, 0, 0.55),
+            inset 0 1px 0 rgba(255, 255, 255, 0.35),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+            inset 1px 0 0 rgba(255, 255, 255, 0.08),
+            0 2px 6px rgba(0, 0, 0, 0.45),
+            0 0 16px rgba(196, 30, 42, 0.15);
+          text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+          transition: box-shadow 0.2s ease, filter 0.2s ease;
+          border-radius: 0;
+        }
+
+        .ft-maps-btn::before {
+          content: '';
+          position: absolute;
+          inset: 1px;
+          border: 0.5px solid rgba(255, 255, 255, 0.12);
+          pointer-events: none;
+        }
+
+        .ft-maps-btn:hover {
+          filter: brightness(1.08);
+          box-shadow:
+            0 0 0 1px rgba(0, 0, 0, 0.55),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+            0 3px 10px rgba(0, 0, 0, 0.5),
+            0 0 22px rgba(230, 57, 70, 0.28);
+        }
+
+        /* Bottom spacing after B2B inside rail */
+        .etb-footer-pad {
+          height: 48px;
+          border-top: 1px solid var(--etb-line);
+        }
+
+        @media (min-width: 800px) {
+          .etb-grid--equip {
+            grid-template-columns: 1fr 1fr 1fr !important;
+          }
+
+          .etb-grid--team {
+            grid-template-columns: 1fr 1fr 1fr !important;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .etb {
+            padding: 56px 16px 72px;
+          }
+
+          .etb-inner {
+            padding: 0 20px;
+          }
+
+          .etb-b2b {
+            padding: 32px 22px;
+            margin-top: 48px;
+          }
+
+          .etb-block {
+            padding-top: 40px;
+          }
+
+          .etb-block-label {
+            padding-left: 0;
+            min-height: 0;
+          }
+
+          .etb-island--label {
+            display: none;
+          }
+
+          .etb-island--header {
+            width: 140px;
+            height: 90px;
+            opacity: 0.07;
+          }
+
+          .etb-island--b2b {
+            width: 42%;
+            opacity: 0.08;
+          }
+
+          .etb-breath {
+            height: 40px;
+          }
+        }
+      </style>
+    </helmet>
+
+    <section class="etb" aria-labelledby="etb-heading">
+
+      <!-- TEXTURE-01 registry — geometry from Patterns.dc.html; light ink, whisper weight -->
+      <svg class="etb-pattern-defs" aria-hidden="true" focusable="false">
+        <defs>
+          <pattern id="etb-diamond-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <rect x="10" y="10" width="20" height="20" fill="none" stroke="#171717" stroke-width="1"
+              transform="rotate(45 20 20)"></rect>
+          </pattern>
+          <pattern id="etb-tick-rows" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="0" x2="0" y2="10" stroke="#171717" stroke-width="1.5"></line>
+            <line x1="12" y1="0" x2="12" y2="6" stroke="#171717" stroke-width="1"></line>
+          </pattern>
+          <pattern id="etb-dot-matrix" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+            <circle cx="4" cy="4" r="1.75" fill="#D9480F"></circle>
+          </pattern>
+          <pattern id="etb-crosshair" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="30" x2="60" y2="30" stroke="#d4d4d4" stroke-width="1"></line>
+            <line x1="30" y1="0" x2="30" y2="60" stroke="#d4d4d4" stroke-width="1"></line>
+            <circle cx="30" cy="30" r="2" fill="#171717"></circle>
+          </pattern>
+          <pattern id="etb-diagonal-hatch" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="16" x2="16" y2="0" stroke="#171717" stroke-width="1"></line>
+          </pattern>
+          <pattern id="etb-frame-stack" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
+            <rect x="4" y="4" width="40" height="40" fill="none" stroke="#171717" stroke-width="1"></rect>
+            <rect x="14" y="14" width="20" height="20" fill="none" stroke="#D9480F" stroke-width="1"></rect>
+          </pattern>
+          <!-- B2B (dark surface) — light strokes only -->
+          <pattern id="etb-hatch-light" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="16" x2="16" y2="0" stroke="rgba(255,255,255,0.55)" stroke-width="1"></line>
+          </pattern>
+          <pattern id="etb-crosshair-light" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="30" x2="60" y2="30" stroke="rgba(255,255,255,0.28)" stroke-width="1"></line>
+            <line x1="30" y1="0" x2="30" y2="60" stroke="rgba(255,255,255,0.28)" stroke-width="1"></line>
+            <circle cx="30" cy="30" r="2" fill="rgba(255,255,255,0.35)"></circle>
+          </pattern>
+        </defs>
+      </svg>
+
+      <div class="etb-inner">
+
+        <div class="etb-ticks" aria-hidden="true">
+          <sc-for list="{{ ticks }}" as="t" hint-placeholder-count="28">
+            <span class="etb-tick"></span>
+          </sc-for>
+        </div>
+
+        <!-- Header — Diamond Grid island (right, sparse) -->
+        <header class="etb-header">
+          <div class="etb-island etb-island--header" aria-hidden="true">
+            <svg class="etb-fill" preserveAspectRatio="none">
+              <rect width="100%" height="100%" fill="url(#etb-diamond-grid)"></rect>
+            </svg>
+          </div>
+          <span class="etb-kicker">[ 03 / ОБОРУДОВАНИЕ, КОМАНДА И B2B ]</span>
+          <h2 class="etb-title" id="etb-heading">
+            ОБОРУДОВАНИЕ И КОМАНДА
+          </h2>
+          <p class="etb-lead">
+            Высокоточные диагностические стенды, сертифицированные мастера и надёжное сотрудничество с партнёрами по
+            всей Эстонии.
+          </p>
+        </header>
+
+        <!-- Equipment -->
+        <div class="etb-block">
+          <div class="etb-block-label">
+            <!-- Nested Frames mark beside label -->
+            <div class="etb-island etb-island--label" aria-hidden="true">
+              <svg class="etb-fill" preserveAspectRatio="none">
+                <rect width="100%" height="100%" fill="url(#etb-frame-stack)"></rect>
+              </svg>
+            </div>
+            <span class="etb-block-title">ОБОРУДОВАНИЕ</span>
+            <span class="etb-block-meta">[ 03 ЕДИНИЦЫ · ЛАБОРАТОРНЫЙ КЛАСС ]</span>
+          </div>
+          <div class="etb-grid etb-grid--equip equip-grid">
+            <sc-for list="{{ equipment }}" as="eq" hint-placeholder-count="3">
+              <article class="etb-card">
+                <span class="etb-card-corner etb-card-corner--tl" aria-hidden="true"></span>
+                <span class="etb-card-corner etb-card-corner--br" aria-hidden="true"></span>
+                <div class="etb-card-media etb-card-media--equip">
+                  <image-slot id="{{ eq.slotId }}" shape="rect" placeholder="{{ eq.placeholder }}" src="{{ eq.src }}"
+                    credit="{{ eq.credit }}" credit-href="{{ eq.creditHref }}" fit="cover"></image-slot>
+                  <span class="etb-card-tag">{{ eq.tag }}</span>
+                </div>
+                <div class="etb-card-body">
+                  <!-- Crosshair corner only — card stays mostly empty -->
+                  <div class="etb-island etb-island--card" aria-hidden="true">
+                    <svg class="etb-fill" preserveAspectRatio="none">
+                      <rect width="100%" height="100%" fill="url(#etb-crosshair)"></rect>
+                    </svg>
+                  </div>
+                  <span class="etb-card-name">{{ eq.name }}</span>
+                  <span class="etb-card-spec">
+                    <span class="etb-card-spec-num">01</span>
+                    <span>{{ eq.spec1 }}</span>
+                  </span>
+                  <span class="etb-card-spec">
+                    <span class="etb-card-spec-num">02</span>
+                    <span>{{ eq.spec2 }}</span>
+                  </span>
+                </div>
+              </article>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- Spacer: empty air + short hatch band (not full bleed wallpaper) -->
+        <div class="etb-breath" aria-hidden="true">
+          <div class="etb-breath-band etb-breath-band--short">
+            <svg class="etb-fill" preserveAspectRatio="none">
+              <rect width="100%" height="100%" fill="url(#etb-diagonal-hatch)"></rect>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Team -->
+        <div class="etb-block" style="padding-top:32px;">
+          <div class="etb-block-label">
+            <!-- Indicator Dots mark beside label -->
+            <div class="etb-island etb-island--label" aria-hidden="true">
+              <svg class="etb-fill" preserveAspectRatio="none">
+                <rect width="100%" height="100%" fill="url(#etb-dot-matrix)"></rect>
+              </svg>
+            </div>
+            <span class="etb-block-title">НАШИ СПЕЦИАЛИСТЫ</span>
+            <span class="etb-block-meta">[ КОМАНДА · СЕРТИФИЦИРОВАНЫ ]</span>
+          </div>
+          <div class="etb-grid etb-grid--team team-grid">
+            <sc-for list="{{ team }}" as="member" hint-placeholder-count="3">
+              <article class="etb-card">
+                <span class="etb-card-corner etb-card-corner--tl" aria-hidden="true"></span>
+                <span class="etb-card-corner etb-card-corner--br" aria-hidden="true"></span>
+                <div class="etb-card-media etb-card-media--team">
+                  <image-slot id="{{ member.slotId }}" shape="rect" placeholder="{{ member.placeholder }}"
+                    src="{{ member.src }}" credit="{{ member.credit }}" credit-href="{{ member.creditHref }}"
+                    fit="cover"></image-slot>
+                </div>
+                <div class="etb-card-body">
+                  <!-- Gauge ticks corner — whisper only -->
+                  <div class="etb-island etb-island--card" aria-hidden="true">
+                    <svg class="etb-fill" preserveAspectRatio="none">
+                      <rect width="100%" height="100%" fill="url(#etb-tick-rows)"></rect>
+                    </svg>
+                  </div>
+                  <span class="etb-member-name">[ {{ member.name }} ]</span>
+                  <span class="etb-member-role">{{ member.role }}</span>
+                  <span class="etb-member-exp">[ {{ member.experience }} ]</span>
+                </div>
+              </article>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- Spacer before B2B -->
+        <div class="etb-breath" aria-hidden="true">
+          <div class="etb-breath-band etb-breath-band--short" style="margin-left:0;margin-right:auto;">
+            <svg class="etb-fill" preserveAspectRatio="none">
+              <rect width="100%" height="100%" fill="url(#etb-tick-rows)"></rect>
+            </svg>
+          </div>
+        </div>
+
+        <!-- B2B — hatch + crosshair only on right third -->
+        <aside class="etb-b2b" aria-labelledby="etb-b2b-heading">
+          <div class="etb-island etb-island--b2b" aria-hidden="true">
+            <svg class="etb-fill" preserveAspectRatio="none">
+              <rect width="100%" height="100%" fill="url(#etb-hatch-light)"></rect>
+            </svg>
+            <svg class="etb-fill" preserveAspectRatio="none" style="opacity:0.55;">
+              <rect width="100%" height="100%" fill="url(#etb-crosshair-light)"></rect>
+            </svg>
+          </div>
+          <span class="etb-b2b-sight etb-b2b-sight--tl" aria-hidden="true"><span class="h"></span><span
+              class="v"></span></span>
+          <span class="etb-b2b-sight etb-b2b-sight--br" aria-hidden="true"><span class="h"></span><span
+              class="v"></span></span>
+
+          <span class="etb-b2b-kicker">[ B2B-СОТРУДНИЧЕСТВО ДЛЯ ПАРТНЁРОВ ]</span>
+          <h3 class="etb-b2b-title" id="etb-b2b-heading">
+            АВТОСЕРВИСАМ И АВТОПАРКАМ ПО ВСЕЙ ЭСТОНИИ
+          </h3>
+
+          <div class="etb-b2b-list">
+            <sc-for list="{{ b2bPoints }}" as="pt" hint-placeholder-count="3">
+              <div class="etb-b2b-row">
+                <span class="etb-b2b-icon">
+                  <sc-if value="{{ pt.num === '01' }}">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="13" height="11" rx="1"/><path d="M14 8h4.5l2.5 3v4h-7V8z"/><circle cx="4.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/><path d="M-1 9h2M-2 12h3"/></svg>
+                  </sc-if>
+                  <sc-if value="{{ pt.num === '02' }}">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14l3-3"/><path d="M3.34 17a10 10 0 1 1 17.32 0"/><circle cx="12" cy="14" r="1.5"/><path d="M18 16a4 4 0 1 0 4 4"/><path d="M22 16v2h2"/></svg>
+                  </sc-if>
+                  <sc-if value="{{ pt.num === '03' }}">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                  </sc-if>
+                </span>
+                <p class="etb-b2b-text">{{ pt.text }}</p>
+              </div>
+            </sc-for>
+          </div>
+
+          <div class="etb-b2b-actions">
+            <a href="#request-form" onClick="{{ scrollToForm }}" class="ft-maps-btn">[ ОТПРАВИТЬ АГРЕГАТ В РЕМОНТ →
+              ]</a>
+            <a href="#b2b-pricing" class="etb-btn-ghost">[ B2B-ПРАЙС И УСЛОВИЯ ]</a>
+          </div>
+        </aside>
+
+        <div class="etb-footer-pad" aria-hidden="true"></div>
+      </div>
+    </section>
+
+  </x-dc>
+  <script type="text/x-dc" data-dc-script
+    data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:1680}}">
+class Component extends DCLogic {
+  ticks = Array.from({ length: 28 });
+
+  equipment = [
+    {
+      slotId: 'equip-1',
+      tag: '[ BOSCH EPS 708 / СТЕНД ]',
+      placeholder: 'Фото стенда Bosch EPS 708',
+      src: './ad-img-1.jpg',
+      name: 'BOSCH EPS 708',
+      spec1: 'Испытания Common Rail под давлением до 2500 бар',
+      spec2: 'Автоматическая генерация тест-планов и кодирование',
+    },
+    {
+      slotId: 'equip-2',
+      tag: '[ HARTRIDGE AVM-2 ]',
+      placeholder: 'Фото стенда Hartridge AVM-2',
+      src: './ad-img-2.jpg',
+      name: 'HARTRIDGE AVM-2',
+      spec1: 'Проверка расхода и факела распыла форсунок',
+      spec2: 'Библиотека калибровочных данных multi-brand',
+    },
+    {
+      slotId: 'equip-3',
+      tag: '[ УЛЬТРАЗВУКОВАЯ ОЧИСТКА ]',
+      placeholder: 'Фото станции ультразвуковой очистки',
+      src: './ad-img-3.jpg',
+      name: 'УЛЬТРАЗВУКОВАЯ ОЧИСТКА',
+      spec1: 'Точная деконтаминация компонентов',
+      spec2: 'Удаление металлической стружки и отложений',
+    },
+  ];
+
+  team = [
+    {
+      slotId: 'team-1',
+      placeholder: 'Фото мастера',
+      src: './ad-img-stuff-1.jpg',
+      name: 'АЛЕКСЕЙ ИВАНОВ',
+      role: 'ИНЖЕНЕР ДИЗЕЛЬНЫХ СИСТЕМ / МАСТЕР-ДИАГНОСТ',
+      experience: '15+ ЛЕТ ОПЫТА',
+    },
+    {
+      slotId: 'team-2',
+      placeholder: 'Фото мастера',
+      src: './ad-img-stuff-2.jpg',
+      name: 'ДМИТРИЙ СТИВЕНСОН',
+      role: 'СПЕЦИАЛИСТ COMMON RAIL',
+      experience: '12+ ЛЕТ ОПЫТА',
+    },
+    {
+      slotId: 'team-3',
+      placeholder: 'Фото мастера',
+      src: './ad-img-stuff-3.jpg',
+      name: 'МИХАИЛ ПЕТРОВ',
+      role: 'ИНЖЕНЕР ПО ВОССТАНОВЛЕНИЮ ТНВД',
+      experience: '18+ ЛЕТ ОПЫТА',
+    },
+  ];
+
+  b2bPoints = [
+    {
+      num: '01',
+      text: 'Принимаем снятые форсунки и насосы курьером (Cargobus / DPD) со всей Эстонии.',
+    },
+    {
+      num: '02',
+      text: 'Быстрая диагностика и ремонт в течение 24–48 часов.',
+    },
+    {
+      num: '03',
+      text: 'Специальные условия и официальная гарантия для бизнес-клиентов.',
+    },
+  ];
+
+  scrollToForm = (e) => {
+    e.preventDefault();
+    const el = document.getElementById('request-form');
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.pageYOffset - 24;
+    window.scrollTo({ top, behavior: 'smooth' });
+  };
+
+  renderVals() {
+    return {
+      ticks: this.ticks,
+      equipment: this.equipment,
+      team: this.team,
+      b2bPoints: this.b2bPoints,
+      scrollToForm: this.scrollToForm,
+    };
+  }
+}
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+  body{margin:0;}
+  a{color:inherit;}
+
+  /* ── Ultra-premium Swiss Modernism / Industrial Minimalism Footer ── */
+  .ft-premium{
+    --ft-bg:#0c0d0f;
+    --ft-surface:#101114;
+    --ft-line:rgba(255,255,255,0.07);
+    --ft-line-mid:rgba(255,255,255,0.11);
+    --ft-muted:#6b6e74;
+    --ft-dim:#8a8e96;
+    --ft-text:#e8e9eb;
+    --ft-white:#f4f5f6;
+    --ft-red:#C41E2A;
+    --ft-red-bright:#E63946;
+    --ft-red-deep:#8B1520;
+    --ft-red-metal:linear-gradient(145deg,#5c0f16 0%,#C41E2A 28%,#E63946 48%,#8B1520 72%,#3d0a0e 100%);
+    --ft-mono:'SF Mono','Cascadia Code','Consolas','Courier New',monospace;
+    --ft-sans:Helvetica Neue,Helvetica,Arial,sans-serif;
+    position:relative;
+    color:var(--ft-text);
+    font-family:var(--ft-sans);
+    overflow:hidden;
+    /* Deep graphite-black brushed titanium */
+    background-color:var(--ft-bg);
+    background-image:
+      /* Soft directional studio grazing light */
+      linear-gradient(165deg, rgba(255,255,255,0.045) 0%, transparent 38%, transparent 62%, rgba(0,0,0,0.35) 100%),
+      /* Horizontal micro-brush strokes */
+      repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        transparent 1px,
+        rgba(255,255,255,0.012) 1px,
+        rgba(255,255,255,0.012) 2px,
+        transparent 2px,
+        transparent 4px,
+        rgba(0,0,0,0.04) 4px,
+        rgba(0,0,0,0.04) 5px
+      ),
+      /* Fine diagonal etch */
+      repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 2px,
+        rgba(255,255,255,0.008) 2px,
+        rgba(255,255,255,0.008) 3px
+      ),
+      /* Base metal gradient */
+      linear-gradient(180deg, #12141a 0%, #0c0d0f 40%, #0a0b0d 100%);
+    isolation:isolate;
+  }
+
+  .ft-premium::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    opacity:0.35;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size:180px 180px;
+    mix-blend-mode:overlay;
+  }
+
+  .ft-premium::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    background:
+      radial-gradient(ellipse 80% 50% at 30% 0%, rgba(255,255,255,0.04) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 30% at 85% 100%, rgba(196,30,42,0.04) 0%, transparent 50%);
+  }
+
+  /* Pattern layers from Patterns.dc.html (TEXTURE-01) — sit under .ft-inner */
+  .ft-pattern-defs{
+    position:absolute;
+    width:0;height:0;
+    overflow:hidden;
+  }
+  .ft-pattern-bg{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+  }
+  .ft-pattern-bg svg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    display:block;
+  }
+  /* Subtle texture only — keep well below content hierarchy */
+  .ft-pattern-bg--diamond{ opacity:0.07; }
+  .ft-pattern-bg--crosshair{ opacity:0.05; mix-blend-mode:soft-light; }
+
+  .ft-inner{
+    position:relative;
+    z-index:1;
+    max-width:1240px;
+    margin:0 auto;
+    border-left:1px solid var(--ft-line);
+    border-right:1px solid var(--ft-line);
+    padding:0 44px;
+    box-shadow:
+      inset 1px 0 0 rgba(255,255,255,0.03),
+      inset -1px 0 0 rgba(0,0,0,0.4);
+  }
+
+  /* Brand lockup — logo.html MARK-01 + wordmark (Logo.dc.html primary, reversed) */
+  .ft-brand{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    padding:28px 0 0;
+    position:relative;
+  }
+  .ft-brand-mark{
+    flex-shrink:0;
+    width:64px;
+    height:64px;
+    display:block;
+    filter:drop-shadow(0 2px 8px rgba(0,0,0,0.45));
+  }
+  .ft-brand-text{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    min-width:0;
+  }
+  .ft-brand-name{
+    margin:0;
+    font-size:clamp(18px,2.2vw,28px);
+    font-weight:800;
+    letter-spacing:-0.02em;
+    text-transform:uppercase;
+    color:var(--ft-white);
+    line-height:1.05;
+    white-space:nowrap;
+    text-shadow:
+      0 1px 0 rgba(255,255,255,0.06),
+      0 2px 8px rgba(0,0,0,0.45);
+  }
+  .ft-brand-code{
+    font-size:11px;
+    font-family:var(--ft-mono);
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ft-muted);
+  }
+  .ft-brand-rule{
+    width:48px;
+    height:2px;
+    margin-top:2px;
+    background:var(--ft-red-metal);
+    box-shadow:
+      0 0 0 0.5px rgba(255,180,180,0.2),
+      inset 0 1px 0 rgba(255,255,255,0.35),
+      0 0 10px rgba(196,30,42,0.25);
+  }
+  /* Nested-frame corners on brand lockup */
+  .ft-brand-frame{
+    position:absolute;
+    width:10px;height:10px;
+    pointer-events:none;
+    opacity:0.55;
+  }
+  .ft-brand-frame--tl{
+    left:-8px;top:20px;
+    border-left:1.5px solid rgba(255,255,255,0.35);
+    border-top:1.5px solid rgba(255,255,255,0.35);
+  }
+  .ft-brand-frame--br{
+    right:0;bottom:-4px;
+    border-right:1.5px solid rgba(196,30,42,0.55);
+    border-bottom:1.5px solid rgba(196,30,42,0.55);
+  }
+
+  /* Local pattern fill used inside cells (SVG absolute) */
+  .ft-fill-pattern{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:0;
+  }
+
+  /* Precision tick rail */
+  .ft-ticks{
+    display:flex;
+    gap:0;
+    padding-top:44px;
+    opacity:0.55;
+  }
+  .ft-tick{
+    width:1px;
+    height:10px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.06) 100%);
+    margin-right:calc((100% - 28px) / 27);
+    box-shadow:0 0 0.5px rgba(255,255,255,0.15);
+  }
+  .ft-tick:nth-child(7n){
+    height:14px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.08) 100%);
+  }
+
+  /* Machine-engraved serial metadata */
+  .ft-meta{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 0 0;
+    flex-wrap:wrap;
+    gap:12px 32px;
+  }
+  .ft-serial{
+    font-size:9.5px;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--ft-muted);
+    font-family:var(--ft-mono);
+    white-space:nowrap;
+    font-weight:400;
+    text-shadow:0 1px 0 rgba(0,0,0,0.6);
+    opacity:0.85;
+  }
+
+  /* Map + location block */
+  .ft-map-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1px;
+    background:var(--ft-line-mid);
+    margin-top:36px;
+    position:relative;
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,0.5),
+      0 12px 40px rgba(0,0,0,0.35),
+      inset 0 1px 0 rgba(255,255,255,0.04);
+  }
+
+  /* Intricate anodized red metal corner sights */
+  .ft-sight{
+    position:absolute;
+    z-index:3;
+    pointer-events:none;
+  }
+  .ft-sight--tl{
+    left:-1px;top:-1px;
+    width:22px;height:22px;
+  }
+  .ft-sight--br{
+    right:-1px;bottom:-1px;
+    width:28px;height:28px;
+  }
+
+  .ft-sight-arm{
+    position:absolute;
+    background:var(--ft-red-metal);
+    box-shadow:
+      0 0 0 0.5px rgba(255,200,200,0.25),
+      inset 0 1px 0 rgba(255,255,255,0.35),
+      inset 0 -1px 0 rgba(0,0,0,0.45),
+      0 1px 3px rgba(0,0,0,0.5);
+  }
+  .ft-sight--tl .ft-sight-h{
+    top:0;left:0;width:18px;height:2.5px;
+  }
+  .ft-sight--tl .ft-sight-v{
+    top:0;left:0;width:2.5px;height:18px;
+  }
+  .ft-sight--tl .ft-sight-dot{
+    top:5px;left:5px;
+    width:4px;height:4px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #ff6b6b, #C41E2A 55%, #5c0f16);
+    box-shadow:
+      inset 0 1px 1px rgba(255,255,255,0.4),
+      0 0 4px rgba(196,30,42,0.5),
+      0 1px 2px rgba(0,0,0,0.6);
+  }
+  .ft-sight--tl .ft-sight-notch{
+    top:0;left:14px;width:2px;height:2.5px;
+    background:linear-gradient(180deg,#2a080c,#C41E2A);
+    box-shadow:inset 0 0 1px rgba(0,0,0,0.8);
+  }
+
+  .ft-sight--br .ft-sight-h{
+    bottom:0;right:0;width:24px;height:3px;
+  }
+  .ft-sight--br .ft-sight-v{
+    bottom:0;right:0;width:3px;height:24px;
+  }
+  .ft-sight--br .ft-sight-plate{
+    bottom:5px;right:5px;
+    width:10px;height:10px;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 40%),
+      linear-gradient(145deg,#3d0a0e 0%,#C41E2A 40%,#8B1520 70%,#2a080c 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.3),
+      inset 0 -1px 0 rgba(0,0,0,0.5),
+      0 0 0 0.5px rgba(255,180,180,0.2),
+      0 2px 4px rgba(0,0,0,0.55);
+    border:0.5px solid rgba(0,0,0,0.4);
+  }
+  .ft-sight--br .ft-sight-plate::after{
+    content:'';
+    position:absolute;
+    top:50%;left:50%;
+    width:3px;height:3px;
+    margin:-1.5px 0 0 -1.5px;
+    border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, #ff8a8a, #5c0f16);
+    box-shadow:inset 0 0.5px 1px rgba(255,255,255,0.5);
+  }
+  .ft-sight--br .ft-sight-tick{
+    position:absolute;
+    background:linear-gradient(90deg,#5c0f16,#E63946,#5c0f16);
+    box-shadow:0 0 1px rgba(255,100,100,0.4);
+  }
+  .ft-sight--br .ft-sight-tick-1{bottom:0;right:10px;width:1px;height:5px;}
+  .ft-sight--br .ft-sight-tick-2{bottom:0;right:16px;width:1px;height:3.5px;}
+  .ft-sight--br .ft-sight-tick-3{bottom:10px;right:0;width:5px;height:1px;}
+  .ft-sight--br .ft-sight-tick-4{bottom:16px;right:0;width:3.5px;height:1px;}
+
+  .ft-map-cell{
+    background:
+      linear-gradient(165deg, rgba(255,255,255,0.03) 0%, transparent 40%),
+      var(--ft-surface);
+    aspect-ratio:16/10;
+    position:relative;
+    min-height:280px;
+    overflow:hidden;
+  }
+  .ft-map-cell::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:24px 24px;
+    opacity:0.5;
+    z-index:1;
+  }
+
+  .ft-loc-cell{
+    background:
+      linear-gradient(200deg, rgba(255,255,255,0.025) 0%, transparent 45%),
+      var(--ft-surface);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:20px;
+    padding:44px 40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .ft-loc-cell > *:not(.ft-fill-pattern){
+    position:relative;
+    z-index:1;
+  }
+  .ft-loc-cell::after{
+    content:'';
+    position:absolute;
+    top:0;right:0;bottom:0;
+    width:1px;
+    background:linear-gradient(180deg, transparent, rgba(255,255,255,0.06), transparent);
+    pointer-events:none;
+    z-index:2;
+  }
+
+  .ft-loc-tag{
+    font-size:9px;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    font-family:var(--ft-mono);
+    white-space:nowrap;
+    font-weight:600;
+    /* High-contrast on dark surface: bright metal red, no deep mid-tones */
+    color:#ff6b73;
+    background:linear-gradient(180deg, #ffb3b8 0%, #ff6b73 40%, #E63946 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:none;
+    filter:
+      drop-shadow(0 0 10px rgba(230,57,70,0.45))
+      drop-shadow(0 1px 0 rgba(0,0,0,0.6));
+  }
+
+  .ft-address{
+    margin:0;
+    font-size:clamp(22px,2.6vw,34px);
+    font-weight:800;
+    letter-spacing:-0.02em;
+    text-transform:uppercase;
+    color:var(--ft-white);
+    line-height:1.15;
+    text-shadow:
+      0 1px 0 rgba(255,255,255,0.06),
+      0 2px 8px rgba(0,0,0,0.5);
+  }
+
+  /* Anodized red metallic engraved button */
+  .ft-maps-btn{
+    align-self:flex-start;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-family:var(--ft-mono);
+    text-decoration:none;
+    color:#fff5f5;
+    padding:10px 16px 9px;
+    white-space:nowrap;
+    position:relative;
+    border:none;
+    cursor:pointer;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.18) 0%, transparent 40%),
+      linear-gradient(145deg, #6e1219 0%, #C41E2A 30%, #E63946 50%, #9a1a24 75%, #4a0c11 100%);
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,0.55),
+      inset 0 1px 0 rgba(255,255,255,0.35),
+      inset 0 -1px 0 rgba(0,0,0,0.4),
+      inset 1px 0 0 rgba(255,255,255,0.08),
+      0 2px 6px rgba(0,0,0,0.45),
+      0 0 16px rgba(196,30,42,0.15);
+    text-shadow:0 1px 1px rgba(0,0,0,0.5);
+    transition:box-shadow 0.2s ease, filter 0.2s ease;
+  }
+  .ft-maps-btn::before{
+    content:'';
+    position:absolute;
+    inset:1px;
+    border:0.5px solid rgba(255,255,255,0.12);
+    pointer-events:none;
+  }
+  .ft-maps-btn:hover{
+    filter:brightness(1.08);
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,0.55),
+      inset 0 1px 0 rgba(255,255,255,0.4),
+      inset 0 -1px 0 rgba(0,0,0,0.4),
+      0 3px 10px rgba(0,0,0,0.5),
+      0 0 22px rgba(230,57,70,0.28);
+  }
+
+  /* Three columns */
+  .ft-contact-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1px;
+    background:var(--ft-line-mid);
+    margin-top:56px;
+    border-top:1px solid var(--ft-line);
+    border-bottom:1px solid var(--ft-line);
+    box-shadow:0 8px 32px rgba(0,0,0,0.25);
+  }
+  .ft-col{
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 30%),
+      var(--ft-surface);
+    padding:42px 36px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    position:relative;
+    overflow:hidden;
+  }
+  .ft-col > *:not(.ft-fill-pattern):not(.ft-ghost-num){
+    position:relative;
+    z-index:1;
+  }
+  .ft-col-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:relative;
+    z-index:1;
+  }
+  .ft-col-label{
+    font-size:9.5px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--ft-dim);
+    font-family:var(--ft-mono);
+    white-space:nowrap;
+    font-weight:400;
+  }
+
+  /* Ghost etched outline numbers */
+  .ft-ghost-num{
+    font-size:48px;
+    font-weight:200;
+    line-height:1;
+    color:transparent;
+    -webkit-text-stroke:0.75px rgba(255,255,255,0.07);
+    letter-spacing:-0.04em;
+    font-family:var(--ft-sans);
+    user-select:none;
+    position:absolute;
+    right:28px;
+    top:28px;
+    z-index:0;
+    opacity:0.9;
+    text-shadow:none;
+    pointer-events:none;
+  }
+
+  .ft-phone{
+    font-size:20px;
+    font-weight:700;
+    font-family:var(--ft-mono);
+    letter-spacing:0.04em;
+    text-decoration:none;
+    color:var(--ft-white);
+    position:relative;
+    z-index:1;
+    text-shadow:0 1px 0 rgba(255,255,255,0.05);
+    transition:color 0.15s ease;
+  }
+  .ft-phone:hover{color:var(--ft-red-bright);}
+
+  .ft-email{
+    font-size:13.5px;
+    color:var(--ft-dim);
+    text-decoration:none;
+    word-break:break-word;
+    position:relative;
+    z-index:1;
+    letter-spacing:0.02em;
+    transition:color 0.15s ease;
+  }
+  .ft-email:hover{color:var(--ft-white);}
+
+  .ft-hours-main{
+    font-size:15.5px;
+    font-weight:700;
+    color:var(--ft-white);
+    font-family:var(--ft-mono);
+    letter-spacing:0.06em;
+    position:relative;
+    z-index:1;
+  }
+  .ft-hours-sub{
+    font-size:12px;
+    color:var(--ft-muted);
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    font-family:var(--ft-mono);
+    position:relative;
+    z-index:1;
+  }
+
+  .ft-company{
+    font-size:15.5px;
+    font-weight:700;
+    color:var(--ft-white);
+    letter-spacing:0.01em;
+    position:relative;
+    z-index:1;
+  }
+  .ft-reg{
+    font-size:11.5px;
+    color:var(--ft-muted);
+    font-family:var(--ft-mono);
+    letter-spacing:0.08em;
+    position:relative;
+    z-index:1;
+  }
+
+  /* Bottom panel — luxury watch serial micro-type */
+  .ft-bottom{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px 28px;
+    flex-wrap:wrap;
+    padding:28px 0 36px;
+    border-top:1px solid transparent;
+  }
+  .ft-micro{
+    font-size:8.5px;
+    font-family:var(--ft-mono);
+    letter-spacing:0.14em;
+    color:var(--ft-muted);
+    text-transform:uppercase;
+    font-weight:400;
+    opacity:0.75;
+    text-shadow:0 1px 0 rgba(0,0,0,0.5);
+  }
+  .ft-micro-link{
+    font-size:8.5px;
+    font-family:var(--ft-mono);
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ft-muted);
+    text-decoration:none;
+    opacity:0.75;
+    transition:color 0.15s ease, opacity 0.15s ease;
+  }
+  .ft-micro-link:hover{
+    color:var(--ft-white);
+    opacity:1;
+  }
+  .ft-bottom-links{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    flex-wrap:wrap;
+  }
+  .ft-bottom-right{
+    display:flex;
+    align-items:center;
+    gap:22px;
+  }
+
+  /* Language switcher */
+  .ft-lang{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:0.12em;
+    font-family:var(--ft-mono);
+  }
+  .ft-lang button{
+    background:none;
+    border:none;
+    padding:0;
+    cursor:pointer;
+    font:inherit;
+    letter-spacing:inherit;
+    transition:color 0.15s ease, text-shadow 0.15s ease;
+  }
+  .ft-lang-sep{
+    color:rgba(255,255,255,0.12);
+    font-weight:400;
+  }
+  .ft-lang-active{
+    color:var(--ft-red-bright) !important;
+    text-shadow:
+      0 0 10px rgba(230,57,70,0.35),
+      0 1px 0 rgba(0,0,0,0.4);
+  }
+  .ft-lang-muted{
+    color:var(--ft-muted) !important;
+    opacity:0.65;
+  }
+
+  /* Precision scroll-to-top: red metal dot + minimal arrow */
+  .ft-totop{
+    background:none;
+    border:none;
+    padding:0;
+    cursor:pointer;
+    display:inline-flex;
+    flex-direction:column;
+    align-items:center;
+    gap:5px;
+    font-size:8px;
+    font-family:var(--ft-mono);
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--ft-muted);
+    opacity:0.8;
+    transition:opacity 0.15s ease, color 0.15s ease;
+  }
+  .ft-totop:hover{
+    opacity:1;
+    color:var(--ft-dim);
+  }
+  .ft-totop-arrow{
+    width:0;
+    height:0;
+    border-left:3.5px solid transparent;
+    border-right:3.5px solid transparent;
+    border-bottom:5px solid #7a7e86;
+    filter:drop-shadow(0 1px 0 rgba(0,0,0,0.4));
+  }
+  .ft-totop-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:
+      radial-gradient(circle at 32% 28%, #ff8a90 0%, #E63946 40%, #8B1520 75%, #3d0a0e 100%);
+    box-shadow:
+      inset 0 1px 1px rgba(255,255,255,0.45),
+      inset 0 -1px 1px rgba(0,0,0,0.5),
+      0 0 0 0.5px rgba(0,0,0,0.6),
+      0 0 8px rgba(196,30,42,0.35),
+      0 1px 2px rgba(0,0,0,0.5);
+  }
+  .ft-totop-label{
+    margin-top:2px;
+  }
+
+  @media (min-width: 800px) {
+    .ft-map-grid{ grid-template-columns: 1.5fr 1fr !important; }
+    .ft-contact-grid{ grid-template-columns: 1fr 1fr 1fr !important; }
+  }
+  @media (max-width: 640px) {
+    .ft-inner{ padding:0 20px; }
+    .ft-loc-cell{ padding:32px 24px; }
+    .ft-col{ padding:32px 24px; }
+    .ft-ghost-num{ font-size:36px; right:20px; top:20px; }
+    .ft-serial{ letter-spacing:0.16em; font-size:8.5px; }
+    .ft-brand{ gap:14px; padding-top:22px; }
+    .ft-brand-mark{ width:52px; height:52px; }
+    .ft-brand-name{ white-space:normal; }
+  }
+</style>
+</helmet>
+
+<footer class="ft-premium">
+
+  <!-- TEXTURE-01 pattern registry (from Patterns.dc.html) — dark-theme stroke values -->
+  <svg class="ft-pattern-defs" aria-hidden="true" focusable="false">
+    <defs>
+      <!-- Diamond Grid · tile 40px — whisper strokes -->
+      <pattern id="ft-diamond-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+        <rect x="10" y="10" width="20" height="20" fill="none" stroke="rgba(244,245,246,0.22)" stroke-width="1" transform="rotate(45 20 20)"></rect>
+      </pattern>
+      <!-- Gauge Ticks · tile 24px -->
+      <pattern id="ft-tick-rows" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="10" stroke="rgba(244,245,246,0.18)" stroke-width="1.5"></line>
+        <line x1="12" y1="0" x2="12" y2="6" stroke="rgba(244,245,246,0.1)" stroke-width="1"></line>
+      </pattern>
+      <!-- Indicator Dots · tile 28px -->
+      <pattern id="ft-dot-matrix" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+        <circle cx="4" cy="4" r="1.75" fill="{{ accentColor }}" fill-opacity="0.18"></circle>
+      </pattern>
+      <!-- Crosshair Grid · tile 60px -->
+      <pattern id="ft-crosshair" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="30" x2="60" y2="30" stroke="rgba(255,255,255,0.06)" stroke-width="1"></line>
+        <line x1="30" y1="0" x2="30" y2="60" stroke="rgba(255,255,255,0.06)" stroke-width="1"></line>
+        <circle cx="30" cy="30" r="2" fill="rgba(244,245,246,0.12)"></circle>
+      </pattern>
+      <!-- Industrial Hatch · tile 16px -->
+      <pattern id="ft-diagonal-hatch" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="16" x2="16" y2="0" stroke="rgba(244,245,246,0.12)" stroke-width="1"></line>
+      </pattern>
+      <!-- Nested Frames · tile 48px -->
+      <pattern id="ft-frame-stack" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
+        <rect x="4" y="4" width="40" height="40" fill="none" stroke="rgba(244,245,246,0.1)" stroke-width="1"></rect>
+        <rect x="14" y="14" width="20" height="20" fill="none" stroke="{{ accentColor }}" stroke-opacity="0.2" stroke-width="1"></rect>
+      </pattern>
+    </defs>
+  </svg>
+
+  <!-- Full-bleed texture layers under content -->
+  <div class="ft-pattern-bg ft-pattern-bg--diamond" aria-hidden="true">
+    <svg preserveAspectRatio="none"><rect width="100%" height="100%" fill="url(#ft-diamond-grid)"></rect></svg>
+  </div>
+  <div class="ft-pattern-bg ft-pattern-bg--crosshair" aria-hidden="true">
+    <svg preserveAspectRatio="none"><rect width="100%" height="100%" fill="url(#ft-crosshair)"></rect></svg>
+  </div>
+
+  <div class="ft-inner">
+
+    <!-- Gauge Ticks rail (Patterns: Gauge Ticks geometry) -->
+    <div class="ft-ticks">
+      <sc-for list="{{ ticks }}" as="t" hint-placeholder-count="28">
+        <span class="ft-tick"></span>
+      </sc-for>
+    </div>
+
+    <!-- MARK-01 brand lockup — logo.html + Logo.dc.html reverse wordmark -->
+    <div class="ft-brand">
+      <span class="ft-brand-frame ft-brand-frame--tl" aria-hidden="true"></span>
+      <span class="ft-brand-frame ft-brand-frame--br" aria-hidden="true"></span>
+
+      <svg class="ft-brand-mark" viewBox="0 0 100 100" width="64" height="64" role="img" aria-label="Авто Диисликескус">
+        <!-- logo.html — reversed on dark: stroke #F8F9FA, accent disc -->
+        <rect x="10" y="10" width="80" height="80" fill="none" stroke="#F8F9FA" stroke-width="4"></rect>
+        <rect x="26" y="26" width="48" height="48" fill="none" stroke="#F8F9FA" stroke-width="3" transform="rotate(45 50 50)"></rect>
+        <line x1="50" y1="10" x2="50" y2="20" stroke="#F8F9FA" stroke-width="3"></line>
+        <line x1="50" y1="80" x2="50" y2="90" stroke="#F8F9FA" stroke-width="3"></line>
+        <line x1="10" y1="50" x2="20" y2="50" stroke="#F8F9FA" stroke-width="3"></line>
+        <line x1="80" y1="50" x2="90" y2="50" stroke="#F8F9FA" stroke-width="3"></line>
+        <circle cx="50" cy="50" r="13" fill="{{ accentColor }}"></circle>
+      </svg>
+
+      <div class="ft-brand-text">
+        <!-- Brand name fixed (RU form) for all locales -->
+        <h2 class="ft-brand-name">AUTO DIISLIKESKUS</h2>
+        <span class="ft-brand-code">{{ brandCode }}</span>
+        <span class="ft-brand-rule" aria-hidden="true"></span>
+      </div>
+    </div>
+
+    <div class="ft-meta">
+      <span class="ft-serial">{{ metaGeo }}</span>
+      <span class="ft-serial">{{ metaBrand }}</span>
+    </div>
+
+    <div class="ft-map-grid map-grid">
+      <!-- Top-left lens sight -->
+      <span class="ft-sight ft-sight--tl" aria-hidden="true">
+        <span class="ft-sight-arm ft-sight-h"></span>
+        <span class="ft-sight-arm ft-sight-v"></span>
+        <span class="ft-sight-arm ft-sight-dot"></span>
+        <span class="ft-sight-arm ft-sight-notch"></span>
+      </span>
+      <!-- Bottom-right detailed metal sight -->
+      <span class="ft-sight ft-sight--br" aria-hidden="true">
+        <span class="ft-sight-arm ft-sight-h"></span>
+        <span class="ft-sight-arm ft-sight-v"></span>
+        <span class="ft-sight-arm ft-sight-plate"></span>
+        <span class="ft-sight-tick ft-sight-tick-1"></span>
+        <span class="ft-sight-tick ft-sight-tick-2"></span>
+        <span class="ft-sight-tick ft-sight-tick-3"></span>
+        <span class="ft-sight-tick ft-sight-tick-4"></span>
+      </span>
+
+      <div class="ft-map-cell">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2028.072093199549!2d24.70300047616493!3d59.448549101473134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4692938641e431ff%3A0xffdfe629442c615b!2sPaavli%20tn%204%2C%2010412%20Tallinn!5e0!3m2!1sen!2see!4v1784981716745!5m2!1sen!2see"
+          title="Paavli 4, 10412 Tallinn — AUTO DIISLIKESKUS"
+          width="100%"
+          height="100%"
+          style="border:0;display:block;width:100%;height:100%;position:absolute;inset:0;filter:grayscale(0.35) contrast(1.05) brightness(0.92);"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+      </div>
+      <div class="ft-loc-cell">
+        <!-- Nested Frames + Indicator Dots — soft loc-cell grain only -->
+        <svg class="ft-fill-pattern" aria-hidden="true" preserveAspectRatio="none" style="opacity:0.12;">
+          <rect width="100%" height="100%" fill="url(#ft-frame-stack)"></rect>
+        </svg>
+        <svg class="ft-fill-pattern" aria-hidden="true" preserveAspectRatio="none" style="opacity:0.1;">
+          <rect width="100%" height="100%" fill="url(#ft-dot-matrix)"></rect>
+        </svg>
+        <span class="ft-loc-tag">{{ locTag }}</span>
+        <!-- Address fixed (RU form) for all locales -->
+        <h3 class="ft-address">ПААВЛИ 4, 10412<br/>ТАЛЛИН, ЭСТОНИЯ</h3>
+        <a href="https://maps.google.com/?q=Paavli+4,+10412+Tallinn" target="_blank" rel="noopener noreferrer" class="ft-maps-btn">{{ mapsBtn }}</a>
+      </div>
+    </div>
+
+    <div class="ft-contact-grid contact-grid">
+      <div class="ft-col">
+        <svg class="ft-fill-pattern" aria-hidden="true" preserveAspectRatio="none" style="opacity:0.08;">
+          <rect width="100%" height="100%" fill="url(#ft-diagonal-hatch)"></rect>
+        </svg>
+        <span class="ft-ghost-num" aria-hidden="true">01</span>
+        <div class="ft-col-head">
+          <span class="ft-col-label">{{ labelContacts }}</span>
+        </div>
+        <a href="tel:+37256702700" class="ft-phone">+372 567 02 700</a>
+        <a href="mailto:autodiislikeskus@gmail.com" class="ft-email">autodiislikeskus@gmail.com</a>
+      </div>
+      <div class="ft-col">
+        <svg class="ft-fill-pattern" aria-hidden="true" preserveAspectRatio="none" style="opacity:0.07;">
+          <rect width="100%" height="100%" fill="url(#ft-tick-rows)"></rect>
+        </svg>
+        <span class="ft-ghost-num" aria-hidden="true">02</span>
+        <div class="ft-col-head">
+          <span class="ft-col-label">{{ labelHours }}</span>
+        </div>
+        <span class="ft-hours-main">{{ hoursMain }}</span>
+        <span class="ft-hours-sub">{{ hoursSub }}</span>
+      </div>
+      <div class="ft-col">
+        <svg class="ft-fill-pattern" aria-hidden="true" preserveAspectRatio="none" style="opacity:0.08;">
+          <rect width="100%" height="100%" fill="url(#ft-frame-stack)"></rect>
+        </svg>
+        <span class="ft-ghost-num" aria-hidden="true">03</span>
+        <div class="ft-col-head">
+          <span class="ft-col-label">{{ labelCompany }}</span>
+        </div>
+        <!-- Company name fixed (RU form) for all locales -->
+        <span class="ft-company">AUTO DIISLIKESKUS</span>
+        <span class="ft-reg">{{ regNr }}</span>
+        <span class="ft-reg">{{ vatNr }}</span>
+      </div>
+    </div>
+
+    <div class="ft-bottom">
+      <span class="ft-micro">{{ copyright }}</span>
+      <div class="ft-bottom-links">
+        <a href="#privacy" class="ft-micro-link">{{ privacy }}</a>
+        <a href="#terms" class="ft-micro-link">{{ terms }}</a>
+      </div>
+      <div class="ft-bottom-right">
+        <div class="ft-lang" role="group" aria-label="Language">
+          <button type="button" onClick="{{ setLangRU }}" class="{{ langClassRU }}">RU</button>
+          <span class="ft-lang-sep">|</span>
+          <button type="button" onClick="{{ setLangEE }}" class="{{ langClassEE }}">EE</button>
+          <span class="ft-lang-sep">|</span>
+          <button type="button" onClick="{{ setLangEN }}" class="{{ langClassEN }}">EN</button>
+        </div>
+        <button onClick="{{ scrollToTop }}" class="ft-totop" aria-label="{{ toTop }}">
+          <span class="ft-totop-arrow"></span>
+          <span class="ft-totop-dot"></span>
+          <span class="ft-totop-label">{{ toTop }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#D9480F&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#D9480F&quot;,&quot;#E63946&quot;,&quot;#C41E2A&quot;,&quot;#171717&quot;]}}">
+class Component extends DCLogic {
+  state = { lang: 'RU' };
+  ticks = Array.from({ length: 28 });
+
+  setLangRU = () => this.setState({ lang: 'RU' });
+  setLangEE = () => this.setState({ lang: 'EE' });
+  setLangEN = () => this.setState({ lang: 'EN' });
+  scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  /** UI copy — brand name + Paavli address stay fixed RU in markup */
+  i18n = {
+    RU: {
+      brandCode: '/ Дизель–01 · MARK-01',
+      metaGeo: "[ ЭСТОНИЯ / ТАЛЛИН — N59°26' E24°45' ]",
+      metaBrand: '[ TEXTURE-01 · AUTO DIISLIKESKUS ]',
+      locTag: '[ 04 / ЛОКАЦИЯ И КОНТАКТЫ ]',
+      mapsBtn: '[ ОТКРЫТЬ В GOOGLE MAPS → ]',
+      labelContacts: '[ КОНТАКТЫ ]',
+      labelHours: '[ ВРЕМЯ РАБОТЫ ]',
+      hoursMain: 'ПН–ПТ: 09:00 – 18:00',
+      hoursSub: 'СБ–ВС: ЗАКРЫТО',
+      labelCompany: '[ РЕКВИЗИТЫ ]',
+      regNr: 'РЕГ. НОМЕР: XXXXXXXX',
+      vatNr: 'НДС / VAT: EE XXXXXXXX',
+      copyright: '© 2026 AUTO DIISLIKESKUS. ВСЕ ПРАВА ЗАЩИЩЕНЫ.',
+      privacy: 'Политика конфиденциальности',
+      terms: 'Условия использования',
+      toTop: 'Наверх',
+    },
+    EE: {
+      brandCode: '/ Diisel–01 · MARK-01',
+      metaGeo: "[ EESTI / TALLINN — N59°26' E24°45' ]",
+      metaBrand: '[ TEXTURE-01 · AUTO DIISLIKESKUS ]',
+      locTag: '[ 04 / LOKATSIOON JA KONTAKTID ]',
+      mapsBtn: '[ AVA GOOGLE MAPSIS → ]',
+      labelContacts: '[ KONTAKTID ]',
+      labelHours: '[ TÖÖAEG ]',
+      hoursMain: 'E–R: 09:00 – 18:00',
+      hoursSub: 'L–P: SULETUD',
+      labelCompany: '[ ETTEVÕTE ]',
+      regNr: 'REG. NR: XXXXXXXX',
+      vatNr: 'KMKR / VAT: EE XXXXXXXX',
+      copyright: '© 2026 AUTO DIISLIKESKUS. KÕIK ÕIGUSED KAITSTUD.',
+      privacy: 'Isikuandmete kaitse',
+      terms: 'Kasutustingimused',
+      toTop: 'Tagasi üles',
+    },
+    EN: {
+      brandCode: '/ Diesel–01 · MARK-01',
+      metaGeo: "[ ESTONIA / TALLINN — N59°26' E24°45' ]",
+      metaBrand: '[ TEXTURE-01 · AUTO DIISLIKESKUS ]',
+      locTag: '[ 04 / LOCATION & CONTACTS ]',
+      mapsBtn: '[ OPEN IN GOOGLE MAPS → ]',
+      labelContacts: '[ CONTACTS ]',
+      labelHours: '[ OPENING HOURS ]',
+      hoursMain: 'MON–FRI: 09:00 – 18:00',
+      hoursSub: 'SAT–SUN: CLOSED',
+      labelCompany: '[ COMPANY ]',
+      regNr: 'REG. NO: XXXXXXXX',
+      vatNr: 'VAT: EE XXXXXXXX',
+      copyright: '© 2026 AUTO DIISLIKESKUS. ALL RIGHTS RESERVED.',
+      privacy: 'Privacy Policy',
+      terms: 'Terms of Service',
+      toTop: 'Back to top',
+    },
+  };
+
+  renderVals() {
+    const lang = this.state.lang;
+    const t = this.i18n[lang] || this.i18n.RU;
+    return {
+      ...t,
+      setLangRU: this.setLangRU,
+      setLangEE: this.setLangEE,
+      setLangEN: this.setLangEN,
+      scrollToTop: this.scrollToTop,
+      ticks: this.ticks,
+      accentColor: this.props.accentColor || '#D9480F',
+      langClassRU: lang === 'RU' ? 'ft-lang-active' : 'ft-lang-muted',
+      langClassEE: lang === 'EE' ? 'ft-lang-active' : 'ft-lang-muted',
+      langClassEN: lang === 'EN' ? 'ft-lang-active' : 'ft-lang-muted',
+    };
+  }
+}
+
+</script>
+</body>
+</html>

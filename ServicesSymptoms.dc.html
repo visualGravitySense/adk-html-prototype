@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>body{margin:0;background:#F8F9FA;}</style>
+</helmet>
+
+<section class="ss">
+  <!-- TEXTURE-01 pattern defs (from Patterns.dc.html) — geometry fixed -->
+  <svg class="ss-pattern-defs" aria-hidden="true" focusable="false">
+    <defs>
+      <pattern id="ss-diamond-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+        <rect x="10" y="10" width="20" height="20" fill="none" stroke="#171717" stroke-width="1.5" transform="rotate(45 20 20)"></rect>
+      </pattern>
+      <pattern id="ss-tick-rows" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="10" stroke="#171717" stroke-width="2"></line>
+        <line x1="12" y1="0" x2="12" y2="6" stroke="#171717" stroke-width="1"></line>
+      </pattern>
+      <pattern id="ss-dot-matrix" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+        <circle cx="4" cy="4" r="2.5" fill="#E63946"></circle>
+      </pattern>
+      <pattern id="ss-crosshair" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="30" x2="60" y2="30" stroke="#d4d4d4" stroke-width="1"></line>
+        <line x1="30" y1="0" x2="30" y2="60" stroke="#d4d4d4" stroke-width="1"></line>
+        <circle cx="30" cy="30" r="3" fill="#171717"></circle>
+      </pattern>
+      <pattern id="ss-diagonal-hatch" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="16" x2="16" y2="0" stroke="#171717" stroke-width="1.5"></line>
+      </pattern>
+      <pattern id="ss-frame-stack" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
+        <rect x="4" y="4" width="40" height="40" fill="none" stroke="#171717" stroke-width="1"></rect>
+        <rect x="14" y="14" width="20" height="20" fill="none" stroke="#E63946" stroke-width="1"></rect>
+      </pattern>
+      <!-- Dark-surface variants for CTA -->
+      <pattern id="ss-hatch-dark" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="16" x2="16" y2="0" stroke="#ffffff" stroke-width="1.5"></line>
+      </pattern>
+      <pattern id="ss-crosshair-dark" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="30" x2="60" y2="30" stroke="#ffffff" stroke-width="1"></line>
+        <line x1="30" y1="0" x2="30" y2="60" stroke="#ffffff" stroke-width="1"></line>
+        <circle cx="30" cy="30" r="3" fill="#E63946"></circle>
+      </pattern>
+      <pattern id="ss-ticks-dark" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="10" stroke="#ffffff" stroke-width="2"></line>
+        <line x1="12" y1="0" x2="12" y2="6" stroke="#ffffff" stroke-width="1"></line>
+      </pattern>
+    </defs>
+  </svg>
+
+  <div class="ss-inner">
+
+    <!-- Precision tick rail -->
+    <div class="ss-ticks" aria-hidden="true">
+      <sc-for list="{{ ticks }}" as="t" hint-placeholder-count="28">
+        <span class="ss-tick"></span>
+      </sc-for>
+    </div>
+
+    <!-- ══ HEADER ══ -->
+    <header class="ss-header">
+      <!-- Diamond Grid island (top-right) -->
+      <div class="ss-island ss-island--header" aria-hidden="true">
+        <svg class="ss-fill" width="100%" height="100%" preserveAspectRatio="xMaxYMin slice">
+          <rect width="100%" height="100%" fill="url(#ss-diamond-grid)"></rect>
+        </svg>
+      </div>
+      <!-- Nested Frames badge (top-left accent) -->
+      <div class="ss-island ss-island--header-frame" aria-hidden="true">
+        <svg class="ss-fill" width="100%" height="100%">
+          <rect width="100%" height="100%" fill="url(#ss-frame-stack)"></rect>
+        </svg>
+      </div>
+
+      <div class="ss-header-row">
+        <div class="ss-header-copy">
+          <span class="ss-kicker">[ 02 / DIAGNOSTIKA JA REMONT ]</span>
+          <h2 class="ss-title">TEENUSED JA SÜMPTOOMID<br/>УСЛУГИ И СИМПТОМЫ</h2>
+          <p class="ss-lead">Täpne diagnostika, komponentide taastamine ja süsteemi täielik hooldus ühes kohas. / Точная диагностика, восстановление компонентов и комплексный ремонт в одном месте.</p>
+        </div>
+        <div class="ss-header-meta">
+          <span class="ss-loc">EST. PRECISION — TALLINN</span>
+          <span class="ss-loc-rule" aria-hidden="true"></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Breath band: Gauge Ticks -->
+    <div class="ss-breath" aria-hidden="true">
+      <div class="ss-breath-band">
+        <svg class="ss-fill" width="100%" height="100%" preserveAspectRatio="none">
+          <rect width="100%" height="100%" fill="url(#ss-tick-rows)"></rect>
+        </svg>
+      </div>
+    </div>
+
+    <!-- ══ SERVICES 2×2 ══ -->
+    <div class="ss-block">
+      <div class="ss-block-label">
+        <div class="ss-island ss-island--label" aria-hidden="true">
+          <svg class="ss-fill" width="100%" height="100%">
+            <rect width="100%" height="100%" fill="url(#ss-crosshair)"></rect>
+          </svg>
+        </div>
+        <span class="ss-block-title">TEENUSED / УСЛУГИ</span>
+        <span class="ss-block-meta">04 CATEGORIES</span>
+      </div>
+
+      <div class="ss-grid ss-grid--services">
+        <sc-for list="{{ services }}" as="svc" hint-placeholder-count="4">
+          <article class="ss-card ss-card--service">
+            <!-- Industrial Hatch corner island -->
+            <div class="ss-island ss-island--card" aria-hidden="true">
+              <svg class="ss-fill" width="100%" height="100%">
+                <rect width="100%" height="100%" fill="url(#ss-diagonal-hatch)"></rect>
+              </svg>
+            </div>
+            <!-- Red left rail -->
+            <span class="ss-card-rail" aria-hidden="true"></span>
+            <span class="ss-num ss-num--lg">{{ svc.num }}</span>
+            <h3 class="ss-card-title">{{ svc.title }}</h3>
+            <p class="ss-card-desc">{{ svc.desc }}</p>
+            <a href="#request-form" onClick="{{ scrollToForm }}" class="ft-maps-btn">[ LOE LÄHEMALT → ]</a>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- Breath band: short ticks (right-aligned) -->
+    <div class="ss-breath" aria-hidden="true">
+      <div class="ss-breath-band ss-breath-band--short">
+        <svg class="ss-fill" width="100%" height="100%" preserveAspectRatio="none">
+          <rect width="100%" height="100%" fill="url(#ss-tick-rows)"></rect>
+        </svg>
+      </div>
+    </div>
+
+    <!-- ══ SYMPTOMS 4-col ══ -->
+    <div class="ss-block ss-block--symptoms">
+      <div class="ss-block-label">
+        <div class="ss-island ss-island--label" aria-hidden="true">
+          <svg class="ss-fill" width="100%" height="100%">
+            <rect width="100%" height="100%" fill="url(#ss-frame-stack)"></rect>
+          </svg>
+        </div>
+        <span class="ss-block-title">SÜMPTOOMID / СИМПТОМЫ</span>
+        <span class="ss-block-meta">DIAGNOSTIC INDEX</span>
+      </div>
+
+      <div class="ss-grid ss-grid--symptoms">
+        <sc-for list="{{ symptoms }}" as="sym" hint-placeholder-count="4">
+          <article class="ss-card ss-card--symptom">
+            <!-- Indicator Dots island -->
+            <div class="ss-island ss-island--symptom" aria-hidden="true">
+              <svg class="ss-fill" width="100%" height="100%">
+                <rect width="100%" height="100%" fill="url(#ss-dot-matrix)"></rect>
+              </svg>
+            </div>
+            <div class="ss-sym-top">
+              <span class="ss-num ss-num--md">{{ sym.num }}</span>
+              <span class="ss-sym-dot" aria-hidden="true"></span>
+            </div>
+            <h4 class="ss-sym-title">{{ sym.title }}</h4>
+            <p class="ss-sym-ru">{{ sym.ru }}</p>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- ══ CTA BANNER ══ -->
+    <div class="ss-cta">
+      <!-- Dark hatch + crosshair layers -->
+      <div class="ss-cta-pat ss-cta-pat--hatch" aria-hidden="true">
+        <svg class="ss-fill" width="100%" height="100%" preserveAspectRatio="none">
+          <rect width="100%" height="100%" fill="url(#ss-hatch-dark)"></rect>
+        </svg>
+      </div>
+      <div class="ss-cta-pat ss-cta-pat--cross" aria-hidden="true">
+        <svg class="ss-fill" width="100%" height="100%" preserveAspectRatio="none">
+          <rect width="100%" height="100%" fill="url(#ss-crosshair-dark)"></rect>
+        </svg>
+      </div>
+      <div class="ss-cta-pat ss-cta-pat--ticks" aria-hidden="true">
+        <svg class="ss-fill" width="100%" height="100%" preserveAspectRatio="none">
+          <rect width="100%" height="100%" fill="url(#ss-ticks-dark)"></rect>
+        </svg>
+      </div>
+
+      <span class="ss-cta-corner ss-cta-corner--tl" aria-hidden="true"></span>
+      <span class="ss-cta-corner ss-cta-corner--br" aria-hidden="true"></span>
+
+      <p class="ss-cta-text">Märkasite neid sümptomeid? Vältige kalleid mootorikahjustusi. / Заметили эти симптомы? Не доводите до капитального ремонта двигателя.</p>
+      <a href="#request-form" onClick="{{ scrollToForm }}" class="ft-maps-btn">[ BRONEERI DIAGNOSTIKA → ]</a>
+    </div>
+
+    <!-- Bottom tick rail -->
+    <div class="ss-ticks ss-ticks--bottom" aria-hidden="true">
+      <sc-for list="{{ ticks }}" as="t" hint-placeholder-count="28">
+        <span class="ss-tick"></span>
+      </sc-for>
+    </div>
+
+  </div>
+</section>
+
+<helmet>
+<style>
+  /* ═══════════════════════════════════════════════════════════
+     Services & Symptoms — Light Swiss + TEXTURE-01 patterns
+     Patterns geometry from Patterns.dc.html (keep intact)
+     ═══════════════════════════════════════════════════════════ */
+  .ss {
+    --ss-bg: #F8F9FA;
+    --ss-surface: #FFFFFF;
+    --ss-ink: #0F172A;
+    --ss-ink-soft: #171717;
+    --ss-muted: #525252;
+    --ss-dim: #737373;
+    --ss-line: #E5E7EB;
+    --ss-line-mid: #D1D5DB;
+    --ss-red: #C41E2A;
+    --ss-red-bright: #E63946;
+    --ss-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+    --ss-sans: Inter, Helvetica Neue, Helvetica, Arial, sans-serif;
+    position: relative;
+    isolation: isolate;
+    background: var(--ss-bg);
+    color: var(--ss-ink);
+    font-family: var(--ss-sans);
+    padding: 88px 24px 96px;
+  }
+
+  .ss-pattern-defs {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .ss-fill {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+  }
+
+  .ss-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1240px;
+    margin: 0 auto;
+    border-left: 1px solid var(--ss-line-mid);
+    border-right: 1px solid var(--ss-line-mid);
+    padding: 0 44px 8px;
+    background: var(--ss-surface);
+  }
+
+  /* ── Pattern islands (sparse — never full wallpaper) ── */
+  .ss-island {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .ss-island--header {
+    right: 0;
+    top: 0;
+    width: min(280px, 38%);
+    height: 140px;
+    opacity: 0.08;
+  }
+  .ss-island--header-frame {
+    left: 0;
+    top: 8px;
+    width: 72px;
+    height: 72px;
+    opacity: 0.11;
+  }
+  .ss-island--label {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    opacity: 0.12;
+  }
+  .ss-island--card {
+    right: 10px;
+    bottom: 10px;
+    width: 80px;
+    height: 80px;
+    opacity: 0.055;
+  }
+  .ss-island--symptom {
+    right: 8px;
+    top: 8px;
+    width: 64px;
+    height: 64px;
+    opacity: 0.07;
+  }
+
+  /* ── Breath bands ── */
+  .ss-breath {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    margin: 4px 0 0;
+  }
+  .ss-breath-band {
+    position: relative;
+    width: 100%;
+    height: 14px;
+    opacity: 0.09;
+    overflow: hidden;
+  }
+  .ss-breath-band--short {
+    max-width: 42%;
+    margin-left: auto;
+  }
+
+  /* ── Tick rail ── */
+  .ss-ticks {
+    display: flex;
+    gap: 0;
+    padding-top: 36px;
+    opacity: 0.5;
+  }
+  .ss-ticks--bottom {
+    padding-top: 28px;
+    padding-bottom: 20px;
+    opacity: 0.35;
+  }
+  .ss-tick {
+    width: 1px;
+    height: 10px;
+    background: var(--ss-ink-soft);
+    margin-right: calc((100% - 28px) / 27);
+    opacity: 0.35;
+  }
+  .ss-tick:nth-child(7n) {
+    height: 14px;
+    opacity: 0.55;
+  }
+
+  /* ── Header ── */
+  .ss-header {
+    position: relative;
+    padding: 28px 0 40px;
+    border-bottom: 1px solid var(--ss-line-mid);
+  }
+  .ss-header > *:not(.ss-island) {
+    position: relative;
+    z-index: 1;
+  }
+  .ss-header::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    width: 56px;
+    height: 2px;
+    background: var(--ss-red-bright);
+    z-index: 2;
+  }
+  .ss-header-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .ss-header-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 760px;
+  }
+  .ss-kicker {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ss-dim);
+    font-family: var(--ss-mono);
+    font-weight: 500;
+  }
+  .ss-title {
+    margin: 0;
+    font-size: clamp(30px, 4.4vw, 50px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+    color: var(--ss-ink);
+    line-height: 1.02;
+  }
+  .ss-lead {
+    margin: 0;
+    max-width: 680px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ss-muted);
+  }
+  .ss-header-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .ss-loc {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ss-dim);
+    font-family: var(--ss-mono);
+    white-space: nowrap;
+  }
+  .ss-loc-rule {
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--ss-red-bright));
+  }
+
+  /* ── Blocks ── */
+  .ss-block {
+    padding-top: 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .ss-block--symptoms {
+    padding-top: 8px;
+  }
+  .ss-block-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    position: relative;
+    padding-left: 68px;
+    min-height: 56px;
+  }
+  .ss-block-label > *:not(.ss-island) {
+    position: relative;
+    z-index: 1;
+  }
+  .ss-block-title {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ss-ink-soft);
+    font-weight: 700;
+  }
+  .ss-block-meta {
+    font-size: 11px;
+    font-family: var(--ss-mono);
+    color: var(--ss-dim);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ── Grids: 1px hairlines via gap + background ── */
+  .ss-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: var(--ss-line-mid);
+    border: 1px solid var(--ss-line-mid);
+  }
+
+  .ss-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: var(--ss-surface);
+    border-radius: 0;
+    box-shadow: none;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .ss-card > *:not(.ss-island):not(.ss-card-rail) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .ss-card--service {
+    padding: 36px 32px;
+    gap: 16px;
+  }
+  .ss-card-rail {
+    position: absolute;
+    left: 0;
+    top: 28px;
+    bottom: 28px;
+    width: 2px;
+    background: var(--ss-red-bright);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 2;
+  }
+  .ss-card--service:hover .ss-card-rail {
+    opacity: 1;
+  }
+
+  .ss-num {
+    font-weight: 800;
+    color: transparent;
+    line-height: 1;
+    -webkit-text-stroke: 1px #d4d4d4;
+  }
+  .ss-num--lg {
+    font-size: 44px;
+    letter-spacing: -0.03em;
+  }
+  .ss-num--md {
+    font-size: 28px;
+    letter-spacing: -0.02em;
+  }
+  .ss-card-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--ss-ink);
+    line-height: 1.35;
+  }
+  .ss-card-desc {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--ss-muted);
+    flex: 1;
+  }
+
+  /* Symptoms */
+  .ss-card--symptom {
+    padding: 28px 26px;
+    gap: 12px;
+  }
+  .ss-sym-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .ss-sym-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--ss-red-bright);
+    display: inline-block;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.12);
+  }
+  .ss-sym-title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    color: var(--ss-ink);
+    line-height: 1.4;
+  }
+  .ss-sym-ru {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ss-dim);
+    font-style: italic;
+  }
+
+  /* ── CTA industrial dark ── */
+  .ss-cta {
+    margin-top: 48px;
+    position: relative;
+    background: #0a0a0a;
+    color: #ffffff;
+    padding: 36px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    border: 1px solid #262626;
+    border-radius: 0;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .ss-cta-pat {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .ss-cta-pat--hatch {
+    inset: 0;
+    opacity: 0.045;
+  }
+  .ss-cta-pat--cross {
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: min(320px, 40%);
+    opacity: 0.07;
+  }
+  .ss-cta-pat--ticks {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 18px;
+    opacity: 0.08;
+  }
+  .ss-cta-corner {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .ss-cta-corner--tl {
+    left: 0;
+    top: 0;
+    border-left: 2px solid var(--ss-red-bright);
+    border-top: 2px solid var(--ss-red-bright);
+  }
+  .ss-cta-corner--br {
+    right: 0;
+    bottom: 0;
+    border-right: 2px solid var(--ss-red-bright);
+    border-bottom: 2px solid var(--ss-red-bright);
+  }
+  .ss-cta-text {
+    margin: 0;
+    max-width: 560px;
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+  }
+  .ss-cta .ft-maps-btn {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+
+  /* Anodized red metallic engraved button */
+  .ft-maps-btn {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-family: var(--ss-mono);
+    text-decoration: none;
+    color: #fff5f5;
+    padding: 10px 16px 9px;
+    white-space: nowrap;
+    position: relative;
+    border: none;
+    cursor: pointer;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.18) 0%, transparent 40%),
+      linear-gradient(145deg, #6e1219 0%, #C41E2A 30%, #E63946 50%, #9a1a24 75%, #4a0c11 100%);
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,0.55),
+      inset 0 1px 0 rgba(255,255,255,0.35),
+      inset 0 -1px 0 rgba(0,0,0,0.4),
+      inset 1px 0 0 rgba(255,255,255,0.08),
+      0 2px 6px rgba(0,0,0,0.45),
+      0 0 16px rgba(196,30,42,0.15);
+    text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+    transition: box-shadow 0.2s ease, filter 0.2s ease;
+    border-radius: 0;
+  }
+  .ft-maps-btn::before {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    border: 0.5px solid rgba(255,255,255,0.12);
+    pointer-events: none;
+  }
+  .ft-maps-btn:hover {
+    filter: brightness(1.08);
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,0.55),
+      inset 0 1px 0 rgba(255,255,255,0.4),
+      inset 0 -1px 0 rgba(0,0,0,0.4),
+      0 3px 10px rgba(0,0,0,0.5),
+      0 0 22px rgba(230,57,70,0.28);
+  }
+
+  @media (min-width: 800px) {
+    .ss-grid--services { grid-template-columns: 1fr 1fr !important; }
+    .ss-grid--symptoms { grid-template-columns: 1fr 1fr 1fr 1fr !important; }
+  }
+
+  @media (max-width: 799px) {
+    .ss-inner { padding: 0 20px 8px; }
+    .ss-card--service { padding: 28px 22px; }
+    .ss-cta { padding: 28px 22px; }
+    .ss-block-label { padding-left: 0; }
+    .ss-island--label { display: none; }
+  }
+</style>
+</helmet>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:1280}}">
+class Component extends DCLogic {
+  services = [
+    { num: '01', title: 'DIISEL SÜSTEEMIDE DIAGNOSTIKA / КОМПЛЕКСНАЯ ДИАГНОСТИКА', desc: 'Arvutidiagnostika, reaalaja andmeanalüüs, leak-off test, rõhu jälgimine.' },
+    { num: '02', title: 'PIHUSTITE TESTIMINE JA REMONT / РЕМОНТ И ТЕСТИРОВАНИЕ ФОРСУНОК', desc: 'Common Rail (Bosch, Delphi, Denso, Continental) testimine sertifitseeritud stendidel, uue koodi genereerimine.' },
+    { num: '03', title: 'KÕRGSURVEPUMPADE (TNVD) REMONT / РЕМОНТ ТНВД', desc: 'Kõrgsurvepumpade taastamine, rõhuregulaatori testimine, mehaaniline ülevaatus.' },
+    { num: '04', title: 'KÜTUSESÜSTEEMI PESU JA REMONT / ПРОМЫВКА ТОПЛИВНОЙ СИСТЕМЫ', desc: 'Süsteemi täielik pesu, paagi puhastus, metallilaastude eemaldamine pumba rikke järel, komponentide paigaldus.' },
+  ];
+
+  symptoms = [
+    { num: '01', title: 'MOOTOR EI KÄIVITU VÕI KÄIVITUB RASKEVÕITU', ru: 'Машина плохо заводится на холодную или на горячую.' },
+    { num: '02', title: 'MUST VÕI VALGE SUITS VÄLJALASKETORUST', ru: 'Густой черный или белый дым из выхлопной трубы при ускорении.' },
+    { num: '03', title: 'EBAÜHTLANE TÖÖ JA VÕIMSUSE KADU', ru: 'Двигатель троит, плавают обороты, пропала тяга.' },
+    { num: '04', title: 'SUURENENUD KÜTUSEKULU', ru: 'Значительно вырос расход дизельного топлива.' },
+  ];
+
+  ticks = Array.from({ length: 28 });
+
+  scrollToForm = (e) => {
+    e.preventDefault();
+    const el = document.getElementById('request-form');
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.pageYOffset - 24;
+    window.scrollTo({ top, behavior: 'smooth' });
+  };
+
+  renderVals() {
+    return { services: this.services, symptoms: this.symptoms, ticks: this.ticks, scrollToForm: this.scrollToForm };
+  }
+}
+
+</script>
+</body>
+</html>

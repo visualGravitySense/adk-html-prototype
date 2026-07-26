@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="./support.js"></script>
+</head>
+
+<body>
+  <x-dc>
+    <helmet>
+      <script src="./image-slot.js"></script>
+      <style>
+        body {
+          margin: 0;
+          background: #F8F9FA;
+        }
+      </style>
+    </helmet>
+
+    <section class="hero">
+      <div class="hero-shell">
+
+        <!-- Main: copy + picture (no dense pattern layers) -->
+        <div class="hero-grid">
+          <div class="hero-main">
+            <div class="hero-badge">
+              <span class="hero-badge-dot" aria-hidden="true"></span>
+              <span class="hero-badge-text">DIISELMOOTORITE DIAGNOSTIKA- JA REMONDIKESKUS</span>
+            </div>
+
+            <h1 class="hero-title">AUTO<br />DIISLI-<br />KESKUS</h1>
+            <span class="hero-title-rule" aria-hidden="true"></span>
+
+            <p class="hero-lead">{{ subtitleText }}</p>
+
+            <div class="hero-cta-row">
+              <a href="#request-form" onClick="{{ scrollToForm }}" class="ft-maps-btn">
+                [ {{ ctaText }} → ]
+              </a>
+              <div class="hero-cta-meta-block">
+                <span class="hero-cta-meta">RESPONSE / 24H</span>
+                <span class="hero-cta-meta-rule" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Picture column — meta content lives here (was top bar) -->
+          <div class="hero-media">
+            <image-slot id="hero-picture" shape="rect" fit="cover" position="top" src="./ad-img-hero-1.jpg"
+              placeholder="Drop workshop / diesel bench photo"></image-slot>
+
+            <!-- Soft single texture only under empty state / edge of photo -->
+            <div class="hero-media-bg" aria-hidden="true">
+              <svg class="hero-fill" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                  <pattern id="h-media-hatch" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+                    <line x1="0" y1="16" x2="16" y2="0" stroke="#171717" stroke-width="1.5"></line>
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="#EEF0F2"></rect>
+                <rect width="100%" height="100%" fill="url(#h-media-hatch)" opacity="0.06"></rect>
+              </svg>
+            </div>
+
+            <span class="hero-media-corner hero-media-corner--tl" aria-hidden="true"></span>
+            <span class="hero-media-corner hero-media-corner--br" aria-hidden="true"></span>
+
+            <!-- Green zone content → image placeholder (replaces FIG. 01 · WORKSHOP) -->
+            <div class="hero-media-meta">
+              <span class="hero-media-meta-item">[ ESTONIA / TALLINN — N59°26' E24°45' ]</span>
+              <span class="hero-media-meta-sep" aria-hidden="true">·</span>
+              <span class="hero-media-meta-item">[ DIESEL FUEL SYSTEMS SERVICE ]</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom specs — clean, no pattern islands -->
+        <div class="hero-specs">
+          <sc-for list="{{ specs }}" as="spec" hint-placeholder-count="3">
+            <div class="hero-spec">
+              <span class="hero-spec-num">{{ spec.num }}</span>
+              <div class="hero-spec-copy">
+                <span class="hero-spec-label">{{ spec.label }}</span>
+                <span class="hero-spec-detail">{{ spec.detail }}</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+      </div>
+
+      <helmet>
+        <style>
+          .hero {
+            --h-bg: #F8F9FA;
+            --h-surface: #FFFFFF;
+            --h-ink: #0F172A;
+            --h-ink-soft: #171717;
+            --h-muted: #404040;
+            --h-dim: #737373;
+            --h-line: #d4d4d4;
+            --h-line-mid: #D1D5DB;
+            --h-line-soft: #e5e5e5;
+            --h-red-bright: #E63946;
+            --h-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+            --h-sans: Inter, Helvetica Neue, Helvetica, Arial, sans-serif;
+            position: relative;
+            overflow: hidden;
+            background: var(--h-bg);
+            font-family: var(--h-sans);
+            min-height: 760px;
+            display: flex;
+            flex-direction: column;
+            color: var(--h-ink);
+          }
+
+          .hero-fill {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            pointer-events: none;
+          }
+
+          .hero-shell {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            max-width: 1440px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 24px;
+            box-sizing: border-box;
+            border-left: 1px solid var(--h-line-mid);
+            border-right: 1px solid var(--h-line-mid);
+            background: var(--h-surface);
+          }
+
+          .hero-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+            min-height: 0;
+          }
+
+          .hero-main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 24px;
+            padding: 56px 0 48px;
+            min-width: 0;
+          }
+
+          .hero-badge {
+            display: inline-flex;
+            align-self: flex-start;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--h-ink-soft);
+            padding: 7px 14px;
+            background: var(--h-surface);
+          }
+
+          .hero-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--h-red-bright);
+            display: inline-block;
+            flex-shrink: 0;
+          }
+
+          .hero-badge-text {
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--h-muted);
+            font-family: var(--h-mono);
+          }
+
+          .hero-title {
+            margin: 0;
+            font-size: clamp(44px, 7.4vw, 104px);
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            text-transform: uppercase;
+            color: var(--h-ink);
+            line-height: 0.95;
+          }
+
+          .hero-title-rule {
+            width: 72px;
+            height: 3px;
+            background: var(--h-red-bright);
+          }
+
+          .hero-lead {
+            margin: 0;
+            max-width: 600px;
+            font-size: clamp(15px, 1.5vw, 18px);
+            line-height: 1.65;
+            color: var(--h-muted);
+            font-weight: 400;
+          }
+
+          .hero-cta-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding-top: 4px;
+          }
+
+          .hero-cta-meta-block {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+          }
+
+          .hero-cta-meta {
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #a3a3a3;
+            font-family: var(--h-mono);
+          }
+
+          .hero-cta-meta-rule {
+            width: 36px;
+            height: 1px;
+            background: var(--h-line-mid);
+          }
+
+          /* Media */
+          .hero-media {
+            position: relative;
+            min-height: 340px;
+            border-top: 1px solid var(--h-line-mid);
+            background: #EEF0F2;
+            overflow: hidden;
+          }
+
+          .hero-media-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+          }
+
+          .hero-media image-slot,
+          .hero-media>image-slot {
+            display: block;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            min-height: 340px;
+          }
+
+          .hero-media-corner {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            z-index: 3;
+            pointer-events: none;
+          }
+
+          .hero-media-corner--tl {
+            left: 0;
+            top: 0;
+            border-left: 2px solid var(--h-red-bright);
+            border-top: 2px solid var(--h-red-bright);
+          }
+
+          .hero-media-corner--br {
+            right: 0;
+            bottom: 0;
+            border-right: 2px solid var(--h-red-bright);
+            border-bottom: 2px solid var(--h-red-bright);
+          }
+
+          /* Meta moved onto image (replaces FIG. 01 · WORKSHOP) */
+          .hero-media-meta {
+            position: absolute;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            z-index: 3;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px 10px;
+            max-width: calc(100% - 24px);
+            padding: 8px 12px;
+            background: rgba(10, 10, 10, 0.78);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            pointer-events: none;
+          }
+
+          .hero-media-meta-item {
+            font-family: var(--h-mono);
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.92);
+            white-space: nowrap;
+          }
+
+          .hero-media-meta-sep {
+            color: rgba(255, 255, 255, 0.35);
+            font-size: 10px;
+          }
+
+          /* Specs */
+          .hero-specs {
+            display: grid;
+            grid-template-columns: 1fr;
+            border-top: 1px solid var(--h-line-mid);
+            background: var(--h-surface);
+          }
+
+          .hero-spec {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 22px 16px 22px 0;
+            border-bottom: 1px solid var(--h-line-soft);
+            min-width: 0;
+          }
+
+          .hero-spec:last-child {
+            border-bottom: none;
+          }
+
+          .hero-spec-num {
+            font-family: var(--h-mono);
+            font-size: 11px;
+            color: #a3a3a3;
+            letter-spacing: 0.05em;
+            flex: 0 0 auto;
+            padding-top: 2px;
+          }
+
+          .hero-spec-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 0;
+          }
+
+          .hero-spec-label {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--h-ink);
+          }
+
+          .hero-spec-detail {
+            font-size: 12px;
+            color: var(--h-dim);
+            line-height: 1.45;
+          }
+
+          .ft-maps-btn {
+            align-self: flex-start;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-family: var(--h-mono);
+            text-decoration: none;
+            color: #fff5f5;
+            padding: 14px 22px 13px;
+            white-space: nowrap;
+            position: relative;
+            border: none;
+            cursor: pointer;
+            background:
+              linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, transparent 40%),
+              linear-gradient(145deg, #6e1219 0%, #C41E2A 30%, #E63946 50%, #9a1a24 75%, #4a0c11 100%);
+            box-shadow:
+              0 0 0 1px rgba(0, 0, 0, 0.55),
+              inset 0 1px 0 rgba(255, 255, 255, 0.35),
+              inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+              inset 1px 0 0 rgba(255, 255, 255, 0.08),
+              0 2px 6px rgba(0, 0, 0, 0.45),
+              0 0 16px rgba(196, 30, 42, 0.15);
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+            transition: box-shadow 0.2s ease, filter 0.2s ease;
+            border-radius: 0;
+          }
+
+          .ft-maps-btn::before {
+            content: '';
+            position: absolute;
+            inset: 1px;
+            border: 0.5px solid rgba(255, 255, 255, 0.12);
+            pointer-events: none;
+          }
+
+          .ft-maps-btn:hover {
+            filter: brightness(1.08);
+            box-shadow:
+              0 0 0 1px rgba(0, 0, 0, 0.55),
+              inset 0 1px 0 rgba(255, 255, 255, 0.4),
+              inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+              0 3px 10px rgba(0, 0, 0, 0.5),
+              0 0 22px rgba(230, 57, 70, 0.28);
+          }
+
+          @media (min-width: 900px) {
+            .hero-grid {
+              grid-template-columns: 1.4fr 1fr !important;
+              align-items: stretch;
+            }
+
+            .hero-main {
+              padding: 64px 48px 56px 8px !important;
+              border-right: 1px solid var(--h-line-mid);
+            }
+
+            .hero-media {
+              border-top: none;
+              min-height: 100%;
+              align-self: stretch;
+            }
+
+            .hero-media image-slot,
+            .hero-media>image-slot {
+              position: absolute;
+              inset: 0;
+              width: 100%;
+              height: 100%;
+              min-height: 0;
+            }
+
+            .hero-specs {
+              grid-template-columns: 1fr 1fr 1fr !important;
+            }
+
+            .hero-spec {
+              padding: 22px 28px 22px 0;
+              border-bottom: none;
+              border-right: 1px solid var(--h-line-soft);
+            }
+
+            .hero-spec:last-child {
+              border-right: none;
+              padding-right: 0;
+            }
+          }
+
+          @media (max-width: 640px) {
+            .hero-shell {
+              padding: 0 16px;
+            }
+
+            .hero-main {
+              padding: 40px 0 36px;
+              gap: 20px;
+            }
+
+            .ft-maps-btn {
+              width: 100%;
+              justify-content: center;
+            }
+
+            .hero-media-meta-item {
+              font-size: 9px;
+              letter-spacing: 0.08em;
+              white-space: normal;
+            }
+
+            .hero-media-meta-sep {
+              display: none;
+            }
+          }
+        </style>
+      </helmet>
+    </section>
+
+  </x-dc>
+  <script type="text/x-dc" data-dc-script
+    data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:860}}">
+class Component extends DCLogic {
+  subtitleText =
+    'Diiselmootorite kütusesüsteemide (Common Rail ja TNVD) professionaalne diagnostika ja terviklik remont Tallinnas. / Профессиональная диагностика и комплексный ремонт дизельных топливных систем Common Rail и ТНВД в Таллине.';
+
+  ctaText = 'KÜSI HINNAPAKKUMIST';
+
+  specs = [
+    { num: '01', label: 'COMMON RAIL', detail: 'Pihustite diagnostika ja remont / Диагностика и ремонт форсунок' },
+    { num: '02', label: 'TNVD', detail: 'Kõrgtäpsed testipingid / Стенды высокой точности' },
+    { num: '03', label: 'GARANTII', detail: 'Kõikidele töödele / На все виды работ' },
+  ];
+
+  scrollToForm = (e) => {
+    e.preventDefault();
+    const el = document.getElementById('request-form');
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.pageYOffset - 24;
+    window.scrollTo({ top, behavior: 'smooth' });
+  };
+
+  renderVals() {
+    return {
+      subtitleText: this.subtitleText,
+      ctaText: this.ctaText,
+      specs: this.specs,
+      scrollToForm: this.scrollToForm,
+    };
+  }
+}
+
+</script>
+</body>
+
+</html>

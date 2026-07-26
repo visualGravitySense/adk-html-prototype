@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>body{margin:0;background:#F8F9FA;}</style>
+</helmet>
+
+<section id="request-form" class="rf">
+  <!-- TEXTURE-01 pattern defs (Patterns.dc.html) — geometry fixed -->
+  <svg class="rf-pattern-defs" aria-hidden="true" focusable="false">
+    <defs>
+      <pattern id="rf-diamond-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+        <rect x="10" y="10" width="20" height="20" fill="none" stroke="#171717" stroke-width="1.5" transform="rotate(45 20 20)"></rect>
+      </pattern>
+      <pattern id="rf-tick-rows" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="10" stroke="#171717" stroke-width="2"></line>
+        <line x1="12" y1="0" x2="12" y2="6" stroke="#171717" stroke-width="1"></line>
+      </pattern>
+      <pattern id="rf-dot-matrix" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+        <circle cx="4" cy="4" r="2.5" fill="#E63946"></circle>
+      </pattern>
+      <pattern id="rf-crosshair" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="30" x2="60" y2="30" stroke="#d4d4d4" stroke-width="1"></line>
+        <line x1="30" y1="0" x2="30" y2="60" stroke="#d4d4d4" stroke-width="1"></line>
+        <circle cx="30" cy="30" r="3" fill="#171717"></circle>
+      </pattern>
+      <pattern id="rf-diagonal-hatch" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="16" x2="16" y2="0" stroke="#171717" stroke-width="1.5"></line>
+      </pattern>
+      <pattern id="rf-frame-stack" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
+        <rect x="4" y="4" width="40" height="40" fill="none" stroke="#171717" stroke-width="1"></rect>
+        <rect x="14" y="14" width="20" height="20" fill="none" stroke="#E63946" stroke-width="1"></rect>
+      </pattern>
+      <!-- Dark surface variants -->
+      <pattern id="rf-hatch-dark" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="16" x2="16" y2="0" stroke="#ffffff" stroke-width="1.5"></line>
+      </pattern>
+      <pattern id="rf-crosshair-dark" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="30" x2="60" y2="30" stroke="#ffffff" stroke-width="1"></line>
+        <line x1="30" y1="0" x2="30" y2="60" stroke="#ffffff" stroke-width="1"></line>
+        <circle cx="30" cy="30" r="3" fill="#E63946"></circle>
+      </pattern>
+      <pattern id="rf-ticks-dark" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="10" stroke="#ffffff" stroke-width="2"></line>
+        <line x1="12" y1="0" x2="12" y2="6" stroke="#ffffff" stroke-width="1"></line>
+      </pattern>
+    </defs>
+  </svg>
+
+  <div class="rf-inner">
+
+    <!-- Precision tick rail -->
+    <div class="rf-ticks" aria-hidden="true">
+      <sc-for list="{{ ticks }}" as="t" hint-placeholder-count="28">
+        <span class="rf-tick"></span>
+      </sc-for>
+    </div>
+
+    <!-- Top index bar -->
+    <div class="rf-index">
+      <span class="rf-index-left">[ 05 / SERVICE REQUEST ]</span>
+      <span class="rf-index-right">FORM · PRECISION QUOTE</span>
+    </div>
+
+    <!-- ══ HEADER ══ -->
+    <header class="rf-header">
+      <div class="rf-island rf-island--header" aria-hidden="true">
+        <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="xMaxYMin slice">
+          <rect width="100%" height="100%" fill="url(#rf-diamond-grid)"></rect>
+        </svg>
+      </div>
+      <div class="rf-island rf-island--header-frame" aria-hidden="true">
+        <svg class="rf-fill" width="100%" height="100%">
+          <rect width="100%" height="100%" fill="url(#rf-frame-stack)"></rect>
+        </svg>
+      </div>
+
+      <div class="rf-header-row">
+        <div class="rf-header-copy">
+          <span class="rf-kicker">[ HINNAPAKKUMINE / ЦЕНОВОЕ ПРЕДЛОЖЕНИЕ ]</span>
+          <h2 class="rf-title">HINNAPAKKUMISE PÄRING<br/>ЗАПРОС ЦЕНОВОГО ПРЕДЛОЖЕНИЯ</h2>
+          <p class="rf-lead">Sisestage sõiduki registreerimisnumber või kirjeldage probleemi kiirhinnangu saamiseks. / Укажите номер авто или опишите симптомы для быстрой оценки стоимости.</p>
+        </div>
+        <div class="rf-header-meta">
+          <span class="rf-loc">EST. PRECISION — TALLINN</span>
+          <span class="rf-loc-rule" aria-hidden="true"></span>
+          <span class="rf-meta-line">RESPONSE &lt; 30 MIN</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Breath: gauge ticks -->
+    <div class="rf-breath" aria-hidden="true">
+      <div class="rf-breath-band">
+        <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
+          <rect width="100%" height="100%" fill="url(#rf-tick-rows)"></rect>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Success state -->
+    <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
+      <div class="rf-success">
+        <div class="rf-success-pat" aria-hidden="true">
+          <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
+            <rect width="100%" height="100%" fill="url(#rf-hatch-dark)"></rect>
+          </svg>
+        </div>
+        <div class="rf-success-pat rf-success-pat--cross" aria-hidden="true">
+          <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
+            <rect width="100%" height="100%" fill="url(#rf-crosshair-dark)"></rect>
+          </svg>
+        </div>
+        <span class="rf-cta-corner rf-cta-corner--tl" aria-hidden="true"></span>
+        <span class="rf-cta-corner rf-cta-corner--br" aria-hidden="true"></span>
+        <span class="rf-success-code">[ OK · 200 ]</span>
+        <p class="rf-success-text">PÄRING SAADETUD! VÕTAME ÜHENDUST 30 MIN JOOKSUL<br/><span class="rf-success-ru">ЗАПРОС ОТПРАВЛЕН — СВЯЖЕМСЯ В ТЕЧЕНИЕ 30 МИНУТ</span></p>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isFormVisible }}" hint-placeholder-val="{{ true }}">
+      <form class="rf-form" onSubmit="{{ handleSubmit }}">
+
+        <!-- ── 01 VEHICLE ── -->
+        <section class="rf-panel">
+          <div class="rf-panel-head">
+            <div class="rf-island rf-island--label" aria-hidden="true">
+              <svg class="rf-fill" width="100%" height="100%">
+                <rect width="100%" height="100%" fill="url(#rf-crosshair)"></rect>
+              </svg>
+            </div>
+            <span class="rf-panel-num">01</span>
+            <div class="rf-panel-titles">
+              <span class="rf-panel-code">[ VEHICLE IDENTIFICATION ]</span>
+              <span class="rf-panel-name">SÕIDUKI ANDMED / ДАННЫЕ АВТО</span>
+            </div>
+          </div>
+
+          <div class="rf-panel-body">
+            <div class="rf-island rf-island--panel" aria-hidden="true">
+              <svg class="rf-fill" width="100%" height="100%">
+                <rect width="100%" height="100%" fill="url(#rf-diagonal-hatch)"></rect>
+              </svg>
+            </div>
+
+            <div class="rf-field rf-field--hero">
+              <label class="rf-label" for="rf-plate">AUTO REGISTREERIMISNUMBER / ГОС. НОМЕР АВТО</label>
+              <div class="rf-plate-wrap">
+                <span class="rf-plate-badge" aria-hidden="true">EE</span>
+                <input
+                  id="rf-plate"
+                  class="rf-input rf-input--plate"
+                  value="{{ plate }}"
+                  onChange="{{ onPlateChange }}"
+                  placeholder="123 ABC"
+                  autocomplete="off"
+                  spellcheck="false"
+                />
+              </div>
+            </div>
+
+            <button type="button" class="rf-link-toggle" onClick="{{ toggleManual }}">
+              <span class="rf-link-arrow" aria-hidden="true">→</span>
+              Kui sõidukil puudub registreerimisnumber, palume sisestada sõiduki andmed
+            </button>
+
+            <sc-if value="{{ showManualFields }}" hint-placeholder-val="{{ false }}">
+              <div class="rf-manual manual-grid">
+                <div class="rf-field">
+                  <label class="rf-label" for="rf-make">MARK JA MUDEL / МАРКА И МОДЕЛЬ</label>
+                  <input id="rf-make" class="rf-input" value="{{ make }}" onChange="{{ onMakeChange }}" placeholder="e.g. BMW 530d"/>
+                </div>
+                <div class="rf-field">
+                  <label class="rf-label" for="rf-year">VÄLJALASKEAASTA / ГОД ВЫПУСКА</label>
+                  <input id="rf-year" class="rf-input" value="{{ year }}" onChange="{{ onYearChange }}" placeholder="e.g. 2018"/>
+                </div>
+                <div class="rf-field rf-field--span2">
+                  <label class="rf-label" for="rf-engine">MOOTORI TÜÜP / КОД ИЛИ ОБЪЕМ ДВИГАТЕЛЯ</label>
+                  <input id="rf-engine" class="rf-input" value="{{ engine }}" onChange="{{ onEngineChange }}" placeholder="e.g. 3.0D / 195kW"/>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </section>
+
+        <!-- Breath short -->
+        <div class="rf-breath rf-breath--tight" aria-hidden="true">
+          <div class="rf-breath-band rf-breath-band--short">
+            <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
+              <rect width="100%" height="100%" fill="url(#rf-tick-rows)"></rect>
+            </svg>
+          </div>
+        </div>
+
+        <!-- ── 02 PROBLEM ── -->
+        <section class="rf-panel">
+          <div class="rf-panel-head">
+            <div class="rf-island rf-island--label" aria-hidden="true">
+              <svg class="rf-fill" width="100%" height="100%">
+                <rect width="100%" height="100%" fill="url(#rf-frame-stack)"></rect>
+              </svg>
+            </div>
+            <span class="rf-panel-num">02</span>
+            <div class="rf-panel-titles">
+              <span class="rf-panel-code">[ PROBLEM DESCRIPTION ]</span>
+              <span class="rf-panel-name">SÜMPTOMID / СИМПТОМЫ</span>
+            </div>
+          </div>
+
+          <div class="rf-panel-body">
+            <div class="rf-island rf-island--dots" aria-hidden="true">
+              <svg class="rf-fill" width="100%" height="100%">
+                <rect width="100%" height="100%" fill="url(#rf-dot-matrix)"></rect>
+              </svg>
+            </div>
+
+            <div class="rf-field">
+              <label class="rf-label" for="rf-desc">PROBLEEMI KIRJELDUS JA SÜMPTOMID / ОПИСАНИЕ ПРОБЛЕМЫ И СИМПТОМЫ</label>
+              <textarea
+                id="rf-desc"
+                class="rf-input rf-input--area"
+                value="{{ description }}"
+                onChange="{{ onDescriptionChange }}"
+                rows="5"
+                placeholder="Mootor ei käivitu, must suits kiirendamisel, võimsuse kadu... / Машина плохо заводится, черный дым, плавают обороты..."
+              ></textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Breath short -->
+        <div class="rf-breath rf-breath--tight" aria-hidden="true">
+          <div class="rf-breath-band rf-breath-band--short">
+            <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
+              <rect width="100%" height="100%" fill="url(#rf-tick-rows)"></rect>
+            </svg>
+          </div>
+        </div>
+
+        <!-- ── 03 CONTACT ── -->
+        <section class="rf-panel">
+          <div class="rf-panel-head">
+            <div class="rf-island rf-island--label" aria-hidden="true">
+              <svg class="rf-fill" width="100%" height="100%">
+                <rect width="100%" height="100%" fill="url(#rf-crosshair)"></rect>
+              </svg>
+            </div>
+            <span class="rf-panel-num">03</span>
+            <div class="rf-panel-titles">
+              <span class="rf-panel-code">[ CONTACT INFORMATION ]</span>
+              <span class="rf-panel-name">KONTAKTANDMED / КОНТАКТЫ</span>
+            </div>
+          </div>
+
+          <div class="rf-panel-body">
+            <div class="rf-contact contact-grid">
+              <div class="rf-field">
+                <label class="rf-label" for="rf-name">NIMI / ИМЯ</label>
+                <input id="rf-name" class="rf-input" value="{{ name }}" onChange="{{ onNameChange }}" required="{{ true }}" autocomplete="name"/>
+              </div>
+              <div class="rf-field">
+                <label class="rf-label" for="rf-phone">TELEFON / ТЕЛЕФОН</label>
+                <input id="rf-phone" class="rf-input" type="tel" value="{{ phone }}" onChange="{{ onPhoneChange }}" required="{{ true }}" autocomplete="tel"/>
+              </div>
+              <div class="rf-field">
+                <label class="rf-label" for="rf-email">E-POST / EMAIL</label>
+                <input id="rf-email" class="rf-input" type="email" value="{{ email }}" onChange="{{ onEmailChange }}" required="{{ true }}" autocomplete="email"/>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── SUBMIT BAR ── -->
+        <div class="rf-submit">
+          <div class="rf-submit-pat rf-submit-pat--hatch" aria-hidden="true">
+            <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
+              <rect width="100%" height="100%" fill="url(#rf-hatch-dark)"></rect>
+            </svg>
+          </div>
+          <div class="rf-submit-pat rf-submit-pat--cross" aria-hidden="true">
+            <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
+              <rect width="100%" height="100%" fill="url(#rf-crosshair-dark)"></rect>
+            </svg>
+          </div>
+          <div class="rf-submit-pat rf-submit-pat--ticks" aria-hidden="true">
+            <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
+              <rect width="100%" height="100%" fill="url(#rf-ticks-dark)"></rect>
+            </svg>
+          </div>
+          <span class="rf-cta-corner rf-cta-corner--tl" aria-hidden="true"></span>
+          <span class="rf-cta-corner rf-cta-corner--br" aria-hidden="true"></span>
+
+          <div class="rf-submit-copy">
+            <span class="rf-submit-kicker">[ SECURE TRANSMISSION ]</span>
+            <p class="rf-submit-note">Vastame tööpäevadel 30 minuti jooksul. / Ответим в рабочее время в течение 30 минут.</p>
+          </div>
+
+          <div class="rf-submit-actions">
+            <button type="submit" class="ft-maps-btn" disabled="{{ isSubmitting }}">
+              {{ submitLabel }}
+            </button>
+            <sc-if value="{{ isError }}" hint-placeholder-val="{{ false }}">
+              <span class="rf-error">[ ERROR — PALUN TÄITKE NÕUTUD VÄLJAD ]</span>
+            </sc-if>
+          </div>
+        </div>
+
+      </form>
+    </sc-if>
+
+    <!-- Bottom tick rail -->
+    <div class="rf-ticks rf-ticks--bottom" aria-hidden="true">
+      <sc-for list="{{ ticks }}" as="t" hint-placeholder-count="28">
+        <span class="rf-tick"></span>
+      </sc-for>
+    </div>
+
+  </div>
+</section>
+
+<helmet>
+<style>
+  /* ═══════════════════════════════════════════════════════════
+     Request Form — Ultra-premium Swiss / Industrial Minimalism
+     TEXTURE-01 patterns from Patterns.dc.html (geometry intact)
+     ═══════════════════════════════════════════════════════════ */
+  .rf {
+    --rf-bg: #F8F9FA;
+    --rf-surface: #FFFFFF;
+    --rf-ink: #0F172A;
+    --rf-ink-soft: #171717;
+    --rf-muted: #525252;
+    --rf-dim: #737373;
+    --rf-line: #E5E7EB;
+    --rf-line-mid: #D1D5DB;
+    --rf-red: #C41E2A;
+    --rf-red-bright: #E63946;
+    --rf-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+    --rf-sans: Inter, Helvetica Neue, Helvetica, Arial, sans-serif;
+    position: relative;
+    isolation: isolate;
+    background: var(--rf-bg);
+    color: var(--rf-ink);
+    font-family: var(--rf-sans);
+    padding: 88px 24px 96px;
+  }
+
+  .rf-pattern-defs {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .rf-fill {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+  }
+
+  .rf-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-left: 1px solid var(--rf-line-mid);
+    border-right: 1px solid var(--rf-line-mid);
+    padding: 0 44px 8px;
+    background: var(--rf-surface);
+  }
+
+  /* Pattern islands — sparse, low opacity */
+  .rf-island {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .rf-island--header {
+    right: 0;
+    top: 0;
+    width: min(260px, 36%);
+    height: 130px;
+    opacity: 0.08;
+  }
+  .rf-island--header-frame {
+    left: 0;
+    top: 6px;
+    width: 68px;
+    height: 68px;
+    opacity: 0.11;
+  }
+  .rf-island--label {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    opacity: 0.12;
+  }
+  .rf-island--panel {
+    right: 12px;
+    bottom: 12px;
+    width: 88px;
+    height: 88px;
+    opacity: 0.05;
+  }
+  .rf-island--dots {
+    right: 10px;
+    top: 10px;
+    width: 72px;
+    height: 72px;
+    opacity: 0.07;
+  }
+
+  /* Tick rail */
+  .rf-ticks {
+    display: flex;
+    gap: 0;
+    padding-top: 36px;
+    opacity: 0.5;
+  }
+  .rf-ticks--bottom {
+    padding-top: 28px;
+    padding-bottom: 20px;
+    opacity: 0.35;
+  }
+  .rf-tick {
+    width: 1px;
+    height: 10px;
+    background: var(--rf-ink-soft);
+    margin-right: calc((100% - 28px) / 27);
+    opacity: 0.35;
+  }
+  .rf-tick:nth-child(7n) {
+    height: 14px;
+    opacity: 0.55;
+  }
+
+  /* Index bar */
+  .rf-index {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 18px 0 0;
+    font-family: var(--rf-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rf-dim);
+  }
+  .rf-index-right {
+    color: #a3a3a3;
+    letter-spacing: 0.1em;
+  }
+
+  /* Header */
+  .rf-header {
+    position: relative;
+    padding: 28px 0 36px;
+    border-bottom: 1px solid var(--rf-line-mid);
+  }
+  .rf-header > *:not(.rf-island) {
+    position: relative;
+    z-index: 1;
+  }
+  .rf-header::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    width: 56px;
+    height: 2px;
+    background: var(--rf-red-bright);
+    z-index: 2;
+  }
+  .rf-header-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .rf-header-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 680px;
+  }
+  .rf-kicker {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rf-dim);
+    font-family: var(--rf-mono);
+    font-weight: 500;
+  }
+  .rf-title {
+    margin: 0;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+    color: var(--rf-ink);
+    line-height: 1.05;
+  }
+  .rf-lead {
+    margin: 0;
+    max-width: 640px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--rf-muted);
+  }
+  .rf-header-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .rf-loc {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rf-dim);
+    font-family: var(--rf-mono);
+    white-space: nowrap;
+  }
+  .rf-loc-rule {
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--rf-red-bright));
+  }
+  .rf-meta-line {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #a3a3a3;
+    font-family: var(--rf-mono);
+  }
+
+  /* Breath bands */
+  .rf-breath {
+    height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  .rf-breath--tight {
+    height: 36px;
+  }
+  .rf-breath-band {
+    position: relative;
+    width: 100%;
+    height: 12px;
+    opacity: 0.09;
+    overflow: hidden;
+  }
+  .rf-breath-band--short {
+    max-width: 38%;
+    margin-left: auto;
+  }
+
+  /* Form */
+  .rf-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-bottom: 8px;
+  }
+
+  /* Panel blocks */
+  .rf-panel {
+    border: 1px solid var(--rf-line-mid);
+    background: var(--rf-surface);
+    border-radius: 0;
+  }
+  .rf-panel + .rf-breath + .rf-panel,
+  .rf-panel + .rf-submit {
+    /* spacing via breath */
+  }
+  .rf-panel-head {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px 16px 68px;
+    border-bottom: 1px solid var(--rf-line);
+    background: linear-gradient(180deg, #FAFBFC 0%, #FFFFFF 100%);
+    min-height: 64px;
+  }
+  .rf-panel-head > *:not(.rf-island) {
+    position: relative;
+    z-index: 1;
+  }
+  .rf-panel-num {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: transparent;
+    -webkit-text-stroke: 1px #d4d4d4;
+    flex-shrink: 0;
+  }
+  .rf-panel-titles {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+  .rf-panel-code {
+    font-size: 10px;
+    font-family: var(--rf-mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #a3a3a3;
+  }
+  .rf-panel-name {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--rf-ink-soft);
+  }
+  .rf-panel-body {
+    position: relative;
+    padding: 28px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    overflow: hidden;
+  }
+  .rf-panel-body > *:not(.rf-island) {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Fields */
+  .rf-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+  }
+  .rf-field--hero {
+    gap: 10px;
+  }
+  .rf-field--span2 {
+    grid-column: span 2;
+  }
+  .rf-label {
+    font-size: 10.5px;
+    font-family: var(--rf-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--rf-dim);
+    font-weight: 500;
+  }
+  .rf-input {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--rf-line-mid);
+    background: #FFFFFF;
+    padding: 13px 14px;
+    font-size: 14px;
+    color: var(--rf-ink);
+    outline: none;
+    border-radius: 0;
+    font-family: var(--rf-sans);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: inset 0 1px 0 rgba(15, 23, 42, 0.02);
+  }
+  .rf-input::placeholder {
+    color: #a3a3a3;
+  }
+  .rf-input:hover {
+    border-color: #b0b0b0;
+  }
+  .rf-input:focus {
+    border-color: var(--rf-red-bright);
+    box-shadow:
+      0 0 0 1px var(--rf-red-bright),
+      inset 0 1px 0 rgba(15, 23, 42, 0.02);
+  }
+  .rf-input--area {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.55;
+    padding: 14px 16px;
+  }
+
+  /* Plate field — hero industrial */
+  .rf-plate-wrap {
+    display: flex;
+    align-items: stretch;
+    border: 1px solid var(--rf-ink-soft);
+    background: #FFFFFF;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .rf-plate-wrap:focus-within {
+    border-color: var(--rf-red-bright);
+    box-shadow: 0 0 0 1px var(--rf-red-bright);
+  }
+  .rf-plate-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    font-family: var(--rf-mono);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    color: #FFFFFF;
+    background: var(--rf-ink-soft);
+    border-right: 1px solid var(--rf-ink-soft);
+    flex-shrink: 0;
+  }
+  .rf-input--plate {
+    border: none;
+    box-shadow: none;
+    padding: 18px 18px;
+    font-size: 24px;
+    font-family: var(--rf-mono);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .rf-input--plate:hover,
+  .rf-input--plate:focus {
+    border: none;
+    box-shadow: none;
+  }
+
+  .rf-link-toggle {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--rf-muted);
+    font-weight: 500;
+    text-align: left;
+    font-family: var(--rf-sans);
+    transition: color 0.15s ease;
+  }
+  .rf-link-toggle:hover {
+    color: var(--rf-red-bright);
+  }
+  .rf-link-arrow {
+    color: var(--rf-red-bright);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .rf-manual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 20px;
+    padding-top: 8px;
+    border-top: 1px solid var(--rf-line);
+    margin-top: 4px;
+  }
+
+  .rf-contact {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px 20px;
+  }
+
+  /* Success */
+  .rf-success {
+    position: relative;
+    margin: 8px 0 28px;
+    background: #0a0a0a;
+    color: #ffffff;
+    padding: 28px 32px;
+    border: 1px solid #262626;
+    border-radius: 0;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .rf-success-pat {
+    position: absolute;
+    inset: 0;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .rf-success-pat--cross {
+    inset: auto 0 0 auto;
+    width: 40%;
+    height: 100%;
+    opacity: 0.08;
+  }
+  .rf-success-code {
+    position: relative;
+    z-index: 1;
+    display: block;
+    font-family: var(--rf-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: #a3a3a3;
+    margin-bottom: 10px;
+  }
+  .rf-success-text {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-family: var(--rf-mono);
+    line-height: 1.55;
+  }
+  .rf-success-ru {
+    font-weight: 500;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.04em;
+  }
+
+  /* Submit bar — industrial dark */
+  .rf-submit {
+    position: relative;
+    margin-top: 36px;
+    background: #0a0a0a;
+    color: #ffffff;
+    padding: 32px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    border: 1px solid #262626;
+    border-radius: 0;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .rf-submit-pat {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .rf-submit-pat--hatch {
+    inset: 0;
+    opacity: 0.04;
+  }
+  .rf-submit-pat--cross {
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: min(300px, 42%);
+    opacity: 0.07;
+  }
+  .rf-submit-pat--ticks {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 16px;
+    opacity: 0.08;
+  }
+  .rf-cta-corner {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .rf-cta-corner--tl {
+    left: 0;
+    top: 0;
+    border-left: 2px solid var(--rf-red-bright);
+    border-top: 2px solid var(--rf-red-bright);
+  }
+  .rf-cta-corner--br {
+    right: 0;
+    bottom: 0;
+    border-right: 2px solid var(--rf-red-bright);
+    border-bottom: 2px solid var(--rf-red-bright);
+  }
+  .rf-submit-copy {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 420px;
+  }
+  .rf-submit-kicker {
+    font-size: 10px;
+    font-family: var(--rf-mono);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #8a8e96;
+  }
+  .rf-submit-note {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.88);
+    font-weight: 500;
+  }
+  .rf-submit-actions {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  .rf-error {
+    font-size: 11px;
+    color: #ff6b6b;
+    font-family: var(--rf-mono);
+    letter-spacing: 0.06em;
+    text-align: right;
+  }
+
+  /* Anodized red metallic button */
+  .ft-maps-btn {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-family: var(--rf-mono);
+    text-decoration: none;
+    color: #fff5f5;
+    padding: 14px 22px 13px;
+    white-space: nowrap;
+    position: relative;
+    border: none;
+    cursor: pointer;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.18) 0%, transparent 40%),
+      linear-gradient(145deg, #6e1219 0%, #C41E2A 30%, #E63946 50%, #9a1a24 75%, #4a0c11 100%);
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,0.55),
+      inset 0 1px 0 rgba(255,255,255,0.35),
+      inset 0 -1px 0 rgba(0,0,0,0.4),
+      inset 1px 0 0 rgba(255,255,255,0.08),
+      0 2px 6px rgba(0,0,0,0.45),
+      0 0 16px rgba(196,30,42,0.15);
+    text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+    transition: box-shadow 0.2s ease, filter 0.2s ease, opacity 0.2s ease;
+    border-radius: 0;
+  }
+  .ft-maps-btn::before {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    border: 0.5px solid rgba(255,255,255,0.12);
+    pointer-events: none;
+  }
+  .ft-maps-btn:hover:not(:disabled) {
+    filter: brightness(1.08);
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,0.55),
+      inset 0 1px 0 rgba(255,255,255,0.4),
+      inset 0 -1px 0 rgba(0,0,0,0.4),
+      0 3px 10px rgba(0,0,0,0.5),
+      0 0 22px rgba(230,57,70,0.28);
+  }
+  .ft-maps-btn:disabled {
+    opacity: 0.55;
+    cursor: wait;
+    filter: grayscale(0.15);
+  }
+
+  @media (min-width: 700px) {
+    .contact-grid { grid-template-columns: 1fr 1fr 1fr !important; }
+  }
+  @media (max-width: 640px) {
+    .rf { padding: 56px 16px 72px; }
+    .rf-inner { padding: 0 20px 8px; }
+    .rf-panel-head { padding: 14px 16px; }
+    .rf-island--label { display: none; }
+    .rf-panel-body { padding: 22px 18px 26px; }
+    .rf-manual { grid-template-columns: 1fr !important; }
+    .rf-field--span2 { grid-column: span 1 !important; }
+    .rf-submit { padding: 26px 20px; }
+    .rf-submit-actions { align-items: flex-start; width: 100%; }
+    .rf-input--plate { font-size: 18px; padding: 14px 14px; }
+  }
+</style>
+</helmet>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1080,&quot;height&quot;:1180}}">
+class Component extends DCLogic {
+  state = {
+    plate: '', make: '', year: '', engine: '', description: '',
+    name: '', phone: '', email: '',
+    showManualFields: false,
+    isSubmitting: false, isSuccess: false, isError: false,
+  };
+
+  ticks = Array.from({ length: 28 });
+
+  toggleManual = () => this.setState(s => ({ showManualFields: !s.showManualFields }));
+
+  onPlateChange = (e) => this.setState({ plate: e.target.value });
+  onMakeChange = (e) => this.setState({ make: e.target.value });
+  onYearChange = (e) => this.setState({ year: e.target.value });
+  onEngineChange = (e) => this.setState({ engine: e.target.value });
+  onDescriptionChange = (e) => this.setState({ description: e.target.value });
+  onNameChange = (e) => this.setState({ name: e.target.value });
+  onPhoneChange = (e) => this.setState({ phone: e.target.value });
+  onEmailChange = (e) => this.setState({ email: e.target.value });
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const s = this.state;
+    const hasVehicleInfo = s.plate.trim() || (s.make.trim() && s.year.trim());
+    if (!hasVehicleInfo || !s.description.trim() || !s.name.trim() || !s.phone.trim() || !s.email.trim()) {
+      this.setState({ isError: true });
+      return;
+    }
+    this.setState({ isSubmitting: true, isError: false });
+    const payload = {
+      plate: s.plate, make: s.make, year: s.year, engine: s.engine,
+      description: s.description, name: s.name, phone: s.phone, email: s.email,
+      timestamp: new Date().toISOString(),
+      recipient: 'autodiislikeskus@gmail.com',
+    };
+    setTimeout(() => {
+      console.log('Service request payload', payload);
+      this.setState({ isSubmitting: false, isSuccess: true });
+    }, 900);
+  };
+
+  renderVals() {
+    const s = this.state;
+    return {
+      ...s,
+      ticks: this.ticks,
+      isFormVisible: !s.isSuccess,
+      submitLabel: s.isSubmitting ? '[ SAATMINE... ]' : '[ SAADA HINNAPÄRING → ]',
+      toggleManual: this.toggleManual,
+      onPlateChange: this.onPlateChange,
+      onMakeChange: this.onMakeChange,
+      onYearChange: this.onYearChange,
+      onEngineChange: this.onEngineChange,
+      onDescriptionChange: this.onDescriptionChange,
+      onNameChange: this.onNameChange,
+      onPhoneChange: this.onPhoneChange,
+      onEmailChange: this.onEmailChange,
+      handleSubmit: this.handleSubmit,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

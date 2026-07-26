@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>body{margin:0;}</style>
+</helmet>
+
+<header class="hd">
+  <!-- Utility bar (no patterns) -->
+  <div class="hd-utility">
+    <div class="hd-utility-inner">
+      <div class="hd-utility-left">
+        <a href="tel:+37256702700" class="hd-utility-link">+372 567 02 700</a>
+        <span class="hd-utility-addr addr-item">Paavli 4, 10412 Tallinn</span>
+      </div>
+      <div class="hd-utility-right">
+        <span class="hd-utility-dot" aria-hidden="true"></span>
+        <span class="hd-utility-hours">{{ hoursText }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main bar -->
+  <div class="hd-main">
+    <!-- Logo mark (logo.html MARK-01) + wordmark -->
+    <a href="/" class="hd-brand" aria-label="Auto Diislikeskus — home">
+      <svg class="hd-logo" viewBox="0 0 100 100" width="40" height="40" aria-hidden="true" focusable="false">
+        <rect x="10" y="10" width="80" height="80" fill="none" stroke="#171717" stroke-width="4"></rect>
+        <rect x="26" y="26" width="48" height="48" fill="none" stroke="#171717" stroke-width="3" transform="rotate(45 50 50)"></rect>
+        <line x1="50" y1="10" x2="50" y2="20" stroke="#171717" stroke-width="3"></line>
+        <line x1="50" y1="80" x2="50" y2="90" stroke="#171717" stroke-width="3"></line>
+        <line x1="10" y1="50" x2="20" y2="50" stroke="#171717" stroke-width="3"></line>
+        <line x1="80" y1="50" x2="90" y2="50" stroke="#171717" stroke-width="3"></line>
+        <circle cx="50" cy="50" r="13" fill="#E63946"></circle>
+      </svg>
+      <span class="hd-brand-text">
+        <span class="hd-brand-name">AUTO DIISLIKESKUS</span>
+        <span class="hd-brand-code">/ DIISLIKESKUS-01</span>
+      </span>
+    </a>
+
+    <nav class="hd-nav main-nav" aria-label="Primary">
+      <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="4">
+        <a href="{{ link.href }}" class="hd-nav-link">
+          <span class="hd-nav-num">{{ link.num }}</span>{{ link.label }}
+        </a>
+      </sc-for>
+    </nav>
+
+    <div class="hd-actions">
+      <div class="hd-lang lang-switch" role="group" aria-label="Language">
+        <button type="button" onClick="{{ setLangEE }}" class="hd-lang-btn" style="color:{{ langActiveColorEE }};" aria-pressed="{{ isEE }}">EE</button>
+        <span class="hd-lang-sep" aria-hidden="true">|</span>
+        <button type="button" onClick="{{ setLangRU }}" class="hd-lang-btn" style="color:{{ langActiveColorRU }};" aria-pressed="{{ isRU }}">RU</button>
+        <span class="hd-lang-sep" aria-hidden="true">|</span>
+        <button type="button" onClick="{{ setLangEN }}" class="hd-lang-btn" style="color:{{ langActiveColorEN }};" aria-pressed="{{ isEN }}">EN</button>
+      </div>
+
+      <button type="button" onClick="{{ toggleMenu }}" aria-label="Menu" class="hd-burger hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div class="hd-drawer">
+      <div class="hd-drawer-top">
+        <a href="/" class="hd-brand hd-brand--drawer" onClick="{{ toggleMenu }}">
+          <svg class="hd-logo" viewBox="0 0 100 100" width="36" height="36" aria-hidden="true" focusable="false">
+            <rect x="10" y="10" width="80" height="80" fill="none" stroke="#171717" stroke-width="4"></rect>
+            <rect x="26" y="26" width="48" height="48" fill="none" stroke="#171717" stroke-width="3" transform="rotate(45 50 50)"></rect>
+            <line x1="50" y1="10" x2="50" y2="20" stroke="#171717" stroke-width="3"></line>
+            <line x1="50" y1="80" x2="50" y2="90" stroke="#171717" stroke-width="3"></line>
+            <line x1="10" y1="50" x2="20" y2="50" stroke="#171717" stroke-width="3"></line>
+            <line x1="80" y1="50" x2="90" y2="50" stroke="#171717" stroke-width="3"></line>
+            <circle cx="50" cy="50" r="13" fill="#E63946"></circle>
+          </svg>
+          <span class="hd-brand-name">AUTO DIISLIKESKUS</span>
+        </a>
+        <button type="button" onClick="{{ toggleMenu }}" aria-label="Close" class="hd-drawer-close">&times;</button>
+      </div>
+      <nav class="hd-drawer-nav" aria-label="Mobile">
+        <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="4">
+          <a href="{{ link.href }}" onClick="{{ toggleMenu }}" class="hd-drawer-link">
+            <span class="hd-nav-num">{{ link.num }}</span>{{ link.label }}
+          </a>
+        </sc-for>
+      </nav>
+      <div class="hd-drawer-foot">
+        <a href="tel:+37256702700" class="hd-drawer-phone">+372 567 02 700</a>
+        <span class="hd-drawer-meta">Paavli 4, 10412 Tallinn</span>
+        <span class="hd-drawer-meta">{{ hoursText }}</span>
+        <div class="hd-lang hd-lang--drawer" role="group" aria-label="Language">
+          <button type="button" onClick="{{ setLangEE }}" class="hd-lang-btn" style="color:{{ langActiveColorEE }};">EE</button>
+          <span class="hd-lang-sep" aria-hidden="true">|</span>
+          <button type="button" onClick="{{ setLangRU }}" class="hd-lang-btn" style="color:{{ langActiveColorRU }};">RU</button>
+          <span class="hd-lang-sep" aria-hidden="true">|</span>
+          <button type="button" onClick="{{ setLangEN }}" class="hd-lang-btn" style="color:{{ langActiveColorEN }};">EN</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <helmet>
+  <style>
+    .hd {
+      --hd-bg: #F8F9FA;
+      --hd-ink: #171717;
+      --hd-muted: #525252;
+      --hd-line: #d4d4d4;
+      --hd-line-soft: #e5e5e5;
+      --hd-red: #E63946;
+      --hd-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+      --hd-sans: Inter, Helvetica Neue, Helvetica, Arial, sans-serif;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--hd-bg);
+      font-family: var(--hd-sans);
+      color: var(--hd-ink);
+      border-bottom: 2px solid var(--hd-ink);
+    }
+
+    /* Utility */
+    .hd-utility {
+      border-bottom: 1px solid var(--hd-line-soft);
+      background: #EFEFEC;
+    }
+    .hd-utility-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 8px 24px;
+      flex-wrap: wrap;
+    }
+    .hd-utility-left {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .hd-utility-link,
+    .hd-utility-addr,
+    .hd-utility-hours {
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--hd-muted);
+      font-weight: 500;
+      font-family: var(--hd-mono);
+      text-decoration: none;
+    }
+    .hd-utility-link:hover {
+      color: var(--hd-ink);
+      text-decoration: underline;
+    }
+    .hd-utility-addr { display: none; }
+    .hd-utility-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hd-utility-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--hd-red);
+      display: inline-block;
+    }
+
+    /* Main bar — clean, no patterns */
+    .hd-main {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      column-gap: 24px;
+      padding: 14px 24px;
+      border-left: 1px solid var(--hd-line);
+      border-right: 1px solid var(--hd-line);
+      background: var(--hd-bg);
+    }
+
+    /* Brand: logo mark + wordmark */
+    .hd-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      text-decoration: none;
+      color: inherit;
+    }
+    .hd-logo {
+      display: block;
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+    }
+    .hd-brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
+    .hd-brand-name {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: var(--hd-ink);
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+    .hd-brand-code {
+      font-size: 10px;
+      font-family: var(--hd-mono);
+      color: #a3a3a3;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .hd-brand--drawer .hd-brand-name {
+      font-size: 18px;
+    }
+
+    .hd-nav {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+    }
+    .hd-nav-link {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: #404040;
+      text-decoration: none;
+      padding-bottom: 4px;
+      border-bottom: 1px solid transparent;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+    .hd-nav-link:hover {
+      color: var(--hd-ink);
+      border-bottom-color: var(--hd-red);
+    }
+    .hd-nav-num {
+      font-family: var(--hd-mono);
+      font-size: 10px;
+      color: #a3a3a3;
+    }
+
+    .hd-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .hd-lang {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .hd-lang-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+    }
+    .hd-lang-btn:hover { color: var(--hd-ink) !important; }
+    .hd-lang-sep { color: #d4d4d4; }
+
+    .hd-burger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 28px;
+      height: 28px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+    .hd-burger span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background: var(--hd-ink);
+    }
+
+    /* Drawer */
+    .hd-drawer {
+      position: fixed;
+      inset: 0;
+      background: var(--hd-bg);
+      z-index: 60;
+      display: flex;
+      flex-direction: column;
+    }
+    .hd-drawer-top {
+      max-width: 1440px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--hd-line-soft);
+      box-sizing: border-box;
+    }
+    .hd-drawer-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 28px;
+      line-height: 1;
+      color: var(--hd-ink);
+      padding: 0;
+    }
+    .hd-drawer-nav {
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      gap: 0;
+    }
+    .hd-drawer-link {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--hd-ink);
+      text-decoration: none;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--hd-line-soft);
+    }
+    .hd-drawer-foot {
+      margin-top: auto;
+      padding: 24px;
+      border-top: 1px solid var(--hd-line-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .hd-drawer-phone {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--hd-ink);
+      text-decoration: none;
+    }
+    .hd-drawer-meta {
+      font-size: 13px;
+      color: var(--hd-muted);
+      font-family: var(--hd-mono);
+    }
+    .hd-lang--drawer {
+      display: flex;
+      margin-top: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .addr-item,
+      .hd-utility-addr { display: inline !important; }
+      .main-nav,
+      .hd-nav { display: flex !important; }
+      .lang-switch,
+      .hd-lang { display: flex !important; }
+      .hamburger,
+      .hd-burger { display: none !important; }
+    }
+
+    @media (max-width: 420px) {
+      .hd-brand-code { display: none; }
+      .hd-brand-name { font-size: 14px; }
+      .hd-logo { width: 34px; height: 34px; }
+    }
+  </style>
+  </helmet>
+</header>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:140}}">
+class Component extends DCLogic {
+  state = { menuOpen: false, lang: 'EE' };
+
+  navLinksByLang = {
+    EE: [
+      { href: '#teenused', label: 'Teenused', num: '01' },
+      { href: '#sumptoomid', label: 'Sümptoomid', num: '02' },
+      { href: '#seadmed', label: 'Seadmed', num: '03' },
+      { href: '#kontakt', label: 'Kontakt', num: '04' },
+    ],
+    RU: [
+      { href: '#teenused', label: 'Услуги', num: '01' },
+      { href: '#sumptoomid', label: 'Симптомы', num: '02' },
+      { href: '#seadmed', label: 'Оборудование', num: '03' },
+      { href: '#kontakt', label: 'Контакты', num: '04' },
+    ],
+    EN: [
+      { href: '#teenused', label: 'Services', num: '01' },
+      { href: '#sumptoomid', label: 'Symptoms', num: '02' },
+      { href: '#seadmed', label: 'Equipment', num: '03' },
+      { href: '#kontakt', label: 'Contact', num: '04' },
+    ],
+  };
+
+  hoursByLang = {
+    EE: 'E–R 9–18',
+    RU: 'Пн–Пт 9–18',
+    EN: 'Mon–Fri 9–18',
+  };
+
+  toggleMenu = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
+  setLangEE = () => this.setState({ lang: 'EE' });
+  setLangRU = () => this.setState({ lang: 'RU' });
+  setLangEN = () => this.setState({ lang: 'EN' });
+
+  renderVals() {
+    const lang = this.state.lang;
+    const active = '#171717';
+    const idle = '#a3a3a3';
+    return {
+      menuOpen: this.state.menuOpen,
+      toggleMenu: this.toggleMenu,
+      setLangEE: this.setLangEE,
+      setLangRU: this.setLangRU,
+      setLangEN: this.setLangEN,
+      navLinks: this.navLinksByLang[lang],
+      hoursText: this.hoursByLang[lang],
+      langActiveColorEE: lang === 'EE' ? active : idle,
+      langActiveColorRU: lang === 'RU' ? active : idle,
+      langActiveColorEN: lang === 'EN' ? active : idle,
+      isEE: lang === 'EE',
+      isRU: lang === 'RU',
+      isEN: lang === 'EN',
+    };
+  }
+}
+
+</script>
+</body>
+</html>
