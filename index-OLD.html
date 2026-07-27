@@ -5,11 +5,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Auto Diislikeskus — Main Prototype</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Open+Sans:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet">
   <script src="./support.js"></script>
 </head>
 
@@ -25,64 +20,31 @@
         body {
           margin: 0;
           background: #F8F9FA;
-          font-family: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
-          font-weight: 400;
         }
 
-        /* === Header (.hd) — dark over hero, light after scroll === */
+        /* === Header (.hd) === */
         .hd {
-          --hd-bg: #111111;
-          --hd-utility-bg: #0a0a0a;
-          --hd-bg-elevated: #1a1a1a;
-          --hd-ink: #ffffff;
-          --hd-muted: #a3a3a3;
-          --hd-line: #2a2a2a;
-          --hd-line-soft: #262626;
-          --hd-nav: rgba(255, 255, 255, 0.82);
-          --hd-utility-text: rgba(255, 255, 255, 0.88);
-          --hd-lang-border: rgba(255, 255, 255, 0.22);
-          --hd-lang-menu-bg: #1a1a1a;
-          --hd-lang-menu-border: rgba(255, 255, 255, 0.18);
-          --hd-lang-item-hover: rgba(255, 255, 255, 0.06);
+          --hd-bg: #F8F9FA;
+          --hd-ink: #171717;
+          --hd-muted: #525252;
+          --hd-line: #d4d4d4;
+          --hd-line-soft: #e5e5e5;
           --hd-red: #E63946;
-          /* Second accent — cyan from brand phone color */
-          --hd-cyan: #00B8D4;
-          --hd-display: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
           --hd-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
-          --hd-sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
+          --hd-sans: Inter, Helvetica Neue, Helvetica, Arial, sans-serif;
           position: sticky;
           top: 0;
           z-index: 50;
           background: var(--hd-bg);
           font-family: var(--hd-sans);
           color: var(--hd-ink);
-          border-bottom: 1px solid var(--hd-line);
-          transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+          border-bottom: 2px solid var(--hd-ink);
         }
 
-        /* White header after leaving black hero */
-        .hd.hd--light {
-          --hd-bg: #ffffff;
-          --hd-utility-bg: #F8F9FA;
-          --hd-bg-elevated: #ffffff;
-          --hd-ink: #171717;
-          --hd-muted: #737373;
-          --hd-line: #e5e5e5;
-          --hd-line-soft: #ececec;
-          --hd-nav: #404040;
-          --hd-utility-text: #525252;
-          --hd-lang-border: #d4d4d4;
-          --hd-lang-menu-bg: #ffffff;
-          --hd-lang-menu-border: #171717;
-          --hd-lang-item-hover: #F3F4F6;
-          box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
-        }
-
-        /* Utility — address + hours only */
+        /* Utility */
         .hd-utility {
-          border-bottom: 1px solid var(--hd-line);
-          background: var(--hd-utility-bg);
-          transition: background 0.25s ease, border-color 0.25s ease;
+          border-bottom: 1px solid var(--hd-line-soft);
+          background: #EFEFEC;
         }
 
         .hd-utility-inner {
@@ -96,23 +58,48 @@
           flex-wrap: wrap;
         }
 
+        .hd-utility-left {
+          display: flex;
+          align-items: center;
+          gap: 28px;
+          flex-wrap: wrap;
+        }
+
+        .hd-utility-link,
         .hd-utility-addr,
         .hd-utility-hours {
-          font-size: 14px;
-          letter-spacing: 0.08em;
+          font-size: 12px;
+          letter-spacing: 0.06em;
           text-transform: uppercase;
-          color: var(--hd-utility-text);
-          font-weight: 600;
-          font-family: var(--hd-sans);
+          color: var(--hd-muted);
+          font-weight: 500;
+          font-family: var(--hd-mono);
           text-decoration: none;
-          transition: color 0.25s ease;
+        }
+
+        .hd-utility-link:hover {
+          color: var(--hd-ink);
+          text-decoration: underline;
         }
 
         .hd-utility-addr {
           display: none;
         }
 
-        /* Main bar */
+        .hd-utility-right {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .hd-utility-dot {
+          width: 7px;
+          height: 7px;
+          background: var(--hd-red);
+          display: inline-block;
+        }
+
+        /* Main bar — clean, no patterns */
         .hd-main {
           max-width: 1440px;
           margin: 0 auto;
@@ -121,10 +108,9 @@
           align-items: center;
           column-gap: 24px;
           padding: 14px 24px;
-          border-left: none;
-          border-right: none;
+          border-left: 1px solid var(--hd-line);
+          border-right: 1px solid var(--hd-line);
           background: var(--hd-bg);
-          transition: background 0.25s ease;
         }
 
         /* Brand: logo mark + wordmark */
@@ -142,29 +128,35 @@
           flex-shrink: 0;
           width: 40px;
           height: 40px;
-          color: var(--hd-ink);
-          transition: color 0.25s ease;
         }
 
-        /* Logo strokes follow light ink on dark header */
-        .hd-logo rect,
-        .hd-logo line {
-          stroke: currentColor;
+        .hd-brand-text {
+          display: flex;
+          flex-direction: column;
+          gap: 3px;
+          min-width: 0;
         }
 
         .hd-brand-name {
-          font-family: var(--hd-display);
-          font-size: clamp(18px, 1.6vw, 22px);
-          font-weight: 400;
-          letter-spacing: 0.02em;
+          font-size: 17px;
+          font-weight: 800;
+          letter-spacing: -0.02em;
           text-transform: uppercase;
           color: var(--hd-ink);
           line-height: 1.05;
           white-space: nowrap;
         }
 
+        .hd-brand-code {
+          font-size: 10px;
+          font-family: var(--hd-mono);
+          color: #a3a3a3;
+          letter-spacing: 0.04em;
+          line-height: 1;
+        }
+
         .hd-brand--drawer .hd-brand-name {
-          font-size: 22px;
+          font-size: 18px;
         }
 
         .hd-nav {
@@ -175,11 +167,14 @@
         }
 
         .hd-nav-link {
+          display: flex;
+          align-items: baseline;
+          gap: 6px;
           font-size: 13px;
           font-weight: 600;
-          letter-spacing: 0.06em;
+          letter-spacing: 0.03em;
           text-transform: uppercase;
-          color: var(--hd-nav);
+          color: #404040;
           text-decoration: none;
           padding-bottom: 4px;
           border-bottom: 1px solid transparent;
@@ -188,111 +183,45 @@
 
         .hd-nav-link:hover {
           color: var(--hd-ink);
-          border-bottom-color: var(--hd-cyan);
+          border-bottom-color: var(--hd-red);
+        }
+
+        .hd-nav-num {
+          font-family: var(--hd-mono);
+          font-size: 10px;
+          color: #a3a3a3;
         }
 
         .hd-actions {
           display: flex;
           align-items: center;
-          gap: 16px;
-          min-width: 0;
+          gap: 20px;
         }
 
-        /* Large cyan phone — same display face as H1 */
-        .hd-phone {
-          display: inline-flex;
-          align-items: baseline;
-          gap: 0.28em;
-          font-family: var(--hd-display);
-          font-size: clamp(18px, 1.9vw, 26px);
-          font-weight: 400;
-          letter-spacing: 0.02em;
-          color: var(--hd-cyan);
-          text-decoration: none;
-          white-space: nowrap;
-          line-height: 1.1;
-          transition: color 0.15s ease, opacity 0.15s ease;
-        }
-
-        .hd-phone:hover {
-          color: #33cceb;
-        }
-
-        .hd-phone-label {
-          font-family: inherit;
-          font-weight: 400;
-        }
-
-        /* Language dropdown */
         .hd-lang {
           display: none;
-          position: relative;
-          z-index: 5;
-        }
-
-        .hd-lang-toggle {
-          display: inline-flex;
           align-items: center;
-          gap: 6px;
-          background: transparent;
-          border: 1px solid var(--hd-lang-border);
-          padding: 7px 10px 7px 12px;
-          cursor: pointer;
-          font-family: var(--hd-sans);
+          gap: 8px;
           font-size: 13px;
           font-weight: 700;
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          color: var(--hd-ink);
-          min-width: 64px;
-          transition: border-color 0.15s ease, color 0.25s ease;
+          letter-spacing: 0.04em;
         }
 
-        .hd-lang-toggle:hover {
-          border-color: var(--hd-ink);
-        }
-
-        .hd-lang-caret {
-          font-size: 10px;
-          color: var(--hd-muted);
-          line-height: 1;
-        }
-
-        .hd-lang-menu {
-          position: absolute;
-          top: calc(100% + 4px);
-          right: 0;
-          min-width: 148px;
-          background: var(--hd-lang-menu-bg);
-          border: 1px solid var(--hd-lang-menu-border);
-          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-          display: flex;
-          flex-direction: column;
-          padding: 4px 0;
-        }
-
-        .hd-lang-item {
+        .hd-lang-btn {
           background: none;
           border: none;
-          text-align: left;
-          padding: 9px 14px;
+          padding: 0;
           cursor: pointer;
-          font-family: var(--hd-sans);
-          font-size: 13px;
-          font-weight: 600;
-          letter-spacing: 0.04em;
-          text-transform: uppercase;
-          color: var(--hd-muted);
-        }
-
-        .hd-lang-item:hover {
-          background: var(--hd-lang-item-hover);
-          color: var(--hd-ink);
-        }
-
-        .hd-lang-item.is-active {
-          color: var(--hd-cyan);
+          font: inherit;
           font-weight: 700;
+        }
+
+        .hd-lang-btn:hover {
+          color: var(--hd-ink) !important;
+        }
+
+        .hd-lang-sep {
+          color: #d4d4d4;
         }
 
         .hd-burger {
@@ -306,7 +235,6 @@
           border: none;
           cursor: pointer;
           padding: 0;
-          flex-shrink: 0;
         }
 
         .hd-burger span {
@@ -314,14 +242,13 @@
           height: 2px;
           width: 100%;
           background: var(--hd-ink);
-          transition: background 0.25s ease;
         }
 
         /* Drawer */
         .hd-drawer {
           position: fixed;
           inset: 0;
-          background: #0f0f0f;
+          background: var(--hd-bg);
           z-index: 60;
           display: flex;
           flex-direction: column;
@@ -335,7 +262,7 @@
           align-items: center;
           justify-content: space-between;
           padding: 16px 24px;
-          border-bottom: 1px solid var(--hd-line);
+          border-bottom: 1px solid var(--hd-line-soft);
           box-sizing: border-box;
         }
 
@@ -345,7 +272,7 @@
           cursor: pointer;
           font-size: 28px;
           line-height: 1;
-          color: #ffffff;
+          color: var(--hd-ink);
           padding: 0;
         }
 
@@ -357,31 +284,32 @@
         }
 
         .hd-drawer-link {
+          display: flex;
+          align-items: baseline;
+          gap: 12px;
           font-size: 22px;
           font-weight: 700;
           letter-spacing: -0.01em;
           text-transform: uppercase;
-          color: #ffffff;
+          color: var(--hd-ink);
           text-decoration: none;
           padding: 16px 0;
-          border-bottom: 1px solid var(--hd-line);
+          border-bottom: 1px solid var(--hd-line-soft);
         }
 
         .hd-drawer-foot {
           margin-top: auto;
           padding: 24px;
-          border-top: 1px solid var(--hd-line);
+          border-top: 1px solid var(--hd-line-soft);
           display: flex;
           flex-direction: column;
           gap: 12px;
         }
 
         .hd-drawer-phone {
-          font-family: var(--hd-display);
-          font-size: 22px;
-          font-weight: 400;
-          letter-spacing: 0.02em;
-          color: var(--hd-cyan);
+          font-size: 16px;
+          font-weight: 600;
+          color: var(--hd-ink);
           text-decoration: none;
         }
 
@@ -393,22 +321,12 @@
 
         .hd-lang--drawer {
           display: flex;
-          margin-top: 4px;
-        }
-
-        .hd-lang--drawer .hd-lang-menu {
-          position: static;
-          border: 1px solid var(--hd-line);
-          box-shadow: none;
-          margin-top: 0;
-        }
-
-        .hd-lang--drawer .hd-lang-toggle {
-          width: 100%;
-          justify-content: space-between;
+          margin-top: 8px;
         }
 
         @media (min-width: 768px) {
+
+          .addr-item,
           .hd-utility-addr {
             display: inline !important;
           }
@@ -420,7 +338,7 @@
 
           .lang-switch,
           .hd-lang {
-            display: block !important;
+            display: flex !important;
           }
 
           .hamburger,
@@ -429,18 +347,11 @@
           }
         }
 
-        @media (max-width: 767px) {
-          .hd-phone {
-            font-size: 15px;
-          }
-
-          .hd-main {
-            padding: 10px 16px;
-            column-gap: 12px;
-          }
-        }
-
         @media (max-width: 420px) {
+          .hd-brand-code {
+            display: none;
+          }
+
           .hd-brand-name {
             font-size: 14px;
           }
@@ -449,27 +360,22 @@
             width: 34px;
             height: 34px;
           }
-
-          .hd-phone-label {
-            display: none;
-          }
         }
 
-        /* === Hero (.hero) — dark cinematic like old site === */
+        /* === Hero (.hero) === */
         .hero {
-          --h-bg: #0f0f0f;
-          --h-surface: #141414;
-          --h-ink: #ffffff;
-          --h-ink-soft: #f5f5f5;
-          --h-muted: #c4c4c4;
-          --h-dim: #8a8a8a;
-          --h-line: #2a2a2a;
-          --h-line-mid: #2e2e2e;
-          --h-line-soft: #242424;
+          --h-bg: #F8F9FA;
+          --h-surface: #FFFFFF;
+          --h-ink: #0F172A;
+          --h-ink-soft: #171717;
+          --h-muted: #404040;
+          --h-dim: #737373;
+          --h-line: #d4d4d4;
+          --h-line-mid: #D1D5DB;
+          --h-line-soft: #e5e5e5;
           --h-red-bright: #E63946;
-          --h-cyan: #00B8D4;
           --h-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
-          --h-sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
+          --h-sans: Inter, Helvetica Neue, Helvetica, Arial, sans-serif;
           position: relative;
           overflow: hidden;
           background: var(--h-bg);
@@ -478,18 +384,6 @@
           display: flex;
           flex-direction: column;
           color: var(--h-ink);
-        }
-
-        /* Full-bleed dark atmosphere behind shell */
-        .hero::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background:
-            radial-gradient(ellipse 80% 70% at 70% 40%, rgba(0, 184, 212, 0.06) 0%, transparent 55%),
-            linear-gradient(180deg, #0a0a0a 0%, #141414 50%, #0f0f0f 100%);
-          pointer-events: none;
-          z-index: 0;
         }
 
         .hero-fill {
@@ -514,7 +408,7 @@
           box-sizing: border-box;
           border-left: 1px solid var(--h-line-mid);
           border-right: 1px solid var(--h-line-mid);
-          background: transparent;
+          background: var(--h-surface);
         }
 
         .hero-grid {
@@ -539,9 +433,9 @@
           align-self: flex-start;
           align-items: center;
           gap: 8px;
-          border: 1px solid rgba(255, 255, 255, 0.28);
+          border: 1px solid var(--h-ink-soft);
           padding: 7px 14px;
-          background: rgba(0, 0, 0, 0.35);
+          background: var(--h-surface);
         }
 
         .hero-badge-dot {
@@ -556,19 +450,18 @@
           font-size: 11px;
           letter-spacing: 0.14em;
           text-transform: uppercase;
-          color: rgba(255, 255, 255, 0.78);
+          color: var(--h-muted);
           font-family: var(--h-mono);
         }
 
         .hero-title {
           margin: 0;
           font-size: clamp(44px, 7.4vw, 104px);
-          font-weight: 400;
-          letter-spacing: -0.02em;
+          font-weight: 800;
+          letter-spacing: -0.035em;
           text-transform: uppercase;
-          color: #ffffff;
+          color: var(--h-ink);
           line-height: 0.95;
-          text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
         }
 
         .hero-title-rule {
@@ -582,7 +475,7 @@
           max-width: 600px;
           font-size: clamp(15px, 1.5vw, 18px);
           line-height: 1.65;
-          color: rgba(255, 255, 255, 0.78);
+          color: var(--h-muted);
           font-weight: 400;
         }
 
@@ -604,22 +497,22 @@
           font-size: 11px;
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          color: rgba(255, 255, 255, 0.45);
+          color: #a3a3a3;
           font-family: var(--h-mono);
         }
 
         .hero-cta-meta-rule {
           width: 36px;
           height: 1px;
-          background: rgba(255, 255, 255, 0.22);
+          background: var(--h-line-mid);
         }
 
-        /* Media — product shot on black; blend so studio black merges with hero */
+        /* Media */
         .hero-media {
           position: relative;
           min-height: 340px;
-          border-top: 1px solid transparent;
-          background: #0a0a0a;
+          border-top: 1px solid var(--h-line-mid);
+          background: #EEF0F2;
           overflow: hidden;
         }
 
@@ -628,7 +521,6 @@
           inset: 0;
           z-index: 0;
           pointer-events: none;
-          background: #0a0a0a;
         }
 
         .hero-media image-slot,
@@ -639,22 +531,6 @@
           width: 100%;
           height: 100%;
           min-height: 340px;
-          /* Black pixels dissolve into hero dark bg — no hard frame edge */
-          mix-blend-mode: lighten;
-        }
-
-        /* Soft edge fade so crop boundary never reads as a black box */
-        .hero-media::after {
-          content: '';
-          position: absolute;
-          inset: 0;
-          z-index: 2;
-          pointer-events: none;
-          background:
-            linear-gradient(90deg, #0a0a0a 0%, transparent 12%, transparent 88%, #0a0a0a 100%),
-            linear-gradient(180deg, #0a0a0a 0%, transparent 10%, transparent 90%, #0a0a0a 100%);
-          mix-blend-mode: multiply;
-          opacity: 0.85;
         }
 
         .hero-media-corner {
@@ -692,8 +568,8 @@
           gap: 8px 10px;
           max-width: calc(100% - 24px);
           padding: 8px 12px;
-          background: rgba(0, 0, 0, 0.72);
-          border: 1px solid rgba(255, 255, 255, 0.14);
+          background: rgba(10, 10, 10, 0.78);
+          border: 1px solid rgba(255, 255, 255, 0.12);
           pointer-events: none;
         }
 
@@ -716,7 +592,7 @@
           display: grid;
           grid-template-columns: 1fr;
           border-top: 1px solid var(--h-line-mid);
-          background: rgba(0, 0, 0, 0.35);
+          background: var(--h-surface);
         }
 
         .hero-spec {
@@ -735,7 +611,7 @@
         .hero-spec-num {
           font-family: var(--h-mono);
           font-size: 11px;
-          color: rgba(255, 255, 255, 0.4);
+          color: #a3a3a3;
           letter-spacing: 0.05em;
           flex: 0 0 auto;
           padding-top: 2px;
@@ -753,7 +629,7 @@
           font-weight: 700;
           letter-spacing: 0.04em;
           text-transform: uppercase;
-          color: #ffffff;
+          color: var(--h-ink);
         }
 
         .hero-spec-detail {
@@ -771,7 +647,7 @@
           font-weight: 700;
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          font-family: var(--h-mono, 'Open Sans', sans-serif);
+          font-family: var(--h-mono);
           text-decoration: none;
           color: #fff5f5;
           padding: 14px 22px 13px;
@@ -779,8 +655,6 @@
           position: relative;
           border: none;
           cursor: pointer;
-          appearance: none;
-          -webkit-appearance: none;
           background:
             linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, transparent 40%),
             linear-gradient(145deg, #6e1219 0%, #C41E2A 30%, #E63946 50%, #9a1a24 75%, #4a0c11 100%);
@@ -822,7 +696,7 @@
 
           .hero-main {
             padding: 64px 48px 56px 8px !important;
-            border-right: none;
+            border-right: 1px solid var(--h-line-mid);
           }
 
           .hero-media {
@@ -831,22 +705,12 @@
             align-self: stretch;
           }
 
-          /* Stronger soft blend into text column — hide black crop edge */
-          .hero-media::after {
-            background:
-              linear-gradient(90deg, #0a0a0a 0%, transparent 22%),
-              linear-gradient(180deg, transparent 0%, transparent 100%);
-            mix-blend-mode: normal;
-            opacity: 1;
-          }
-
           .hero-media image-slot,
           .hero-media>image-slot {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
-            mix-blend-mode: lighten;
             min-height: 0;
           }
 
@@ -892,871 +756,7 @@
           }
         }
 
-        /* === Pihustite block (.ph) — Swiss minimal, after hero === */
-        @keyframes ph-fade-in {
-          from {
-            opacity: 0;
-          }
-
-          to {
-            opacity: 1;
-          }
-        }
-
-        .ph {
-          --ph-bg: #F8F9FA;
-          --ph-surface: #FFFFFF;
-          --ph-ink: #171717;
-          --ph-muted: #525252;
-          --ph-dim: #737373;
-          --ph-line: #E5E7EB;
-          --ph-line-mid: #D1D5DB;
-          --ph-accent: #E63946;
-          --ph-sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
-          --ph-display: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
-          background: var(--ph-bg);
-          color: var(--ph-ink);
-          font-family: var(--ph-sans);
-          padding: 88px 24px 96px;
-          position: relative;
-        }
-
-        .ph-inner {
-          max-width: 1240px;
-          margin: 0 auto;
-          border-left: 1px solid var(--ph-line-mid);
-          border-right: 1px solid var(--ph-line-mid);
-          background: var(--ph-surface);
-          padding: 56px 48px 64px;
-          box-sizing: border-box;
-        }
-
-        .ph-header {
-          text-align: center;
-          margin-bottom: 40px;
-        }
-
-        .ph-kicker {
-          display: block;
-          font-size: 11px;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          color: var(--ph-dim);
-          font-weight: 500;
-          margin-bottom: 12px;
-        }
-
-        .ph-title {
-          margin: 0;
-          font-family: var(--ph-display);
-          font-size: clamp(28px, 4vw, 42px);
-          font-weight: 400;
-          letter-spacing: -0.02em;
-          text-transform: uppercase;
-          color: var(--ph-ink);
-          line-height: 1.08;
-        }
-
-        .ph-rule {
-          width: 64px;
-          height: 2px;
-          background: var(--ph-accent);
-          margin: 20px auto 0;
-        }
-
-        .ph-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 36px;
-          align-items: start;
-        }
-
-        .ph-brands {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-        }
-
-        .ph-brand {
-          appearance: none;
-          -webkit-appearance: none;
-          display: block;
-          width: 100%;
-          text-align: left;
-          padding: 14px 18px;
-          font-family: var(--ph-sans);
-          font-size: 13px;
-          font-weight: 700;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          cursor: pointer;
-          border: 1px solid var(--ph-line-mid);
-          border-radius: 0;
-          background: transparent;
-          color: var(--ph-ink);
-          transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-        }
-
-        .ph-brand:hover {
-          border-color: var(--ph-ink);
-        }
-
-        .ph-brand.is-active {
-          background: var(--ph-accent);
-          border-color: var(--ph-accent);
-          color: #ffffff;
-        }
-
-        .ph-brand.is-active:hover {
-          border-color: var(--ph-accent);
-          color: #ffffff;
-        }
-
-        .ph-copy {
-          min-height: 280px;
-        }
-
-        .ph-panel {
-          min-height: 280px;
-        }
-
-        .ph-fade {
-          animation: ph-fade-in 0.35s ease;
-        }
-
-        .ph-media .ph-fade,
-        .ph-media>div {
-          width: 100%;
-          height: 100%;
-          min-height: inherit;
-          background: #ffffff;
-        }
-
-        .ph-img {
-          display: block;
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          object-position: center center;
-          background: #ffffff;
-        }
-
-        .ph-brand-title {
-          margin: 0 0 20px;
-          font-family: var(--ph-display);
-          font-size: clamp(20px, 2.4vw, 26px);
-          font-weight: 400;
-          letter-spacing: 0.02em;
-          text-transform: uppercase;
-          color: var(--ph-ink);
-          line-height: 1.1;
-        }
-
-        .ph-list {
-          margin: 0;
-          padding: 0;
-          list-style: none;
-          display: flex;
-          flex-direction: column;
-          gap: 14px;
-        }
-
-        .ph-item {
-          display: flex;
-          gap: 12px;
-          align-items: flex-start;
-          font-size: 15px;
-          line-height: 1.55;
-          color: var(--ph-muted);
-          font-weight: 400;
-        }
-
-        .ph-bullet {
-          flex: none;
-          width: 6px;
-          height: 6px;
-          margin-top: 8px;
-          background: var(--ph-accent);
-        }
-
-        /* Portrait product frame — full injector on pure white */
-        .ph-media {
-          border: 1px solid var(--ph-line-mid);
-          background: #ffffff;
-          overflow: hidden;
-          width: 100%;
-          max-width: 320px;
-          margin-left: auto;
-          margin-right: auto;
-          aspect-ratio: 3 / 4;
-          min-height: 360px;
-          height: auto;
-          display: flex;
-          align-items: stretch;
-          justify-content: center;
-        }
-
-        @media (min-width: 900px) {
-          .ph-grid {
-            grid-template-columns: minmax(160px, 0.8fr) minmax(280px, 1.7fr) minmax(260px, 1.15fr);
-            gap: 40px 36px;
-            align-items: start;
-          }
-
-          .ph-brands {
-            position: sticky;
-            top: 96px;
-          }
-
-          .ph-media {
-            max-width: none;
-            margin: 0;
-            min-height: 420px;
-            aspect-ratio: 3 / 4;
-            height: auto;
-            max-height: 520px;
-          }
-        }
-
-        @media (min-width: 640px) and (max-width: 899px) {
-          .ph-grid {
-            grid-template-columns: 200px 1fr;
-            gap: 28px;
-          }
-
-          .ph-media {
-            grid-column: 1 / -1;
-            max-width: 280px;
-            min-height: 380px;
-            aspect-ratio: 3 / 4;
-          }
-        }
-
-        @media (max-width: 639px) {
-          .ph {
-            padding: 56px 16px 64px;
-          }
-
-          .ph-inner {
-            padding: 36px 20px 40px;
-          }
-
-          .ph-brands {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-          }
-
-          .ph-brand {
-            text-align: center;
-            padding: 12px 10px;
-            font-size: 12px;
-          }
-
-          .ph-media {
-            max-width: 260px;
-            min-height: 340px;
-            aspect-ratio: 3 / 4;
-          }
-        }
-
-        /* === Uslugi / Sümptomid (.su) — premium third block (light) === */
-        @keyframes su-pop {
-          from {
-            opacity: 0;
-            transform: translateY(6px);
-          }
-
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .su {
-          --su-bg: #F8F9FA;
-          --su-surface: #FFFFFF;
-          --su-ink: #171717;
-          --su-muted: #525252;
-          --su-dim: #737373;
-          --su-line: #E5E7EB;
-          --su-line-mid: #D1D5DB;
-          --su-accent: #E63946;
-          --su-accent-soft: rgba(230, 57, 70, 0.08);
-          --su-sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
-          --su-display: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
-          position: relative;
-          isolation: isolate;
-          background: var(--su-bg);
-          color: var(--su-ink);
-          font-family: var(--su-sans);
-          padding: 96px 24px 104px;
-          overflow: hidden;
-        }
-
-        .su-inner {
-          position: relative;
-          z-index: 1;
-          max-width: 1240px;
-          margin: 0 auto;
-          border-left: 1px solid var(--su-line-mid);
-          border-right: 1px solid var(--su-line-mid);
-          background: var(--su-surface);
-          padding: 64px 52px 72px;
-          box-sizing: border-box;
-        }
-
-        .su-header {
-          text-align: center;
-          max-width: 920px;
-          margin: 0 auto 44px;
-        }
-
-        .su-kicker {
-          display: block;
-          font-size: 11px;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          color: var(--su-dim);
-          font-weight: 500;
-          margin-bottom: 14px;
-        }
-
-        .su-title {
-          margin: 0;
-          font-family: var(--su-display);
-          font-size: clamp(26px, 3.8vw, 40px);
-          font-weight: 400;
-          letter-spacing: -0.015em;
-          text-transform: uppercase;
-          color: var(--su-ink);
-          line-height: 1.12;
-        }
-
-        .su-rule {
-          width: 64px;
-          height: 2px;
-          background: var(--su-accent);
-          margin: 22px auto 18px;
-        }
-
-        .su-lead {
-          margin: 0;
-          font-size: 15px;
-          line-height: 1.6;
-          color: var(--su-muted);
-          font-weight: 400;
-        }
-
-        .su-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 0;
-          border-top: 1px solid var(--su-line);
-        }
-
-        .su-item {
-          appearance: none;
-          -webkit-appearance: none;
-          display: flex;
-          align-items: flex-start;
-          gap: 14px;
-          width: 100%;
-          text-align: left;
-          margin: 0;
-          padding: 16px 14px;
-          border: none;
-          border-bottom: 1px solid var(--su-line);
-          border-radius: 0;
-          background: transparent;
-          color: var(--su-muted);
-          font-family: var(--su-sans);
-          font-size: 14.5px;
-          line-height: 1.5;
-          font-weight: 400;
-          cursor: pointer;
-          transition: background 0.18s ease, color 0.18s ease;
-        }
-
-        .su-item:hover {
-          background: #F3F4F6;
-          color: var(--su-ink);
-        }
-
-        .su-item.is-active {
-          background: var(--su-accent-soft);
-          color: var(--su-ink);
-        }
-
-        .su-item.is-active:hover {
-          background: rgba(230, 57, 70, 0.12);
-          color: var(--su-ink);
-        }
-
-        .su-check {
-          flex: none;
-          width: 18px;
-          height: 18px;
-          margin-top: 2px;
-          border: 1px solid #c4c4c4;
-          background: #ffffff;
-          color: #ffffff;
-          font-size: 11px;
-          font-weight: 700;
-          line-height: 16px;
-          text-align: center;
-          transition: background 0.15s ease, border-color 0.15s ease;
-        }
-
-        .su-item.is-active .su-check {
-          background: var(--su-accent);
-          border-color: var(--su-accent);
-        }
-
-        .su-banner {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 14px;
-          margin-top: 32px;
-          padding: 18px 22px;
-          border: 1px solid rgba(230, 57, 70, 0.28);
-          background: var(--su-accent-soft);
-          color: #9a1a24;
-          font-size: 15px;
-          font-weight: 600;
-          line-height: 1.45;
-          text-align: left;
-          animation: su-pop 0.28s ease;
-        }
-
-        .su-banner.is-urgent {
-          background: var(--su-accent);
-          border-color: var(--su-accent);
-          color: #ffffff;
-        }
-
-        .su-banner-count {
-          flex: none;
-          font-family: var(--su-display);
-          font-size: 28px;
-          font-weight: 400;
-          line-height: 1;
-          letter-spacing: 0.02em;
-          min-width: 1.2em;
-          text-align: center;
-        }
-
-        .su-cta-row {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          justify-content: center;
-          gap: 14px;
-          margin-top: 36px;
-        }
-
-        .su-cta-phone {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          min-width: min(100%, 340px);
-          padding: 14px 22px;
-          border: 1px solid var(--su-ink);
-          background: transparent;
-          color: var(--su-ink);
-          font-family: var(--su-sans);
-          font-size: 13px;
-          font-weight: 700;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          text-decoration: none;
-          transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
-        }
-
-        .su-cta-phone:hover {
-          border-color: var(--su-accent);
-          color: var(--su-accent);
-          background: var(--su-accent-soft);
-        }
-
-        .su .ft-maps-btn {
-          min-width: min(100%, 340px);
-          justify-content: center;
-        }
-
-        .su-foot {
-          margin-top: 28px;
-          text-align: center;
-          font-size: 11px;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          color: var(--su-dim);
-          font-weight: 500;
-        }
-
-        @media (min-width: 800px) {
-          .su-grid {
-            grid-template-columns: 1fr 1fr;
-            column-gap: 0;
-          }
-
-          .su-item:nth-child(odd) {
-            border-right: 1px solid var(--su-line);
-            padding-right: 22px;
-          }
-
-          .su-item:nth-child(even) {
-            padding-left: 22px;
-          }
-        }
-
-        @media (min-width: 1100px) {
-          .su-grid {
-            grid-template-columns: 1fr 1fr 1fr;
-          }
-
-          .su-item {
-            border-right: 1px solid var(--su-line);
-          }
-
-          .su-item:nth-child(odd),
-          .su-item:nth-child(even) {
-            padding-left: 16px;
-            padding-right: 16px;
-          }
-
-          .su-item:nth-child(3n) {
-            border-right: none;
-          }
-        }
-
-        @media (max-width: 639px) {
-          .su {
-            padding: 56px 16px 64px;
-          }
-
-          .su-inner {
-            padding: 36px 18px 44px;
-          }
-
-          .su-cta-phone,
-          .su .ft-maps-btn {
-            width: 100%;
-            min-width: 0;
-          }
-        }
-
-        /* === Diagnostika (.dg) — 4th block, split image + light copy === */
-        .dg {
-          --dg-bg: #F8F9FA;
-          --dg-surface: #FFFFFF;
-          --dg-panel: #FFFFFF;
-          --dg-ink: #171717;
-          --dg-muted: #525252;
-          --dg-dim: #737373;
-          --dg-line: #E5E7EB;
-          --dg-line-mid: #D1D5DB;
-          --dg-accent: #E63946;
-          --dg-sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
-          --dg-display: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
-          background: var(--dg-bg);
-          font-family: var(--dg-sans);
-          padding: 0 24px 96px;
-          color: var(--dg-ink);
-        }
-
-        .dg-inner {
-          max-width: 1240px;
-          margin: 0 auto;
-          border-left: 1px solid var(--dg-line-mid);
-          border-right: 1px solid var(--dg-line-mid);
-          background: var(--dg-surface);
-          overflow: hidden;
-        }
-
-        .dg-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          min-height: 0;
-        }
-
-        .dg-media {
-          position: relative;
-          min-height: 320px;
-          background: #EEF0F2;
-          overflow: hidden;
-          border-bottom: 1px solid var(--dg-line);
-        }
-
-        .dg-img {
-          display: block;
-          width: 100%;
-          height: 100%;
-          min-height: 320px;
-          object-fit: cover;
-          object-position: center center;
-        }
-
-        .dg-copy {
-          background: var(--dg-panel);
-          color: var(--dg-ink);
-          padding: 48px 32px 52px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          gap: 22px;
-          min-width: 0;
-          position: relative;
-        }
-
-        .dg-copy::before {
-          content: '';
-          position: absolute;
-          left: 0;
-          top: 0;
-          bottom: 0;
-          width: 3px;
-          background: var(--dg-accent);
-        }
-
-        .dg-mark {
-          width: 56px;
-          height: 56px;
-          flex: none;
-          border: 1px solid var(--dg-line-mid);
-          background: #ffffff;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-        }
-
-        .dg-mark::after {
-          content: '';
-          position: absolute;
-          inset: 6px;
-          border: 1px solid var(--dg-accent);
-        }
-
-        .dg-mark-dot {
-          width: 10px;
-          height: 10px;
-          background: var(--dg-accent);
-          position: relative;
-          z-index: 1;
-        }
-
-        .dg-kicker {
-          font-size: 11px;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          color: var(--dg-dim);
-          font-weight: 500;
-          margin: 0;
-        }
-
-        .dg-title {
-          margin: 0;
-          font-family: var(--dg-display);
-          font-size: clamp(26px, 3.4vw, 38px);
-          font-weight: 400;
-          letter-spacing: -0.015em;
-          text-transform: uppercase;
-          line-height: 1.08;
-          color: var(--dg-ink);
-          overflow-wrap: break-word;
-        }
-
-        .dg-rule {
-          width: 56px;
-          height: 2px;
-          background: var(--dg-accent);
-          flex: none;
-        }
-
-        .dg-text {
-          margin: 0;
-          max-width: 480px;
-          font-size: 15.5px;
-          line-height: 1.7;
-          color: var(--dg-muted);
-          font-weight: 400;
-        }
-
-        .dg-meta {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 10px 18px;
-          font-size: 11px;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: var(--dg-dim);
-          font-weight: 500;
-        }
-
-        .dg-meta span {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-        }
-
-        .dg-meta span::before {
-          content: '';
-          width: 5px;
-          height: 5px;
-          background: var(--dg-accent);
-          flex: none;
-        }
-
-        .dg-actions {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 12px;
-          align-items: center;
-          margin-top: 4px;
-        }
-
-        .dg .ft-maps-btn {
-          align-self: flex-start;
-        }
-
-        .dg-phone {
-          display: inline-flex;
-          align-items: baseline;
-          gap: 0.3em;
-          font-family: var(--dg-display);
-          font-size: 18px;
-          font-weight: 400;
-          letter-spacing: 0.02em;
-          color: #00B8D4;
-          text-decoration: none;
-          white-space: nowrap;
-        }
-
-        .dg-phone:hover {
-          color: #0096b0;
-        }
-
-        @media (min-width: 900px) {
-          .dg {
-            padding: 0 24px 104px;
-          }
-
-          .dg-grid {
-            grid-template-columns: 1fr 1fr;
-            min-height: 520px;
-          }
-
-          .dg-media {
-            position: relative;
-            min-height: 100%;
-            align-self: stretch;
-            border-bottom: none;
-            border-right: 1px solid var(--dg-line);
-          }
-
-          .dg-img {
-            position: absolute;
-            inset: 0;
-            min-height: 0;
-            height: 100%;
-            width: 100%;
-          }
-
-          .dg-copy {
-            padding: 64px 56px 68px;
-          }
-
-          .dg-copy::before {
-            display: none;
-          }
-        }
-
-        @media (max-width: 639px) {
-          .dg {
-            padding: 0 16px 64px;
-          }
-
-          .dg-copy {
-            padding: 36px 22px 44px;
-          }
-
-          .dg-actions {
-            flex-direction: column;
-            align-items: stretch;
-          }
-
-          .dg .ft-maps-btn {
-            width: 100%;
-            justify-content: center;
-          }
-        }
-
-        /* === Request form modal popup === */
-        .rf-modal {
-          position: fixed;
-          inset: 0;
-          z-index: 200;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 20px 16px;
-          box-sizing: border-box;
-        }
-
-        .rf-modal-backdrop {
-          position: absolute;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.72);
-          backdrop-filter: blur(5px);
-          -webkit-backdrop-filter: blur(5px);
-          cursor: pointer;
-        }
-
-        .rf-modal-panel {
-          position: relative;
-          z-index: 1;
-          width: min(960px, 100%);
-          max-height: min(92vh, 920px);
-          overflow: auto;
-          background: #FFFFFF;
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          box-shadow:
-            0 0 0 1px rgba(0, 0, 0, 0.35),
-            0 24px 80px rgba(0, 0, 0, 0.45),
-            0 8px 24px rgba(0, 0, 0, 0.25);
-          -webkit-overflow-scrolling: touch;
-        }
-
-        .rf-modal-close {
-          position: sticky;
-          top: 0;
-          float: right;
-          z-index: 5;
-          margin: 10px 10px 0 0;
-          width: 40px;
-          height: 40px;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          border: 1px solid #d4d4d4;
-          background: #FFFFFF;
-          color: #171717;
-          font-size: 26px;
-          line-height: 1;
-          cursor: pointer;
-          transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-        }
-
-        .rf-modal-close:hover {
-          background: #171717;
-          border-color: #171717;
-          color: #FFFFFF;
-        }
-
-        /* === RequestForm (.rf) — lives inside modal === */
+        /* === RequestForm (.rf) === */
         .rf {
           --rf-bg: #F8F9FA;
           --rf-surface: #FFFFFF;
@@ -1769,38 +769,13 @@
           --rf-red: #C41E2A;
           --rf-red-bright: #E63946;
           --rf-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
-          --rf-sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
+          --rf-sans: Inter, Helvetica Neue, Helvetica, Arial, sans-serif;
           position: relative;
           isolation: isolate;
-          background: var(--rf-surface);
+          background: var(--rf-bg);
           color: var(--rf-ink);
           font-family: var(--rf-sans);
-          padding: 12px 20px 28px;
-          clear: both;
-        }
-
-        .rf.rf--modal {
-          padding: 4px 20px 28px;
-        }
-
-        .rf.rf--modal .rf-inner {
-          max-width: none;
-          margin: 0;
-          border-left: none;
-          border-right: none;
-          padding: 0 8px 4px;
-        }
-
-        .rf.rf--modal .rf-header {
-          padding-top: 8px;
-        }
-
-        .rf.rf--modal .rf-title {
-          font-size: clamp(22px, 3.2vw, 32px);
-        }
-
-        .rf.rf--modal .rf-ticks {
-          display: none;
+          padding: 88px 24px 96px;
         }
 
         .rf-pattern-defs {
@@ -1961,8 +936,7 @@
           display: flex;
           flex-direction: column;
           gap: 14px;
-          max-width: 100%;
-          width: 100%;
+          max-width: 680px;
         }
 
         .rf-kicker {
@@ -1986,7 +960,7 @@
 
         .rf-lead {
           margin: 0;
-          max-width: 100%;
+          max-width: 640px;
           font-size: 15px;
           line-height: 1.65;
           color: var(--rf-muted);
@@ -2111,37 +1085,12 @@
           color: var(--rf-ink-soft);
         }
 
-        .rf-section-title {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          margin-bottom: 4px;
-        }
-
-        .rf-section-title .rf-panel-num {
-          font-size: 22px;
-          font-weight: 800;
-          line-height: 1;
-          letter-spacing: -0.03em;
-          color: transparent;
-          -webkit-text-stroke: 1px #888888;
-          flex-shrink: 0;
-        }
-
-        .rf-section-title .rf-panel-name {
-          font-size: 13px;
-          font-weight: 700;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          color: var(--rf-ink-soft);
-        }
-
         .rf-panel-body {
           position: relative;
-          padding: 20px 24px;
+          padding: 28px 28px 32px;
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: 18px;
           overflow: hidden;
         }
 
@@ -2286,30 +1235,13 @@
           flex-shrink: 0;
         }
 
-        .rf-vehicle-hint {
-          margin: 0 0 4px;
-          font-size: 13px;
-          line-height: 1.45;
-          color: var(--rf-muted);
-          font-weight: 500;
-        }
-
-        .rf-vehicle-grid,
         .rf-manual {
           display: grid;
-          grid-template-columns: 1fr;
-          gap: 18px 16px;
-          padding-top: 4px;
-        }
-
-        .rf-field--plate .rf-input--plate {
-          font-size: 18px;
-          padding: 14px 14px;
-          letter-spacing: 0.1em;
-        }
-
-        .rf-field--vin {
-          max-width: 420px;
+          grid-template-columns: 1fr 1fr;
+          gap: 18px 20px;
+          padding-top: 8px;
+          border-top: 1px solid var(--rf-line);
+          margin-top: 4px;
         }
 
         .rf-contact {
@@ -2543,85 +1475,18 @@
           filter: grayscale(0.15);
         }
 
-        .rf-split-row {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 16px;
-          margin-top: 16px;
-        }
-
         @media (min-width: 700px) {
-          .rf-split-row {
-            grid-template-columns: 1fr 1fr;
-            align-items: stretch;
-          }
-
-          .rf-split-row .rf-panel {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-          }
-
-          .rf-split-row .rf-panel-body {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-          }
-
-          .rf-split-row .rf-field {
-            display: flex;
-            flex-direction: column;
-          }
-
-          .rf-split-row .rf-input--area {
-            flex: 1;
-            min-height: 90px;
-          }
-
-          .rf-split-row .contact-grid {
-            grid-template-columns: 1fr !important;
-            gap: 10px;
-          }
-
           .contact-grid {
             grid-template-columns: 1fr 1fr 1fr !important;
-          }
-
-          .rf-vehicle-grid {
-            grid-template-columns: 1.3fr 1.2fr 0.8fr 0.7fr 0.7fr 1.2fr !important;
-            gap: 12px;
-            align-items: end;
-          }
-
-          .rf-field--vin {
-            grid-column: auto !important;
-            max-width: none !important;
           }
         }
 
         @media (max-width: 640px) {
-          .rf-modal {
-            padding: 10px 8px;
-            align-items: flex-start;
-          }
-
-          .rf-modal-panel {
-            max-height: 96vh;
-          }
-
-          .rf.rf--modal {
-            padding: 0 12px 20px;
-          }
-
-          .rf.rf--modal .rf-inner {
-            padding: 0 2px 4px;
-          }
-
-          .rf:not(.rf--modal) {
+          .rf {
             padding: 56px 16px 72px;
           }
 
-          .rf:not(.rf--modal) .rf-inner {
+          .rf-inner {
             padding: 0 20px 8px;
           }
 
@@ -2637,15 +1502,12 @@
             padding: 22px 18px 26px;
           }
 
-          .rf-manual,
-          .rf-vehicle-grid {
+          .rf-manual {
             grid-template-columns: 1fr !important;
           }
 
-          .rf-field--span2,
-          .rf-field--vin {
+          .rf-field--span2 {
             grid-column: span 1 !important;
-            max-width: none;
           }
 
           .rf-submit {
@@ -2676,7 +1538,7 @@
           --ss-red: #C41E2A;
           --ss-red-bright: #E63946;
           --ss-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
-          --ss-sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
+          --ss-sans: Inter, Helvetica Neue, Helvetica, Arial, sans-serif;
           position: relative;
           isolation: isolate;
           background: var(--ss-bg);
@@ -3247,7 +2109,7 @@
           --etb-red: #C41E2A;
           --etb-red-bright: #E63946;
           --etb-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
-          --etb-sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
+          --etb-sans: Inter, Helvetica Neue, Helvetica, Arial, sans-serif;
           --ft-mono: var(--etb-mono);
           background: var(--etb-bg);
           color: var(--etb-ink);
@@ -3495,151 +2357,6 @@
           aspect-ratio: 3/4;
         }
 
-        /* Personal / team banner — one photo + overlay copy */
-        .etb-personal {
-          margin-top: 8px;
-        }
-
-        .etb-personal-head {
-          text-align: center;
-          margin-bottom: 28px;
-        }
-
-        .etb-personal-kicker {
-          display: block;
-          font-size: 11px;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          color: var(--etb-dim);
-          font-weight: 500;
-          margin-bottom: 10px;
-        }
-
-        .etb-personal-title {
-          margin: 0;
-          font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
-          font-size: clamp(28px, 3.6vw, 40px);
-          font-weight: 400;
-          letter-spacing: -0.015em;
-          text-transform: uppercase;
-          color: var(--etb-ink);
-          line-height: 1.05;
-        }
-
-        .etb-personal-rule {
-          width: 56px;
-          height: 2px;
-          background: var(--etb-red-bright, #E63946);
-          margin: 16px auto 0;
-        }
-
-        .etb-personal-banner {
-          position: relative;
-          overflow: hidden;
-          border: 1px solid var(--etb-line-mid, #D1D5DB);
-          background: #111111;
-          min-height: 380px;
-        }
-
-        .etb-personal-img {
-          display: block;
-          width: 100%;
-          height: 100%;
-          min-height: 380px;
-          max-height: 520px;
-          object-fit: cover;
-          object-position: center 30%;
-        }
-
-        .etb-personal-scrim {
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-          background:
-            linear-gradient(90deg, rgba(10, 10, 10, 0.72) 0%, rgba(10, 10, 10, 0.35) 48%, rgba(10, 10, 10, 0.2) 100%),
-            linear-gradient(180deg, rgba(10, 10, 10, 0.15) 0%, rgba(10, 10, 10, 0.55) 100%);
-        }
-
-        .etb-personal-copy {
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          z-index: 2;
-          padding: 36px 32px 40px;
-          max-width: 720px;
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-        }
-
-        .etb-personal-headline {
-          margin: 0;
-          font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
-          font-size: clamp(22px, 3vw, 34px);
-          font-weight: 400;
-          letter-spacing: 0.02em;
-          text-transform: uppercase;
-          color: #ffffff;
-          line-height: 1.1;
-          text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
-        }
-
-        .etb-personal-text {
-          margin: 0;
-          font-size: clamp(14px, 1.4vw, 16px);
-          line-height: 1.65;
-          color: rgba(255, 255, 255, 0.9);
-          font-weight: 400;
-          max-width: 520px;
-          text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
-        }
-
-        .etb-personal-text+.etb-personal-text {
-          margin-top: 2px;
-        }
-
-        .etb-personal-meta {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 10px 18px;
-          margin-top: 8px;
-          font-size: 11px;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: rgba(255, 255, 255, 0.55);
-          font-weight: 500;
-        }
-
-        .etb-personal-meta span {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-        }
-
-        .etb-personal-meta span::before {
-          content: '';
-          width: 5px;
-          height: 5px;
-          background: var(--etb-red-bright, #E63946);
-          flex: none;
-        }
-
-        @media (max-width: 639px) {
-          .etb-personal-banner {
-            min-height: 320px;
-          }
-
-          .etb-personal-img {
-            min-height: 320px;
-            max-height: 420px;
-          }
-
-          .etb-personal-copy {
-            padding: 24px 18px 28px;
-          }
-        }
-
         .etb-card-media image-slot,
         .etb-card-media>image-slot,
         .etb-card-media>img {
@@ -3752,86 +2469,27 @@
           border-bottom: 1.5px solid;
         }
 
-        /* ── B2B banner — electric cyan (2nd accent, like phone) ── */
+        /* ── B2B anodized industrial banner ── */
         .etb-b2b {
-          --etb-cyan: #00B8D4;
-          --etb-cyan-bright: #33cceb;
           margin-top: 64px;
           margin-bottom: 0;
           position: relative;
           overflow: hidden;
-          border: 1px solid rgba(0, 40, 55, 0.45);
+          border: 1px solid rgba(0, 0, 0, 0.55);
           border-radius: 0;
           color: #F4F5F6;
           background:
-            linear-gradient(165deg, rgba(255, 255, 255, 0.1) 0%, transparent 42%),
-            radial-gradient(ellipse 90% 70% at 85% 15%, rgba(0, 184, 212, 0.35) 0%, transparent 55%),
-            linear-gradient(145deg, #021820 0%, #043a4a 28%, #00B8D4 58%, #027a92 82%, #011418 100%);
+            linear-gradient(165deg, rgba(255, 255, 255, 0.06) 0%, transparent 40%),
+            linear-gradient(145deg, #1A0305 0%, #4A0C11 45%, #2A0609 100%);
           box-shadow:
-            0 0 0 1px rgba(0, 184, 212, 0.18),
-            0 16px 48px rgba(0, 40, 60, 0.28),
-            inset 0 1px 0 rgba(255, 255, 255, 0.12),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.35),
-            0 0 40px rgba(0, 184, 212, 0.12);
-          padding: 0;
-          display: block;
-        }
-
-        .etb-b2b-layout {
-          display: grid;
-          grid-template-columns: 1fr;
-          min-height: 0;
-          position: relative;
-          z-index: 1;
-        }
-
-        .etb-b2b-content {
+            0 0 0 1px rgba(255, 80, 80, 0.08),
+            0 16px 48px rgba(0, 0, 0, 0.28),
+            inset 0 1px 0 rgba(255, 255, 255, 0.08),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+          padding: 44px 40px;
           display: flex;
           flex-direction: column;
           gap: 28px;
-          padding: 44px 40px;
-          min-width: 0;
-          position: relative;
-          z-index: 2;
-        }
-
-        .etb-b2b-media {
-          position: relative;
-          min-height: 240px;
-          overflow: hidden;
-          background: #021820;
-          z-index: 1;
-        }
-
-        .etb-b2b-img {
-          display: block;
-          width: 100%;
-          height: 100%;
-          min-height: 240px;
-          object-fit: cover;
-          object-position: center center;
-        }
-
-        /* Electric cyan wash over photo (reference look) */
-        .etb-b2b-media-tint {
-          position: absolute;
-          inset: 0;
-          z-index: 1;
-          pointer-events: none;
-          background:
-            linear-gradient(105deg, rgba(2, 24, 32, 0.55) 0%, rgba(0, 184, 212, 0.35) 45%, rgba(0, 184, 212, 0.55) 100%),
-            linear-gradient(180deg, rgba(2, 24, 32, 0.15) 0%, rgba(2, 24, 32, 0.35) 100%);
-          mix-blend-mode: multiply;
-        }
-
-        .etb-b2b-media::after {
-          content: '';
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-          background: linear-gradient(90deg, #00B8D4 0%, transparent 28%);
-          opacity: 0.45;
-          mix-blend-mode: soft-light;
         }
 
         .etb-b2b::before {
@@ -3839,13 +2497,13 @@
           position: absolute;
           inset: 0;
           pointer-events: none;
-          opacity: 0.14;
+          opacity: 0.12;
           background-image:
             repeating-linear-gradient(90deg,
               transparent 0px,
               transparent 1px,
-              rgba(255, 255, 255, 0.05) 1px,
-              rgba(255, 255, 255, 0.05) 2px,
+              rgba(255, 255, 255, 0.04) 1px,
+              rgba(255, 255, 255, 0.04) 2px,
               transparent 2px,
               transparent 4px);
         }
@@ -3875,8 +2533,8 @@
 
         .etb-b2b-sight span {
           position: absolute;
-          background: linear-gradient(145deg, #025a6e, #00B8D4, #01404f);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+          background: linear-gradient(145deg, #6e1219, #E63946, #4a0c11);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         .etb-b2b-sight--tl .h {
@@ -3954,10 +2612,10 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #00B8D4;
-          background: rgba(0, 184, 212, 0.14);
-          border: 1px solid rgba(0, 184, 212, 0.4);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 2px 8px rgba(0, 0, 0, 0.25);
+          color: #E63946;
+          background: rgba(230, 57, 70, 0.12);
+          border: 1px solid rgba(230, 57, 70, 0.35);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         .etb-b2b-icon svg {
@@ -4006,7 +2664,7 @@
           background: rgba(255, 255, 255, 0.06);
         }
 
-        /* Electric cyan CTA — matches phone accent */
+        /* Anodized red metallic engraved button — EXACT footer CTA */
         .etb .ft-maps-btn {
           align-self: flex-start;
           display: inline-flex;
@@ -4018,23 +2676,23 @@
           text-transform: uppercase;
           font-family: var(--ft-mono, monospace);
           text-decoration: none;
-          color: #f0fcff;
+          color: #fff5f5;
           padding: 10px 16px 9px;
           white-space: nowrap;
           position: relative;
           border: none;
           cursor: pointer;
           background:
-            linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, transparent 40%),
-            linear-gradient(145deg, #01404f 0%, #027a92 28%, #00B8D4 52%, #0490a8 75%, #012a35 100%);
+            linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, transparent 40%),
+            linear-gradient(145deg, #6e1219 0%, #C41E2A 30%, #E63946 50%, #9a1a24 75%, #4a0c11 100%);
           box-shadow:
-            0 0 0 1px rgba(0, 0, 0, 0.4),
-            inset 0 1px 0 rgba(255, 255, 255, 0.4),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.35),
-            inset 1px 0 0 rgba(255, 255, 255, 0.1),
-            0 2px 6px rgba(0, 40, 50, 0.4),
-            0 0 18px rgba(0, 184, 212, 0.25);
-          text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
+            0 0 0 1px rgba(0, 0, 0, 0.55),
+            inset 0 1px 0 rgba(255, 255, 255, 0.35),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+            inset 1px 0 0 rgba(255, 255, 255, 0.08),
+            0 2px 6px rgba(0, 0, 0, 0.45),
+            0 0 16px rgba(196, 30, 42, 0.15);
+          text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
           transition: box-shadow 0.2s ease, filter 0.2s ease;
           border-radius: 0;
         }
@@ -4050,11 +2708,11 @@
         .etb .ft-maps-btn:hover {
           filter: brightness(1.08);
           box-shadow:
-            0 0 0 1px rgba(0, 0, 0, 0.4),
-            inset 0 1px 0 rgba(255, 255, 255, 0.45),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.35),
-            0 3px 10px rgba(0, 40, 50, 0.45),
-            0 0 24px rgba(0, 184, 212, 0.4);
+            0 0 0 1px rgba(0, 0, 0, 0.55),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+            0 3px 10px rgba(0, 0, 0, 0.5),
+            0 0 22px rgba(230, 57, 70, 0.28);
         }
 
         /* Bottom spacing after B2B inside rail */
@@ -4070,59 +2728,6 @@
 
           .etb-grid--team {
             grid-template-columns: 1fr 1fr 1fr !important;
-          }
-
-          .etb-b2b-layout {
-            grid-template-columns: 1.15fr 0.95fr;
-            min-height: 420px;
-            align-items: stretch;
-          }
-
-          .etb-b2b-content {
-            padding: 48px 40px 48px 44px;
-            justify-content: center;
-          }
-
-          .etb-b2b-media {
-            min-height: 100%;
-            align-self: stretch;
-          }
-
-          .etb-b2b-img {
-            position: absolute;
-            inset: 0;
-            min-height: 0;
-            height: 100%;
-            width: 100%;
-          }
-
-          /* Soft blend from text panel into photo */
-          .etb-b2b-media::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 28%;
-            z-index: 2;
-            pointer-events: none;
-            background: linear-gradient(90deg, rgba(2, 24, 32, 0.85) 0%, transparent 100%);
-          }
-        }
-
-        @media (max-width: 799px) {
-          .etb-b2b-media {
-            order: -1;
-            min-height: 220px;
-            max-height: 280px;
-          }
-
-          .etb-b2b-img {
-            max-height: 280px;
-          }
-
-          .etb-b2b-content {
-            padding: 32px 22px 36px;
           }
         }
 
@@ -4178,39 +2783,73 @@
           color: inherit;
         }
 
-        /* ── Footer — light Swiss (only hero stays dark) ── */
+        /* ── Ultra-premium Swiss Modernism / Industrial Minimalism Footer ── */
         .ft-premium {
-          --ft-bg: #F8F9FA;
-          --ft-surface: #FFFFFF;
-          --ft-line: #E5E7EB;
-          --ft-line-mid: #D1D5DB;
-          --ft-muted: #737373;
-          --ft-dim: #8a8a8a;
-          --ft-text: #404040;
-          --ft-white: #171717;
-          --ft-ink: #171717;
+          --ft-bg: #0c0d0f;
+          --ft-surface: #101114;
+          --ft-line: rgba(255, 255, 255, 0.07);
+          --ft-line-mid: rgba(255, 255, 255, 0.11);
+          --ft-muted: #6b6e74;
+          --ft-dim: #8a8e96;
+          --ft-text: #e8e9eb;
+          --ft-white: #f4f5f6;
           --ft-red: #C41E2A;
           --ft-red-bright: #E63946;
           --ft-red-deep: #8B1520;
-          --ft-red-metal: linear-gradient(145deg, #6e1219 0%, #C41E2A 28%, #E63946 48%, #9a1a24 72%, #4a0c11 100%);
+          --ft-red-metal: linear-gradient(145deg, #5c0f16 0%, #C41E2A 28%, #E63946 48%, #8B1520 72%, #3d0a0e 100%);
           --ft-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
-          --ft-sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
+          --ft-sans: Helvetica Neue, Helvetica, Arial, sans-serif;
           position: relative;
           color: var(--ft-text);
           font-family: var(--ft-sans);
           overflow: hidden;
+          /* Deep graphite-black brushed titanium */
           background-color: var(--ft-bg);
-          background-image: none;
+          background-image:
+            /* Soft directional studio grazing light */
+            linear-gradient(165deg, rgba(255, 255, 255, 0.045) 0%, transparent 38%, transparent 62%, rgba(0, 0, 0, 0.35) 100%),
+            /* Horizontal micro-brush strokes */
+            repeating-linear-gradient(90deg,
+              transparent 0px,
+              transparent 1px,
+              rgba(255, 255, 255, 0.012) 1px,
+              rgba(255, 255, 255, 0.012) 2px,
+              transparent 2px,
+              transparent 4px,
+              rgba(0, 0, 0, 0.04) 4px,
+              rgba(0, 0, 0, 0.04) 5px),
+            /* Fine diagonal etch */
+            repeating-linear-gradient(0deg,
+              transparent 0px,
+              transparent 2px,
+              rgba(255, 255, 255, 0.008) 2px,
+              rgba(255, 255, 255, 0.008) 3px),
+            /* Base metal gradient */
+            linear-gradient(180deg, #12141a 0%, #0c0d0f 40%, #0a0b0d 100%);
           isolation: isolate;
-          border-top: 1px solid var(--ft-line);
         }
 
         .ft-premium::before {
-          display: none;
+          content: '';
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          z-index: 0;
+          opacity: 0.35;
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+          background-size: 180px 180px;
+          mix-blend-mode: overlay;
         }
 
         .ft-premium::after {
-          display: none;
+          content: '';
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          z-index: 0;
+          background:
+            radial-gradient(ellipse 80% 50% at 30% 0%, rgba(255, 255, 255, 0.04) 0%, transparent 55%),
+            radial-gradient(ellipse 40% 30% at 85% 100%, rgba(196, 30, 42, 0.04) 0%, transparent 50%);
         }
 
         /* Pattern layers from Patterns.dc.html (TEXTURE-01) — sit under .ft-inner */
@@ -4238,12 +2877,12 @@
 
         /* Subtle texture only — keep well below content hierarchy */
         .ft-pattern-bg--diamond {
-          opacity: 0.04;
+          opacity: 0.07;
         }
 
         .ft-pattern-bg--crosshair {
-          opacity: 0.03;
-          mix-blend-mode: multiply;
+          opacity: 0.05;
+          mix-blend-mode: soft-light;
         }
 
         .ft-inner {
@@ -4251,11 +2890,12 @@
           z-index: 1;
           max-width: 1240px;
           margin: 0 auto;
-          border-left: 1px solid var(--ft-line-mid);
-          border-right: 1px solid var(--ft-line-mid);
+          border-left: 1px solid var(--ft-line);
+          border-right: 1px solid var(--ft-line);
           padding: 0 44px;
-          background: var(--ft-surface);
-          box-shadow: none;
+          box-shadow:
+            inset 1px 0 0 rgba(255, 255, 255, 0.03),
+            inset -1px 0 0 rgba(0, 0, 0, 0.4);
         }
 
         /* Brand lockup — logo.html MARK-01 + wordmark (Logo.dc.html primary, reversed) */
@@ -4272,13 +2912,7 @@
           width: 64px;
           height: 64px;
           display: block;
-          filter: none;
-          color: #171717;
-        }
-
-        .ft-brand-mark rect,
-        .ft-brand-mark line {
-          stroke: currentColor;
+          filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
         }
 
         .ft-brand-text {
@@ -4294,10 +2928,12 @@
           font-weight: 800;
           letter-spacing: -0.02em;
           text-transform: uppercase;
-          color: var(--ft-ink);
+          color: var(--ft-white);
           line-height: 1.05;
           white-space: nowrap;
-          text-shadow: none;
+          text-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.06),
+            0 2px 8px rgba(0, 0, 0, 0.45);
         }
 
         .ft-brand-code {
@@ -4312,8 +2948,11 @@
           width: 48px;
           height: 2px;
           margin-top: 2px;
-          background: var(--ft-red-bright);
-          box-shadow: none;
+          background: var(--ft-red-metal);
+          box-shadow:
+            0 0 0 0.5px rgba(255, 180, 180, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.35),
+            0 0 10px rgba(196, 30, 42, 0.25);
         }
 
         /* Nested-frame corners on brand lockup */
@@ -4322,21 +2961,21 @@
           width: 10px;
           height: 10px;
           pointer-events: none;
-          opacity: 0.7;
+          opacity: 0.55;
         }
 
         .ft-brand-frame--tl {
           left: -8px;
           top: 20px;
-          border-left: 1.5px solid #171717;
-          border-top: 1.5px solid #171717;
+          border-left: 1.5px solid rgba(255, 255, 255, 0.35);
+          border-top: 1.5px solid rgba(255, 255, 255, 0.35);
         }
 
         .ft-brand-frame--br {
           right: 0;
           bottom: -4px;
-          border-right: 1.5px solid var(--ft-red-bright);
-          border-bottom: 1.5px solid var(--ft-red-bright);
+          border-right: 1.5px solid rgba(196, 30, 42, 0.55);
+          border-bottom: 1.5px solid rgba(196, 30, 42, 0.55);
         }
 
         /* Local pattern fill used inside cells (SVG absolute) */
@@ -4360,14 +2999,14 @@
         .ft-tick {
           width: 1px;
           height: 10px;
-          background: linear-gradient(180deg, rgba(23, 23, 23, 0.35) 0%, rgba(23, 23, 23, 0.08) 100%);
+          background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.06) 100%);
           margin-right: calc((100% - 28px) / 27);
-          box-shadow: none;
+          box-shadow: 0 0 0.5px rgba(255, 255, 255, 0.15);
         }
 
         .ft-tick:nth-child(7n) {
           height: 14px;
-          background: linear-gradient(180deg, rgba(23, 23, 23, 0.5) 0%, rgba(23, 23, 23, 0.1) 100%);
+          background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.08) 100%);
         }
 
         /* Machine-engraved serial metadata */
@@ -4388,8 +3027,8 @@
           font-family: var(--ft-mono);
           white-space: nowrap;
           font-weight: 400;
-          text-shadow: none;
-          opacity: 1;
+          text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
+          opacity: 0.85;
         }
 
         /* Map + location block */
@@ -4400,8 +3039,10 @@
           background: var(--ft-line-mid);
           margin-top: 36px;
           position: relative;
-          border: 1px solid var(--ft-line-mid);
-          box-shadow: none;
+          box-shadow:
+            0 0 0 1px rgba(0, 0, 0, 0.5),
+            0 12px 40px rgba(0, 0, 0, 0.35),
+            inset 0 1px 0 rgba(255, 255, 255, 0.04);
         }
 
         /* Intricate anodized red metal corner sights */
@@ -4549,7 +3190,9 @@
         }
 
         .ft-map-cell {
-          background: var(--ft-surface);
+          background:
+            linear-gradient(165deg, rgba(255, 255, 255, 0.03) 0%, transparent 40%),
+            var(--ft-surface);
           aspect-ratio: 16/10;
           position: relative;
           min-height: 280px;
@@ -4562,15 +3205,17 @@
           inset: 0;
           pointer-events: none;
           background-image:
-            linear-gradient(rgba(23, 23, 23, 0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(23, 23, 23, 0.04) 1px, transparent 1px);
+            linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
           background-size: 24px 24px;
-          opacity: 1;
+          opacity: 0.5;
           z-index: 1;
         }
 
         .ft-loc-cell {
-          background: var(--ft-surface);
+          background:
+            linear-gradient(200deg, rgba(255, 255, 255, 0.025) 0%, transparent 45%),
+            var(--ft-surface);
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -4592,7 +3237,7 @@
           right: 0;
           bottom: 0;
           width: 1px;
-          background: var(--ft-line);
+          background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.06), transparent);
           pointer-events: none;
           z-index: 2;
         }
@@ -4604,13 +3249,15 @@
           font-family: var(--ft-mono);
           white-space: nowrap;
           font-weight: 600;
-          color: var(--ft-red-bright);
-          background: none;
-          -webkit-background-clip: unset;
-          background-clip: unset;
-          -webkit-text-fill-color: unset;
+          /* High-contrast on dark surface: bright metal red, no deep mid-tones */
+          color: #ff6b73;
+          background: linear-gradient(180deg, #ffb3b8 0%, #ff6b73 40%, #E63946 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
           text-shadow: none;
-          filter: none;
+          filter:
+            drop-shadow(0 0 10px rgba(230, 57, 70, 0.45)) drop-shadow(0 1px 0 rgba(0, 0, 0, 0.6));
         }
 
         .ft-address {
@@ -4619,9 +3266,11 @@
           font-weight: 800;
           letter-spacing: -0.02em;
           text-transform: uppercase;
-          color: var(--ft-ink);
+          color: var(--ft-white);
           line-height: 1.15;
-          text-shadow: none;
+          text-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.06),
+            0 2px 8px rgba(0, 0, 0, 0.5);
         }
 
         /* Anodized red metallic engraved button */
@@ -4683,11 +3332,13 @@
           margin-top: 56px;
           border-top: 1px solid var(--ft-line);
           border-bottom: 1px solid var(--ft-line);
-          box-shadow: none;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
         }
 
         .ft-col {
-          background: var(--ft-surface);
+          background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, transparent 30%),
+            var(--ft-surface);
           padding: 42px 36px;
           display: flex;
           flex-direction: column;
@@ -4725,7 +3376,7 @@
           font-weight: 200;
           line-height: 1;
           color: transparent;
-          -webkit-text-stroke: 0.75px rgba(23, 23, 23, 0.08);
+          -webkit-text-stroke: 0.75px rgba(255, 255, 255, 0.07);
           letter-spacing: -0.04em;
           font-family: var(--ft-sans);
           user-select: none;
@@ -4733,7 +3384,7 @@
           right: 28px;
           top: 28px;
           z-index: 0;
-          opacity: 1;
+          opacity: 0.9;
           text-shadow: none;
           pointer-events: none;
         }
@@ -4744,15 +3395,15 @@
           font-family: var(--ft-mono);
           letter-spacing: 0.04em;
           text-decoration: none;
-          color: #00B8D4;
+          color: var(--ft-white);
           position: relative;
           z-index: 1;
-          text-shadow: none;
+          text-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
           transition: color 0.15s ease;
         }
 
         .ft-phone:hover {
-          color: #0096b0;
+          color: var(--ft-red-bright);
         }
 
         .ft-email {
@@ -4767,13 +3418,13 @@
         }
 
         .ft-email:hover {
-          color: var(--ft-ink);
+          color: var(--ft-white);
         }
 
         .ft-hours-main {
           font-size: 15.5px;
           font-weight: 700;
-          color: var(--ft-ink);
+          color: var(--ft-white);
           font-family: var(--ft-mono);
           letter-spacing: 0.06em;
           position: relative;
@@ -4793,7 +3444,7 @@
         .ft-company {
           font-size: 15.5px;
           font-weight: 700;
-          color: var(--ft-ink);
+          color: var(--ft-white);
           letter-spacing: 0.01em;
           position: relative;
           z-index: 1;
@@ -4808,7 +3459,7 @@
           z-index: 1;
         }
 
-        /* Bottom panel */
+        /* Bottom panel — luxury watch serial micro-type */
         .ft-bottom {
           display: flex;
           align-items: center;
@@ -4816,7 +3467,7 @@
           gap: 20px 28px;
           flex-wrap: wrap;
           padding: 28px 0 36px;
-          border-top: 1px solid var(--ft-line);
+          border-top: 1px solid transparent;
         }
 
         .ft-micro {
@@ -4826,8 +3477,8 @@
           color: var(--ft-muted);
           text-transform: uppercase;
           font-weight: 400;
-          opacity: 1;
-          text-shadow: none;
+          opacity: 0.75;
+          text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
         }
 
         .ft-micro-link {
@@ -4837,12 +3488,12 @@
           text-transform: uppercase;
           color: var(--ft-muted);
           text-decoration: none;
-          opacity: 1;
+          opacity: 0.75;
           transition: color 0.15s ease, opacity 0.15s ease;
         }
 
         .ft-micro-link:hover {
-          color: var(--ft-ink);
+          color: var(--ft-white);
           opacity: 1;
         }
 
@@ -4881,18 +3532,20 @@
         }
 
         .ft-lang-sep {
-          color: var(--ft-line-mid);
+          color: rgba(255, 255, 255, 0.12);
           font-weight: 400;
         }
 
         .ft-lang-active {
           color: var(--ft-red-bright) !important;
-          text-shadow: none;
+          text-shadow:
+            0 0 10px rgba(230, 57, 70, 0.35),
+            0 1px 0 rgba(0, 0, 0, 0.4);
         }
 
         .ft-lang-muted {
           color: var(--ft-muted) !important;
-          opacity: 1;
+          opacity: 0.65;
         }
 
         /* Precision scroll-to-top: red metal dot + minimal arrow */
@@ -4910,13 +3563,13 @@
           letter-spacing: 0.16em;
           text-transform: uppercase;
           color: var(--ft-muted);
-          opacity: 1;
+          opacity: 0.8;
           transition: opacity 0.15s ease, color 0.15s ease;
         }
 
         .ft-totop:hover {
           opacity: 1;
-          color: var(--ft-ink);
+          color: var(--ft-dim);
         }
 
         .ft-totop-arrow {
@@ -4924,16 +3577,22 @@
           height: 0;
           border-left: 3.5px solid transparent;
           border-right: 3.5px solid transparent;
-          border-bottom: 5px solid #525252;
-          filter: none;
+          border-bottom: 5px solid #7a7e86;
+          filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.4));
         }
 
         .ft-totop-dot {
           width: 7px;
           height: 7px;
           border-radius: 50%;
-          background: var(--ft-red-bright);
-          box-shadow: none;
+          background:
+            radial-gradient(circle at 32% 28%, #ff8a90 0%, #E63946 40%, #8B1520 75%, #3d0a0e 100%);
+          box-shadow:
+            inset 0 1px 1px rgba(255, 255, 255, 0.45),
+            inset 0 -1px 1px rgba(0, 0, 0, 0.5),
+            0 0 0 0.5px rgba(0, 0, 0, 0.6),
+            0 0 8px rgba(196, 30, 42, 0.35),
+            0 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .ft-totop-label {
@@ -4988,45 +3647,28 @@
             white-space: normal;
           }
         }
-
-        /* Display headings — Fjalla One (single weight; avoid faux-bold) */
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        .hero-title,
-        .rf-title,
-        .ss-title,
-        .ss-card-title,
-        .ss-sym-title,
-        .etb-title,
-        .etb-b2b-title,
-        .etb-personal-title,
-        .etb-personal-headline,
-        .ph-title,
-        .ph-brand-title,
-        .su-title,
-        .dg-title {
-          font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
-          font-weight: 400;
-        }
       </style>
     </helmet>
 
     <!-- ══ Header.dc.html ══ -->
-    <header class="hd {{ hdThemeClass }}">
-      <!-- Utility bar: address + hours (phone moved to main bar) -->
+    <header class="hd">
+      <!-- Utility bar (no patterns) -->
       <div class="hd-utility">
         <div class="hd-utility-inner">
-          <span class="hd-utility-addr">Paavli 4, 10412 Tallinn</span>
-          <span class="hd-utility-hours">{{ hoursText }}</span>
+          <div class="hd-utility-left">
+            <a href="tel:+37256702700" class="hd-utility-link">+372 567 02 700</a>
+            <span class="hd-utility-addr addr-item">Paavli 4, 10412 Tallinn</span>
+          </div>
+          <div class="hd-utility-right">
+            <span class="hd-utility-dot" aria-hidden="true"></span>
+            <span class="hd-utility-hours">{{ hoursText }}</span>
+          </div>
         </div>
       </div>
 
       <!-- Main bar -->
       <div class="hd-main">
+        <!-- Logo mark (logo.html MARK-01) + wordmark -->
         <a href="/" class="hd-brand" aria-label="Auto Diislikeskus — home">
           <svg class="hd-logo" viewBox="0 0 100 100" width="40" height="40" aria-hidden="true" focusable="false">
             <rect x="10" y="10" width="80" height="80" fill="none" stroke="#171717" stroke-width="4"></rect>
@@ -5038,39 +3680,30 @@
             <line x1="80" y1="50" x2="90" y2="50" stroke="#171717" stroke-width="3"></line>
             <circle cx="50" cy="50" r="13" fill="#E63946"></circle>
           </svg>
-          <span class="hd-brand-name">AUTO DIISLIKESKUS</span>
+          <span class="hd-brand-text">
+            <span class="hd-brand-name">AUTO DIISLIKESKUS</span>
+            <span class="hd-brand-code">/ DIISLIKESKUS-01</span>
+          </span>
         </a>
 
         <nav class="hd-nav main-nav" aria-label="Primary">
           <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="4">
-            <a href="{{ link.href }}" class="hd-nav-link">{{ link.label }}</a>
+            <a href="{{ link.href }}" class="hd-nav-link">
+              <span class="hd-nav-num">{{ link.num }}</span>{{ link.label }}
+            </a>
           </sc-for>
         </nav>
 
         <div class="hd-actions">
-          <a href="tel:+37256702700" class="hd-phone" aria-label="Call +372 567 02 700">
-            <span class="hd-phone-label">Tel.</span>
-            <span>+372 567 02 700</span>
-          </a>
-
-          <div class="hd-lang lang-switch">
-            <button type="button" class="hd-lang-toggle" onClick="{{ toggleLangMenu }}" aria-expanded="{{ langOpen }}"
-              aria-haspopup="listbox" aria-label="Language">
-              <span>{{ langCode }}</span>
-              <span class="hd-lang-caret" aria-hidden="true">▾</span>
-            </button>
-            <sc-if value="{{ langOpen }}" hint-placeholder-val="{{ false }}">
-              <div class="hd-lang-menu" role="listbox" aria-label="Choose language">
-                <button type="button" class="hd-lang-item {{ langItemClassEE }}" onClick="{{ setLangEE }}" role="option"
-                  aria-selected="{{ isEE }}">EE — Eesti</button>
-                <button type="button" class="hd-lang-item {{ langItemClassRU }}" onClick="{{ setLangRU }}" role="option"
-                  aria-selected="{{ isRU }}">RU — Русский</button>
-                <button type="button" class="hd-lang-item {{ langItemClassEN }}" onClick="{{ setLangEN }}" role="option"
-                  aria-selected="{{ isEN }}">EN — English</button>
-                <button type="button" class="hd-lang-item {{ langItemClassFI }}" onClick="{{ setLangFI }}" role="option"
-                  aria-selected="{{ isFI }}">FI — Suomi</button>
-              </div>
-            </sc-if>
+          <div class="hd-lang lang-switch" role="group" aria-label="Language">
+            <button type="button" onClick="{{ setLangEE }}" class="hd-lang-btn" style="color:{{ langActiveColorEE }};"
+              aria-pressed="{{ isEE }}">EE</button>
+            <span class="hd-lang-sep" aria-hidden="true">|</span>
+            <button type="button" onClick="{{ setLangRU }}" class="hd-lang-btn" style="color:{{ langActiveColorRU }};"
+              aria-pressed="{{ isRU }}">RU</button>
+            <span class="hd-lang-sep" aria-hidden="true">|</span>
+            <button type="button" onClick="{{ setLangEN }}" class="hd-lang-btn" style="color:{{ langActiveColorEN }};"
+              aria-pressed="{{ isEN }}">EN</button>
           </div>
 
           <button type="button" onClick="{{ toggleMenu }}" aria-label="Menu" class="hd-burger hamburger">
@@ -5099,31 +3732,24 @@
           </div>
           <nav class="hd-drawer-nav" aria-label="Mobile">
             <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="4">
-              <a href="{{ link.href }}" onClick="{{ toggleMenu }}" class="hd-drawer-link">{{ link.label }}</a>
+              <a href="{{ link.href }}" onClick="{{ toggleMenu }}" class="hd-drawer-link">
+                <span class="hd-nav-num">{{ link.num }}</span>{{ link.label }}
+              </a>
             </sc-for>
           </nav>
           <div class="hd-drawer-foot">
-            <a href="tel:+37256702700" class="hd-drawer-phone">Tel. +372 567 02 700</a>
+            <a href="tel:+37256702700" class="hd-drawer-phone">+372 567 02 700</a>
             <span class="hd-drawer-meta">Paavli 4, 10412 Tallinn</span>
             <span class="hd-drawer-meta">{{ hoursText }}</span>
-            <div class="hd-lang hd-lang--drawer" style="display:block;">
-              <button type="button" class="hd-lang-toggle" onClick="{{ toggleLangMenu }}" aria-expanded="{{ langOpen }}"
-                aria-haspopup="listbox" aria-label="Language">
-                <span>{{ langCode }}</span>
-                <span class="hd-lang-caret" aria-hidden="true">▾</span>
-              </button>
-              <sc-if value="{{ langOpen }}" hint-placeholder-val="{{ false }}">
-                <div class="hd-lang-menu" role="listbox">
-                  <button type="button" class="hd-lang-item {{ langItemClassEE }}" onClick="{{ setLangEE }}">EE —
-                    Eesti</button>
-                  <button type="button" class="hd-lang-item {{ langItemClassRU }}" onClick="{{ setLangRU }}">RU —
-                    Русский</button>
-                  <button type="button" class="hd-lang-item {{ langItemClassEN }}" onClick="{{ setLangEN }}">EN —
-                    English</button>
-                  <button type="button" class="hd-lang-item {{ langItemClassFI }}" onClick="{{ setLangFI }}">FI —
-                    Suomi</button>
-                </div>
-              </sc-if>
+            <div class="hd-lang hd-lang--drawer" role="group" aria-label="Language">
+              <button type="button" onClick="{{ setLangEE }}" class="hd-lang-btn"
+                style="color:{{ langActiveColorEE }};">EE</button>
+              <span class="hd-lang-sep" aria-hidden="true">|</span>
+              <button type="button" onClick="{{ setLangRU }}" class="hd-lang-btn"
+                style="color:{{ langActiveColorRU }};">RU</button>
+              <span class="hd-lang-sep" aria-hidden="true">|</span>
+              <button type="button" onClick="{{ setLangEN }}" class="hd-lang-btn"
+                style="color:{{ langActiveColorEN }};">EN</button>
             </div>
           </div>
         </div>
@@ -5143,19 +3769,19 @@
               <span class="hero-badge-text">DIISELMOOTORITE DIAGNOSTIKA- JA REMONDIKESKUS</span>
             </div>
 
-            <h1 class="hero-title">AUTO<br />DIISLIKESKUS</h1>
+            <h1 class="hero-title">AUTO<br />DIISLI-<br />KESKUS</h1>
             <span class="hero-title-rule" aria-hidden="true"></span>
 
             <p class="hero-lead">{{ subtitleText }}</p>
 
             <div class="hero-cta-row">
-              <button type="button" onClick="{{ openForm }}" class="ft-maps-btn">
+              <a href="#request-form" onClick="{{ scrollToForm }}" class="ft-maps-btn">
                 [ {{ ctaText }} → ]
-              </button>
-              <!-- <div class="hero-cta-meta-block">
+              </a>
+              <div class="hero-cta-meta-block">
                 <span class="hero-cta-meta">RESPONSE / 24H</span>
                 <span class="hero-cta-meta-rule" aria-hidden="true"></span>
-              </div> -->
+              </div>
             </div>
           </div>
 
@@ -5169,463 +3795,558 @@
               <svg class="hero-fill" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
                 <defs>
                   <pattern id="h-media-hatch" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
-                    <line x1="0" y1="16" x2="16" y2="0" stroke="#ffffff" stroke-width="1.5"></line>
+                    <line x1="0" y1="16" x2="16" y2="0" stroke="#171717" stroke-width="1.5"></line>
                   </pattern>
                 </defs>
-                <rect width="100%" height="100%" fill="#0a0a0a"></rect>
-                <rect width="100%" height="100%" fill="url(#h-media-hatch)" opacity="0.05"></rect>
+                <rect width="100%" height="100%" fill="#EEF0F2"></rect>
+                <rect width="100%" height="100%" fill="url(#h-media-hatch)" opacity="0.06"></rect>
               </svg>
             </div>
 
             <span class="hero-media-corner hero-media-corner--tl" aria-hidden="true"></span>
             <span class="hero-media-corner hero-media-corner--br" aria-hidden="true"></span>
+
+            <!-- Green zone content → image placeholder (replaces FIG. 01 · WORKSHOP) -->
+            <div class="hero-media-meta">
+              <span class="hero-media-meta-item">[ ESTONIA / TALLINN — N59°26' E24°45' ]</span>
+              <span class="hero-media-meta-sep" aria-hidden="true">·</span>
+              <span class="hero-media-meta-item">[ DIESEL FUEL SYSTEMS SERVICE ]</span>
+            </div>
           </div>
         </div>
 
-      </div>
-    </section>
-
-
-    <!-- ══ Pihustite Blokk — Common Rail injectors ══ -->
-    <section class="ph" id="pihustid" aria-labelledby="ph-heading">
-      <div class="ph-inner">
-        <header class="ph-header">
-          <span class="ph-kicker">[ COMMON RAIL / PIHUSTID ]</span>
-          <h2 class="ph-title" id="ph-heading">Common Rail pihustite testimine<br />ja remont Tallinnas</h2>
-          <div class="ph-rule" aria-hidden="true"></div>
-        </header>
-
-        <div class="ph-grid">
-          <div class="ph-brands" role="tablist" aria-label="Pihusti brändid">
-            <button type="button" class="ph-brand {{ brandClass0 }}" onClick="{{ selectBrand0 }}" role="tab"
-              aria-selected="{{ isBrand0 }}">DENSO PIHUSTID</button>
-            <button type="button" class="ph-brand {{ brandClass1 }}" onClick="{{ selectBrand1 }}" role="tab"
-              aria-selected="{{ isBrand1 }}">BOSCH PIHUSTID</button>
-            <button type="button" class="ph-brand {{ brandClass2 }}" onClick="{{ selectBrand2 }}" role="tab"
-              aria-selected="{{ isBrand2 }}">DELPHI PIHUSTID</button>
-            <button type="button" class="ph-brand {{ brandClass3 }}" onClick="{{ selectBrand3 }}" role="tab"
-              aria-selected="{{ isBrand3 }}">SIEMENS PIHUSTID</button>
-          </div>
-
-          <div class="ph-copy">
-            <sc-if value="{{ isBrand0 }}" hint-placeholder-val="{{ true }}">
-              <div class="ph-panel ph-fade">
-                <h3 class="ph-brand-title">DENSO PIHUSTID</h3>
-                <ul class="ph-list">
-                  <sc-for list="{{ pointsDenso }}" as="point" hint-placeholder-count="9">
-                    <li class="ph-item">
-                      <span class="ph-bullet" aria-hidden="true"></span>
-                      <span>{{ point }}</span>
-                    </li>
-                  </sc-for>
-                </ul>
+        <!-- Bottom specs — clean, no pattern islands -->
+        <div class="hero-specs">
+          <sc-for list="{{ specs }}" as="spec" hint-placeholder-count="3">
+            <div class="hero-spec">
+              <span class="hero-spec-num">{{ spec.num }}</span>
+              <div class="hero-spec-copy">
+                <span class="hero-spec-label">{{ spec.label }}</span>
+                <span class="hero-spec-detail">{{ spec.detail }}</span>
               </div>
-            </sc-if>
-            <sc-if value="{{ isBrand1 }}" hint-placeholder-val="{{ false }}">
-              <div class="ph-panel ph-fade">
-                <h3 class="ph-brand-title">BOSCH PIHUSTID</h3>
-                <ul class="ph-list">
-                  <sc-for list="{{ pointsBosch }}" as="point" hint-placeholder-count="9">
-                    <li class="ph-item">
-                      <span class="ph-bullet" aria-hidden="true"></span>
-                      <span>{{ point }}</span>
-                    </li>
-                  </sc-for>
-                </ul>
-              </div>
-            </sc-if>
-            <sc-if value="{{ isBrand2 }}" hint-placeholder-val="{{ false }}">
-              <div class="ph-panel ph-fade">
-                <h3 class="ph-brand-title">DELPHI PIHUSTID</h3>
-                <ul class="ph-list">
-                  <sc-for list="{{ pointsDelphi }}" as="point" hint-placeholder-count="9">
-                    <li class="ph-item">
-                      <span class="ph-bullet" aria-hidden="true"></span>
-                      <span>{{ point }}</span>
-                    </li>
-                  </sc-for>
-                </ul>
-              </div>
-            </sc-if>
-            <sc-if value="{{ isBrand3 }}" hint-placeholder-val="{{ false }}">
-              <div class="ph-panel ph-fade">
-                <h3 class="ph-brand-title">SIEMENS PIHUSTID</h3>
-                <ul class="ph-list">
-                  <sc-for list="{{ pointsSiemens }}" as="point" hint-placeholder-count="7">
-                    <li class="ph-item">
-                      <span class="ph-bullet" aria-hidden="true"></span>
-                      <span>{{ point }}</span>
-                    </li>
-                  </sc-for>
-                </ul>
-              </div>
-            </sc-if>
-          </div>
-
-          <div class="ph-media">
-            <sc-if value="{{ isBrand0 }}" hint-placeholder-val="{{ true }}">
-              <div class="ph-fade">
-                <img class="ph-img" src="./img/denso-1.jpg" alt="DENSO pihusti" width="480" height="640" />
-              </div>
-            </sc-if>
-            <sc-if value="{{ isBrand1 }}" hint-placeholder-val="{{ false }}">
-              <div class="ph-fade">
-                <img class="ph-img" src="./img/bosch-1.jpg" alt="BOSCH pihusti" width="480" height="640" />
-              </div>
-            </sc-if>
-            <sc-if value="{{ isBrand2 }}" hint-placeholder-val="{{ false }}">
-              <div class="ph-fade">
-                <img class="ph-img" src="./img/delphy-1.jpg" alt="DELPHI pihusti" width="480" height="640" />
-              </div>
-            </sc-if>
-            <sc-if value="{{ isBrand3 }}" hint-placeholder-val="{{ false }}">
-              <div class="ph-fade">
-                <img class="ph-img" src="./img/siemens-1.jpg" alt="SIEMENS pihusti" width="480" height="640" />
-              </div>
-            </sc-if>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══ Uslugi / Sümptomite Blokk — premium symptoms ══ -->
-    <section class="su" id="uslugi" aria-labelledby="su-heading">
-      <div class="su-inner">
-        <header class="su-header">
-          <span class="su-kicker">[ TEENUSED / SÜMPTOMID ]</span>
-          <h2 class="su-title" id="su-heading">
-            Pakkumine on aktuaalne diisel autoomanikele,<br />
-            kelle sõidukitel esineb järgmiseid probleeme
-          </h2>
-          <div class="su-rule" aria-hidden="true"></div>
-          <p class="su-lead">Vali oma auto probleemid — saad kohe teada, kas vajad kontrolli.</p>
-        </header>
-
-        <div class="su-grid" role="group" aria-label="Sümptomid">
-          <sc-for list="{{ symptomItems }}" as="it" hint-placeholder-count="11">
-            <button type="button" class="su-item {{ it.activeClass }}" onClick="{{ it.onToggle }}"
-              aria-pressed="{{ it.isActive }}">
-              <span class="su-check" aria-hidden="true">{{ it.checkMark }}</span>
-              <span>{{ it.text }}</span>
-            </button>
+            </div>
           </sc-for>
         </div>
 
-        <sc-if value="{{ hasSymptomSelection }}" hint-placeholder-val="{{ false }}">
-          <div class="su-banner {{ bannerUrgentClass }}" role="status">
-            <span class="su-banner-count">{{ selectedCount }}</span>
-            <span>{{ bannerText }}</span>
+      </div>
+    </section>
+
+
+    <!-- ══ RequestForm.dc.html ══ -->
+    <section id="request-form" class="rf">
+      <!-- TEXTURE-01 pattern defs (Patterns.dc.html) — geometry fixed -->
+      <svg class="rf-pattern-defs" aria-hidden="true" focusable="false">
+        <defs>
+          <pattern id="rf-diamond-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <rect x="10" y="10" width="20" height="20" fill="none" stroke="#171717" stroke-width="1.5"
+              transform="rotate(45 20 20)"></rect>
+          </pattern>
+          <pattern id="rf-tick-rows" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="0" x2="0" y2="10" stroke="#171717" stroke-width="2"></line>
+            <line x1="12" y1="0" x2="12" y2="6" stroke="#171717" stroke-width="1"></line>
+          </pattern>
+          <pattern id="rf-dot-matrix" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+            <circle cx="4" cy="4" r="2.5" fill="#E63946"></circle>
+          </pattern>
+          <pattern id="rf-crosshair" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="30" x2="60" y2="30" stroke="#d4d4d4" stroke-width="1"></line>
+            <line x1="30" y1="0" x2="30" y2="60" stroke="#d4d4d4" stroke-width="1"></line>
+            <circle cx="30" cy="30" r="3" fill="#171717"></circle>
+          </pattern>
+          <pattern id="rf-diagonal-hatch" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="16" x2="16" y2="0" stroke="#171717" stroke-width="1.5"></line>
+          </pattern>
+          <pattern id="rf-frame-stack" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
+            <rect x="4" y="4" width="40" height="40" fill="none" stroke="#171717" stroke-width="1"></rect>
+            <rect x="14" y="14" width="20" height="20" fill="none" stroke="#E63946" stroke-width="1"></rect>
+          </pattern>
+          <!-- Dark surface variants -->
+          <pattern id="rf-hatch-dark" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="16" x2="16" y2="0" stroke="#ffffff" stroke-width="1.5"></line>
+          </pattern>
+          <pattern id="rf-crosshair-dark" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="30" x2="60" y2="30" stroke="#ffffff" stroke-width="1"></line>
+            <line x1="30" y1="0" x2="30" y2="60" stroke="#ffffff" stroke-width="1"></line>
+            <circle cx="30" cy="30" r="3" fill="#E63946"></circle>
+          </pattern>
+          <pattern id="rf-ticks-dark" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="0" x2="0" y2="10" stroke="#ffffff" stroke-width="2"></line>
+            <line x1="12" y1="0" x2="12" y2="6" stroke="#ffffff" stroke-width="1"></line>
+          </pattern>
+        </defs>
+      </svg>
+
+      <div class="rf-inner">
+
+        <!-- Precision tick rail -->
+        <div class="rf-ticks" aria-hidden="true">
+          <sc-for list="{{ ticks }}" as="t" hint-placeholder-count="28">
+            <span class="rf-tick"></span>
+          </sc-for>
+        </div>
+
+        <!-- Top index bar -->
+        <div class="rf-index">
+          <span class="rf-index-left">[ 05 / SERVICE REQUEST ]</span>
+          <span class="rf-index-right">FORM · PRECISION QUOTE</span>
+        </div>
+
+        <!-- ══ HEADER ══ -->
+        <header class="rf-header">
+          <div class="rf-island rf-island--header" aria-hidden="true">
+            <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="xMaxYMin slice">
+              <rect width="100%" height="100%" fill="url(#rf-diamond-grid)"></rect>
+            </svg>
+          </div>
+          <div class="rf-island rf-island--header-frame" aria-hidden="true">
+            <svg class="rf-fill" width="100%" height="100%">
+              <rect width="100%" height="100%" fill="url(#rf-frame-stack)"></rect>
+            </svg>
+          </div>
+
+          <div class="rf-header-row">
+            <div class="rf-header-copy">
+              <span class="rf-kicker">[ HINNAPAKKUMINE / ЦЕНОВОЕ ПРЕДЛОЖЕНИЕ ]</span>
+              <h2 class="rf-title">HINNAPAKKUMISE PÄRING<br />ЗАПРОС ЦЕНОВОГО ПРЕДЛОЖЕНИЯ</h2>
+              <p class="rf-lead">Sisestage sõiduki registreerimisnumber või kirjeldage probleemi kiirhinnangu saamiseks.
+                / Укажите номер авто или опишите симптомы для быстрой оценки стоимости.</p>
+            </div>
+            <div class="rf-header-meta">
+              <span class="rf-loc">EST. PRECISION — TALLINN</span>
+              <span class="rf-loc-rule" aria-hidden="true"></span>
+              <span class="rf-meta-line">RESPONSE &lt; 30 MIN</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Breath: gauge ticks -->
+        <div class="rf-breath" aria-hidden="true">
+          <div class="rf-breath-band">
+            <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
+              <rect width="100%" height="100%" fill="url(#rf-tick-rows)"></rect>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Success state -->
+        <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
+          <div class="rf-success">
+            <div class="rf-success-pat" aria-hidden="true">
+              <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
+                <rect width="100%" height="100%" fill="url(#rf-hatch-dark)"></rect>
+              </svg>
+            </div>
+            <div class="rf-success-pat rf-success-pat--cross" aria-hidden="true">
+              <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
+                <rect width="100%" height="100%" fill="url(#rf-crosshair-dark)"></rect>
+              </svg>
+            </div>
+            <span class="rf-cta-corner rf-cta-corner--tl" aria-hidden="true"></span>
+            <span class="rf-cta-corner rf-cta-corner--br" aria-hidden="true"></span>
+            <span class="rf-success-code">[ OK · 200 ]</span>
+            <p class="rf-success-text">PÄRING SAADETUD! VÕTAME ÜHENDUST 30 MIN JOOKSUL<br /><span
+                class="rf-success-ru">ЗАПРОС ОТПРАВЛЕН — СВЯЖЕМСЯ В ТЕЧЕНИЕ 30 МИНУТ</span></p>
           </div>
         </sc-if>
 
-        <div class="su-cta-row">
-          <button type="button" class="ft-maps-btn" onClick="{{ openForm }}">
-            [ PANGE AEG KINNI · E-POST → ]
-          </button>
-          <a href="tel:+37256702700" class="su-cta-phone">
-            Tel. +372 567 02 700
-          </a>
-        </div>
-        <p class="su-foot">Diagnostika · Common Rail · TNVD · Tallinn</p>
-      </div>
-    </section>
+        <sc-if value="{{ isFormVisible }}" hint-placeholder-val="{{ true }}">
+          <form class="rf-form" onSubmit="{{ handleSubmit }}">
 
-
-    <!-- ══ Diagnostika Blokk — computer diagnostics ══ -->
-    <section class="dg" id="diagnostika" aria-labelledby="dg-heading">
-      <div class="dg-inner">
-        <div class="dg-grid">
-          <div class="dg-media">
-            <img class="dg-img" src="./img/IMG_DIAGNOST.JPG" alt="Auto kompuuterdiagnostika" width="960" height="720" />
-          </div>
-          <div class="dg-copy">
-            <span class="dg-mark" aria-hidden="true">
-              <span class="dg-mark-dot"></span>
-            </span>
-            <p class="dg-kicker">[ DIAGNOSTIKA / ELECTRONICS ]</p>
-            <h2 class="dg-title" id="dg-heading">Auto<br />kompuuterdiagnostika</h2>
-            <span class="dg-rule" aria-hidden="true"></span>
-            <p class="dg-text">
-              See on auto erinevate elektrooniliste süsteemide ja täitemehhanismide testimine eesmärgiga
-              välja selgitada rikked. Kompuuterdiagnostika tulemuste põhjal võtab meister vastu otsuse
-              selle kohta, millistele süsteemidele/sõlmedele on vajalik remont ja milline.
-            </p>
-            <div class="dg-meta" aria-hidden="true">
-              <span>OBD / ECU</span>
-              <span>Common Rail</span>
-              <span>Live data</span>
-            </div>
-            <div class="dg-actions">
-              <button type="button" class="ft-maps-btn" onClick="{{ openForm }}">
-                [ PANGE AEG KINNI → ]
-              </button>
-              <a href="tel:+37256702700" class="dg-phone" aria-label="Call +372 567 02 700">
-                <span>Tel.</span>
-                <span>+372 567 02 700</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══ RequestForm popup ══ -->
-    <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ false }}">
-      <div class="rf-modal" role="dialog" aria-modal="true" aria-labelledby="rf-modal-title">
-        <div class="rf-modal-backdrop" onClick="{{ closeForm }}" aria-hidden="true"></div>
-        <div class="rf-modal-panel">
-          <button type="button" class="rf-modal-close" onClick="{{ closeForm }}"
-            aria-label="Close form">&times;</button>
-          <section id="request-form" class="rf rf--modal">
-            <!-- TEXTURE-01 pattern defs (Patterns.dc.html) — geometry fixed -->
-            <svg class="rf-pattern-defs" aria-hidden="true" focusable="false">
-              <defs>
-                <pattern id="rf-diamond-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <rect x="10" y="10" width="20" height="20" fill="none" stroke="#171717" stroke-width="1.5"
-                    transform="rotate(45 20 20)"></rect>
-                </pattern>
-                <pattern id="rf-tick-rows" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-                  <line x1="0" y1="0" x2="0" y2="10" stroke="#171717" stroke-width="2"></line>
-                  <line x1="12" y1="0" x2="12" y2="6" stroke="#171717" stroke-width="1"></line>
-                </pattern>
-                <pattern id="rf-dot-matrix" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
-                  <circle cx="4" cy="4" r="2.5" fill="#E63946"></circle>
-                </pattern>
-                <pattern id="rf-crosshair" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-                  <line x1="0" y1="30" x2="60" y2="30" stroke="#d4d4d4" stroke-width="1"></line>
-                  <line x1="30" y1="0" x2="30" y2="60" stroke="#d4d4d4" stroke-width="1"></line>
-                  <circle cx="30" cy="30" r="3" fill="#171717"></circle>
-                </pattern>
-                <pattern id="rf-diagonal-hatch" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
-                  <line x1="0" y1="16" x2="16" y2="0" stroke="#171717" stroke-width="1.5"></line>
-                </pattern>
-                <pattern id="rf-frame-stack" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
-                  <rect x="4" y="4" width="40" height="40" fill="none" stroke="#171717" stroke-width="1"></rect>
-                  <rect x="14" y="14" width="20" height="20" fill="none" stroke="#E63946" stroke-width="1"></rect>
-                </pattern>
-                <!-- Dark surface variants -->
-                <pattern id="rf-hatch-dark" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
-                  <line x1="0" y1="16" x2="16" y2="0" stroke="#ffffff" stroke-width="1.5"></line>
-                </pattern>
-                <pattern id="rf-crosshair-dark" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-                  <line x1="0" y1="30" x2="60" y2="30" stroke="#ffffff" stroke-width="1"></line>
-                  <line x1="30" y1="0" x2="30" y2="60" stroke="#ffffff" stroke-width="1"></line>
-                  <circle cx="30" cy="30" r="3" fill="#E63946"></circle>
-                </pattern>
-                <pattern id="rf-ticks-dark" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-                  <line x1="0" y1="0" x2="0" y2="10" stroke="#ffffff" stroke-width="2"></line>
-                  <line x1="12" y1="0" x2="12" y2="6" stroke="#ffffff" stroke-width="1"></line>
-                </pattern>
-              </defs>
-            </svg>
-
-            <div class="rf-inner">
-
-              <!-- Precision tick rail -->
-              <div class="rf-ticks" aria-hidden="true">
-                <sc-for list="{{ ticks }}" as="t" hint-placeholder-count="28">
-                  <span class="rf-tick"></span>
-                </sc-for>
+            <!-- ── 01 VEHICLE ── -->
+            <section class="rf-panel">
+              <div class="rf-panel-head">
+                <div class="rf-island rf-island--label" aria-hidden="true">
+                  <svg class="rf-fill" width="100%" height="100%">
+                    <rect width="100%" height="100%" fill="url(#rf-crosshair)"></rect>
+                  </svg>
+                </div>
+                <span class="rf-panel-num">01</span>
+                <div class="rf-panel-titles">
+                  <span class="rf-panel-code">[ VEHICLE IDENTIFICATION ]</span>
+                  <span class="rf-panel-name">SÕIDUKI ANDMED / ДАННЫЕ АВТО</span>
+                </div>
               </div>
 
-              <!-- Top index bar -->
-              <!-- <div class="rf-index">
-                <span class="rf-index-left">[ 05 / SERVICE REQUEST ]</span>
-                <span class="rf-index-right">FORM · PRECISION QUOTE</span>
-              </div> -->
-
-              <!-- ══ HEADER ══ -->
-              <header class="rf-header">
-                <div class="rf-header-row">
-                  <div class="rf-header-copy">
-                    <!-- <span class="rf-kicker">[ HINNAPAKKUMINE / ЦЕНОВОЕ ПРЕДЛОЖЕНИЕ ]</span> -->
-                    <h2 class="rf-title" id="rf-modal-title">ЗАПРОС ЦЕНОВОГО ПРЕДЛОЖЕНИЯ</h2>
-                    <p class="rf-lead">Заполните форму ниже, чтобы отправить запрос на расчет стоимости. Мы обычно
-                      отвечаем на
-                      обращения в течение одного рабочего дня. Пожалуйста, заполните все обязательные поля
-                      (отмечены *), чтобы мы могли подготовить для Вас максимально точное ценовое предложение. Укажите
-                      номер авто или опишите симптомы для быстрой оценки стоимости.</p>
-                  </div>
-                  <!-- <div class="rf-header-meta">
-                    <span class="rf-loc">EST. PRECISION — TALLINN</span>
-                    <span class="rf-loc-rule" aria-hidden="true"></span>
-                    <span class="rf-meta-line">RESPONSE &lt; 30 MIN</span>
-                  </div> -->
+              <div class="rf-panel-body">
+                <div class="rf-island rf-island--panel" aria-hidden="true">
+                  <svg class="rf-fill" width="100%" height="100%">
+                    <rect width="100%" height="100%" fill="url(#rf-diagonal-hatch)"></rect>
+                  </svg>
                 </div>
-              </header>
 
-
-
-              <!-- Success state -->
-              <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
-                <div class="rf-success">
-                  <div class="rf-success-pat" aria-hidden="true">
-                    <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
-                      <rect width="100%" height="100%" fill="url(#rf-hatch-dark)"></rect>
-                    </svg>
+                <div class="rf-field rf-field--hero">
+                  <label class="rf-label" for="rf-plate">AUTO REGISTREERIMISNUMBER / ГОС. НОМЕР АВТО</label>
+                  <div class="rf-plate-wrap">
+                    <span class="rf-plate-badge" aria-hidden="true">EE</span>
+                    <input id="rf-plate" class="rf-input rf-input--plate" value="{{ plate }}"
+                      onChange="{{ onPlateChange }}" placeholder="123 ABC" autocomplete="off" spellcheck="false" />
                   </div>
-                  <div class="rf-success-pat rf-success-pat--cross" aria-hidden="true">
-                    <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
-                      <rect width="100%" height="100%" fill="url(#rf-crosshair-dark)"></rect>
-                    </svg>
-                  </div>
-                  <span class="rf-cta-corner rf-cta-corner--tl" aria-hidden="true"></span>
-                  <span class="rf-cta-corner rf-cta-corner--br" aria-hidden="true"></span>
-                  <span class="rf-success-code">[ OK · 200 ]</span>
-                  <p class="rf-success-text">PÄRING SAADETUD! VÕTAME ÜHENDUST 30 MIN JOOKSUL<br /><span
-                      class="rf-success-ru">ЗАПРОС ОТПРАВЛЕН — СВЯЖЕМСЯ В ТЕЧЕНИЕ 30 МИНУТ</span></p>
                 </div>
-              </sc-if>
 
-              <sc-if value="{{ isFormVisible }}" hint-placeholder-val="{{ true }}">
-                <form class="rf-form" onSubmit="{{ handleSubmit }}">
+                <button type="button" class="rf-link-toggle" onClick="{{ toggleManual }}">
+                  <span class="rf-link-arrow" aria-hidden="true">→</span>
+                  Kui sõidukil puudub registreerimisnumber, palume sisestada sõiduki andmed
+                </button>
 
-                  <!-- ── 01 VEHICLE ── -->
-                  <section class="rf-panel">
-                    <div class="rf-panel-body">
-                      <div class="rf-section-title">
-                        <span class="rf-panel-num">01</span>
-                        <span class="rf-panel-name">SÕIDUKI ANDMED / ДАННЫЕ АВТО</span>
-                      </div>
-
-                      <p class="rf-vehicle-hint">
-                        Если автомобиль не имеет регистрационного номера в автомобиле, укажите данные автомобиля
-                      </p>
-
-                      <div class="rf-vehicle-grid manual-grid">
-                        <div class="rf-field rf-field--plate">
-                          <label class="rf-label" for="rf-plate">Рег. номер</label>
-                          <div class="rf-plate-wrap">
-                            <span class="rf-plate-badge" aria-hidden="true">EE</span>
-                            <input id="rf-plate" class="rf-input rf-input--plate" value="{{ plate }}"
-                              onChange="{{ onPlateChange }}" placeholder="123 ABC" autocomplete="off"
-                              spellcheck="false" />
-                          </div>
-                        </div>
-
-                        <div class="rf-field">
-                          <label class="rf-label" for="rf-make">Марка и модель</label>
-                          <input id="rf-make" class="rf-input" value="{{ make }}" onChange="{{ onMakeChange }}"
-                            placeholder="BMW 530d" />
-                        </div>
-
-                        <div class="rf-field">
-                          <label class="rf-label" for="rf-year">Год выпуска</label>
-                          <input id="rf-year" class="rf-input" value="{{ year }}" onChange="{{ onYearChange }}"
-                            placeholder="2018" inputmode="numeric" />
-                        </div>
-
-                        <div class="rf-field">
-                          <label class="rf-label" for="rf-displacement">Объем</label>
-                          <input id="rf-displacement" class="rf-input" value="{{ displacement }}"
-                            onChange="{{ onDisplacementChange }}" placeholder="3.0" />
-                        </div>
-
-                        <div class="rf-field">
-                          <label class="rf-label" for="rf-power">Мощность</label>
-                          <input id="rf-power" class="rf-input" value="{{ power }}" onChange="{{ onPowerChange }}"
-                            placeholder="195 kW" />
-                        </div>
-
-                        <div class="rf-field rf-field--vin">
-                          <label class="rf-label" for="rf-vin">Идентификационный код</label>
-                          <input id="rf-vin" class="rf-input" value="{{ vin }}" onChange="{{ onVinChange }}"
-                            placeholder="WBAXXXXXX" autocomplete="off" spellcheck="false" />
-                        </div>
-                      </div>
+                <sc-if value="{{ showManualFields }}" hint-placeholder-val="{{ false }}">
+                  <div class="rf-manual manual-grid">
+                    <div class="rf-field">
+                      <label class="rf-label" for="rf-make">MARK JA MUDEL / МАРКА И МОДЕЛЬ</label>
+                      <input id="rf-make" class="rf-input" value="{{ make }}" onChange="{{ onMakeChange }}"
+                        placeholder="e.g. BMW 530d" />
                     </div>
-                  </section>
-
-                  <div class="rf-split-row">
-                    <!-- ── 02 PROBLEM ── -->
-                    <section class="rf-panel">
-                      <div class="rf-panel-body">
-                        <div class="rf-section-title">
-                          <span class="rf-panel-num">02</span>
-                          <span class="rf-panel-name">SÜMPTOMID / СИМПТОМЫ</span>
-                        </div>
-
-                        <div class="rf-field" style="flex:1;">
-                          <label class="rf-label" for="rf-desc">PROBLEEMI KIRJELDUS JA SÜMPTOMID / ОПИСАНИЕ ПРОБЛЕМЫ И
-                            СИМПТОМЫ</label>
-                          <textarea id="rf-desc" class="rf-input rf-input--area" value="{{ description }}"
-                            onChange="{{ onDescriptionChange }}" rows="5"
-                            placeholder="Mootor ei käivitu, must suits kiirendamisel, võimsuse kadu... / Машина плохо заводится, черный дым, плавают обороты..."></textarea>
-                        </div>
-                      </div>
-                    </section>
-
-                    <!-- ── 03 CONTACT ── -->
-                    <section class="rf-panel">
-                      <div class="rf-panel-body">
-                        <div class="rf-section-title">
-                          <span class="rf-panel-num">03</span>
-                          <span class="rf-panel-name">KONTAKTANDMED / КОНТАКТЫ</span>
-                        </div>
-                        <div class="rf-contact contact-grid">
-                          <div class="rf-field">
-                            <label class="rf-label" for="rf-name">NIMI / ИМЯ</label>
-                            <input id="rf-name" class="rf-input" value="{{ name }}" onChange="{{ onNameChange }}"
-                              required="{{ true }}" autocomplete="name" />
-                          </div>
-                          <div class="rf-field">
-                            <label class="rf-label" for="rf-phone">TELEFON / ТЕЛЕФОН</label>
-                            <input id="rf-phone" class="rf-input" type="tel" value="{{ phone }}"
-                              onChange="{{ onPhoneChange }}" required="{{ true }}" autocomplete="tel" />
-                          </div>
-                          <div class="rf-field">
-                            <label class="rf-label" for="rf-email">E-POST / EMAIL</label>
-                            <input id="rf-email" class="rf-input" type="email" value="{{ email }}"
-                              onChange="{{ onEmailChange }}" required="{{ true }}" autocomplete="email" />
-                          </div>
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-
-                  <!-- ── SUBMIT BAR ── -->
-                  <div class="rf-submit">
-                    <span class="rf-cta-corner rf-cta-corner--tl" aria-hidden="true"></span>
-                    <span class="rf-cta-corner rf-cta-corner--br" aria-hidden="true"></span>
-
-                    <div class="rf-submit-copy">
-                      <span class="rf-submit-kicker">[ SECURE TRANSMISSION ]</span>
-                      <p class="rf-submit-note">Vastame tööpäevadel 30 minuti jooksul. / Ответим в рабочее время в
-                        течение 30
-                        минут.</p>
+                    <div class="rf-field">
+                      <label class="rf-label" for="rf-year">VÄLJALASKEAASTA / ГОД ВЫПУСКА</label>
+                      <input id="rf-year" class="rf-input" value="{{ year }}" onChange="{{ onYearChange }}"
+                        placeholder="e.g. 2018" />
                     </div>
-
-                    <div class="rf-submit-actions">
-                      <button type="submit" class="ft-maps-btn" disabled="{{ isSubmitting }}">
-                        {{ submitLabel }}
-                      </button>
-                      <sc-if value="{{ isError }}" hint-placeholder-val="{{ false }}">
-                        <span class="rf-error">[ ERROR — PALUN TÄITKE NÕUTUD VÄLJAD ]</span>
-                      </sc-if>
+                    <div class="rf-field rf-field--span2">
+                      <label class="rf-label" for="rf-engine">MOOTORI TÜÜP / КОД ИЛИ ОБЪЕМ ДВИГАТЕЛЯ</label>
+                      <input id="rf-engine" class="rf-input" value="{{ engine }}" onChange="{{ onEngineChange }}"
+                        placeholder="e.g. 3.0D / 195kW" />
                     </div>
                   </div>
+                </sc-if>
+              </div>
+            </section>
 
-                </form>
-              </sc-if>
+            <!-- Breath short -->
+            <div class="rf-breath rf-breath--tight" aria-hidden="true">
+              <div class="rf-breath-band rf-breath-band--short">
+                <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
+                  <rect width="100%" height="100%" fill="url(#rf-tick-rows)"></rect>
+                </svg>
+              </div>
+            </div>
 
-              <!-- Bottom tick rail -->
-              <div class="rf-ticks rf-ticks--bottom" aria-hidden="true">
-                <sc-for list="{{ ticks }}" as="t" hint-placeholder-count="28">
-                  <span class="rf-tick"></span>
-                </sc-for>
+            <!-- ── 02 PROBLEM ── -->
+            <section class="rf-panel">
+              <div class="rf-panel-head">
+                <div class="rf-island rf-island--label" aria-hidden="true">
+                  <svg class="rf-fill" width="100%" height="100%">
+                    <rect width="100%" height="100%" fill="url(#rf-frame-stack)"></rect>
+                  </svg>
+                </div>
+                <span class="rf-panel-num">02</span>
+                <div class="rf-panel-titles">
+                  <span class="rf-panel-code">[ PROBLEM DESCRIPTION ]</span>
+                  <span class="rf-panel-name">SÜMPTOMID / СИМПТОМЫ</span>
+                </div>
               </div>
 
+              <div class="rf-panel-body">
+                <div class="rf-island rf-island--dots" aria-hidden="true">
+                  <svg class="rf-fill" width="100%" height="100%">
+                    <rect width="100%" height="100%" fill="url(#rf-dot-matrix)"></rect>
+                  </svg>
+                </div>
+
+                <div class="rf-field">
+                  <label class="rf-label" for="rf-desc">PROBLEEMI KIRJELDUS JA SÜMPTOMID / ОПИСАНИЕ ПРОБЛЕМЫ И
+                    СИМПТОМЫ</label>
+                  <textarea id="rf-desc" class="rf-input rf-input--area" value="{{ description }}"
+                    onChange="{{ onDescriptionChange }}" rows="5"
+                    placeholder="Mootor ei käivitu, must suits kiirendamisel, võimsuse kadu... / Машина плохо заводится, черный дым, плавают обороты..."></textarea>
+                </div>
+              </div>
+            </section>
+
+            <!-- Breath short -->
+            <div class="rf-breath rf-breath--tight" aria-hidden="true">
+              <div class="rf-breath-band rf-breath-band--short">
+                <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
+                  <rect width="100%" height="100%" fill="url(#rf-tick-rows)"></rect>
+                </svg>
+              </div>
             </div>
-          </section>
+
+            <!-- ── 03 CONTACT ── -->
+            <section class="rf-panel">
+              <div class="rf-panel-head">
+                <div class="rf-island rf-island--label" aria-hidden="true">
+                  <svg class="rf-fill" width="100%" height="100%">
+                    <rect width="100%" height="100%" fill="url(#rf-crosshair)"></rect>
+                  </svg>
+                </div>
+                <span class="rf-panel-num">03</span>
+                <div class="rf-panel-titles">
+                  <span class="rf-panel-code">[ CONTACT INFORMATION ]</span>
+                  <span class="rf-panel-name">KONTAKTANDMED / КОНТАКТЫ</span>
+                </div>
+              </div>
+
+              <div class="rf-panel-body">
+                <div class="rf-contact contact-grid">
+                  <div class="rf-field">
+                    <label class="rf-label" for="rf-name">NIMI / ИМЯ</label>
+                    <input id="rf-name" class="rf-input" value="{{ name }}" onChange="{{ onNameChange }}"
+                      required="{{ true }}" autocomplete="name" />
+                  </div>
+                  <div class="rf-field">
+                    <label class="rf-label" for="rf-phone">TELEFON / ТЕЛЕФОН</label>
+                    <input id="rf-phone" class="rf-input" type="tel" value="{{ phone }}" onChange="{{ onPhoneChange }}"
+                      required="{{ true }}" autocomplete="tel" />
+                  </div>
+                  <div class="rf-field">
+                    <label class="rf-label" for="rf-email">E-POST / EMAIL</label>
+                    <input id="rf-email" class="rf-input" type="email" value="{{ email }}"
+                      onChange="{{ onEmailChange }}" required="{{ true }}" autocomplete="email" />
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- ── SUBMIT BAR ── -->
+            <div class="rf-submit">
+              <div class="rf-submit-pat rf-submit-pat--hatch" aria-hidden="true">
+                <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
+                  <rect width="100%" height="100%" fill="url(#rf-hatch-dark)"></rect>
+                </svg>
+              </div>
+              <div class="rf-submit-pat rf-submit-pat--cross" aria-hidden="true">
+                <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
+                  <rect width="100%" height="100%" fill="url(#rf-crosshair-dark)"></rect>
+                </svg>
+              </div>
+              <div class="rf-submit-pat rf-submit-pat--ticks" aria-hidden="true">
+                <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
+                  <rect width="100%" height="100%" fill="url(#rf-ticks-dark)"></rect>
+                </svg>
+              </div>
+              <span class="rf-cta-corner rf-cta-corner--tl" aria-hidden="true"></span>
+              <span class="rf-cta-corner rf-cta-corner--br" aria-hidden="true"></span>
+
+              <div class="rf-submit-copy">
+                <span class="rf-submit-kicker">[ SECURE TRANSMISSION ]</span>
+                <p class="rf-submit-note">Vastame tööpäevadel 30 minuti jooksul. / Ответим в рабочее время в течение 30
+                  минут.</p>
+              </div>
+
+              <div class="rf-submit-actions">
+                <button type="submit" class="ft-maps-btn" disabled="{{ isSubmitting }}">
+                  {{ submitLabel }}
+                </button>
+                <sc-if value="{{ isError }}" hint-placeholder-val="{{ false }}">
+                  <span class="rf-error">[ ERROR — PALUN TÄITKE NÕUTUD VÄLJAD ]</span>
+                </sc-if>
+              </div>
+            </div>
+
+          </form>
+        </sc-if>
+
+        <!-- Bottom tick rail -->
+        <div class="rf-ticks rf-ticks--bottom" aria-hidden="true">
+          <sc-for list="{{ ticks }}" as="t" hint-placeholder-count="28">
+            <span class="rf-tick"></span>
+          </sc-for>
         </div>
+
       </div>
-    </sc-if>
+    </section>
 
 
 
     <!-- ══ ServicesSymptoms.dc.html ══ -->
+    <section class="ss" id="teenused-sumptoomid">
+      <!-- TEXTURE-01 pattern defs (from Patterns.dc.html) — geometry fixed -->
+      <svg class="ss-pattern-defs" aria-hidden="true" focusable="false">
+        <defs>
+          <pattern id="ss-diamond-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <rect x="10" y="10" width="20" height="20" fill="none" stroke="#171717" stroke-width="1.5"
+              transform="rotate(45 20 20)"></rect>
+          </pattern>
+          <pattern id="ss-tick-rows" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="0" x2="0" y2="10" stroke="#171717" stroke-width="2"></line>
+            <line x1="12" y1="0" x2="12" y2="6" stroke="#171717" stroke-width="1"></line>
+          </pattern>
+          <pattern id="ss-dot-matrix" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+            <circle cx="4" cy="4" r="2.5" fill="#E63946"></circle>
+          </pattern>
+          <pattern id="ss-crosshair" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="30" x2="60" y2="30" stroke="#d4d4d4" stroke-width="1"></line>
+            <line x1="30" y1="0" x2="30" y2="60" stroke="#d4d4d4" stroke-width="1"></line>
+            <circle cx="30" cy="30" r="3" fill="#171717"></circle>
+          </pattern>
+          <pattern id="ss-diagonal-hatch" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="16" x2="16" y2="0" stroke="#171717" stroke-width="1.5"></line>
+          </pattern>
+          <pattern id="ss-frame-stack" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
+            <rect x="4" y="4" width="40" height="40" fill="none" stroke="#171717" stroke-width="1"></rect>
+            <rect x="14" y="14" width="20" height="20" fill="none" stroke="#E63946" stroke-width="1"></rect>
+          </pattern>
+          <!-- Dark-surface variants for CTA -->
+          <pattern id="ss-hatch-dark" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="16" x2="16" y2="0" stroke="#ffffff" stroke-width="1.5"></line>
+          </pattern>
+          <pattern id="ss-crosshair-dark" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="30" x2="60" y2="30" stroke="#ffffff" stroke-width="1"></line>
+            <line x1="30" y1="0" x2="30" y2="60" stroke="#ffffff" stroke-width="1"></line>
+            <circle cx="30" cy="30" r="3" fill="#E63946"></circle>
+          </pattern>
+          <pattern id="ss-ticks-dark" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="0" x2="0" y2="10" stroke="#ffffff" stroke-width="2"></line>
+            <line x1="12" y1="0" x2="12" y2="6" stroke="#ffffff" stroke-width="1"></line>
+          </pattern>
+        </defs>
+      </svg>
+
+      <div class="ss-inner">
+
+        <!-- Precision tick rail -->
+        <div class="ss-ticks" aria-hidden="true">
+          <sc-for list="{{ ticks }}" as="t" hint-placeholder-count="28">
+            <span class="ss-tick"></span>
+          </sc-for>
+        </div>
+
+        <!-- ══ HEADER ══ -->
+        <header class="ss-header">
+          <!-- Diamond Grid island (top-right) -->
+          <div class="ss-island ss-island--header" aria-hidden="true">
+            <svg class="ss-fill" width="100%" height="100%" preserveAspectRatio="xMaxYMin slice">
+              <rect width="100%" height="100%" fill="url(#ss-diamond-grid)"></rect>
+            </svg>
+          </div>
+          <!-- Nested Frames badge (top-left accent) -->
+          <div class="ss-island ss-island--header-frame" aria-hidden="true">
+            <svg class="ss-fill" width="100%" height="100%">
+              <rect width="100%" height="100%" fill="url(#ss-frame-stack)"></rect>
+            </svg>
+          </div>
+
+          <div class="ss-header-row">
+            <div class="ss-header-copy">
+              <span class="ss-kicker">[ 02 / DIAGNOSTIKA JA REMONT ]</span>
+              <h2 class="ss-title">TEENUSED JA SÜMPTOOMID<br />УСЛУГИ И СИМПТОМЫ</h2>
+              <p class="ss-lead">Täpne diagnostika, komponentide taastamine ja süsteemi täielik hooldus ühes kohas. /
+                Точная диагностика, восстановление компонентов и комплексный ремонт в одном месте.</p>
+            </div>
+            <div class="ss-header-meta">
+              <span class="ss-loc">EST. PRECISION — TALLINN</span>
+              <span class="ss-loc-rule" aria-hidden="true"></span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Breath band: Gauge Ticks -->
+        <div class="ss-breath" aria-hidden="true">
+          <div class="ss-breath-band">
+            <svg class="ss-fill" width="100%" height="100%" preserveAspectRatio="none">
+              <rect width="100%" height="100%" fill="url(#ss-tick-rows)"></rect>
+            </svg>
+          </div>
+        </div>
+
+        <!-- ══ SERVICES 2×2 ══ -->
+        <div class="ss-block">
+          <div class="ss-block-label">
+            <div class="ss-island ss-island--label" aria-hidden="true">
+              <svg class="ss-fill" width="100%" height="100%">
+                <rect width="100%" height="100%" fill="url(#ss-crosshair)"></rect>
+              </svg>
+            </div>
+            <span class="ss-block-title">TEENUSED / УСЛУГИ</span>
+            <span class="ss-block-meta">04 CATEGORIES</span>
+          </div>
+
+          <div class="ss-grid ss-grid--services">
+            <sc-for list="{{ services }}" as="svc" hint-placeholder-count="4">
+              <article class="ss-card ss-card--service">
+                <!-- Industrial Hatch corner island -->
+                <div class="ss-island ss-island--card" aria-hidden="true">
+                  <svg class="ss-fill" width="100%" height="100%">
+                    <rect width="100%" height="100%" fill="url(#ss-diagonal-hatch)"></rect>
+                  </svg>
+                </div>
+                <!-- Red left rail -->
+                <span class="ss-card-rail" aria-hidden="true"></span>
+                <span class="ss-num ss-num--lg">{{ svc.num }}</span>
+                <h3 class="ss-card-title">{{ svc.title }}</h3>
+                <p class="ss-card-desc">{{ svc.desc }}</p>
+                <a href="#request-form" onClick="{{ scrollToForm }}" class="ft-maps-btn">[ LOE LÄHEMALT → ]</a>
+              </article>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- Breath band: short ticks (right-aligned) -->
+        <div class="ss-breath" aria-hidden="true">
+          <div class="ss-breath-band ss-breath-band--short">
+            <svg class="ss-fill" width="100%" height="100%" preserveAspectRatio="none">
+              <rect width="100%" height="100%" fill="url(#ss-tick-rows)"></rect>
+            </svg>
+          </div>
+        </div>
+
+        <!-- ══ SYMPTOMS 4-col ══ -->
+        <div class="ss-block ss-block--symptoms">
+          <div class="ss-block-label">
+            <div class="ss-island ss-island--label" aria-hidden="true">
+              <svg class="ss-fill" width="100%" height="100%">
+                <rect width="100%" height="100%" fill="url(#ss-frame-stack)"></rect>
+              </svg>
+            </div>
+            <span class="ss-block-title">SÜMPTOOMID / СИМПТОМЫ</span>
+            <span class="ss-block-meta">DIAGNOSTIC INDEX</span>
+          </div>
+
+          <div class="ss-grid ss-grid--symptoms">
+            <sc-for list="{{ symptoms }}" as="sym" hint-placeholder-count="4">
+              <article class="ss-card ss-card--symptom">
+                <!-- Indicator Dots island -->
+                <div class="ss-island ss-island--symptom" aria-hidden="true">
+                  <svg class="ss-fill" width="100%" height="100%">
+                    <rect width="100%" height="100%" fill="url(#ss-dot-matrix)"></rect>
+                  </svg>
+                </div>
+                <div class="ss-sym-top">
+                  <span class="ss-num ss-num--md">{{ sym.num }}</span>
+                  <span class="ss-sym-dot" aria-hidden="true"></span>
+                </div>
+                <h4 class="ss-sym-title">{{ sym.title }}</h4>
+                <p class="ss-sym-ru">{{ sym.ru }}</p>
+              </article>
+            </sc-for>
+          </div>
+        </div>
+
+        <!-- ══ CTA BANNER ══ -->
+        <div class="ss-cta">
+          <!-- Dark hatch + crosshair layers -->
+          <div class="ss-cta-pat ss-cta-pat--hatch" aria-hidden="true">
+            <svg class="ss-fill" width="100%" height="100%" preserveAspectRatio="none">
+              <rect width="100%" height="100%" fill="url(#ss-hatch-dark)"></rect>
+            </svg>
+          </div>
+          <div class="ss-cta-pat ss-cta-pat--cross" aria-hidden="true">
+            <svg class="ss-fill" width="100%" height="100%" preserveAspectRatio="none">
+              <rect width="100%" height="100%" fill="url(#ss-crosshair-dark)"></rect>
+            </svg>
+          </div>
+          <div class="ss-cta-pat ss-cta-pat--ticks" aria-hidden="true">
+            <svg class="ss-fill" width="100%" height="100%" preserveAspectRatio="none">
+              <rect width="100%" height="100%" fill="url(#ss-ticks-dark)"></rect>
+            </svg>
+          </div>
+
+          <span class="ss-cta-corner ss-cta-corner--tl" aria-hidden="true"></span>
+          <span class="ss-cta-corner ss-cta-corner--br" aria-hidden="true"></span>
+
+          <p class="ss-cta-text">Märkasite neid sümptomeid? Vältige kalleid mootorikahjustusi. / Заметили эти симптомы?
+            Не доводите до капитального ремонта двигателя.</p>
+          <a href="#request-form" onClick="{{ scrollToForm }}" class="ft-maps-btn">[ BRONEERI DIAGNOSTIKA → ]</a>
+        </div>
+
+        <!-- Bottom tick rail -->
+        <div class="ss-ticks ss-ticks--bottom" aria-hidden="true">
+          <sc-for list="{{ ticks }}" as="t" hint-placeholder-count="28">
+            <span class="ss-tick"></span>
+          </sc-for>
+        </div>
+
+      </div>
+    </section>
 
 
 
@@ -5748,28 +4469,41 @@
           </div>
         </div>
 
-        <!-- Personal / team — one full-width photo + copy -->
-        <div class="etb-block etb-personal" style="padding-top:32px;" id="personal" aria-labelledby="personal-heading">
-          <div class="etb-personal-head">
-            <span class="etb-personal-kicker">[ MEESKOND / KOMMAND ]</span>
-            <h3 class="etb-personal-title" id="personal-heading">Personal</h3>
-            <div class="etb-personal-rule" aria-hidden="true"></div>
-          </div>
-
-          <div class="etb-personal-banner">
-            <img class="etb-personal-img" src="./ad-img-stuff-4.jpg" alt="Auto Diislikeskus meeskond" width="1400"
-              height="700" />
-            <div class="etb-personal-scrim" aria-hidden="true"></div>
-            <div class="etb-personal-copy">
-              <h4 class="etb-personal-headline">Diplomeeritud spetsialistid</h4>
-              <p class="etb-personal-text">Meie spetsialistid on läbinud koolituse.</p>
-              <p class="etb-personal-text">Bosch sertifikaadid kinnitavad kõrget kvalifikatsiooni.</p>
-              <div class="etb-personal-meta" aria-hidden="true">
-                <span>Bosch certified</span>
-                <span>Common Rail</span>
-                <span>TNVD</span>
-              </div>
+        <!-- Team -->
+        <div class="etb-block" style="padding-top:32px;">
+          <div class="etb-block-label">
+            <!-- Indicator Dots mark beside label -->
+            <div class="etb-island etb-island--label" aria-hidden="true">
+              <svg class="etb-fill" preserveAspectRatio="none">
+                <rect width="100%" height="100%" fill="url(#etb-dot-matrix)"></rect>
+              </svg>
             </div>
+            <span class="etb-block-title">НАШИ СПЕЦИАЛИСТЫ</span>
+            <span class="etb-block-meta">[ КОМАНДА · СЕРТИФИЦИРОВАНЫ ]</span>
+          </div>
+          <div class="etb-grid etb-grid--team team-grid">
+            <sc-for list="{{ team }}" as="member" hint-placeholder-count="3">
+              <article class="etb-card">
+                <span class="etb-card-corner etb-card-corner--tl" aria-hidden="true"></span>
+                <span class="etb-card-corner etb-card-corner--br" aria-hidden="true"></span>
+                <div class="etb-card-media etb-card-media--team">
+                  <image-slot id="{{ member.slotId }}" shape="rect" placeholder="{{ member.placeholder }}"
+                    src="{{ member.src }}" credit="{{ member.credit }}" credit-href="{{ member.creditHref }}"
+                    fit="cover"></image-slot>
+                </div>
+                <div class="etb-card-body">
+                  <!-- Gauge ticks corner — whisper only -->
+                  <div class="etb-island etb-island--card" aria-hidden="true">
+                    <svg class="etb-fill" preserveAspectRatio="none">
+                      <rect width="100%" height="100%" fill="url(#etb-tick-rows)"></rect>
+                    </svg>
+                  </div>
+                  <span class="etb-member-name">[ {{ member.name }} ]</span>
+                  <span class="etb-member-role">{{ member.role }}</span>
+                  <span class="etb-member-exp">[ {{ member.experience }} ]</span>
+                </div>
+              </article>
+            </sc-for>
           </div>
         </div>
 
@@ -5782,69 +4516,62 @@
           </div>
         </div>
 
-        <!-- B2B — text left + workshop photo right -->
+        <!-- B2B — hatch + crosshair only on right third -->
         <aside class="etb-b2b" aria-labelledby="etb-b2b-heading">
+          <div class="etb-island etb-island--b2b" aria-hidden="true">
+
+          </div>
           <span class="etb-b2b-sight etb-b2b-sight--tl" aria-hidden="true"><span class="h"></span><span
               class="v"></span></span>
           <span class="etb-b2b-sight etb-b2b-sight--br" aria-hidden="true"><span class="h"></span><span
               class="v"></span></span>
 
-          <div class="etb-b2b-layout">
-            <div class="etb-b2b-content">
-              <span class="etb-b2b-kicker">[ B2B-СОТРУДНИЧЕСТВО ДЛЯ ПАРТНЁРОВ ]</span>
-              <h3 class="etb-b2b-title" id="etb-b2b-heading">
-                АВТОСЕРВИСАМ И АВТОПАРКАМ ПО ВСЕЙ ЭСТОНИИ
-              </h3>
+          <span class="etb-b2b-kicker">[ B2B-СОТРУДНИЧЕСТВО ДЛЯ ПАРТНЁРОВ ]</span>
+          <h3 class="etb-b2b-title" id="etb-b2b-heading">
+            АВТОСЕРВИСАМ И АВТОПАРКАМ ПО ВСЕЙ ЭСТОНИИ
+          </h3>
 
-              <div class="etb-b2b-list">
-                <sc-for list="{{ b2bPoints }}" as="pt" hint-placeholder-count="3">
-                  <div class="etb-b2b-row">
-                    <span class="etb-b2b-icon">
-                      <sc-if value="{{ pt.num === '01' }}">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                          stroke-linecap="round" stroke-linejoin="round">
-                          <rect x="1" y="4" width="13" height="11" rx="1" />
-                          <path d="M14 8h4.5l2.5 3v4h-7V8z" />
-                          <circle cx="4.5" cy="17.5" r="2" />
-                          <circle cx="17.5" cy="17.5" r="2" />
-                          <path d="M-1 9h2M-2 12h3" />
-                        </svg>
-                      </sc-if>
-                      <sc-if value="{{ pt.num === '02' }}">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                          stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M12 14l3-3" />
-                          <path d="M3.34 17a10 10 0 1 1 17.32 0" />
-                          <circle cx="12" cy="14" r="1.5" />
-                          <path d="M18 16a4 4 0 1 0 4 4" />
-                          <path d="M22 16v2h2" />
-                        </svg>
-                      </sc-if>
-                      <sc-if value="{{ pt.num === '03' }}">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                          stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                          <path d="m9 12 2 2 4-4" />
-                        </svg>
-                      </sc-if>
-                    </span>
-                    <p class="etb-b2b-text">{{ pt.text }}</p>
-                  </div>
-                </sc-for>
+          <div class="etb-b2b-list">
+            <sc-for list="{{ b2bPoints }}" as="pt" hint-placeholder-count="3">
+              <div class="etb-b2b-row">
+                <span class="etb-b2b-icon">
+                  <sc-if value="{{ pt.num === '01' }}">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <rect x="1" y="4" width="13" height="11" rx="1" />
+                      <path d="M14 8h4.5l2.5 3v4h-7V8z" />
+                      <circle cx="4.5" cy="17.5" r="2" />
+                      <circle cx="17.5" cy="17.5" r="2" />
+                      <path d="M-1 9h2M-2 12h3" />
+                    </svg>
+                  </sc-if>
+                  <sc-if value="{{ pt.num === '02' }}">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M12 14l3-3" />
+                      <path d="M3.34 17a10 10 0 1 1 17.32 0" />
+                      <circle cx="12" cy="14" r="1.5" />
+                      <path d="M18 16a4 4 0 1 0 4 4" />
+                      <path d="M22 16v2h2" />
+                    </svg>
+                  </sc-if>
+                  <sc-if value="{{ pt.num === '03' }}">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                      <path d="m9 12 2 2 4-4" />
+                    </svg>
+                  </sc-if>
+                </span>
+                <p class="etb-b2b-text">{{ pt.text }}</p>
               </div>
+            </sc-for>
+          </div>
 
-              <div class="etb-b2b-actions">
-                <a href="#request-form" onClick="{{ scrollToForm }}" class="ft-maps-btn">[ ОТПРАВИТЬ АГРЕГАТ В РЕМОНТ →
-                  ]</a>
-                <a href="https://pihustiremont.ee/adiesel.pdf" target="_blank" rel="noopener noreferrer"
-                  class="etb-btn-ghost">[ B2B-ПРАЙС И УСЛОВИЯ ]</a>
-              </div>
-            </div>
-
-            <div class="etb-b2b-media" aria-hidden="true">
-              <img class="etb-b2b-img" src="./ad-img-stuff-5.jpg" alt="" width="800" height="600" />
-              <div class="etb-b2b-media-tint"></div>
-            </div>
+          <div class="etb-b2b-actions">
+            <a href="#request-form" onClick="{{ scrollToForm }}" class="ft-maps-btn">[ ОТПРАВИТЬ АГРЕГАТ В РЕМОНТ →
+              ]</a>
+            <a href="#b2b-pricing" class="etb-btn-ghost">[ B2B-ПРАЙС И УСЛОВИЯ ]</a>
           </div>
         </aside>
 
@@ -5860,34 +4587,34 @@
       <!-- TEXTURE-01 pattern registry (from Patterns.dc.html) — dark-theme stroke values -->
       <svg class="ft-pattern-defs" aria-hidden="true" focusable="false">
         <defs>
-          <!-- Diamond Grid · tile 40px — light footer strokes -->
+          <!-- Diamond Grid · tile 40px — whisper strokes -->
           <pattern id="ft-diamond-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-            <rect x="10" y="10" width="20" height="20" fill="none" stroke="rgba(23,23,23,0.08)" stroke-width="1"
+            <rect x="10" y="10" width="20" height="20" fill="none" stroke="rgba(244,245,246,0.22)" stroke-width="1"
               transform="rotate(45 20 20)"></rect>
           </pattern>
           <!-- Gauge Ticks · tile 24px -->
           <pattern id="ft-tick-rows" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-            <line x1="0" y1="0" x2="0" y2="10" stroke="rgba(23,23,23,0.1)" stroke-width="1.5"></line>
-            <line x1="12" y1="0" x2="12" y2="6" stroke="rgba(23,23,23,0.06)" stroke-width="1"></line>
+            <line x1="0" y1="0" x2="0" y2="10" stroke="rgba(244,245,246,0.18)" stroke-width="1.5"></line>
+            <line x1="12" y1="0" x2="12" y2="6" stroke="rgba(244,245,246,0.1)" stroke-width="1"></line>
           </pattern>
           <!-- Indicator Dots · tile 28px -->
           <pattern id="ft-dot-matrix" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
-            <circle cx="4" cy="4" r="1.75" fill="{{ accentColor }}" fill-opacity="0.2"></circle>
+            <circle cx="4" cy="4" r="1.75" fill="{{ accentColor }}" fill-opacity="0.18"></circle>
           </pattern>
           <!-- Crosshair Grid · tile 60px -->
           <pattern id="ft-crosshair" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-            <line x1="0" y1="30" x2="60" y2="30" stroke="rgba(23,23,23,0.05)" stroke-width="1"></line>
-            <line x1="30" y1="0" x2="30" y2="60" stroke="rgba(23,23,23,0.05)" stroke-width="1"></line>
-            <circle cx="30" cy="30" r="2" fill="rgba(23,23,23,0.08)"></circle>
+            <line x1="0" y1="30" x2="60" y2="30" stroke="rgba(255,255,255,0.06)" stroke-width="1"></line>
+            <line x1="30" y1="0" x2="30" y2="60" stroke="rgba(255,255,255,0.06)" stroke-width="1"></line>
+            <circle cx="30" cy="30" r="2" fill="rgba(244,245,246,0.12)"></circle>
           </pattern>
           <!-- Industrial Hatch · tile 16px -->
           <pattern id="ft-diagonal-hatch" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
-            <line x1="0" y1="16" x2="16" y2="0" stroke="rgba(23,23,23,0.07)" stroke-width="1"></line>
+            <line x1="0" y1="16" x2="16" y2="0" stroke="rgba(244,245,246,0.12)" stroke-width="1"></line>
           </pattern>
           <!-- Nested Frames · tile 48px -->
           <pattern id="ft-frame-stack" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
-            <rect x="4" y="4" width="40" height="40" fill="none" stroke="rgba(23,23,23,0.08)" stroke-width="1"></rect>
-            <rect x="14" y="14" width="20" height="20" fill="none" stroke="{{ accentColor }}" stroke-opacity="0.25"
+            <rect x="4" y="4" width="40" height="40" fill="none" stroke="rgba(244,245,246,0.1)" stroke-width="1"></rect>
+            <rect x="14" y="14" width="20" height="20" fill="none" stroke="{{ accentColor }}" stroke-opacity="0.2"
               stroke-width="1"></rect>
           </pattern>
         </defs>
@@ -5922,13 +4649,13 @@
           <svg class="ft-brand-mark" viewBox="0 0 100 100" width="64" height="64" role="img"
             aria-label="Авто Диисликескус">
             <!-- logo.html — reversed on dark: stroke #F8F9FA, accent disc -->
-            <rect x="10" y="10" width="80" height="80" fill="none" stroke="#171717" stroke-width="4"></rect>
-            <rect x="26" y="26" width="48" height="48" fill="none" stroke="#171717" stroke-width="3"
+            <rect x="10" y="10" width="80" height="80" fill="none" stroke="#F8F9FA" stroke-width="4"></rect>
+            <rect x="26" y="26" width="48" height="48" fill="none" stroke="#F8F9FA" stroke-width="3"
               transform="rotate(45 50 50)"></rect>
-            <line x1="50" y1="10" x2="50" y2="20" stroke="#171717" stroke-width="3"></line>
-            <line x1="50" y1="80" x2="50" y2="90" stroke="#171717" stroke-width="3"></line>
-            <line x1="10" y1="50" x2="20" y2="50" stroke="#171717" stroke-width="3"></line>
-            <line x1="80" y1="50" x2="90" y2="50" stroke="#171717" stroke-width="3"></line>
+            <line x1="50" y1="10" x2="50" y2="20" stroke="#F8F9FA" stroke-width="3"></line>
+            <line x1="50" y1="80" x2="50" y2="90" stroke="#F8F9FA" stroke-width="3"></line>
+            <line x1="10" y1="50" x2="20" y2="50" stroke="#F8F9FA" stroke-width="3"></line>
+            <line x1="80" y1="50" x2="90" y2="50" stroke="#F8F9FA" stroke-width="3"></line>
             <circle cx="50" cy="50" r="13" fill="{{ accentColor }}"></circle>
           </svg>
 
@@ -5966,9 +4693,9 @@
 
           <div class="ft-map-cell">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4056.1445583785426!2d24.705575!3d59.44854600000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x469293866c8cfc59%3A0xbea4b20746189fba!2sPaavli%20tn%204%2C%2010412%20Tallinn%2C%20Estonia!5e0!3m2!1sen!2sus!4v1785153193393!5m2!1sen!2sus"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2028.072093199549!2d24.70300047616493!3d59.448549101473134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4692938641e431ff%3A0xffdfe629442c615b!2sPaavli%20tn%204%2C%2010412%20Tallinn!5e0!3m2!1sen!2see!4v1784981716745!5m2!1sen!2see"
               title="Paavli 4, 10412 Tallinn — AUTO DIISLIKESKUS" width="100%" height="100%"
-              style="border:0;display:block;width:100%;height:100%;position:absolute;inset:0;filter:grayscale(0.2) contrast(1.02);"
+              style="border:0;display:block;width:100%;height:100%;position:absolute;inset:0;filter:grayscale(0.35) contrast(1.05) brightness(0.92);"
               allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
           </div>
           <div class="ft-loc-cell">
@@ -5982,8 +4709,8 @@
             <span class="ft-loc-tag">{{ locTag }}</span>
             <!-- Address fixed (RU form) for all locales -->
             <h3 class="ft-address">ПААВЛИ 4, 10412<br />ТАЛЛИН, ЭСТОНИЯ</h3>
-            <a href="https://www.google.com/maps?q=Paavli+tn+4,+10412+Tallinn,+Estonia" target="_blank"
-              rel="noopener noreferrer" class="ft-maps-btn">{{ mapsBtn }}</a>
+            <a href="https://maps.google.com/?q=Paavli+4,+10412+Tallinn" target="_blank" rel="noopener noreferrer"
+              class="ft-maps-btn">{{ mapsBtn }}</a>
           </div>
         </div>
 
@@ -6033,13 +4760,11 @@
           </div>
           <div class="ft-bottom-right">
             <div class="ft-lang" role="group" aria-label="Language">
-              <button type="button" onClick="{{ setLangEE }}" class="{{ langClassEE }}">EE</button>
-              <span class="ft-lang-sep">|</span>
               <button type="button" onClick="{{ setLangRU }}" class="{{ langClassRU }}">RU</button>
               <span class="ft-lang-sep">|</span>
-              <button type="button" onClick="{{ setLangEN }}" class="{{ langClassEN }}">EN</button>
+              <button type="button" onClick="{{ setLangEE }}" class="{{ langClassEE }}">EE</button>
               <span class="ft-lang-sep">|</span>
-              <button type="button" onClick="{{ setLangFI }}" class="{{ langClassFI }}">FI</button>
+              <button type="button" onClick="{{ setLangEN }}" class="{{ langClassEN }}">EN</button>
             </div>
             <button onClick="{{ scrollToTop }}" class="ft-totop" aria-label="{{ toTop }}">
               <span class="ft-totop-arrow"></span>
@@ -6062,50 +4787,41 @@ class Component extends DCLogic {
 
   navLinksByLang = {
     EE: [
-      { href: '#teenused-sumptoomid', label: 'Teenused' },
-      <!-- { href: '#request-form', label: 'Päring' }, -->
-      { href: '#seadmed', label: 'Meist' },
-      { href: '#kontakt', label: 'Kontakt' },
+      { href: '#teenused-sumptoomid', label: 'Teenused', num: '01' },
+      { href: '#request-form', label: 'Päring', num: '02' },
+      { href: '#seadmed', label: 'Seadmed', num: '03' },
+      { href: '#kontakt', label: 'Kontakt', num: '04' },
     ],
     RU: [
-      { href: '#teenused-sumptoomid', label: 'Услуги' },
-      { href: '#request-form', label: 'Запрос' },
-      { href: '#seadmed', label: 'Оборудование' },
-      { href: '#kontakt', label: 'Контакты' },
+      { href: '#teenused-sumptoomid', label: 'Услуги', num: '01' },
+      { href: '#request-form', label: 'Запрос', num: '02' },
+      { href: '#seadmed', label: 'Оборудование', num: '03' },
+      { href: '#kontakt', label: 'Контакты', num: '04' },
     ],
     EN: [
-      { href: '#teenused-sumptoomid', label: 'Services' },
-      { href: '#request-form', label: 'Quote' },
-      { href: '#seadmed', label: 'Equipment' },
-      { href: '#kontakt', label: 'Contact' },
-    ],
-    FI: [
-      { href: '#teenused-sumptoomid', label: 'Palvelut' },
-      { href: '#request-form', label: 'Tarjous' },
-      { href: '#seadmed', label: 'Laitteet' },
-      { href: '#kontakt', label: 'Yhteystiedot' },
+      { href: '#teenused-sumptoomid', label: 'Services', num: '01' },
+      { href: '#request-form', label: 'Quote', num: '02' },
+      { href: '#seadmed', label: 'Equipment', num: '03' },
+      { href: '#kontakt', label: 'Contact', num: '04' },
     ],
   };
 
   hoursByLang = {
-    EE: 'Avatud E–R 9–18',
+    EE: 'E–R 9–18',
     RU: 'Пн–Пт 9–18',
     EN: 'Mon–Fri 9–18',
-    FI: 'Ma–Pe 9–18',
   };
 
-  toggleMenu = () => this.setState(s => ({ menuOpen: !s.menuOpen, langOpen: false }));
-  toggleLangMenu = () => this.setState(s => ({ langOpen: !s.langOpen }));
-  setLangEE = () => this.setState({ lang: 'EE', langOpen: false });
-  setLangRU = () => this.setState({ lang: 'RU', langOpen: false });
-  setLangEN = () => this.setState({ lang: 'EN', langOpen: false });
-  setLangFI = () => this.setState({ lang: 'FI', langOpen: false });
+  toggleMenu = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
+  setLangEE = () => this.setState({ lang: 'EE' });
+  setLangRU = () => this.setState({ lang: 'RU' });
+  setLangEN = () => this.setState({ lang: 'EN' });
 
   /* renderVals → unified */
 
   /* --- from Hero.dc.html --- */
   subtitleText =
-    'Diiselmootorite kütusesüsteemide (Common Rail ja TNVD) professionaalne diagnostika ja terviklik remont Tallinnas.';
+    'Diiselmootorite kütusesüsteemide (Common Rail ja TNVD) professionaalne diagnostika ja terviklik remont Tallinnas. / Профессиональная диагностика и комплексный ремонт дизельных топливных систем Common Rail и ТНВД в Таллине.';
 
   ctaText = 'KÜSI HINNAPAKKUMIST';
 
@@ -6115,97 +4831,6 @@ class Component extends DCLogic {
     { num: '03', label: 'GARANTII', detail: 'Kõikidele töödele / На все виды работ' },
   ];
 
-  /* --- from Pihustite Blokk.dc.html --- */
-  injectorBrandsData = [
-    {
-      name: 'DENSO',
-      imageId: 'img-denso',
-      points: [
-        'Pihustite maha võtmine autolt',
-        'Puhastamine ultraheliga ja testimine stendil',
-        'Pihustite remont',
-        'Pihustite kodeerimine',
-        'Pihustite installeerimine',
-        'Pakume uusi pihusteid',
-        'Pakume taastatud pihusteid',
-        'Pihustite paigaldamine autole',
-        'Pihustite korraliku töö jaoks vajalikud lisatööd (küttesüsteemi puhastamine, kütusefiltri asendamine, …)',
-      ],
-    },
-    {
-      name: 'BOSCH',
-      imageId: 'img-bosch',
-      points: [
-        'Pihustite maha võtmine autolt',
-        'Puhastamine ultraheliga ja testimine stendil',
-        'Pihustite remont',
-        'Pihustite kodeerimine',
-        'Pihustite installeerimine',
-        'Pakume uusi pihusteid',
-        'Pakume taastatud pihusteid',
-        'Pihustite paigaldamine autole',
-        'Pihustite korraliku töö jaoks vajalikud lisatööd (küttesüsteemi puhastamine, kütusefiltri asendamine, …)',
-      ],
-    },
-    {
-      name: 'DELPHI',
-      imageId: 'img-delphi',
-      points: [
-        'Pihustite maha võtmine autolt',
-        'Puhastamine ultraheliga ja testimine stendil',
-        'Pihustite remont',
-        'Pihustite kodeerimine',
-        'Pihustite installeerimine',
-        'Pakume uusi pihusteid',
-        'Pakume taastatud pihusteid',
-        'Pihustite paigaldamine autole',
-        'Pihustite korraliku töö jaoks vajalikud lisatööd (küttesüsteemi puhastamine, kütusefiltri asendamine, …)',
-      ],
-    },
-    {
-      name: 'SIEMENS',
-      imageId: 'img-siemens',
-      points: [
-        'Pihustite maha võtmine autolt',
-        'Puhastamine ultraheliga ja testimine stendil',
-        'Pihustite remont',
-        'Pihustite installeerimine',
-        'Pakume uusi pihusteid',
-        'Pihustite paigaldamine autole',
-        'Pihustite korraliku töö jaoks vajalikud lisatööd (küttesüsteemi puhastamine, kütusefiltri asendamine, …)',
-      ],
-    },
-  ];
-
-  selectBrand0 = () => this.setState({ activeBrandIndex: 0 });
-  selectBrand1 = () => this.setState({ activeBrandIndex: 1 });
-  selectBrand2 = () => this.setState({ activeBrandIndex: 2 });
-  selectBrand3 = () => this.setState({ activeBrandIndex: 3 });
-
-  /* --- from Sümptomite Blokk.dc.html --- */
-  symptomList = [
-    'mootori käivitus on raskendatud;',
-    'mootori võimsus on langenud;',
-    'kütusekulu on kasvanud;',
-    'väljalasketorust tuleb musta suitsu;',
-    'väljalasketorust tuleb halli või valget suitsu;',
-    'mootori töö on raskendatud;',
-    'mootori täisvõimsus ei arene;',
-    'mootori müra on kõrgendatud;',
-    'tühikäigul töötab mootor tõrgetega;',
-    'mootori äkiline seiskumine;',
-    'tühikäigul esineb väntvõlli pöörete sageduse kõikumist;',
-  ];
-
-  toggleSymptom = (i) => {
-    this.setState((s) => {
-      const list = this.symptomList || [];
-      const prev = Array.isArray(s.symptomSelected) ? s.symptomSelected : [];
-      const next = list.map((_, j) => (j === i ? !prev[j] : !!prev[j]));
-      return { symptomSelected: next };
-    });
-  };
-
   /* scrollToForm → unified */
   /* renderVals → unified */
 
@@ -6213,12 +4838,12 @@ class Component extends DCLogic {
   /* state → unified */
   /* ticks → unified */
 
+  toggleManual = () => this.setState(s => ({ showManualFields: !s.showManualFields }));
+
   onPlateChange = (e) => this.setState({ plate: e.target.value });
   onMakeChange = (e) => this.setState({ make: e.target.value });
   onYearChange = (e) => this.setState({ year: e.target.value });
-  onDisplacementChange = (e) => this.setState({ displacement: e.target.value });
-  onPowerChange = (e) => this.setState({ power: e.target.value });
-  onVinChange = (e) => this.setState({ vin: e.target.value });
+  onEngineChange = (e) => this.setState({ engine: e.target.value });
   onDescriptionChange = (e) => this.setState({ description: e.target.value });
   onNameChange = (e) => this.setState({ name: e.target.value });
   onPhoneChange = (e) => this.setState({ phone: e.target.value });
@@ -6227,27 +4852,15 @@ class Component extends DCLogic {
   handleSubmit = (e) => {
     e.preventDefault();
     const s = this.state;
-    const hasVehicleInfo =
-      s.plate.trim() ||
-      s.make.trim() ||
-      s.vin.trim() ||
-      (s.year.trim() && (s.displacement.trim() || s.power.trim()));
+    const hasVehicleInfo = s.plate.trim() || (s.make.trim() && s.year.trim());
     if (!hasVehicleInfo || !s.description.trim() || !s.name.trim() || !s.phone.trim() || !s.email.trim()) {
       this.setState({ isError: true });
       return;
     }
     this.setState({ isSubmitting: true, isError: false });
     const payload = {
-      plate: s.plate,
-      make: s.make,
-      year: s.year,
-      displacement: s.displacement,
-      power: s.power,
-      vin: s.vin,
-      description: s.description,
-      name: s.name,
-      phone: s.phone,
-      email: s.email,
+      plate: s.plate, make: s.make, year: s.year, engine: s.engine,
+      description: s.description, name: s.name, phone: s.phone, email: s.email,
       timestamp: new Date().toISOString(),
       recipient: 'autodiislikeskus@gmail.com',
     };
@@ -6418,24 +5031,6 @@ class Component extends DCLogic {
       terms: 'Terms of Service',
       toTop: 'Back to top',
     },
-    FI: {
-      brandCode: '/ Diesel–01 · MARK-01',
-      metaGeo: "[ VIRO / TALLINNA — N59°26' E24°45' ]",
-      metaBrand: '[ TEXTURE-01 · AUTO DIISLIKESKUS ]',
-      locTag: '[ 04 / SIJAINTI JA YHTEYSTIEDOT ]',
-      mapsBtn: '[ AVAA GOOGLE MAPSISSA → ]',
-      labelContacts: '[ YHTEYSTIEDOT ]',
-      labelHours: '[ AUKIOLOAJAT ]',
-      hoursMain: 'MA–PE: 09:00 – 18:00',
-      hoursSub: 'LA–SU: SULJETTU',
-      labelCompany: '[ YRITYS ]',
-      regNr: 'Y-TUNNUS: XXXXXXXX',
-      vatNr: 'ALV / VAT: EE XXXXXXXX',
-      copyright: '© 2026 AUTO DIISLIKESKUS. KAIKKI OIKEUDET PIDÄTETÄÄN.',
-      privacy: 'Tietosuojakäytäntö',
-      terms: 'Käyttöehdot',
-      toTop: 'Takaisin ylös',
-    },
   };
 
   /* scrollToTop → unified */
@@ -6444,69 +5039,23 @@ class Component extends DCLogic {
   /* ── Unified state & shared handlers ── */
   state = {
     menuOpen: false,
-    langOpen: false,
-    formOpen: false,
-    headerLight: false,
-    activeBrandIndex: 0,
-    symptomSelected: [false, false, false, false, false, false, false, false, false, false, false],
     lang: 'EE',
     // RequestForm
-    plate: '', make: '', year: '', displacement: '', power: '', vin: '',
-    description: '',
+    plate: '', make: '', year: '', engine: '', description: '',
     name: '', phone: '', email: '',
+    showManualFields: false,
     isSubmitting: false, isSuccess: false, isError: false,
   };
 
   ticks = Array.from({ length: 28 });
 
-  updateHeaderTheme = () => {
-    try {
-      const hero = document.querySelector('section.hero');
-      const header = document.querySelector('header.hd');
-      if (!hero || !header) return;
-      const heroBottom = hero.getBoundingClientRect().bottom;
-      const headerH = header.offsetHeight || 0;
-      const light = heroBottom <= headerH + 4;
-      if (!!this.state.headerLight !== light) {
-        this.setState({ headerLight: light });
-      }
-    } catch (_) {}
-  };
-
-  componentDidMount() {
-    this._onHeaderScroll = () => this.updateHeaderTheme();
-    try {
-      window.addEventListener('scroll', this._onHeaderScroll, { passive: true });
-      window.addEventListener('resize', this._onHeaderScroll, { passive: true });
-      this.updateHeaderTheme();
-      // re-check after layout settles
-      requestAnimationFrame(() => this.updateHeaderTheme());
-    } catch (_) {}
-  }
-
-  componentWillUnmount() {
-    try {
-      if (this._onHeaderScroll) {
-        window.removeEventListener('scroll', this._onHeaderScroll);
-        window.removeEventListener('resize', this._onHeaderScroll);
-      }
-    } catch (_) {}
-  }
-
-  openForm = (e) => {
+  scrollToForm = (e) => {
     if (e && e.preventDefault) e.preventDefault();
-    this.setState({ formOpen: true, menuOpen: false, langOpen: false });
-    try { document.body.style.overflow = 'hidden'; } catch (_) {}
+    const el = document.getElementById('request-form');
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
+    window.scrollTo({ top, behavior: 'smooth' });
   };
-
-  closeForm = (e) => {
-    if (e && e.preventDefault) e.preventDefault();
-    this.setState({ formOpen: false });
-    try { document.body.style.overflow = ''; } catch (_) {}
-  };
-
-  /* Opens quote form popup (was page scroll) */
-  scrollToForm = (e) => this.openForm(e);
 
   scrollToTop = (e) => {
     if (e && e.preventDefault) e.preventDefault();
@@ -6516,31 +5065,27 @@ class Component extends DCLogic {
   renderVals() {
     const s = this.state;
     const lang = s.lang || 'EE';
+    const active = '#171717';
+    const idle = '#a3a3a3';
 
     const navLinksByLang = this.navLinksByLang || {
       EE: [
-        { href: '#teenused-sumptoomid', label: 'Teenused' },
-        { href: '#request-form', label: 'Päring' },
-        { href: '#seadmed', label: 'Seadmed' },
-        { href: '#kontakt', label: 'Kontakt' },
+        { href: '#teenused-sumptoomid', label: 'Teenused', num: '01' },
+        { href: '#request-form', label: 'Päring', num: '02' },
+        { href: '#seadmed', label: 'Seadmed', num: '03' },
+        { href: '#kontakt', label: 'Kontakt', num: '04' },
       ],
       RU: [
-        { href: '#teenused-sumptoomid', label: 'Услуги' },
-        { href: '#request-form', label: 'Запрос' },
-        { href: '#seadmed', label: 'Оборудование' },
-        { href: '#kontakt', label: 'Контакты' },
+        { href: '#teenused-sumptoomid', label: 'Услуги', num: '01' },
+        { href: '#request-form', label: 'Запрос', num: '02' },
+        { href: '#seadmed', label: 'Оборудование', num: '03' },
+        { href: '#kontakt', label: 'Контакты', num: '04' },
       ],
       EN: [
-        { href: '#teenused-sumptoomid', label: 'Services' },
-        { href: '#request-form', label: 'Quote' },
-        { href: '#seadmed', label: 'Equipment' },
-        { href: '#kontakt', label: 'Contact' },
-      ],
-      FI: [
-        { href: '#teenused-sumptoomid', label: 'Palvelut' },
-        { href: '#request-form', label: 'Tarjous' },
-        { href: '#seadmed', label: 'Laitteet' },
-        { href: '#kontakt', label: 'Yhteystiedot' },
+        { href: '#teenused-sumptoomid', label: 'Services', num: '01' },
+        { href: '#request-form', label: 'Quote', num: '02' },
+        { href: '#seadmed', label: 'Equipment', num: '03' },
+        { href: '#kontakt', label: 'Contact', num: '04' },
       ],
     };
 
@@ -6548,128 +5093,54 @@ class Component extends DCLogic {
       EE: 'E–R 9–18',
       RU: 'Пн–Пт 9–18',
       EN: 'Mon–Fri 9–18',
-      FI: 'Ma–Pe 9–18',
     };
 
     // Footer i18n map if present (Footer.dc.html)
     const footerI18n =
       (this.i18n && (this.i18n[lang] || this.i18n.EE || this.i18n.RU)) || {};
 
-    // Pihustite brands — only one panel active at a time
-    const brands = this.injectorBrandsData || [];
-    const brandIdx = Math.min(
-      Math.max(0, Number(s.activeBrandIndex) || 0),
-      Math.max(0, brands.length - 1)
-    );
-
-    // Sümptomid / Uslugi
-    const symptomList = this.symptomList || [];
-    const symptomSelected = Array.isArray(s.symptomSelected) ? s.symptomSelected : [];
-    const selectedCount = symptomSelected.filter(Boolean).length;
-    let bannerText = '';
-    if (selectedCount === 1) {
-      bannerText = 'probleem tuvastatud — soovitame lasta pihustid üle kontrollida.';
-    } else if (selectedCount > 1 && selectedCount <= 3) {
-      bannerText = 'probleemi tuvastatud — soovitame lasta pihustid üle kontrollida.';
-    } else if (selectedCount > 3) {
-      bannerText = 'probleemi tuvastatud — teie pihustid vajavad tõenäoliselt kiiret kontrolli!';
-    }
-    const toggleSymptom =
-      this.toggleSymptom ||
-      ((i) =>
-        this.setState((st) => {
-          const prev = Array.isArray(st.symptomSelected) ? st.symptomSelected : [];
-          const next = symptomList.map((_, j) => (j === i ? !prev[j] : !!prev[j]));
-          return { symptomSelected: next };
-        }));
-    const symptomItems = symptomList.map((text, i) => ({
-      text,
-      isActive: !!symptomSelected[i],
-      activeClass: symptomSelected[i] ? 'is-active' : '',
-      checkMark: symptomSelected[i] ? '✓' : '',
-      onToggle: () => toggleSymptom(i),
-    }));
-
     return {
       // Header
       menuOpen: s.menuOpen,
-      langOpen: !!s.langOpen,
-      headerLight: !!s.headerLight,
-      hdThemeClass: s.headerLight ? 'hd--light' : '',
-      toggleMenu: this.toggleMenu || (() => this.setState((st) => ({ menuOpen: !st.menuOpen, langOpen: false }))),
-      toggleLangMenu: this.toggleLangMenu || (() => this.setState((st) => ({ langOpen: !st.langOpen }))),
-      setLangEE: this.setLangEE || (() => this.setState({ lang: 'EE', langOpen: false })),
-      setLangRU: this.setLangRU || (() => this.setState({ lang: 'RU', langOpen: false })),
-      setLangEN: this.setLangEN || (() => this.setState({ lang: 'EN', langOpen: false })),
-      setLangFI: this.setLangFI || (() => this.setState({ lang: 'FI', langOpen: false })),
+      toggleMenu: this.toggleMenu || (() => this.setState((st) => ({ menuOpen: !st.menuOpen }))),
+      setLangEE: this.setLangEE || (() => this.setState({ lang: 'EE' })),
+      setLangRU: this.setLangRU || (() => this.setState({ lang: 'RU' })),
+      setLangEN: this.setLangEN || (() => this.setState({ lang: 'EN' })),
       navLinks: navLinksByLang[lang] || navLinksByLang.EE,
       hoursText: hoursByLang[lang] || hoursByLang.EE,
-      langCode: lang,
-      langItemClassEE: lang === 'EE' ? 'is-active' : '',
-      langItemClassRU: lang === 'RU' ? 'is-active' : '',
-      langItemClassEN: lang === 'EN' ? 'is-active' : '',
-      langItemClassFI: lang === 'FI' ? 'is-active' : '',
+      langActiveColorEE: lang === 'EE' ? active : idle,
+      langActiveColorRU: lang === 'RU' ? active : idle,
+      langActiveColorEN: lang === 'EN' ? active : idle,
       isEE: lang === 'EE',
       isRU: lang === 'RU',
       isEN: lang === 'EN',
-      isFI: lang === 'FI',
 
       // Hero
       subtitleText: this.subtitleText,
       ctaText: this.ctaText,
       specs: this.specs,
-      openForm: this.openForm,
-      closeForm: this.closeForm,
-      scrollToForm: this.scrollToForm || this.openForm,
-
-      // Pihustite / injectors block
-      selectBrand0: this.selectBrand0 || (() => this.setState({ activeBrandIndex: 0 })),
-      selectBrand1: this.selectBrand1 || (() => this.setState({ activeBrandIndex: 1 })),
-      selectBrand2: this.selectBrand2 || (() => this.setState({ activeBrandIndex: 2 })),
-      selectBrand3: this.selectBrand3 || (() => this.setState({ activeBrandIndex: 3 })),
-      brandClass0: brandIdx === 0 ? 'is-active' : '',
-      brandClass1: brandIdx === 1 ? 'is-active' : '',
-      brandClass2: brandIdx === 2 ? 'is-active' : '',
-      brandClass3: brandIdx === 3 ? 'is-active' : '',
-      isBrand0: brandIdx === 0,
-      isBrand1: brandIdx === 1,
-      isBrand2: brandIdx === 2,
-      isBrand3: brandIdx === 3,
-      pointsDenso: (brands[0] && brands[0].points) || [],
-      pointsBosch: (brands[1] && brands[1].points) || [],
-      pointsDelphi: (brands[2] && brands[2].points) || [],
-      pointsSiemens: (brands[3] && brands[3].points) || [],
-
-      // Uslugi / Sümptomid block
-      symptomItems,
-      selectedCount,
-      hasSymptomSelection: selectedCount > 0,
-      bannerText,
-      bannerUrgentClass: selectedCount > 3 ? 'is-urgent' : '',
+      scrollToForm: this.scrollToForm,
 
       // RequestForm fields + handlers
-      formOpen: !!s.formOpen,
       plate: s.plate,
       make: s.make,
       year: s.year,
-      displacement: s.displacement,
-      power: s.power,
-      vin: s.vin,
+      engine: s.engine,
       description: s.description,
       name: s.name,
       phone: s.phone,
       email: s.email,
+      showManualFields: s.showManualFields,
       isSubmitting: s.isSubmitting,
       isSuccess: s.isSuccess,
       isError: s.isError,
       isFormVisible: !s.isSuccess,
       submitLabel: s.isSubmitting ? '[ SAATMINE... ]' : '[ SAADA HINNAPÄRING → ]',
+      toggleManual: this.toggleManual,
       onPlateChange: this.onPlateChange,
       onMakeChange: this.onMakeChange,
       onYearChange: this.onYearChange,
-      onDisplacementChange: this.onDisplacementChange,
-      onPowerChange: this.onPowerChange,
-      onVinChange: this.onVinChange,
+      onEngineChange: this.onEngineChange,
       onDescriptionChange: this.onDescriptionChange,
       onNameChange: this.onNameChange,
       onPhoneChange: this.onPhoneChange,
@@ -6694,10 +5165,10 @@ class Component extends DCLogic {
       langClassRU: lang === 'RU' ? 'ft-lang-active' : 'ft-lang-muted',
       langClassEE: lang === 'EE' ? 'ft-lang-active' : 'ft-lang-muted',
       langClassEN: lang === 'EN' ? 'ft-lang-active' : 'ft-lang-muted',
-      langClassFI: lang === 'FI' ? 'ft-lang-active' : 'ft-lang-muted',
+      langActiveColorFooterRU: lang === 'RU' ? '#ffffff' : '#737373',
+      langActiveColorFooterEE: lang === 'EE' ? '#ffffff' : '#737373',
       ink: '#171717',
       line: '#d4d4d4',
-      accent2: '#00B8D4',
     };
   }
 }

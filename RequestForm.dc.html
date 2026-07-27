@@ -70,17 +70,6 @@
 
     <!-- ══ HEADER ══ -->
     <header class="rf-header">
-      <div class="rf-island rf-island--header" aria-hidden="true">
-        <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="xMaxYMin slice">
-          <rect width="100%" height="100%" fill="url(#rf-diamond-grid)"></rect>
-        </svg>
-      </div>
-      <div class="rf-island rf-island--header-frame" aria-hidden="true">
-        <svg class="rf-fill" width="100%" height="100%">
-          <rect width="100%" height="100%" fill="url(#rf-frame-stack)"></rect>
-        </svg>
-      </div>
-
       <div class="rf-header-row">
         <div class="rf-header-copy">
           <span class="rf-kicker">[ HINNAPAKKUMINE / ЦЕНОВОЕ ПРЕДЛОЖЕНИЕ ]</span>
@@ -95,14 +84,7 @@
       </div>
     </header>
 
-    <!-- Breath: gauge ticks -->
-    <div class="rf-breath" aria-hidden="true">
-      <div class="rf-breath-band">
-        <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
-          <rect width="100%" height="100%" fill="url(#rf-tick-rows)"></rect>
-        </svg>
-      </div>
-    </div>
+
 
     <!-- Success state -->
     <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
@@ -129,24 +111,10 @@
 
         <!-- ── 01 VEHICLE ── -->
         <section class="rf-panel">
-          <div class="rf-panel-head">
-            <div class="rf-island rf-island--label" aria-hidden="true">
-              <svg class="rf-fill" width="100%" height="100%">
-                <rect width="100%" height="100%" fill="url(#rf-crosshair)"></rect>
-              </svg>
-            </div>
-            <span class="rf-panel-num">01</span>
-            <div class="rf-panel-titles">
-              <span class="rf-panel-code">[ VEHICLE IDENTIFICATION ]</span>
-              <span class="rf-panel-name">SÕIDUKI ANDMED / ДАННЫЕ АВТО</span>
-            </div>
-          </div>
-
           <div class="rf-panel-body">
-            <div class="rf-island rf-island--panel" aria-hidden="true">
-              <svg class="rf-fill" width="100%" height="100%">
-                <rect width="100%" height="100%" fill="url(#rf-diagonal-hatch)"></rect>
-              </svg>
+            <div class="rf-section-title">
+              <span class="rf-panel-num">01</span>
+              <span class="rf-panel-name">SÕIDUKI ANDMED / ДАННЫЕ АВТО</span>
             </div>
 
             <div class="rf-field rf-field--hero">
@@ -189,110 +157,58 @@
           </div>
         </section>
 
-        <!-- Breath short -->
-        <div class="rf-breath rf-breath--tight" aria-hidden="true">
-          <div class="rf-breath-band rf-breath-band--short">
-            <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
-              <rect width="100%" height="100%" fill="url(#rf-tick-rows)"></rect>
-            </svg>
-          </div>
+
+
+        <div class="rf-split-row">
+          <!-- ── 02 PROBLEM ── -->
+          <section class="rf-panel">
+            <div class="rf-panel-body">
+              <div class="rf-section-title">
+                <span class="rf-panel-num">02</span>
+                <span class="rf-panel-name">SÜMPTOMID / СИМПТОМЫ</span>
+              </div>
+
+              <div class="rf-field" style="flex:1;">
+                <label class="rf-label" for="rf-desc">PROBLEEMI KIRJELDUS JA SÜMPTOMID / ОПИСАНИЕ ПРОБЛЕМЫ И СИМПТОМЫ</label>
+                <textarea
+                  id="rf-desc"
+                  class="rf-input rf-input--area"
+                  value="{{ description }}"
+                  onChange="{{ onDescriptionChange }}"
+                  rows="5"
+                  placeholder="Mootor ei käivitu, must suits kiirendamisel, võimsuse kadu... / Машина плохо заводится, черный дым, плавают обороты..."
+                ></textarea>
+              </div>
+            </div>
+          </section>
+
+          <!-- ── 03 CONTACT ── -->
+          <section class="rf-panel">
+            <div class="rf-panel-body">
+              <div class="rf-section-title">
+                <span class="rf-panel-num">03</span>
+                <span class="rf-panel-name">KONTAKTANDMED / КОНТАКТЫ</span>
+              </div>
+              <div class="rf-contact contact-grid">
+                <div class="rf-field">
+                  <label class="rf-label" for="rf-name">NIMI / ИМЯ</label>
+                  <input id="rf-name" class="rf-input" value="{{ name }}" onChange="{{ onNameChange }}" required="{{ true }}" autocomplete="name"/>
+                </div>
+                <div class="rf-field">
+                  <label class="rf-label" for="rf-phone">TELEFON / ТЕЛЕФОН</label>
+                  <input id="rf-phone" class="rf-input" type="tel" value="{{ phone }}" onChange="{{ onPhoneChange }}" required="{{ true }}" autocomplete="tel"/>
+                </div>
+                <div class="rf-field">
+                  <label class="rf-label" for="rf-email">E-POST / EMAIL</label>
+                  <input id="rf-email" class="rf-input" type="email" value="{{ email }}" onChange="{{ onEmailChange }}" required="{{ true }}" autocomplete="email"/>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
-
-        <!-- ── 02 PROBLEM ── -->
-        <section class="rf-panel">
-          <div class="rf-panel-head">
-            <div class="rf-island rf-island--label" aria-hidden="true">
-              <svg class="rf-fill" width="100%" height="100%">
-                <rect width="100%" height="100%" fill="url(#rf-frame-stack)"></rect>
-              </svg>
-            </div>
-            <span class="rf-panel-num">02</span>
-            <div class="rf-panel-titles">
-              <span class="rf-panel-code">[ PROBLEM DESCRIPTION ]</span>
-              <span class="rf-panel-name">SÜMPTOMID / СИМПТОМЫ</span>
-            </div>
-          </div>
-
-          <div class="rf-panel-body">
-            <div class="rf-island rf-island--dots" aria-hidden="true">
-              <svg class="rf-fill" width="100%" height="100%">
-                <rect width="100%" height="100%" fill="url(#rf-dot-matrix)"></rect>
-              </svg>
-            </div>
-
-            <div class="rf-field">
-              <label class="rf-label" for="rf-desc">PROBLEEMI KIRJELDUS JA SÜMPTOMID / ОПИСАНИЕ ПРОБЛЕМЫ И СИМПТОМЫ</label>
-              <textarea
-                id="rf-desc"
-                class="rf-input rf-input--area"
-                value="{{ description }}"
-                onChange="{{ onDescriptionChange }}"
-                rows="5"
-                placeholder="Mootor ei käivitu, must suits kiirendamisel, võimsuse kadu... / Машина плохо заводится, черный дым, плавают обороты..."
-              ></textarea>
-            </div>
-          </div>
-        </section>
-
-        <!-- Breath short -->
-        <div class="rf-breath rf-breath--tight" aria-hidden="true">
-          <div class="rf-breath-band rf-breath-band--short">
-            <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
-              <rect width="100%" height="100%" fill="url(#rf-tick-rows)"></rect>
-            </svg>
-          </div>
-        </div>
-
-        <!-- ── 03 CONTACT ── -->
-        <section class="rf-panel">
-          <div class="rf-panel-head">
-            <div class="rf-island rf-island--label" aria-hidden="true">
-              <svg class="rf-fill" width="100%" height="100%">
-                <rect width="100%" height="100%" fill="url(#rf-crosshair)"></rect>
-              </svg>
-            </div>
-            <span class="rf-panel-num">03</span>
-            <div class="rf-panel-titles">
-              <span class="rf-panel-code">[ CONTACT INFORMATION ]</span>
-              <span class="rf-panel-name">KONTAKTANDMED / КОНТАКТЫ</span>
-            </div>
-          </div>
-
-          <div class="rf-panel-body">
-            <div class="rf-contact contact-grid">
-              <div class="rf-field">
-                <label class="rf-label" for="rf-name">NIMI / ИМЯ</label>
-                <input id="rf-name" class="rf-input" value="{{ name }}" onChange="{{ onNameChange }}" required="{{ true }}" autocomplete="name"/>
-              </div>
-              <div class="rf-field">
-                <label class="rf-label" for="rf-phone">TELEFON / ТЕЛЕФОН</label>
-                <input id="rf-phone" class="rf-input" type="tel" value="{{ phone }}" onChange="{{ onPhoneChange }}" required="{{ true }}" autocomplete="tel"/>
-              </div>
-              <div class="rf-field">
-                <label class="rf-label" for="rf-email">E-POST / EMAIL</label>
-                <input id="rf-email" class="rf-input" type="email" value="{{ email }}" onChange="{{ onEmailChange }}" required="{{ true }}" autocomplete="email"/>
-              </div>
-            </div>
-          </div>
-        </section>
 
         <!-- ── SUBMIT BAR ── -->
         <div class="rf-submit">
-          <div class="rf-submit-pat rf-submit-pat--hatch" aria-hidden="true">
-            <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
-              <rect width="100%" height="100%" fill="url(#rf-hatch-dark)"></rect>
-            </svg>
-          </div>
-          <div class="rf-submit-pat rf-submit-pat--cross" aria-hidden="true">
-            <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
-              <rect width="100%" height="100%" fill="url(#rf-crosshair-dark)"></rect>
-            </svg>
-          </div>
-          <div class="rf-submit-pat rf-submit-pat--ticks" aria-hidden="true">
-            <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
-              <rect width="100%" height="100%" fill="url(#rf-ticks-dark)"></rect>
-            </svg>
-          </div>
           <span class="rf-cta-corner rf-cta-corner--tl" aria-hidden="true"></span>
           <span class="rf-cta-corner rf-cta-corner--br" aria-hidden="true"></span>
 
@@ -987,7 +903,40 @@
     filter: grayscale(0.15);
   }
 
+  .rf-split-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
   @media (min-width: 700px) {
+    .rf-split-row {
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+    .rf-split-row .rf-panel {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .rf-split-row .rf-panel-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .rf-split-row .rf-field {
+      display: flex;
+      flex-direction: column;
+    }
+    .rf-split-row .rf-input--area {
+      flex: 1;
+      min-height: 90px;
+    }
+    .rf-split-row .contact-grid {
+      grid-template-columns: 1fr !important;
+      gap: 10px;
+    }
     .contact-grid { grid-template-columns: 1fr 1fr 1fr !important; }
   }
   @media (max-width: 640px) {

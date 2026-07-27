@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="./image-slot.js"></script>
+  <style>
+    body { margin: 0; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</helmet>
+<div style="width:1100px;max-width:100%;margin:0 auto;padding:48px 32px;background:oklch(0.99 0.003 90);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:oklch(0.25 0.01 90);box-sizing:border-box">
+  <h2 style="text-align:center;font-size:26px;font-weight:700;margin:0 0 20px;color:oklch(0.22 0.01 90)">Common Rail pihustite testimine ja remont Tallinnas</h2>
+  <div style="height:1px;background:oklch(0.85 0.01 90);margin:0 0 36px"></div>
+
+  <div style="display:grid;grid-template-columns:minmax(160px,0.85fr) minmax(320px,1.9fr) minmax(200px,1.1fr);gap:36px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <sc-for list="{{ brands }}" as="b" hint-placeholder-count="4">
+        <button
+          onClick="{{ () => selectBrand($index) }}"
+          style="{{ getButtonStyle($index) }}"
+          style-hover="{{ getButtonHoverStyle($index) }}"
+        >{{ b.name }} PIHUSTID</button>
+      </sc-for>
+    </div>
+
+    <div key="{{ activeIndex }}" style="min-height:360px;animation:fadeIn 0.35s ease">
+      <h3 style="margin:0 0 16px;font-size:19px;font-weight:700;color:{{ activeBrand.color }}">{{ activeBrand.name }} PIHUSTID</h3>
+      <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:18px">
+        <sc-for list="{{ activeBrand.points }}" as="point" hint-placeholder-count="8">
+          <li style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.5;color:oklch(0.3 0.01 90)">
+            <span style="color:{{ activeBrand.color }};margin-top:4px;flex:none">▸</span>
+            <span>{{ point }}</span>
+          </li>
+        </sc-for>
+      </ul>
+    </div>
+
+    <div key="{{ activeIndex }}" style="animation:fadeIn 0.35s ease">
+      <image-slot id="{{ activeBrand.imageId }}" shape="rounded" radius="12" style="width:100%;height:320px;display:block" placeholder="{{ activeBrand.name }} pihusti foto"></image-slot>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1100,&quot;height&quot;:520}}">
+const BRANDS = [
+  {
+    name: 'DENSO',
+    color: 'oklch(0.52 0.19 25)',
+    imageId: 'img-denso',
+    points: [
+      'Pihustite maha võtmine autolt,',
+      'Puhastamine ultraheliga ja testimine stendil,',
+      'Pihustite remont,',
+      'Pihustite kodeerimine,',
+      'Pihustite installeerimine,',
+      'Pakume uusi pihusteid,',
+      'Pakume taastatud pihusteid,',
+      'Pihustite paigaldamine autole,',
+      'Pihustite korraliku töö jaoks vajalikud lisatööd (küttesüsteemi puhastamine, kütusefiltri asendamine, ...).'
+    ]
+  },
+  {
+    name: 'BOSCH',
+    color: 'oklch(0.4 0.05 260)',
+    imageId: 'img-bosch',
+    points: [
+      'Pihustite maha võtmine autolt,',
+      'Puhastamine ultraheliga ja testimine stendil,',
+      'Pihustite remont,',
+      'Pihustite kodeerimine,',
+      'Pihustite installeerimine,',
+      'Pakume uusi pihusteid,',
+      'Pakume taastatud pihusteid,',
+      'Pihustite paigaldamine autole,',
+      'Pihustite korraliku töö jaoks vajalikud lisatööd (küttesüsteemi puhastamine, kütusefiltri asendamine, ...).'
+    ]
+  },
+  {
+    name: 'DELPHI',
+    color: 'oklch(0.5 0.16 250)',
+    imageId: 'img-delphi',
+    points: [
+      'Pihustite maha võtmine autolt,',
+      'Puhastamine ultraheliga ja testimine stendil,',
+      'Pihustite remont,',
+      'Pihustite kodeerimine,',
+      'Pihustite installeerimine,',
+      'Pakume uusi pihusteid,',
+      'Pakume taastatud pihusteid,',
+      'Pihustite paigaldamine autole,',
+      'Pihustite korraliku töö jaoks vajalikud lisatööd (küttesüsteemi puhastamine, kütusefiltri asendamine, ...).'
+    ]
+  },
+  {
+    name: 'SIEMENS',
+    color: 'oklch(0.45 0.16 300)',
+    imageId: 'img-siemens',
+    points: [
+      'Pihustite maha võtmine autolt,',
+      'Puhastamine ultraheliga ja testimine stendil,',
+      'Pihustite remont,',
+      'Pihustite installeerimine,',
+      'Pakume uusi pihusteid,',
+      'Pihustite paigaldamine autole,',
+      'Pihustite korraliku töö jaoks vajalikud lisatööd (küttesüsteemi puhastamine, kütusefiltri asendamine, ...).'
+    ]
+  }
+];
+
+class Component extends DCLogic {
+  state = { activeIndex: 0 };
+
+  selectBrand(i) {
+    this.setState({ activeIndex: i });
+  }
+
+  getButtonStyle(i) {
+    const active = i === this.state.activeIndex;
+    const brand = BRANDS[i];
+    return {
+      textAlign: 'left',
+      padding: '14px 18px',
+      fontSize: '14px',
+      fontWeight: 700,
+      letterSpacing: '0.3px',
+      borderRadius: '8px',
+      cursor: 'pointer',
+      border: active ? `2px solid ${brand.color}` : '2px solid oklch(0.88 0.01 90)',
+      background: active ? brand.color : 'oklch(0.99 0.003 90)',
+      color: active ? 'white' : 'oklch(0.3 0.01 90)',
+      transition: 'all 0.2s ease'
+    };
+  }
+
+  getButtonHoverStyle(i) {
+    const active = i === this.state.activeIndex;
+    if (active) return {};
+    const brand = BRANDS[i];
+    return { borderColor: brand.color, color: brand.color };
+  }
+
+  renderVals() {
+    return {
+      brands: BRANDS,
+      activeIndex: this.state.activeIndex,
+      activeBrand: BRANDS[this.state.activeIndex],
+      selectBrand: (i) => this.selectBrand(i),
+      getButtonStyle: (i) => this.getButtonStyle(i),
+      getButtonHoverStyle: (i) => this.getButtonHoverStyle(i)
+    };
+  }
+}
+
+</script>
+</body>
+</html>

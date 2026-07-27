@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="./image-slot.js"></script>
+  <style>
+    body { margin: 0; }
+  </style>
+</helmet>
+<div style="width:1200px;max-width:100%;margin:0 auto;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;box-sizing:border-box">
+  <div style="display:grid;grid-template-columns:1fr 1fr;min-height:460px">
+
+    <div style="position:relative;min-width:0">
+      <image-slot id="diag-photo" shape="rect" style="width:100%;height:100%" placeholder="Diagnostika foto"></image-slot>
+    </div>
+
+    <div style="background:oklch(0.16 0.005 90);color:white;padding:64px 56px;display:flex;flex-direction:column;justify-content:center;gap:24px;min-width:0">
+      <div style="width:64px;height:64px;border-radius:50%;background:oklch(0.52 0.19 25);display:flex;align-items:center;justify-content:center;flex:none">
+        <span style="font-size:26px;color:white">&#128295;</span>
+      </div>
+
+      <h2 style="margin:0;font-size:28px;font-weight:800;letter-spacing:0.3px;overflow-wrap:break-word;word-break:break-word">AUTO KOMPUUTERDIAGNOSTIKA</h2>
+
+      <div style="width:48px;height:3px;background:oklch(0.52 0.19 25)"></div>
+
+      <p style="margin:0;font-size:16px;line-height:1.7;color:oklch(0.85 0.005 90)">See on auto erinevate elektrooniliste süsteemide ja täitemehhanismide testimine eesmärgiga välja selgitada rikked. Kompuuterdiagnostika tulemuste põhjal võtab meister vastu otsuse selle kohta, millistele süsteemidele/sõlmedele on vajalik remont ja milline.</p>
+
+      <a href="tel:+37256702700" style="{{ ctaStyle }}" style-hover="{{ ctaHoverStyle }}">Pange aeg kinni &#8594;</a>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:460}}">
+class Component extends DCLogic {
+  get ctaStyle() {
+    return {
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: '8px',
+      width: 'fit-content',
+      marginTop: '8px',
+      padding: '14px 28px',
+      borderRadius: '999px',
+      background: 'oklch(0.52 0.19 25)',
+      color: 'white',
+      fontSize: '15px',
+      fontWeight: 600,
+      textDecoration: 'none',
+      transition: 'background 0.15s ease'
+    };
+  }
+  get ctaHoverStyle() {
+    return { background: 'oklch(0.46 0.19 25)' };
+  }
+  renderVals() {
+    return { ctaStyle: this.ctaStyle, ctaHoverStyle: this.ctaHoverStyle };
+  }
+}
+
+</script>
+</body>
+</html>
