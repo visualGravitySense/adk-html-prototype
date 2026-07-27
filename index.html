@@ -3495,7 +3495,7 @@
           aspect-ratio: 3/4;
         }
 
-        /* Personal / team banner — one photo + overlay copy */
+        /* Personal / team — copy above photo, clean image (no overlay) */
         .etb-personal {
           margin-top: 8px;
         }
@@ -3503,6 +3503,9 @@
         .etb-personal-head {
           text-align: center;
           margin-bottom: 28px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
 
         .etb-personal-kicker {
@@ -3533,81 +3536,46 @@
           margin: 16px auto 0;
         }
 
-        .etb-personal-banner {
-          position: relative;
-          overflow: hidden;
-          border: 1px solid var(--etb-line-mid, #D1D5DB);
-          background: #111111;
-          min-height: 380px;
-        }
-
-        .etb-personal-img {
-          display: block;
-          width: 100%;
-          height: 100%;
-          min-height: 380px;
-          max-height: 520px;
-          object-fit: cover;
-          object-position: center 30%;
-        }
-
-        .etb-personal-scrim {
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-          background:
-            linear-gradient(90deg, rgba(10, 10, 10, 0.72) 0%, rgba(10, 10, 10, 0.35) 48%, rgba(10, 10, 10, 0.2) 100%),
-            linear-gradient(180deg, rgba(10, 10, 10, 0.15) 0%, rgba(10, 10, 10, 0.55) 100%);
-        }
-
         .etb-personal-copy {
-          position: absolute;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          z-index: 2;
-          padding: 36px 32px 40px;
-          max-width: 720px;
           display: flex;
           flex-direction: column;
-          gap: 12px;
+          align-items: center;
+          gap: 10px;
+          margin-top: 20px;
+          max-width: 640px;
+          width: 100%;
         }
 
         .etb-personal-headline {
           margin: 0;
           font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
-          font-size: clamp(22px, 3vw, 34px);
+          font-size: clamp(18px, 2.4vw, 26px);
           font-weight: 400;
           letter-spacing: 0.02em;
           text-transform: uppercase;
-          color: #ffffff;
-          line-height: 1.1;
-          text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+          color: var(--etb-ink);
+          line-height: 1.15;
         }
 
         .etb-personal-text {
           margin: 0;
           font-size: clamp(14px, 1.4vw, 16px);
           line-height: 1.65;
-          color: rgba(255, 255, 255, 0.9);
+          color: var(--etb-dim, #8a8a8a);
           font-weight: 400;
           max-width: 520px;
-          text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
-        }
-
-        .etb-personal-text+.etb-personal-text {
-          margin-top: 2px;
         }
 
         .etb-personal-meta {
           display: flex;
           flex-wrap: wrap;
+          justify-content: center;
           gap: 10px 18px;
-          margin-top: 8px;
+          margin-top: 6px;
           font-size: 11px;
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          color: rgba(255, 255, 255, 0.55);
+          color: var(--etb-dim, #8a8a8a);
           font-weight: 500;
         }
 
@@ -3625,18 +3593,36 @@
           flex: none;
         }
 
+        .etb-personal-banner {
+          position: relative;
+          overflow: hidden;
+          border: 1px solid var(--etb-line-mid, #D1D5DB);
+          background: var(--etb-surface, #FFFFFF);
+          min-height: 380px;
+        }
+
+        .etb-personal-img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          min-height: 380px;
+          max-height: 520px;
+          object-fit: cover;
+          object-position: center 30%;
+        }
+
         @media (max-width: 639px) {
           .etb-personal-banner {
-            min-height: 320px;
+            min-height: 280px;
           }
 
           .etb-personal-img {
-            min-height: 320px;
+            min-height: 280px;
             max-height: 420px;
           }
 
-          .etb-personal-copy {
-            padding: 24px 18px 28px;
+          .etb-personal-head {
+            margin-bottom: 20px;
           }
         }
 
@@ -4258,13 +4244,22 @@
           box-shadow: none;
         }
 
-        /* Brand lockup — logo.html MARK-01 + wordmark (Logo.dc.html primary, reversed) */
+        /* Brand row: logo lockup + address beside it (top of footer) */
+        .ft-brand-row {
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+          gap: 24px 48px;
+          flex-wrap: wrap;
+          padding: 28px 0 0;
+        }
+
         .ft-brand {
           display: flex;
           align-items: center;
           gap: 20px;
-          padding: 28px 0 0;
           position: relative;
+          min-width: 0;
         }
 
         .ft-brand-mark {
@@ -4327,16 +4322,33 @@
 
         .ft-brand-frame--tl {
           left: -8px;
-          top: 20px;
+          top: -8px;
           border-left: 1.5px solid #171717;
           border-top: 1.5px solid #171717;
         }
 
         .ft-brand-frame--br {
-          right: 0;
+          right: -4px;
           bottom: -4px;
           border-right: 1.5px solid var(--ft-red-bright);
           border-bottom: 1.5px solid var(--ft-red-bright);
+        }
+
+        /* Address block next to logo (was beside map) */
+        .ft-loc-head {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+          text-align: left;
+          max-width: min(440px, 100%);
+          min-width: 0;
+          padding-left: 28px;
+          border-left: 1px solid var(--ft-line-mid);
+        }
+
+        .ft-premium .ft-loc-head .ft-maps-btn {
+          align-self: flex-start;
         }
 
         /* Local pattern fill used inside cells (SVG absolute) */
@@ -4392,12 +4404,9 @@
           opacity: 1;
         }
 
-        /* Map + location block */
+        /* Full-width map (like old site) — address lives in .ft-loc-head above */
         .ft-map-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 1px;
-          background: var(--ft-line-mid);
+          display: block;
           margin-top: 36px;
           position: relative;
           border: 1px solid var(--ft-line-mid);
@@ -4550,9 +4559,12 @@
 
         .ft-map-cell {
           background: var(--ft-surface);
-          aspect-ratio: 16/10;
+          /* Wide banner map — full content width, like old site */
+          aspect-ratio: 21/9;
           position: relative;
-          min-height: 280px;
+          min-height: 260px;
+          max-height: 420px;
+          width: 100%;
           overflow: hidden;
         }
 
@@ -4567,34 +4579,6 @@
           background-size: 24px 24px;
           opacity: 1;
           z-index: 1;
-        }
-
-        .ft-loc-cell {
-          background: var(--ft-surface);
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          gap: 20px;
-          padding: 44px 40px;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .ft-loc-cell>*:not(.ft-fill-pattern) {
-          position: relative;
-          z-index: 1;
-        }
-
-        .ft-loc-cell::after {
-          content: '';
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          width: 1px;
-          background: var(--ft-line);
-          pointer-events: none;
-          z-index: 2;
         }
 
         .ft-loc-tag {
@@ -4615,7 +4599,7 @@
 
         .ft-address {
           margin: 0;
-          font-size: clamp(22px, 2.6vw, 34px);
+          font-size: clamp(18px, 2.2vw, 28px);
           font-weight: 800;
           letter-spacing: -0.02em;
           text-transform: uppercase;
@@ -4626,7 +4610,6 @@
 
         /* Anodized red metallic engraved button */
         .ft-premium .ft-maps-btn {
-          align-self: flex-start;
           display: inline-flex;
           align-items: center;
           gap: 8px;
@@ -4941,10 +4924,6 @@
         }
 
         @media (min-width: 800px) {
-          .ft-map-grid {
-            grid-template-columns: 1.5fr 1fr !important;
-          }
-
           .ft-contact-grid {
             grid-template-columns: 1fr 1fr 1fr !important;
           }
@@ -4953,10 +4932,6 @@
         @media (max-width: 640px) {
           .ft-inner {
             padding: 0 20px;
-          }
-
-          .ft-loc-cell {
-            padding: 32px 24px;
           }
 
           .ft-col {
@@ -4974,9 +4949,13 @@
             font-size: 8.5px;
           }
 
+          .ft-brand-row {
+            padding-top: 22px;
+            gap: 20px;
+          }
+
           .ft-brand {
             gap: 14px;
-            padding-top: 22px;
           }
 
           .ft-brand-mark {
@@ -4986,6 +4965,19 @@
 
           .ft-brand-name {
             white-space: normal;
+          }
+
+          .ft-loc-head {
+            width: 100%;
+            max-width: none;
+            padding-left: 0;
+            border-left: none;
+          }
+
+          .ft-map-cell {
+            aspect-ratio: 16/10;
+            max-height: none;
+            min-height: 220px;
           }
         }
 
@@ -5052,6 +5044,7 @@
             <span class="hd-phone-label">Tel.</span>
             <span>+372 567 02 700</span>
           </a>
+
 
           <div class="hd-lang lang-switch">
             <button type="button" class="hd-lang-toggle" onClick="{{ toggleLangMenu }}" aria-expanded="{{ langOpen }}"
@@ -5443,8 +5436,7 @@
                     <!-- <span class="rf-kicker">[ HINNAPAKKUMINE / ЦЕНОВОЕ ПРЕДЛОЖЕНИЕ ]</span> -->
                     <h2 class="rf-title" id="rf-modal-title">ЗАПРОС ЦЕНОВОГО ПРЕДЛОЖЕНИЯ</h2>
                     <p class="rf-lead">Заполните форму ниже, чтобы отправить запрос на расчет стоимости. Мы обычно
-                      отвечаем на
-                      обращения в течение одного рабочего дня. Пожалуйста, заполните все обязательные поля
+                      отвечаем на обращения в течение одного рабочего дня. Пожалуйста, заполните все обязательные поля
                       (отмечены *), чтобы мы могли подготовить для Вас максимально точное ценовое предложение. Укажите
                       номер авто или опишите симптомы для быстрой оценки стоимости.</p>
                   </div>
@@ -5487,7 +5479,7 @@
                     <div class="rf-panel-body">
                       <div class="rf-section-title">
                         <span class="rf-panel-num">01</span>
-                        <span class="rf-panel-name">SÕIDUKI ANDMED / ДАННЫЕ АВТО</span>
+                        <span class="rf-panel-name">Данные автомобиля</span>
                       </div>
 
                       <p class="rf-vehicle-hint">
@@ -5496,7 +5488,7 @@
 
                       <div class="rf-vehicle-grid manual-grid">
                         <div class="rf-field rf-field--plate">
-                          <label class="rf-label" for="rf-plate">Рег. номер</label>
+                          <label class="rf-label" for="rf-plate">Рег. номер автомобиля</label>
                           <div class="rf-plate-wrap">
                             <span class="rf-plate-badge" aria-hidden="true">EE</span>
                             <input id="rf-plate" class="rf-input rf-input--plate" value="{{ plate }}"
@@ -5544,15 +5536,14 @@
                       <div class="rf-panel-body">
                         <div class="rf-section-title">
                           <span class="rf-panel-num">02</span>
-                          <span class="rf-panel-name">SÜMPTOMID / СИМПТОМЫ</span>
+                          <span class="rf-panel-name">Желаемые работы</span>
                         </div>
 
                         <div class="rf-field" style="flex:1;">
-                          <label class="rf-label" for="rf-desc">PROBLEEMI KIRJELDUS JA SÜMPTOMID / ОПИСАНИЕ ПРОБЛЕМЫ И
-                            СИМПТОМЫ</label>
+                          <label class="rf-label" for="rf-desc">Ремонт / обслуживание</label>
                           <textarea id="rf-desc" class="rf-input rf-input--area" value="{{ description }}"
                             onChange="{{ onDescriptionChange }}" rows="5"
-                            placeholder="Mootor ei käivitu, must suits kiirendamisel, võimsuse kadu... / Машина плохо заводится, черный дым, плавают обороты..."></textarea>
+                            placeholder="Машина плохо заводится, черный дым, плавают обороты..."></textarea>
                         </div>
                       </div>
                     </section>
@@ -5562,21 +5553,21 @@
                       <div class="rf-panel-body">
                         <div class="rf-section-title">
                           <span class="rf-panel-num">03</span>
-                          <span class="rf-panel-name">KONTAKTANDMED / КОНТАКТЫ</span>
+                          <span class="rf-panel-name">КОНТАКТЫ</span>
                         </div>
                         <div class="rf-contact contact-grid">
                           <div class="rf-field">
-                            <label class="rf-label" for="rf-name">NIMI / ИМЯ</label>
+                            <label class="rf-label" for="rf-name">ИМЯ</label>
                             <input id="rf-name" class="rf-input" value="{{ name }}" onChange="{{ onNameChange }}"
                               required="{{ true }}" autocomplete="name" />
                           </div>
                           <div class="rf-field">
-                            <label class="rf-label" for="rf-phone">TELEFON / ТЕЛЕФОН</label>
+                            <label class="rf-label" for="rf-phone">ТЕЛЕФОН</label>
                             <input id="rf-phone" class="rf-input" type="tel" value="{{ phone }}"
                               onChange="{{ onPhoneChange }}" required="{{ true }}" autocomplete="tel" />
                           </div>
                           <div class="rf-field">
-                            <label class="rf-label" for="rf-email">E-POST / EMAIL</label>
+                            <label class="rf-label" for="rf-email">EMAIL</label>
                             <input id="rf-email" class="rf-input" type="email" value="{{ email }}"
                               onChange="{{ onEmailChange }}" required="{{ true }}" autocomplete="email" />
                           </div>
@@ -5591,10 +5582,8 @@
                     <span class="rf-cta-corner rf-cta-corner--br" aria-hidden="true"></span>
 
                     <div class="rf-submit-copy">
-                      <span class="rf-submit-kicker">[ SECURE TRANSMISSION ]</span>
-                      <p class="rf-submit-note">Vastame tööpäevadel 30 minuti jooksul. / Ответим в рабочее время в
-                        течение 30
-                        минут.</p>
+                      <span class="rf-submit-kicker">[ Сохраним ваши данные ]</span>
+                      <p class="rf-submit-note">Ответим в рабочее время в течение 30 минут.</p>
                     </div>
 
                     <div class="rf-submit-actions">
@@ -5685,13 +5674,12 @@
               <rect width="100%" height="100%" fill="url(#etb-diamond-grid)"></rect>
             </svg>
           </div>
-          <span class="etb-kicker">[ 03 / ОБОРУДОВАНИЕ, КОМАНДА И B2B ]</span>
+          <span class="etb-kicker">[ 03 / SEADMED, MEESKOND JA B2B ]</span>
           <h2 class="etb-title" id="etb-heading">
-            ОБОРУДОВАНИЕ И КОМАНДА
+            SEADMED JA MEESKOND
           </h2>
           <p class="etb-lead">
-            Высокоточные диагностические стенды, сертифицированные мастера и надёжное сотрудничество с партнёрами по
-            всей Эстонии.
+            Täppisdiagnostika stendid, sertifitseeritud meistrid ja usaldusväärne koostöö partneritega üle Eesti.
           </p>
         </header>
 
@@ -5704,8 +5692,8 @@
                 <rect width="100%" height="100%" fill="url(#etb-frame-stack)"></rect>
               </svg>
             </div>
-            <span class="etb-block-title">ОБОРУДОВАНИЕ</span>
-            <span class="etb-block-meta">[ 03 ЕДИНИЦЫ · ЛАБОРАТОРНЫЙ КЛАСС ]</span>
+            <span class="etb-block-title">SEADMED</span>
+            <span class="etb-block-meta">[ 03 ÜHIKUT · LABORIKLASS ]</span>
           </div>
           <div class="etb-grid etb-grid--equip equip-grid">
             <sc-for list="{{ equipment }}" as="eq" hint-placeholder-count="3">
@@ -5748,28 +5736,27 @@
           </div>
         </div>
 
-        <!-- Personal / team — one full-width photo + copy -->
+        <!-- Personal / team — all copy above photo; clean image, no overlay -->
         <div class="etb-block etb-personal" style="padding-top:32px;" id="personal" aria-labelledby="personal-heading">
           <div class="etb-personal-head">
-            <span class="etb-personal-kicker">[ MEESKOND / KOMMAND ]</span>
+            <span class="etb-personal-kicker">[ MEESKOND ]</span>
             <h3 class="etb-personal-title" id="personal-heading">Personal</h3>
             <div class="etb-personal-rule" aria-hidden="true"></div>
-          </div>
-
-          <div class="etb-personal-banner">
-            <img class="etb-personal-img" src="./ad-img-stuff-4.jpg" alt="Auto Diislikeskus meeskond" width="1400"
-              height="700" />
-            <div class="etb-personal-scrim" aria-hidden="true"></div>
             <div class="etb-personal-copy">
               <h4 class="etb-personal-headline">Diplomeeritud spetsialistid</h4>
               <p class="etb-personal-text">Meie spetsialistid on läbinud koolituse.</p>
               <p class="etb-personal-text">Bosch sertifikaadid kinnitavad kõrget kvalifikatsiooni.</p>
-              <div class="etb-personal-meta" aria-hidden="true">
+              <div class="etb-personal-meta">
                 <span>Bosch certified</span>
                 <span>Common Rail</span>
                 <span>TNVD</span>
               </div>
             </div>
+          </div>
+
+          <div class="etb-personal-banner">
+            <img class="etb-personal-img" src="./ad-img-stuff-4.jpg" alt="Auto Diislikeskus meeskond" width="1400"
+              height="700" />
           </div>
         </div>
 
@@ -5791,9 +5778,9 @@
 
           <div class="etb-b2b-layout">
             <div class="etb-b2b-content">
-              <span class="etb-b2b-kicker">[ B2B-СОТРУДНИЧЕСТВО ДЛЯ ПАРТНЁРОВ ]</span>
+              <span class="etb-b2b-kicker">[ B2B Pakkumine autoteeninduse ettevõtete jaoks ]</span>
               <h3 class="etb-b2b-title" id="etb-b2b-heading">
-                АВТОСЕРВИСАМ И АВТОПАРКАМ ПО ВСЕЙ ЭСТОНИИ
+                AUTOHOOLDUSTE JA AUTOVARUOSADELE ÜLE EESTIS
               </h3>
 
               <div class="etb-b2b-list">
@@ -5834,10 +5821,10 @@
               </div>
 
               <div class="etb-b2b-actions">
-                <a href="#request-form" onClick="{{ scrollToForm }}" class="ft-maps-btn">[ ОТПРАВИТЬ АГРЕГАТ В РЕМОНТ →
+                <a href="#request-form" onClick="{{ scrollToForm }}" class="ft-maps-btn">[ SAADA SEADE REMONTI →
                   ]</a>
                 <a href="https://pihustiremont.ee/adiesel.pdf" target="_blank" rel="noopener noreferrer"
-                  class="etb-btn-ghost">[ B2B-ПРАЙС И УСЛОВИЯ ]</a>
+                  class="etb-btn-ghost">[ B2B HINNAD JA TINGIMUSED ]</a>
               </div>
             </div>
 
@@ -5914,29 +5901,39 @@
           </sc-for>
         </div>
 
-        <!-- MARK-01 brand lockup — logo.html + Logo.dc.html reverse wordmark -->
-        <div class="ft-brand">
-          <span class="ft-brand-frame ft-brand-frame--tl" aria-hidden="true"></span>
-          <span class="ft-brand-frame ft-brand-frame--br" aria-hidden="true"></span>
+        <!-- MARK-01 brand lockup + address (moved up from map side panel) -->
+        <div class="ft-brand-row">
+          <div class="ft-brand">
+            <span class="ft-brand-frame ft-brand-frame--tl" aria-hidden="true"></span>
+            <span class="ft-brand-frame ft-brand-frame--br" aria-hidden="true"></span>
 
-          <svg class="ft-brand-mark" viewBox="0 0 100 100" width="64" height="64" role="img"
-            aria-label="Авто Диисликескус">
-            <!-- logo.html — reversed on dark: stroke #F8F9FA, accent disc -->
-            <rect x="10" y="10" width="80" height="80" fill="none" stroke="#171717" stroke-width="4"></rect>
-            <rect x="26" y="26" width="48" height="48" fill="none" stroke="#171717" stroke-width="3"
-              transform="rotate(45 50 50)"></rect>
-            <line x1="50" y1="10" x2="50" y2="20" stroke="#171717" stroke-width="3"></line>
-            <line x1="50" y1="80" x2="50" y2="90" stroke="#171717" stroke-width="3"></line>
-            <line x1="10" y1="50" x2="20" y2="50" stroke="#171717" stroke-width="3"></line>
-            <line x1="80" y1="50" x2="90" y2="50" stroke="#171717" stroke-width="3"></line>
-            <circle cx="50" cy="50" r="13" fill="{{ accentColor }}"></circle>
-          </svg>
+            <svg class="ft-brand-mark" viewBox="0 0 100 100" width="64" height="64" role="img"
+              aria-label="Авто Диисликескус">
+              <!-- logo.html — reversed on dark: stroke #F8F9FA, accent disc -->
+              <rect x="10" y="10" width="80" height="80" fill="none" stroke="#171717" stroke-width="4"></rect>
+              <rect x="26" y="26" width="48" height="48" fill="none" stroke="#171717" stroke-width="3"
+                transform="rotate(45 50 50)"></rect>
+              <line x1="50" y1="10" x2="50" y2="20" stroke="#171717" stroke-width="3"></line>
+              <line x1="50" y1="80" x2="50" y2="90" stroke="#171717" stroke-width="3"></line>
+              <line x1="10" y1="50" x2="20" y2="50" stroke="#171717" stroke-width="3"></line>
+              <line x1="80" y1="50" x2="90" y2="50" stroke="#171717" stroke-width="3"></line>
+              <circle cx="50" cy="50" r="13" fill="{{ accentColor }}"></circle>
+            </svg>
 
-          <div class="ft-brand-text">
-            <!-- Brand name fixed (RU form) for all locales -->
-            <h2 class="ft-brand-name">AUTO DIISLIKESKUS</h2>
-            <span class="ft-brand-code">{{ brandCode }}</span>
-            <span class="ft-brand-rule" aria-hidden="true"></span>
+            <div class="ft-brand-text">
+              <!-- Brand name fixed (RU form) for all locales -->
+              <h2 class="ft-brand-name">AUTO DIISLIKESKUS</h2>
+              <span class="ft-brand-code">{{ brandCode }}</span>
+              <span class="ft-brand-rule" aria-hidden="true"></span>
+            </div>
+          </div>
+
+          <div class="ft-loc-head">
+            <span class="ft-loc-tag">{{ locTag }}</span>
+            <!-- Address fixed (RU form) for all locales -->
+            <h3 class="ft-address">Paavli 4, Tallinn, Eesti 10412</h3>
+            <a href="https://maps.app.goo.gl/xG31jhzgyHaB2XmCA" target="_blank" rel="noopener noreferrer"
+              class="ft-maps-btn">{{ mapsBtn }}</a>
           </div>
         </div>
 
@@ -5945,6 +5942,7 @@
           <span class="ft-serial">{{ metaBrand }}</span>
         </div>
 
+        <!-- Full-width map (old-site layout) -->
         <div class="ft-map-grid map-grid">
           <!-- Top-left lens sight -->
           <span class="ft-sight ft-sight--tl" aria-hidden="true">
@@ -5971,20 +5969,6 @@
               style="border:0;display:block;width:100%;height:100%;position:absolute;inset:0;filter:grayscale(0.2) contrast(1.02);"
               allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
           </div>
-          <div class="ft-loc-cell">
-            <!-- Nested Frames + Indicator Dots — soft loc-cell grain only -->
-            <svg class="ft-fill-pattern" aria-hidden="true" preserveAspectRatio="none" style="opacity:0.12;">
-              <rect width="100%" height="100%" fill="url(#ft-frame-stack)"></rect>
-            </svg>
-            <svg class="ft-fill-pattern" aria-hidden="true" preserveAspectRatio="none" style="opacity:0.1;">
-              <rect width="100%" height="100%" fill="url(#ft-dot-matrix)"></rect>
-            </svg>
-            <span class="ft-loc-tag">{{ locTag }}</span>
-            <!-- Address fixed (RU form) for all locales -->
-            <h3 class="ft-address">ПААВЛИ 4, 10412<br />ТАЛЛИН, ЭСТОНИЯ</h3>
-            <a href="https://www.google.com/maps?q=Paavli+tn+4,+10412+Tallinn,+Estonia" target="_blank"
-              rel="noopener noreferrer" class="ft-maps-btn">{{ mapsBtn }}</a>
-          </div>
         </div>
 
         <div class="ft-contact-grid contact-grid">
@@ -5997,6 +5981,7 @@
               <span class="ft-col-label">{{ labelContacts }}</span>
             </div>
             <a href="tel:+37256702700" class="ft-phone">+372 567 02 700</a>
+            <a href="tel:+37256653772" class="ft-phone">+372 566 53 772</a>
             <a href="mailto:autodiislikeskus@gmail.com" class="ft-email">autodiislikeskus@gmail.com</a>
           </div>
           <div class="ft-col">
@@ -6019,7 +6004,7 @@
               <span class="ft-col-label">{{ labelCompany }}</span>
             </div>
             <!-- Company name fixed (RU form) for all locales -->
-            <span class="ft-company">AUTO DIISLIKESKUS</span>
+            <span class="ft-company">AUTO DIISLIKESKUS OÜ</span>
             <span class="ft-reg">{{ regNr }}</span>
             <span class="ft-reg">{{ vatNr }}</span>
           </div>
@@ -6284,30 +6269,30 @@ class Component extends DCLogic {
   equipment = [
     {
       slotId: 'equip-1',
-      tag: '[ BOSCH EPS 708 / СТЕНД ]',
-      placeholder: 'Фото стенда Bosch EPS 708',
+      tag: '[ DIAGNOSTIKA ]',
+      placeholder: 'Foto: mobiilne diagnostikastend',
       src: './ad-img-1.jpg',
-      name: 'BOSCH EPS 708',
-      spec1: 'Испытания Common Rail под давлением до 2500 бар',
-      spec2: 'Автоматическая генерация тест-планов и кодирование',
+      name: 'MOBIILNE DIAGNOSTIKASTEND',
+      spec1: 'Sülearvuti ja lisaekraan, ühendus auto juhtmekimbuga',
+      spec2: 'Arvutidiagnostika otse sõiduki juures',
     },
     {
       slotId: 'equip-2',
-      tag: '[ HARTRIDGE AVM-2 ]',
-      placeholder: 'Фото стенда Hartridge AVM-2',
+      tag: '[ TESTIMINE ]',
+      placeholder: 'Foto: Common Rail testistend',
       src: './ad-img-2.jpg',
-      name: 'HARTRIDGE AVM-2',
-      spec1: 'Проверка расхода и факела распыла форсунок',
-      spec2: 'Библиотека калибровочных данных multi-brand',
+      name: 'CR-JET TESTISTEND',
+      spec1: 'Pihustite kulu ja pihustusvihu kontroll',
+      spec2: 'Common Rail diiselpihustite testimine',
     },
     {
       slotId: 'equip-3',
-      tag: '[ УЛЬТРАЗВУКОВАЯ ОЧИСТКА ]',
-      placeholder: 'Фото станции ультразвуковой очистки',
+      tag: '[ REGULEERIMINE ]',
+      placeholder: 'Foto: pihustite reguleerimisstend',
       src: './ad-img-3.jpg',
-      name: 'УЛЬТРАЗВУКОВАЯ ОЧИСТКА',
-      spec1: 'Точная деконтаминация компонентов',
-      spec2: 'Удаление металлической стружки и отложений',
+      name: 'INJECTOR REGULEERIMISSTEND',
+      spec1: 'Rõhuklapi ja nõela peenhäälestus',
+      spec2: 'Manomeetrid ja kalibreerimine töölaual',
     },
   ];
 
@@ -6341,15 +6326,15 @@ class Component extends DCLogic {
   b2bPoints = [
     {
       num: '01',
-      text: 'Принимаем снятые форсунки и насосы курьером (Cargobus / DPD) со всей Эстонии.',
+      text: 'Võtame vastu lahtivõetud pihusteid ja pumpasid kulleriga (Cargobus / DPD) üle Eesti.',
     },
     {
       num: '02',
-      text: 'Быстрая диагностика и ремонт в течение 24–48 часов.',
+      text: 'Kiire diagnostika ja remont 24-48 tunni jooksul.',
     },
     {
       num: '03',
-      text: 'Специальные условия и официальная гарантия для бизнес-клиентов.',
+      text: 'Äriklientidele eritingimused ja ametlik garantii.',
     },
   ];
 
@@ -6365,7 +6350,7 @@ class Component extends DCLogic {
   /** UI copy — brand name + Paavli address stay fixed RU in markup */
   i18n = {
     RU: {
-      brandCode: '/ Дизель–01 · MARK-01',
+      brandCode: 'DIISELMOOTORITE DIAGNOSTIKA- JA REMONDIKESKUS',
       metaGeo: "[ ЭСТОНИЯ / ТАЛЛИН — N59°26' E24°45' ]",
       metaBrand: '[ TEXTURE-01 · AUTO DIISLIKESKUS ]',
       locTag: '[ 04 / ЛОКАЦИЯ И КОНТАКТЫ ]',
@@ -6383,25 +6368,25 @@ class Component extends DCLogic {
       toTop: 'Наверх',
     },
     EE: {
-      brandCode: '/ Diisel–01 · MARK-01',
-      metaGeo: "[ EESTI / TALLINN — N59°26' E24°45' ]",
-      metaBrand: '[ TEXTURE-01 · AUTO DIISLIKESKUS ]',
-      locTag: '[ 04 / LOKATSIOON JA KONTAKTID ]',
+      brandCode: 'DIISELMOOTORITE DIAGNOSTIKA- JA REMONDIKESKUS',
+      metaGeo: "[ Diiselautode remontimise autoteenindus Tallinnas ]",
+      metaBrand: '[ Auto Diislikeskus OÜ ]',
+      locTag: '[ LOKATSIOON JA KONTAKTID ]',
       mapsBtn: '[ AVA GOOGLE MAPSIS → ]',
       labelContacts: '[ KONTAKTID ]',
       labelHours: '[ TÖÖAEG ]',
       hoursMain: 'E–R: 09:00 – 18:00',
       hoursSub: 'L–P: SULETUD',
       labelCompany: '[ ETTEVÕTE ]',
-      regNr: 'REG. NR: XXXXXXXX',
-      vatNr: 'KMKR / VAT: EE XXXXXXXX',
+      regNr: 'REG. NR: 14375726',
+      vatNr: 'KMKR / VAT: EE -',
       copyright: '© 2026 AUTO DIISLIKESKUS. KÕIK ÕIGUSED KAITSTUD.',
       privacy: 'Isikuandmete kaitse',
       terms: 'Kasutustingimused',
       toTop: 'Tagasi üles',
     },
     EN: {
-      brandCode: '/ Diesel–01 · MARK-01',
+      brandCode: 'DIISELMOOTORITE DIAGNOSTIKA- JA REMONDIKESKUS',
       metaGeo: "[ ESTONIA / TALLINN — N59°26' E24°45' ]",
       metaBrand: '[ TEXTURE-01 · AUTO DIISLIKESKUS ]',
       locTag: '[ 04 / LOCATION & CONTACTS ]',
@@ -6419,7 +6404,7 @@ class Component extends DCLogic {
       toTop: 'Back to top',
     },
     FI: {
-      brandCode: '/ Diesel–01 · MARK-01',
+      brandCode: 'DIISELMOOTORITE DIAGNOSTIKA- JA REMONDIKESKUS',
       metaGeo: "[ VIRO / TALLINNA — N59°26' E24°45' ]",
       metaBrand: '[ TEXTURE-01 · AUTO DIISLIKESKUS ]',
       locTag: '[ 04 / SIJAINTI JA YHTEYSTIEDOT ]',
