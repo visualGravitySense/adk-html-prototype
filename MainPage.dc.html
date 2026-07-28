@@ -24,7 +24,7 @@
 
         body {
           margin: 0;
-          background: #F8F9FA;
+          background: #FFFFFF;
           font-family: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
           font-weight: 400;
         }
@@ -63,7 +63,7 @@
         /* White header after leaving black hero */
         .hd.hd--light {
           --hd-bg: #ffffff;
-          --hd-utility-bg: #F8F9FA;
+          --hd-utility-bg: #ffffff;
           --hd-bg-elevated: #ffffff;
           --hd-ink: #171717;
           --hd-muted: #737373;
@@ -455,7 +455,7 @@
           }
         }
 
-        /* === Hero (.hero) — dark cinematic like old site === */
+        /* === Hero (.hero) — dark cinematic centered layout with full background === */
         .hero {
           --h-bg: #0f0f0f;
           --h-surface: #141414;
@@ -474,74 +474,74 @@
           overflow: hidden;
           background: var(--h-bg);
           font-family: var(--h-sans);
-          min-height: 760px;
+          min-height: 560px;
           display: flex;
           flex-direction: column;
+          align-items: center;
+          justify-content: center;
           color: var(--h-ink);
         }
 
-        /* Full-bleed dark atmosphere behind shell */
-        .hero::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background:
-            radial-gradient(ellipse 80% 70% at 70% 40%, rgba(0, 184, 212, 0.06) 0%, transparent 55%),
-            linear-gradient(180deg, #0a0a0a 0%, #141414 50%, #0f0f0f 100%);
-          pointer-events: none;
-          z-index: 0;
-        }
-
-        .hero-fill {
+        .hero-bg {
           position: absolute;
           inset: 0;
           width: 100%;
           height: 100%;
+          z-index: 0;
+          overflow: hidden;
+        }
+
+        .hero-bg image-slot,
+        .hero-bg>image-slot,
+        .hero-bg img {
           display: block;
-          pointer-events: none;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center center;
+        }
+
+        .hero-bg-overlay {
+          display: none;
         }
 
         .hero-shell {
           position: relative;
-          z-index: 1;
+          z-index: 2;
           flex: 1;
           display: flex;
           flex-direction: column;
-          max-width: 1440px;
+          align-items: center;
+          justify-content: center;
+          max-width: 1240px;
           width: 100%;
           margin: 0 auto;
-          padding: 0 24px;
+          padding: 88px 24px 72px;
           box-sizing: border-box;
-          border-left: 1px solid var(--h-line-mid);
-          border-right: 1px solid var(--h-line-mid);
-          background: transparent;
-        }
-
-        .hero-grid {
-          flex: 1;
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 0;
-          min-height: 0;
+          text-align: center;
         }
 
         .hero-main {
           display: flex;
           flex-direction: column;
+          align-items: center;
           justify-content: center;
-          gap: 24px;
-          padding: 56px 0 48px;
-          min-width: 0;
+          text-align: center;
+          gap: 22px;
+          max-width: 880px;
+          width: 100%;
+          margin: 0 auto;
         }
 
         .hero-badge {
           display: inline-flex;
-          align-self: flex-start;
+          align-self: center;
           align-items: center;
           gap: 8px;
-          border: 1px solid rgba(255, 255, 255, 0.28);
-          padding: 7px 14px;
-          background: rgba(0, 0, 0, 0.35);
+          border: 1px solid rgba(255, 255, 255, 0.32);
+          padding: 7px 16px;
+          background: rgba(0, 0, 0, 0.55);
+          backdrop-filter: blur(4px);
         }
 
         .hero-badge-dot {
@@ -556,42 +556,43 @@
           font-size: 11px;
           letter-spacing: 0.14em;
           text-transform: uppercase;
-          color: rgba(255, 255, 255, 0.78);
+          color: rgba(255, 255, 255, 0.9);
           font-family: var(--h-mono);
         }
 
         .hero-title {
           margin: 0;
-          font-size: clamp(44px, 7.4vw, 104px);
+          font-size: clamp(38px, 6.5vw, 84px);
           font-weight: 400;
-          letter-spacing: -0.02em;
+          letter-spacing: -0.01em;
           text-transform: uppercase;
           color: #ffffff;
-          line-height: 0.95;
-          text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
-        }
-
-        .hero-title-rule {
-          width: 72px;
-          height: 3px;
-          background: var(--h-red-bright);
+          line-height: 1.02;
+          text-align: center;
+          text-shadow: 0 4px 32px rgba(0, 0, 0, 0.8);
         }
 
         .hero-lead {
-          margin: 0;
-          max-width: 600px;
-          font-size: clamp(15px, 1.5vw, 18px);
-          line-height: 1.65;
-          color: rgba(255, 255, 255, 0.78);
-          font-weight: 400;
+          margin: 0 auto;
+          max-width: 720px;
+          font-size: clamp(15px, 1.8vw, 20px);
+          line-height: 1.5;
+          color: rgba(255, 255, 255, 0.92);
+          font-weight: 500;
+          text-align: center;
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+          text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7);
         }
 
         .hero-cta-row {
           display: flex;
           align-items: center;
+          justify-content: center;
           gap: 20px;
           flex-wrap: wrap;
-          padding-top: 4px;
+          padding-top: 8px;
+          margin: 0 auto;
         }
 
         .hero-cta-meta-block {
@@ -904,7 +905,7 @@
         }
 
         .ph {
-          --ph-bg: #F8F9FA;
+          --ph-bg: #FFFFFF;
           --ph-surface: #FFFFFF;
           --ph-ink: #171717;
           --ph-muted: #525252;
@@ -917,23 +918,23 @@
           background: var(--ph-bg);
           color: var(--ph-ink);
           font-family: var(--ph-sans);
-          padding: 88px 24px 96px;
+          padding: 36px 24px 40px;
           position: relative;
         }
 
         .ph-inner {
           max-width: 1240px;
           margin: 0 auto;
-          border-left: 1px solid var(--ph-line-mid);
-          border-right: 1px solid var(--ph-line-mid);
-          background: var(--ph-surface);
-          padding: 56px 48px 64px;
+          border-left: none;
+          border-right: none;
+          background: transparent;
+          padding: 0;
           box-sizing: border-box;
         }
 
         .ph-header {
           text-align: center;
-          margin-bottom: 40px;
+          margin-bottom: 24px;
         }
 
         .ph-kicker {
@@ -1001,15 +1002,120 @@
           border-color: var(--ph-ink);
         }
 
-        .ph-brand.is-active {
-          background: var(--ph-accent);
-          border-color: var(--ph-accent);
+        /* --- DENSO: Brand Red & Heavy Sans --- */
+        .ph-brand--denso {
+          font-family: 'Arial Black', Arial, sans-serif;
+          font-weight: 900;
+          letter-spacing: 0.1em;
+        }
+
+        .ph-brand--denso:hover {
+          border-color: #E60012;
+          color: #E60012;
+        }
+
+        .ph-brand--denso.is-active,
+        .ph-brand--denso.is-active:hover {
+          background: #E60012;
+          border-color: #E60012;
           color: #ffffff;
         }
 
-        .ph-brand.is-active:hover {
-          border-color: var(--ph-accent);
+        .ph-panel--denso .ph-brand-title {
+          font-family: 'Arial Black', Arial, sans-serif;
+          color: #E60012;
+          font-weight: 900;
+        }
+
+        .ph-panel--denso .ph-bullet {
+          background: #E60012;
+        }
+
+        /* --- BOSCH: Corporate Blue/Red & Clean Heavy Sans --- */
+        .ph-brand--bosch {
+          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+          font-weight: 800;
+          letter-spacing: 0.08em;
+        }
+
+        .ph-brand--bosch:hover {
+          border-color: #005691;
+          color: #005691;
+        }
+
+        .ph-brand--bosch.is-active,
+        .ph-brand--bosch.is-active:hover {
+          background: #005691;
+          border-color: #005691;
           color: #ffffff;
+        }
+
+        .ph-panel--bosch .ph-brand-title {
+          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+          color: #005691;
+          font-weight: 800;
+        }
+
+        .ph-panel--bosch .ph-bullet {
+          background: #005691;
+        }
+
+        /* --- DELPHI: Signature Orange & Geometric Sans --- */
+        .ph-brand--delphi {
+          font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+        }
+
+        .ph-brand--delphi:hover {
+          border-color: #E35205;
+          color: #E35205;
+        }
+
+        .ph-brand--delphi.is-active,
+        .ph-brand--delphi.is-active:hover {
+          background: #E35205;
+          border-color: #E35205;
+          color: #ffffff;
+        }
+
+        .ph-panel--delphi .ph-brand-title {
+          font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+          color: #E35205;
+          font-weight: 700;
+        }
+
+        .ph-panel--delphi .ph-bullet {
+          background: #E35205;
+        }
+
+        /* --- SIEMENS / CONTINENTAL: Petroleum Teal & Tech Sans --- */
+        .ph-brand--siemens {
+          font-family: 'Segoe UI', 'Verdana', sans-serif;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+        }
+
+        .ph-brand--siemens:hover {
+          border-color: #00646e;
+          color: #00646e;
+        }
+
+        .ph-brand--siemens.is-active,
+        .ph-brand--siemens.is-active:hover {
+          background: #00646e;
+          border-color: #00646e;
+          color: #ffffff;
+        }
+
+        .ph-panel--siemens .ph-brand-title {
+          font-family: 'Segoe UI', 'Verdana', sans-serif;
+          color: #00646e;
+          font-weight: 700;
+        }
+
+        .ph-panel--siemens .ph-bullet {
+          background: #00646e;
         }
 
         .ph-copy {
@@ -1024,27 +1130,10 @@
           animation: ph-fade-in 0.35s ease;
         }
 
-        .ph-media .ph-fade,
-        .ph-media>div {
-          width: 100%;
-          height: 100%;
-          min-height: inherit;
-          background: #ffffff;
-        }
-
-        .ph-img {
-          display: block;
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          object-position: center center;
-          background: #ffffff;
-        }
-
         .ph-brand-title {
           margin: 0 0 20px;
           font-family: var(--ph-display);
-          font-size: clamp(20px, 2.4vw, 26px);
+          font-size: clamp(22px, 2.6vw, 30px);
           font-weight: 400;
           letter-spacing: 0.02em;
           text-transform: uppercase;
@@ -1079,42 +1168,20 @@
           background: var(--ph-accent);
         }
 
-        /* Portrait product frame — full injector on pure white */
         .ph-media {
-          border: 1px solid var(--ph-line-mid);
-          background: #ffffff;
-          overflow: hidden;
-          width: 100%;
-          max-width: 320px;
-          margin-left: auto;
-          margin-right: auto;
-          aspect-ratio: 3 / 4;
-          min-height: 360px;
-          height: auto;
-          display: flex;
-          align-items: stretch;
-          justify-content: center;
+          display: none !important;
         }
 
         @media (min-width: 900px) {
           .ph-grid {
-            grid-template-columns: minmax(160px, 0.8fr) minmax(280px, 1.7fr) minmax(260px, 1.15fr);
-            gap: 40px 36px;
+            grid-template-columns: 240px 1fr;
+            gap: 48px;
             align-items: start;
           }
 
           .ph-brands {
             position: sticky;
             top: 96px;
-          }
-
-          .ph-media {
-            max-width: none;
-            margin: 0;
-            min-height: 420px;
-            aspect-ratio: 3 / 4;
-            height: auto;
-            max-height: 520px;
           }
         }
 
@@ -1123,22 +1190,15 @@
             grid-template-columns: 200px 1fr;
             gap: 28px;
           }
-
-          .ph-media {
-            grid-column: 1 / -1;
-            max-width: 280px;
-            min-height: 380px;
-            aspect-ratio: 3 / 4;
-          }
         }
 
         @media (max-width: 639px) {
           .ph {
-            padding: 56px 16px 64px;
+            padding: 40px 16px 44px;
           }
 
           .ph-inner {
-            padding: 36px 20px 40px;
+            padding: 0;
           }
 
           .ph-brands {
@@ -1151,12 +1211,6 @@
             text-align: center;
             padding: 12px 10px;
             font-size: 12px;
-          }
-
-          .ph-media {
-            max-width: 260px;
-            min-height: 340px;
-            aspect-ratio: 3 / 4;
           }
         }
 
@@ -1174,7 +1228,7 @@
         }
 
         .su {
-          --su-bg: #F8F9FA;
+          --su-bg: #FFFFFF;
           --su-surface: #FFFFFF;
           --su-ink: #171717;
           --su-muted: #525252;
@@ -1190,7 +1244,7 @@
           background: var(--su-bg);
           color: var(--su-ink);
           font-family: var(--su-sans);
-          padding: 96px 24px 104px;
+          padding: 36px 24px 40px;
           overflow: hidden;
         }
 
@@ -1199,17 +1253,17 @@
           z-index: 1;
           max-width: 1240px;
           margin: 0 auto;
-          border-left: 1px solid var(--su-line-mid);
-          border-right: 1px solid var(--su-line-mid);
-          background: var(--su-surface);
-          padding: 64px 52px 72px;
+          border-left: none;
+          border-right: none;
+          background: transparent;
+          padding: 0;
           box-sizing: border-box;
         }
 
         .su-header {
           text-align: center;
           max-width: 920px;
-          margin: 0 auto 44px;
+          margin: 0 auto 24px;
         }
 
         .su-kicker {
@@ -1450,7 +1504,7 @@
 
         /* === Diagnostika (.dg) — 4th block, split image + light copy === */
         .dg {
-          --dg-bg: #F8F9FA;
+          --dg-bg: #FFFFFF;
           --dg-surface: #FFFFFF;
           --dg-panel: #FFFFFF;
           --dg-ink: #171717;
@@ -1463,16 +1517,16 @@
           --dg-display: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
           background: var(--dg-bg);
           font-family: var(--dg-sans);
-          padding: 0 24px 96px;
+          padding: 0 24px 36px;
           color: var(--dg-ink);
         }
 
         .dg-inner {
           max-width: 1240px;
           margin: 0 auto;
-          border-left: 1px solid var(--dg-line-mid);
-          border-right: 1px solid var(--dg-line-mid);
-          background: var(--dg-surface);
+          border-left: none;
+          border-right: none;
+          background: transparent;
           overflow: hidden;
         }
 
@@ -1758,7 +1812,7 @@
 
         /* === RequestForm (.rf) — lives inside modal === */
         .rf {
-          --rf-bg: #F8F9FA;
+          --rf-bg: #FFFFFF;
           --rf-surface: #FFFFFF;
           --rf-ink: #0F172A;
           --rf-ink-soft: #171717;
@@ -1824,18 +1878,15 @@
           z-index: 1;
           max-width: 1000px;
           margin: 0 auto;
-          border-left: 1px solid var(--rf-line-mid);
-          border-right: 1px solid var(--rf-line-mid);
-          padding: 0 44px 8px;
-          background: var(--rf-surface);
+          border-left: none;
+          border-right: none;
+          padding: 0 0 8px;
+          background: transparent;
         }
 
         /* Pattern islands — sparse, low opacity */
         .rf-island {
-          position: absolute;
-          pointer-events: none;
-          z-index: 0;
-          overflow: hidden;
+          display: none !important;
         }
 
         .rf-island--header {
@@ -2025,13 +2076,13 @@
 
         /* Breath bands */
         .rf-breath {
-          height: 44px;
+          height: 12px;
           display: flex;
           align-items: center;
         }
 
         .rf-breath--tight {
-          height: 36px;
+          height: 12px;
         }
 
         .rf-breath-band {
@@ -2381,16 +2432,16 @@
           margin-top: 36px;
           background: #0a0a0a;
           color: #ffffff;
-          padding: 32px 36px;
+          padding: 28px 36px;
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          justify-content: center;
           gap: 24px;
-          flex-wrap: wrap;
           border: 1px solid #262626;
           border-radius: 0;
           overflow: hidden;
           isolation: isolate;
+          text-align: center;
         }
 
         .rf-submit-pat {
@@ -2443,38 +2494,16 @@
           border-bottom: 2px solid var(--rf-red-bright);
         }
 
-        .rf-submit-copy {
-          position: relative;
-          z-index: 1;
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-          max-width: 420px;
-        }
-
-        .rf-submit-kicker {
-          font-size: 10px;
-          font-family: var(--rf-mono);
-          letter-spacing: 0.16em;
-          text-transform: uppercase;
-          color: #8a8e96;
-        }
-
-        .rf-submit-note {
-          margin: 0;
-          font-size: 13.5px;
-          line-height: 1.5;
-          color: rgba(255, 255, 255, 0.88);
-          font-weight: 500;
-        }
-
         .rf-submit-actions {
           position: relative;
           z-index: 1;
           display: flex;
           flex-direction: column;
-          align-items: flex-end;
+          align-items: center;
+          justify-content: center;
           gap: 10px;
+          width: 100%;
+          margin: 0 auto;
         }
 
         .rf-error {
@@ -2482,24 +2511,25 @@
           color: #ff6b6b;
           font-family: var(--rf-mono);
           letter-spacing: 0.06em;
-          text-align: right;
+          text-align: center;
         }
 
-        /* Anodized red metallic button */
+        /* Anodized red metallic button — large prominent submit */
         .rf .ft-maps-btn {
-          align-self: flex-start;
+          align-self: center;
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          gap: 8px;
-          font-size: 10.5px;
+          gap: 10px;
+          font-size: 13px;
           font-weight: 700;
-          letter-spacing: 0.14em;
+          letter-spacing: 0.16em;
           text-transform: uppercase;
           font-family: var(--rf-mono);
           text-decoration: none;
           color: #fff5f5;
-          padding: 14px 22px 13px;
+          padding: 16px 44px 15px;
+          min-width: 280px;
           white-space: nowrap;
           position: relative;
           border: none;
@@ -2507,6 +2537,16 @@
           background:
             linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, transparent 40%),
             linear-gradient(145deg, #6e1219 0%, #C41E2A 30%, #E63946 50%, #9a1a24 75%, #4a0c11 100%);
+          box-shadow:
+            0 0 0 1px rgba(0, 0, 0, 0.55),
+            inset 0 1px 0 rgba(255, 255, 255, 0.35),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+            inset 1px 0 0 rgba(255, 255, 255, 0.08),
+            0 4px 14px rgba(0, 0, 0, 0.55),
+            0 0 24px rgba(230, 57, 70, 0.3);
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+          transition: box-shadow 0.2s ease, filter 0.2s ease;
+        }
           box-shadow:
             0 0 0 1px rgba(0, 0, 0, 0.55),
             inset 0 1px 0 rgba(255, 255, 255, 0.35),
@@ -2665,7 +2705,7 @@
 
         /* === ServicesSymptoms (.ss) === */
         .ss {
-          --ss-bg: #F8F9FA;
+          --ss-bg: #FFFFFF;
           --ss-surface: #FFFFFF;
           --ss-ink: #0F172A;
           --ss-ink-soft: #171717;
@@ -2682,7 +2722,7 @@
           background: var(--ss-bg);
           color: var(--ss-ink);
           font-family: var(--ss-sans);
-          padding: 88px 24px 96px;
+          padding: 36px 24px 40px;
         }
 
         .ss-pattern-defs {
@@ -2706,18 +2746,15 @@
           z-index: 1;
           max-width: 1240px;
           margin: 0 auto;
-          border-left: 1px solid var(--ss-line-mid);
-          border-right: 1px solid var(--ss-line-mid);
-          padding: 0 44px 8px;
-          background: var(--ss-surface);
+          border-left: none;
+          border-right: none;
+          padding: 0 0 8px;
+          background: transparent;
         }
 
         /* ── Pattern islands (sparse — never full wallpaper) ── */
         .ss-island {
-          position: absolute;
-          pointer-events: none;
-          z-index: 0;
-          overflow: hidden;
+          display: none !important;
         }
 
         .ss-island--header {
@@ -2763,7 +2800,7 @@
 
         /* ── Breath bands ── */
         .ss-breath {
-          height: 48px;
+          height: 12px;
           display: flex;
           align-items: center;
           margin: 4px 0 0;
@@ -3236,7 +3273,7 @@
 
         /* ── Equipment / Team / B2B — Light Swiss Modernism ── */
         .etb {
-          --etb-bg: #F8F9FA;
+          --etb-bg: #FFFFFF;
           --etb-surface: #FFFFFF;
           --etb-ink: #0F172A;
           --etb-ink-soft: #18181B;
@@ -3252,7 +3289,7 @@
           background: var(--etb-bg);
           color: var(--etb-ink);
           font-family: var(--etb-sans);
-          padding: 88px 24px 96px;
+          padding: 36px 24px 40px;
           position: relative;
           isolation: isolate;
         }
@@ -3262,10 +3299,10 @@
           z-index: 1;
           max-width: 1240px;
           margin: 0 auto;
-          border-left: 1px solid var(--etb-line-mid);
-          border-right: 1px solid var(--etb-line-mid);
-          padding: 0 44px;
-          background: var(--etb-surface);
+          border-left: none;
+          border-right: none;
+          padding: 0;
+          background: transparent;
         }
 
         /* ── TEXTURE-01 islands (Patterns.dc.html) — sparse, low opacity ── */
@@ -3287,10 +3324,7 @@
 
         /* Local islands only — never full-section wallpaper */
         .etb-island {
-          position: absolute;
-          pointer-events: none;
-          z-index: 0;
-          overflow: hidden;
+          display: none !important;
         }
 
         .etb-island--header {
@@ -3328,10 +3362,10 @@
 
         /* Breathing room between blocks: mostly empty, thin pattern band in the middle */
         .etb-breath {
-          height: 56px;
+          height: 12px;
           display: flex;
           align-items: center;
-          margin: 8px 0 0;
+          margin: 4px 0 0;
         }
 
         .etb-breath-band {
@@ -3424,10 +3458,10 @@
 
         /* Block labels */
         .etb-block {
-          padding-top: 56px;
+          padding-top: 24px;
           display: flex;
           flex-direction: column;
-          gap: 22px;
+          gap: 16px;
         }
 
         .etb-block-label {
@@ -3437,8 +3471,8 @@
           gap: 16px;
           flex-wrap: wrap;
           position: relative;
-          padding-left: 68px;
-          min-height: 56px;
+          padding-left: 0;
+          min-height: 0;
         }
 
         .etb-block-label>*:not(.etb-island) {
@@ -4166,7 +4200,7 @@
 
         /* ── Footer — light Swiss (only hero stays dark) ── */
         .ft-premium {
-          --ft-bg: #F8F9FA;
+          --ft-bg: #FFFFFF;
           --ft-surface: #FFFFFF;
           --ft-line: #E5E7EB;
           --ft-line-mid: #D1D5DB;
@@ -4237,10 +4271,10 @@
           z-index: 1;
           max-width: 1240px;
           margin: 0 auto;
-          border-left: 1px solid var(--ft-line-mid);
-          border-right: 1px solid var(--ft-line-mid);
-          padding: 0 44px;
-          background: var(--ft-surface);
+          border-left: none;
+          border-right: none;
+          padding: 0;
+          background: transparent;
           box-shadow: none;
         }
 
@@ -4295,10 +4329,10 @@
           text-shadow: none;
         }
 
-        .ft-brand-code {
+        .ft-brand-sub {
           font-size: 11px;
           font-family: var(--ft-mono);
-          letter-spacing: 0.1em;
+          letter-spacing: 0.14em;
           text-transform: uppercase;
           color: var(--ft-muted);
         }
@@ -5020,16 +5054,6 @@
       <!-- Main bar -->
       <div class="hd-main">
         <a href="/" class="hd-brand" aria-label="Auto Diislikeskus — home">
-          <svg class="hd-logo" viewBox="0 0 100 100" width="40" height="40" aria-hidden="true" focusable="false">
-            <rect x="10" y="10" width="80" height="80" fill="none" stroke="#171717" stroke-width="4"></rect>
-            <rect x="26" y="26" width="48" height="48" fill="none" stroke="#171717" stroke-width="3"
-              transform="rotate(45 50 50)"></rect>
-            <line x1="50" y1="10" x2="50" y2="20" stroke="#171717" stroke-width="3"></line>
-            <line x1="50" y1="80" x2="50" y2="90" stroke="#171717" stroke-width="3"></line>
-            <line x1="10" y1="50" x2="20" y2="50" stroke="#171717" stroke-width="3"></line>
-            <line x1="80" y1="50" x2="90" y2="50" stroke="#171717" stroke-width="3"></line>
-            <circle cx="50" cy="50" r="13" fill="#E63946"></circle>
-          </svg>
           <span class="hd-brand-name">AUTO DIISLIKESKUS</span>
         </a>
 
@@ -5044,6 +5068,7 @@
             <span class="hd-phone-label">Tel.</span>
             <span>+372 567 02 700</span>
           </a>
+
 
           <div class="hd-lang lang-switch">
             <button type="button" class="hd-lang-toggle" onClick="{{ toggleLangMenu }}" aria-expanded="{{ langOpen }}"
@@ -5075,16 +5100,6 @@
         <div class="hd-drawer">
           <div class="hd-drawer-top">
             <a href="/" class="hd-brand hd-brand--drawer" onClick="{{ toggleMenu }}">
-              <svg class="hd-logo" viewBox="0 0 100 100" width="36" height="36" aria-hidden="true" focusable="false">
-                <rect x="10" y="10" width="80" height="80" fill="none" stroke="#171717" stroke-width="4"></rect>
-                <rect x="26" y="26" width="48" height="48" fill="none" stroke="#171717" stroke-width="3"
-                  transform="rotate(45 50 50)"></rect>
-                <line x1="50" y1="10" x2="50" y2="20" stroke="#171717" stroke-width="3"></line>
-                <line x1="50" y1="80" x2="50" y2="90" stroke="#171717" stroke-width="3"></line>
-                <line x1="10" y1="50" x2="20" y2="50" stroke="#171717" stroke-width="3"></line>
-                <line x1="80" y1="50" x2="90" y2="50" stroke="#171717" stroke-width="3"></line>
-                <circle cx="50" cy="50" r="13" fill="#E63946"></circle>
-              </svg>
               <span class="hd-brand-name">AUTO DIISLIKESKUS</span>
             </a>
             <button type="button" onClick="{{ toggleMenu }}" aria-label="Close" class="hd-drawer-close">&times;</button>
@@ -5125,55 +5140,28 @@
 
     <!-- ══ Hero.dc.html ══ -->
     <section class="hero">
+      <div class="hero-bg">
+        <image-slot id="hero-picture" shape="rect" fit="cover" position="center" src="./ad-img-hero-1.jpg"
+          placeholder="Drop workshop / diesel bench photo"></image-slot>
+      </div>
+
       <div class="hero-shell">
-
-        <!-- Main: copy + picture (no dense pattern layers) -->
-        <div class="hero-grid">
-          <div class="hero-main">
-            <div class="hero-badge">
-              <span class="hero-badge-dot" aria-hidden="true"></span>
-              <span class="hero-badge-text">DIISELMOOTORITE DIAGNOSTIKA- JA REMONDIKESKUS</span>
-            </div>
-
-            <h1 class="hero-title">AUTO<br />DIISLIKESKUS</h1>
-            <span class="hero-title-rule" aria-hidden="true"></span>
-
-            <p class="hero-lead">{{ subtitleText }}</p>
-
-            <div class="hero-cta-row">
-              <button type="button" onClick="{{ openForm }}" class="ft-maps-btn">
-                [ {{ ctaText }} → ]
-              </button>
-              <!-- <div class="hero-cta-meta-block">
-                <span class="hero-cta-meta">RESPONSE / 24H</span>
-                <span class="hero-cta-meta-rule" aria-hidden="true"></span>
-              </div> -->
-            </div>
+        <div class="hero-main">
+          <div class="hero-badge">
+            <span class="hero-badge-dot" aria-hidden="true"></span>
+            <span class="hero-badge-text">DIAGNOSTIKA JA REMONT TALLINNAS</span>
           </div>
 
-          <!-- Picture column — meta content lives here (was top bar) -->
-          <div class="hero-media">
-            <image-slot id="hero-picture" shape="rect" fit="cover" position="top" src="./ad-img-hero-1.jpg"
-              placeholder="Drop workshop / diesel bench photo"></image-slot>
+          <h1 class="hero-title">AUTO DIISLIKESKUS</h1>
 
-            <!-- Soft single texture only under empty state / edge of photo -->
-            <div class="hero-media-bg" aria-hidden="true">
-              <svg class="hero-fill" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
-                <defs>
-                  <pattern id="h-media-hatch" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
-                    <line x1="0" y1="16" x2="16" y2="0" stroke="#ffffff" stroke-width="1.5"></line>
-                  </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="#0a0a0a"></rect>
-                <rect width="100%" height="100%" fill="url(#h-media-hatch)" opacity="0.05"></rect>
-              </svg>
-            </div>
+          <p class="hero-lead">DIISELMOOTORITE DIAGNOSTIKA- JA REMONDIKESKUS</p>
 
-            <span class="hero-media-corner hero-media-corner--tl" aria-hidden="true"></span>
-            <span class="hero-media-corner hero-media-corner--br" aria-hidden="true"></span>
+          <div class="hero-cta-row">
+            <button type="button" onClick="{{ openForm }}" class="ft-maps-btn">
+              [ {{ ctaText }} → ]
+            </button>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -5189,19 +5177,19 @@
 
         <div class="ph-grid">
           <div class="ph-brands" role="tablist" aria-label="Pihusti brändid">
-            <button type="button" class="ph-brand {{ brandClass0 }}" onClick="{{ selectBrand0 }}" role="tab"
-              aria-selected="{{ isBrand0 }}">DENSO PIHUSTID</button>
-            <button type="button" class="ph-brand {{ brandClass1 }}" onClick="{{ selectBrand1 }}" role="tab"
-              aria-selected="{{ isBrand1 }}">BOSCH PIHUSTID</button>
-            <button type="button" class="ph-brand {{ brandClass2 }}" onClick="{{ selectBrand2 }}" role="tab"
-              aria-selected="{{ isBrand2 }}">DELPHI PIHUSTID</button>
-            <button type="button" class="ph-brand {{ brandClass3 }}" onClick="{{ selectBrand3 }}" role="tab"
-              aria-selected="{{ isBrand3 }}">SIEMENS PIHUSTID</button>
+            <button type="button" class="ph-brand ph-brand--denso {{ brandClass0 }}" onClick="{{ selectBrand0 }}"
+              role="tab" aria-selected="{{ isBrand0 }}">DENSO PIHUSTID</button>
+            <button type="button" class="ph-brand ph-brand--bosch {{ brandClass1 }}" onClick="{{ selectBrand1 }}"
+              role="tab" aria-selected="{{ isBrand1 }}">BOSCH PIHUSTID</button>
+            <button type="button" class="ph-brand ph-brand--delphi {{ brandClass2 }}" onClick="{{ selectBrand2 }}"
+              role="tab" aria-selected="{{ isBrand2 }}">DELPHI PIHUSTID</button>
+            <button type="button" class="ph-brand ph-brand--siemens {{ brandClass3 }}" onClick="{{ selectBrand3 }}"
+              role="tab" aria-selected="{{ isBrand3 }}">SIEMENS PIHUSTID</button>
           </div>
 
           <div class="ph-copy">
             <sc-if value="{{ isBrand0 }}" hint-placeholder-val="{{ true }}">
-              <div class="ph-panel ph-fade">
+              <div class="ph-panel ph-panel--denso ph-fade">
                 <h3 class="ph-brand-title">DENSO PIHUSTID</h3>
                 <ul class="ph-list">
                   <sc-for list="{{ pointsDenso }}" as="point" hint-placeholder-count="9">
@@ -5214,7 +5202,7 @@
               </div>
             </sc-if>
             <sc-if value="{{ isBrand1 }}" hint-placeholder-val="{{ false }}">
-              <div class="ph-panel ph-fade">
+              <div class="ph-panel ph-panel--bosch ph-fade">
                 <h3 class="ph-brand-title">BOSCH PIHUSTID</h3>
                 <ul class="ph-list">
                   <sc-for list="{{ pointsBosch }}" as="point" hint-placeholder-count="9">
@@ -5227,7 +5215,7 @@
               </div>
             </sc-if>
             <sc-if value="{{ isBrand2 }}" hint-placeholder-val="{{ false }}">
-              <div class="ph-panel ph-fade">
+              <div class="ph-panel ph-panel--delphi ph-fade">
                 <h3 class="ph-brand-title">DELPHI PIHUSTID</h3>
                 <ul class="ph-list">
                   <sc-for list="{{ pointsDelphi }}" as="point" hint-placeholder-count="9">
@@ -5240,7 +5228,7 @@
               </div>
             </sc-if>
             <sc-if value="{{ isBrand3 }}" hint-placeholder-val="{{ false }}">
-              <div class="ph-panel ph-fade">
+              <div class="ph-panel ph-panel--siemens ph-fade">
                 <h3 class="ph-brand-title">SIEMENS PIHUSTID</h3>
                 <ul class="ph-list">
                   <sc-for list="{{ pointsSiemens }}" as="point" hint-placeholder-count="7">
@@ -5250,29 +5238,6 @@
                     </li>
                   </sc-for>
                 </ul>
-              </div>
-            </sc-if>
-          </div>
-
-          <div class="ph-media">
-            <sc-if value="{{ isBrand0 }}" hint-placeholder-val="{{ true }}">
-              <div class="ph-fade">
-                <img class="ph-img" src="./img/denso-1.jpg" alt="DENSO pihusti" width="480" height="640" />
-              </div>
-            </sc-if>
-            <sc-if value="{{ isBrand1 }}" hint-placeholder-val="{{ false }}">
-              <div class="ph-fade">
-                <img class="ph-img" src="./img/bosch-1.jpg" alt="BOSCH pihusti" width="480" height="640" />
-              </div>
-            </sc-if>
-            <sc-if value="{{ isBrand2 }}" hint-placeholder-val="{{ false }}">
-              <div class="ph-fade">
-                <img class="ph-img" src="./img/delphy-1.jpg" alt="DELPHI pihusti" width="480" height="640" />
-              </div>
-            </sc-if>
-            <sc-if value="{{ isBrand3 }}" hint-placeholder-val="{{ false }}">
-              <div class="ph-fade">
-                <img class="ph-img" src="./img/siemens-1.jpg" alt="SIEMENS pihusti" width="480" height="640" />
               </div>
             </sc-if>
           </div>
@@ -5435,8 +5400,7 @@
                     <!-- <span class="rf-kicker">[ HINNAPAKKUMINE / ЦЕНОВОЕ ПРЕДЛОЖЕНИЕ ]</span> -->
                     <h2 class="rf-title" id="rf-modal-title">ЗАПРОС ЦЕНОВОГО ПРЕДЛОЖЕНИЯ</h2>
                     <p class="rf-lead">Заполните форму ниже, чтобы отправить запрос на расчет стоимости. Мы обычно
-                      отвечаем на
-                      обращения в течение одного рабочего дня. Пожалуйста, заполните все обязательные поля
+                      отвечаем на обращения в течение одного рабочего дня. Пожалуйста, заполните все обязательные поля
                       (отмечены *), чтобы мы могли подготовить для Вас максимально точное ценовое предложение. Укажите
                       номер авто или опишите симптомы для быстрой оценки стоимости.</p>
                   </div>
@@ -5478,8 +5442,8 @@
                   <section class="rf-panel">
                     <div class="rf-panel-body">
                       <div class="rf-section-title">
-                        <span class="rf-panel-num">01</span>
-                        <span class="rf-panel-name">SÕIDUKI ANDMED / ДАННЫЕ АВТО</span>
+                        <!-- <span class="rf-panel-num">01</span> -->
+                        <span class="rf-panel-name">Данные автомобиля</span>
                       </div>
 
                       <p class="rf-vehicle-hint">
@@ -5488,7 +5452,7 @@
 
                       <div class="rf-vehicle-grid manual-grid">
                         <div class="rf-field rf-field--plate">
-                          <label class="rf-label" for="rf-plate">Рег. номер</label>
+                          <label class="rf-label" for="rf-plate">Рег. номер автомобиля</label>
                           <div class="rf-plate-wrap">
                             <span class="rf-plate-badge" aria-hidden="true">EE</span>
                             <input id="rf-plate" class="rf-input rf-input--plate" value="{{ plate }}"
@@ -5535,16 +5499,15 @@
                     <section class="rf-panel">
                       <div class="rf-panel-body">
                         <div class="rf-section-title">
-                          <span class="rf-panel-num">02</span>
-                          <span class="rf-panel-name">SÜMPTOMID / СИМПТОМЫ</span>
+                          <!-- <span class="rf-panel-num">02</span> -->
+                          <span class="rf-panel-name">Желаемые работы</span>
                         </div>
 
                         <div class="rf-field" style="flex:1;">
-                          <label class="rf-label" for="rf-desc">PROBLEEMI KIRJELDUS JA SÜMPTOMID / ОПИСАНИЕ ПРОБЛЕМЫ И
-                            СИМПТОМЫ</label>
+                          <label class="rf-label" for="rf-desc">Ремонт / обслуживание</label>
                           <textarea id="rf-desc" class="rf-input rf-input--area" value="{{ description }}"
                             onChange="{{ onDescriptionChange }}" rows="5"
-                            placeholder="Mootor ei käivitu, must suits kiirendamisel, võimsuse kadu... / Машина плохо заводится, черный дым, плавают обороты..."></textarea>
+                            placeholder="Машина плохо заводится, черный дым, плавают обороты..."></textarea>
                         </div>
                       </div>
                     </section>
@@ -5553,22 +5516,22 @@
                     <section class="rf-panel">
                       <div class="rf-panel-body">
                         <div class="rf-section-title">
-                          <span class="rf-panel-num">03</span>
-                          <span class="rf-panel-name">KONTAKTANDMED / КОНТАКТЫ</span>
+                          <!-- <span class="rf-panel-num">03</span> -->
+                          <span class="rf-panel-name">КОНТАКТЫ</span>
                         </div>
                         <div class="rf-contact contact-grid">
                           <div class="rf-field">
-                            <label class="rf-label" for="rf-name">NIMI / ИМЯ</label>
+                            <label class="rf-label" for="rf-name">ИМЯ</label>
                             <input id="rf-name" class="rf-input" value="{{ name }}" onChange="{{ onNameChange }}"
                               required="{{ true }}" autocomplete="name" />
                           </div>
                           <div class="rf-field">
-                            <label class="rf-label" for="rf-phone">TELEFON / ТЕЛЕФОН</label>
+                            <label class="rf-label" for="rf-phone">ТЕЛЕФОН</label>
                             <input id="rf-phone" class="rf-input" type="tel" value="{{ phone }}"
                               onChange="{{ onPhoneChange }}" required="{{ true }}" autocomplete="tel" />
                           </div>
                           <div class="rf-field">
-                            <label class="rf-label" for="rf-email">E-POST / EMAIL</label>
+                            <label class="rf-label" for="rf-email">EMAIL</label>
                             <input id="rf-email" class="rf-input" type="email" value="{{ email }}"
                               onChange="{{ onEmailChange }}" required="{{ true }}" autocomplete="email" />
                           </div>
@@ -5581,13 +5544,6 @@
                   <div class="rf-submit">
                     <span class="rf-cta-corner rf-cta-corner--tl" aria-hidden="true"></span>
                     <span class="rf-cta-corner rf-cta-corner--br" aria-hidden="true"></span>
-
-                    <div class="rf-submit-copy">
-                      <span class="rf-submit-kicker">[ SECURE TRANSMISSION ]</span>
-                      <p class="rf-submit-note">Vastame tööpäevadel 30 minuti jooksul. / Ответим в рабочее время в
-                        течение 30
-                        минут.</p>
-                    </div>
 
                     <div class="rf-submit-actions">
                       <button type="submit" class="ft-maps-btn" disabled="{{ isSubmitting }}">
@@ -5677,7 +5633,7 @@
               <rect width="100%" height="100%" fill="url(#etb-diamond-grid)"></rect>
             </svg>
           </div>
-          <span class="etb-kicker">[ 03 / SEADMED, MEESKOND JA B2B ]</span>
+          <span class="etb-kicker">[ SEADMED, MEESKOND JA B2B ]</span>
           <h2 class="etb-title" id="etb-heading">
             SEADMED JA MEESKOND
           </h2>
@@ -5696,7 +5652,7 @@
               </svg>
             </div>
             <span class="etb-block-title">SEADMED</span>
-            <span class="etb-block-meta">[ 03 ÜHIKUT · LABORIKLASS ]</span>
+            <!-- <span class="etb-block-meta">[ 03 ÜHIKUT · LABORIKLASS ]</span> -->
           </div>
           <div class="etb-grid etb-grid--equip equip-grid">
             <sc-for list="{{ equipment }}" as="eq" hint-placeholder-count="3">
@@ -5742,11 +5698,11 @@
         <!-- Personal / team — all copy above photo; clean image, no overlay -->
         <div class="etb-block etb-personal" style="padding-top:32px;" id="personal" aria-labelledby="personal-heading">
           <div class="etb-personal-head">
-            <span class="etb-personal-kicker">[ MEESKOND ]</span>
-            <h3 class="etb-personal-title" id="personal-heading">Personal</h3>
-            <div class="etb-personal-rule" aria-hidden="true"></div>
+            <!-- <span class="etb-personal-kicker">[ MEESKOND ]</span>
+            <h3 class="etb-personal-title" id="personal-heading">Personal</h3> -->
             <div class="etb-personal-copy">
               <h4 class="etb-personal-headline">Diplomeeritud spetsialistid</h4>
+              <div class="etb-personal-rule" aria-hidden="true"></div>
               <p class="etb-personal-text">Meie spetsialistid on läbinud koolituse.</p>
               <p class="etb-personal-text">Bosch sertifikaadid kinnitavad kõrget kvalifikatsiooni.</p>
               <div class="etb-personal-meta">
@@ -5904,75 +5860,51 @@
           </sc-for>
         </div>
 
-        <!-- MARK-01 brand lockup + address (moved up from map side panel) -->
+        <!-- Brand lockup + address -->
         <div class="ft-brand-row">
           <div class="ft-brand">
-            <span class="ft-brand-frame ft-brand-frame--tl" aria-hidden="true"></span>
-            <span class="ft-brand-frame ft-brand-frame--br" aria-hidden="true"></span>
-
-            <svg class="ft-brand-mark" viewBox="0 0 100 100" width="64" height="64" role="img"
-              aria-label="Авто Диисликескус">
-              <!-- logo.html — reversed on dark: stroke #F8F9FA, accent disc -->
-              <rect x="10" y="10" width="80" height="80" fill="none" stroke="#171717" stroke-width="4"></rect>
-              <rect x="26" y="26" width="48" height="48" fill="none" stroke="#171717" stroke-width="3"
-                transform="rotate(45 50 50)"></rect>
-              <line x1="50" y1="10" x2="50" y2="20" stroke="#171717" stroke-width="3"></line>
-              <line x1="50" y1="80" x2="50" y2="90" stroke="#171717" stroke-width="3"></line>
-              <line x1="10" y1="50" x2="20" y2="50" stroke="#171717" stroke-width="3"></line>
-              <line x1="80" y1="50" x2="90" y2="50" stroke="#171717" stroke-width="3"></line>
-              <circle cx="50" cy="50" r="13" fill="{{ accentColor }}"></circle>
-            </svg>
-
             <div class="ft-brand-text">
-              <!-- Brand name fixed (RU form) for all locales -->
               <h2 class="ft-brand-name">AUTO DIISLIKESKUS</h2>
-              <span class="ft-brand-code">{{ brandCode }}</span>
+              <span class="ft-brand-sub">DIISELMOOTORITE DIAGNOSTIKA- JA REMONDIKESKUS</span>
               <span class="ft-brand-rule" aria-hidden="true"></span>
             </div>
           </div>
 
           <div class="ft-loc-head">
-            <span class="ft-loc-tag">{{ locTag }}</span>
-            <!-- Address fixed (RU form) for all locales -->
             <h3 class="ft-address">Paavli 4, Tallinn, Eesti 10412</h3>
-            <a href="https://www.google.com/maps?q=Paavli+tn+4,+10412+Tallinn,+Estonia" target="_blank"
-              rel="noopener noreferrer" class="ft-maps-btn">{{ mapsBtn }}</a>
           </div>
         </div>
 
-        <div class="ft-meta">
-          <span class="ft-serial">{{ metaGeo }}</span>
-          <span class="ft-serial">{{ metaBrand }}</span>
-        </div>
+        <!-- Full-width map (clickable to open Google Maps) -->
+        <a href="https://maps.app.goo.gl/xG31jhzgyHaB2XmCA" target="_blank" rel="noopener noreferrer"
+          class="ft-map-link" style="display:block;text-decoration:none;color:inherit;position:relative;"
+          title="Ava Google Mapsis">
+          <div class="ft-map-grid map-grid">
+            <span class="ft-sight ft-sight--tl" aria-hidden="true">
+              <span class="ft-sight-arm ft-sight-h"></span>
+              <span class="ft-sight-arm ft-sight-v"></span>
+              <span class="ft-sight-arm ft-sight-dot"></span>
+              <span class="ft-sight-arm ft-sight-notch"></span>
+            </span>
+            <span class="ft-sight ft-sight--br" aria-hidden="true">
+              <span class="ft-sight-arm ft-sight-h"></span>
+              <span class="ft-sight-arm ft-sight-v"></span>
+              <span class="ft-sight-arm ft-sight-plate"></span>
+              <span class="ft-sight-tick ft-sight-tick-1"></span>
+              <span class="ft-sight-tick ft-sight-tick-2"></span>
+              <span class="ft-sight-tick ft-sight-tick-3"></span>
+              <span class="ft-sight-tick ft-sight-tick-4"></span>
+            </span>
 
-        <!-- Full-width map (old-site layout) -->
-        <div class="ft-map-grid map-grid">
-          <!-- Top-left lens sight -->
-          <span class="ft-sight ft-sight--tl" aria-hidden="true">
-            <span class="ft-sight-arm ft-sight-h"></span>
-            <span class="ft-sight-arm ft-sight-v"></span>
-            <span class="ft-sight-arm ft-sight-dot"></span>
-            <span class="ft-sight-arm ft-sight-notch"></span>
-          </span>
-          <!-- Bottom-right detailed metal sight -->
-          <span class="ft-sight ft-sight--br" aria-hidden="true">
-            <span class="ft-sight-arm ft-sight-h"></span>
-            <span class="ft-sight-arm ft-sight-v"></span>
-            <span class="ft-sight-arm ft-sight-plate"></span>
-            <span class="ft-sight-tick ft-sight-tick-1"></span>
-            <span class="ft-sight-tick ft-sight-tick-2"></span>
-            <span class="ft-sight-tick ft-sight-tick-3"></span>
-            <span class="ft-sight-tick ft-sight-tick-4"></span>
-          </span>
-
-          <div class="ft-map-cell">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4056.1445583785426!2d24.705575!3d59.44854600000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x469293866c8cfc59%3A0xbea4b20746189fba!2sPaavli%20tn%204%2C%2010412%20Tallinn%2C%20Estonia!5e0!3m2!1sen!2sus!4v1785153193393!5m2!1sen!2sus"
-              title="Paavli 4, 10412 Tallinn — AUTO DIISLIKESKUS" width="100%" height="100%"
-              style="border:0;display:block;width:100%;height:100%;position:absolute;inset:0;filter:grayscale(0.2) contrast(1.02);"
-              allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <div class="ft-map-cell">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4056.1445583785426!2d24.705575!3d59.44854600000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x469293866c8cfc59%3A0xbea4b20746189fba!2sPaavli%20tn%204%2C%2010412%20Tallinn%2C%20Estonia!5e0!3m2!1sen!2sus!4v1785153193393!5m2!1sen!2sus"
+                title="Paavli 4, 10412 Tallinn — AUTO DIISLIKESKUS" width="100%" height="100%"
+                style="border:0;display:block;width:100%;height:100%;position:absolute;inset:0;filter:grayscale(0.2) contrast(1.02);pointer-events:none;"
+                allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
           </div>
-        </div>
+        </a>
 
         <div class="ft-contact-grid contact-grid">
           <div class="ft-col">
@@ -5984,6 +5916,7 @@
               <span class="ft-col-label">{{ labelContacts }}</span>
             </div>
             <a href="tel:+37256702700" class="ft-phone">+372 567 02 700</a>
+            <a href="tel:+37256653772" class="ft-phone">+372 566 53 772</a>
             <a href="mailto:autodiislikeskus@gmail.com" class="ft-email">autodiislikeskus@gmail.com</a>
           </div>
           <div class="ft-col">
