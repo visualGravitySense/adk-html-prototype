@@ -1748,6 +1748,337 @@
           }
         }
 
+        /* === Pricing / Hinnakiri (.hk) === */
+        .hk {
+          --hk-bg: #FFFFFF;
+          --hk-surface: #FFFFFF;
+          --hk-ink: #0F172A;
+          --hk-ink-soft: #18181B;
+          --hk-muted: #525252;
+          --hk-dim: #737373;
+          --hk-line: #E5E7EB;
+          --hk-line-mid: #D1D5DB;
+          --hk-red: #C41E2A;
+          --hk-red-bright: #E63946;
+          --hk-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+          --hk-sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
+          --hk-display: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
+          --ft-mono: var(--hk-mono);
+          background: var(--hk-bg);
+          color: var(--hk-ink);
+          font-family: var(--hk-sans);
+          padding: 36px 24px 56px;
+          position: relative;
+          isolation: isolate;
+        }
+
+        .hk-inner {
+          position: relative;
+          z-index: 1;
+          max-width: 1240px;
+          margin: 0 auto;
+        }
+
+        .hk-pattern-defs {
+          position: absolute;
+          width: 0;
+          height: 0;
+          overflow: hidden;
+        }
+
+        .hk-fill {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          display: block;
+        }
+
+        .hk-island {
+          position: absolute;
+          pointer-events: none;
+          z-index: 0;
+          overflow: hidden;
+        }
+
+        .hk-island--header {
+          right: 0;
+          top: 8px;
+          width: min(220px, 32%);
+          height: 120px;
+          opacity: 0.09;
+        }
+
+        .hk-ticks {
+          display: flex;
+          gap: 0;
+          padding-top: 20px;
+          opacity: 0.45;
+          color: var(--hk-ink);
+        }
+
+        .hk-tick {
+          width: 1px;
+          height: 10px;
+          background: currentColor;
+          margin-right: calc((100% - 28px) / 27);
+          opacity: 0.35;
+        }
+
+        .hk-tick:nth-child(7n) {
+          height: 14px;
+          opacity: 0.55;
+        }
+
+        .hk-header {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          gap: 16px;
+          padding: 28px 0 36px;
+          border-bottom: 1px solid var(--hk-line-mid);
+          position: relative;
+        }
+
+        .hk-header>*:not(.hk-island) {
+          position: relative;
+          z-index: 1;
+        }
+
+        .hk-header::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          bottom: -1px;
+          transform: translateX(-50%);
+          width: 56px;
+          height: 2px;
+          background: var(--hk-red-bright);
+          z-index: 2;
+        }
+
+        .hk-kicker {
+          font-size: 11px;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: var(--hk-dim);
+          font-family: var(--hk-mono);
+          font-weight: 500;
+        }
+
+        .hk-title {
+          margin: 0;
+          font-family: var(--hk-display);
+          font-size: clamp(30px, 4.4vw, 50px);
+          font-weight: 400;
+          letter-spacing: -0.02em;
+          text-transform: uppercase;
+          color: var(--hk-ink);
+          line-height: 1.02;
+        }
+
+        .hk-lead {
+          margin: 0;
+          max-width: 640px;
+          font-size: 15px;
+          line-height: 1.65;
+          color: var(--hk-muted);
+        }
+
+        .hk-table-wrap {
+          margin-top: 36px;
+          border: 1px solid var(--hk-line-mid);
+          background: var(--hk-surface);
+          position: relative;
+        }
+
+        .hk-table-corner {
+          position: absolute;
+          width: 12px;
+          height: 12px;
+          pointer-events: none;
+          z-index: 2;
+        }
+
+        .hk-table-corner--tl {
+          top: -1px;
+          left: -1px;
+          border-top: 2px solid var(--hk-ink);
+          border-left: 2px solid var(--hk-ink);
+        }
+
+        .hk-table-corner--br {
+          bottom: -1px;
+          right: -1px;
+          border-bottom: 2px solid var(--hk-red-bright);
+          border-right: 2px solid var(--hk-red-bright);
+        }
+
+        .hk-table-head {
+          display: grid;
+          grid-template-columns: 1fr minmax(120px, 200px);
+          background: #0F172A;
+          color: #F8FAFC;
+        }
+
+        .hk-table-head span {
+          padding: 12px 24px;
+          font-size: 11px;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          font-family: var(--hk-mono);
+          font-weight: 500;
+        }
+
+        .hk-table-head span:last-child {
+          text-align: right;
+          border-left: 1px solid rgba(255, 255, 255, 0.12);
+          color: rgba(255, 255, 255, 0.75);
+        }
+
+        .hk-row {
+          display: grid;
+          grid-template-columns: 1fr minmax(120px, 200px);
+          border-top: 1px solid var(--hk-line);
+          transition: background 0.15s ease;
+        }
+
+        .hk-row:first-of-type {
+          border-top: none;
+        }
+
+        .hk-row:hover {
+          background: #F8F9FA;
+        }
+
+        .hk-row-name {
+          padding: 16px 24px;
+          font-size: 15px;
+          line-height: 1.45;
+          color: var(--hk-ink-soft);
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .hk-row-num {
+          flex: 0 0 auto;
+          font-family: var(--hk-mono);
+          font-size: 11px;
+          letter-spacing: 0.08em;
+          color: var(--hk-dim);
+        }
+
+        .hk-row-price {
+          padding: 16px 24px;
+          font-size: 15px;
+          font-weight: 700;
+          text-align: right;
+          color: var(--hk-red-bright);
+          border-left: 1px solid var(--hk-line);
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          font-variant-numeric: tabular-nums;
+          letter-spacing: 0.01em;
+        }
+
+        .hk-notes {
+          margin-top: 28px;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          max-width: 900px;
+        }
+
+        .hk-note {
+          margin: 0;
+          font-size: 13px;
+          line-height: 1.65;
+          color: var(--hk-muted);
+        }
+
+        .hk-note a {
+          color: var(--hk-red-bright);
+          text-decoration: none;
+          border-bottom: 1px solid rgba(230, 57, 70, 0.35);
+          transition: border-color 0.15s ease;
+        }
+
+        .hk-note a:hover {
+          border-bottom-color: var(--hk-red-bright);
+        }
+
+        .hk-actions {
+          margin-top: 32px;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 14px 20px;
+        }
+
+        .hk .ft-maps-btn {
+          align-self: flex-start;
+        }
+
+        .hk-phone {
+          display: inline-flex;
+          align-items: baseline;
+          gap: 0.3em;
+          font-family: var(--hk-display);
+          font-size: 17px;
+          font-weight: 400;
+          letter-spacing: 0.02em;
+          color: #00B8D4;
+          text-decoration: none;
+          white-space: nowrap;
+        }
+
+        .hk-phone:hover {
+          color: #0096b0;
+        }
+
+        @media (max-width: 640px) {
+          .hk {
+            padding: 28px 16px 48px;
+          }
+
+          .hk-table-head span,
+          .hk-row-name,
+          .hk-row-price {
+            padding: 14px 16px;
+          }
+
+          .hk-table-head,
+          .hk-row {
+            grid-template-columns: 1fr minmax(100px, 140px);
+          }
+
+          .hk-row-name {
+            font-size: 14px;
+          }
+
+          .hk-row-price {
+            font-size: 14px;
+          }
+
+          .hk-row-num {
+            display: none;
+          }
+
+          .hk-actions {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+
+          .hk .ft-maps-btn {
+            width: 100%;
+            justify-content: center;
+          }
+        }
+
         /* === Request form modal popup === */
         .rf-modal {
           position: fixed;
@@ -2547,16 +2878,18 @@
           text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
           transition: box-shadow 0.2s ease, filter 0.2s ease;
         }
-          box-shadow:
-            0 0 0 1px rgba(0, 0, 0, 0.55),
-            inset 0 1px 0 rgba(255, 255, 255, 0.35),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.4),
-            inset 1px 0 0 rgba(255, 255, 255, 0.08),
-            0 2px 6px rgba(0, 0, 0, 0.45),
-            0 0 16px rgba(196, 30, 42, 0.15);
-          text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-          transition: box-shadow 0.2s ease, filter 0.2s ease, opacity 0.2s ease;
-          border-radius: 0;
+
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+        inset 1px 0 0 rgba(255, 255, 255, 0.08),
+        0 2px 6px rgba(0, 0, 0, 0.45),
+        0 0 16px rgba(196, 30, 42, 0.15);
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+        transition: box-shadow 0.2s ease,
+        filter 0.2s ease,
+        opacity 0.2s ease;
+        border-radius: 0;
         }
 
         .rf .ft-maps-btn::before {
@@ -3772,309 +4105,150 @@
           border-bottom: 1.5px solid;
         }
 
-        /* ── B2B banner — electric cyan (2nd accent, like phone) ── */
+        /* ── B2B banner — like old site: equipment photo + cyan wash, centered title + one link ── */
         .etb-b2b {
           --etb-cyan: #00B8D4;
-          --etb-cyan-bright: #33cceb;
           margin-top: 64px;
           margin-bottom: 0;
           position: relative;
           overflow: hidden;
-          border: 1px solid rgba(0, 40, 55, 0.45);
+          border: none;
           border-radius: 0;
-          color: #F4F5F6;
-          background:
-            linear-gradient(165deg, rgba(255, 255, 255, 0.1) 0%, transparent 42%),
-            radial-gradient(ellipse 90% 70% at 85% 15%, rgba(0, 184, 212, 0.35) 0%, transparent 55%),
-            linear-gradient(145deg, #021820 0%, #043a4a 28%, #00B8D4 58%, #027a92 82%, #011418 100%);
-          box-shadow:
-            0 0 0 1px rgba(0, 184, 212, 0.18),
-            0 16px 48px rgba(0, 40, 60, 0.28),
-            inset 0 1px 0 rgba(255, 255, 255, 0.12),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.35),
-            0 0 40px rgba(0, 184, 212, 0.12);
-          padding: 0;
-          display: block;
-        }
-
-        .etb-b2b-layout {
-          display: grid;
-          grid-template-columns: 1fr;
-          min-height: 0;
-          position: relative;
-          z-index: 1;
-        }
-
-        .etb-b2b-content {
-          display: flex;
-          flex-direction: column;
-          gap: 28px;
-          padding: 44px 40px;
-          min-width: 0;
-          position: relative;
-          z-index: 2;
-        }
-
-        .etb-b2b-media {
-          position: relative;
-          min-height: 240px;
-          overflow: hidden;
+          color: #FFFFFF;
           background: #021820;
-          z-index: 1;
+          padding: 0;
+          min-height: 300px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .etb-b2b-bg {
+          position: absolute;
+          inset: 0;
+          z-index: 0;
         }
 
         .etb-b2b-img {
           display: block;
           width: 100%;
           height: 100%;
-          min-height: 240px;
           object-fit: cover;
           object-position: center center;
         }
 
-        /* Electric cyan wash over photo (reference look) */
-        .etb-b2b-media-tint {
+        /* Cyan wash over equipment photo (old-site look, no people) */
+        .etb-b2b-tint {
           position: absolute;
           inset: 0;
           z-index: 1;
           pointer-events: none;
           background:
-            linear-gradient(105deg, rgba(2, 24, 32, 0.55) 0%, rgba(0, 184, 212, 0.35) 45%, rgba(0, 184, 212, 0.55) 100%),
-            linear-gradient(180deg, rgba(2, 24, 32, 0.15) 0%, rgba(2, 24, 32, 0.35) 100%);
+            linear-gradient(180deg, rgba(0, 90, 110, 0.45) 0%, rgba(0, 140, 160, 0.55) 50%, rgba(0, 100, 120, 0.6) 100%),
+            rgba(0, 160, 180, 0.45);
           mix-blend-mode: multiply;
         }
 
-        .etb-b2b-media::after {
+        .etb-b2b-tint::after {
           content: '';
           position: absolute;
           inset: 0;
-          pointer-events: none;
-          background: linear-gradient(90deg, #00B8D4 0%, transparent 28%);
-          opacity: 0.45;
+          background: rgba(0, 184, 212, 0.28);
           mix-blend-mode: soft-light;
         }
 
-        .etb-b2b::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-          opacity: 0.14;
-          background-image:
-            repeating-linear-gradient(90deg,
-              transparent 0px,
-              transparent 1px,
-              rgba(255, 255, 255, 0.05) 1px,
-              rgba(255, 255, 255, 0.05) 2px,
-              transparent 2px,
-              transparent 4px);
-        }
-
-        .etb-b2b>*:not(.etb-island) {
+        /* TITLE → 3 points in a row → button (wireframe layout) */
+        .etb-b2b-content {
           position: relative;
-          z-index: 1;
-        }
-
-        .etb-b2b-sight {
-          position: absolute;
           z-index: 2;
-          pointer-events: none;
-          width: 18px;
-          height: 18px;
-        }
-
-        .etb-b2b-sight--tl {
-          left: 8px;
-          top: 8px;
-        }
-
-        .etb-b2b-sight--br {
-          right: 8px;
-          bottom: 8px;
-        }
-
-        .etb-b2b-sight span {
-          position: absolute;
-          background: linear-gradient(145deg, #025a6e, #00B8D4, #01404f);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
-        }
-
-        .etb-b2b-sight--tl .h {
-          top: 0;
-          left: 0;
-          width: 16px;
-          height: 2px;
-        }
-
-        .etb-b2b-sight--tl .v {
-          top: 0;
-          left: 0;
-          width: 2px;
-          height: 16px;
-        }
-
-        .etb-b2b-sight--br .h {
-          bottom: 0;
-          right: 0;
-          width: 16px;
-          height: 2px;
-        }
-
-        .etb-b2b-sight--br .v {
-          bottom: 0;
-          right: 0;
-          width: 2px;
-          height: 16px;
-        }
-
-        .etb-b2b-kicker {
-          font-size: 11px;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          color: rgba(255, 255, 255, 0.55);
-          font-family: var(--etb-mono);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          gap: 32px;
+          padding: 48px 28px 52px;
+          width: 100%;
+          max-width: 1080px;
+          margin: 0 auto;
         }
 
         .etb-b2b-title {
           margin: 0;
-          font-size: clamp(24px, 3.4vw, 36px);
-          font-weight: 800;
-          letter-spacing: -0.02em;
-          text-transform: uppercase;
-          line-height: 1.1;
+          font-size: clamp(22px, 3.2vw, 34px);
+          font-weight: 400;
+          letter-spacing: 0.01em;
+          text-transform: none;
+          line-height: 1.25;
           color: #FFFFFF;
+          text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
         }
 
         .etb-b2b-list {
-          display: flex;
-          flex-direction: column;
-          border-top: 1px solid rgba(255, 255, 255, 0.12);
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 18px 28px;
+          width: 100%;
+          max-width: 960px;
+          text-align: left;
         }
 
         .etb-b2b-row {
           display: flex;
-          align-items: center;
-          gap: 20px;
-          padding: 20px 0;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-        }
-
-        .etb-b2b-num {
-          font-family: var(--etb-mono);
-          font-size: 11px;
-          letter-spacing: 0.08em;
-          color: rgba(255, 255, 255, 0.4);
-          flex: 0 0 auto;
+          align-items: flex-start;
+          gap: 12px;
+          min-width: 0;
         }
 
         .etb-b2b-icon {
           flex: 0 0 auto;
-          width: 40px;
-          height: 40px;
+          width: 36px;
+          height: 36px;
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #00B8D4;
-          background: rgba(0, 184, 212, 0.14);
-          border: 1px solid rgba(0, 184, 212, 0.4);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 2px 8px rgba(0, 0, 0, 0.25);
+          color: #FFFFFF;
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.45);
         }
 
         .etb-b2b-icon svg {
-          width: 22px;
-          height: 22px;
+          width: 18px;
+          height: 18px;
           stroke-width: 1.6;
         }
 
         .etb-b2b-text {
           margin: 0;
-          font-size: 14px;
-          line-height: 1.6;
-          color: rgba(255, 255, 255, 0.88);
+          font-size: 13px;
+          line-height: 1.45;
+          color: rgba(255, 255, 255, 0.92);
+          text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
         }
 
-        .etb-b2b-actions {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-          flex-wrap: wrap;
-          padding-top: 8px;
-        }
-
-        /* Secondary outline CTA on dark banner */
+        /* Single outline CTA — terms & prices (old-site style) */
         .etb-btn-ghost {
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          font-size: 10.5px;
-          font-weight: 700;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          font-family: var(--etb-mono);
+          justify-content: center;
+          font-size: 14px;
+          font-weight: 400;
+          letter-spacing: 0.04em;
+          text-transform: none;
+          font-family: var(--etb-sans);
           text-decoration: none;
-          color: #fff5f5;
-          padding: 10px 16px 9px;
+          color: #FFFFFF;
+          padding: 14px 40px;
           white-space: nowrap;
-          border: 1px solid rgba(255, 255, 255, 0.28);
+          border: 1px solid rgba(255, 255, 255, 0.92);
           background: transparent;
           border-radius: 0;
           transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
         }
 
         .etb-btn-ghost:hover {
-          border-color: rgba(255, 255, 255, 0.75);
-          background: rgba(255, 255, 255, 0.06);
-        }
-
-        /* Electric cyan CTA — matches phone accent */
-        .etb .ft-maps-btn {
-          align-self: flex-start;
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          font-size: 10.5px;
-          font-weight: 700;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          font-family: var(--ft-mono, monospace);
-          text-decoration: none;
-          color: #f0fcff;
-          padding: 10px 16px 9px;
-          white-space: nowrap;
-          position: relative;
-          border: none;
-          cursor: pointer;
-          background:
-            linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, transparent 40%),
-            linear-gradient(145deg, #01404f 0%, #027a92 28%, #00B8D4 52%, #0490a8 75%, #012a35 100%);
-          box-shadow:
-            0 0 0 1px rgba(0, 0, 0, 0.4),
-            inset 0 1px 0 rgba(255, 255, 255, 0.4),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.35),
-            inset 1px 0 0 rgba(255, 255, 255, 0.1),
-            0 2px 6px rgba(0, 40, 50, 0.4),
-            0 0 18px rgba(0, 184, 212, 0.25);
-          text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
-          transition: box-shadow 0.2s ease, filter 0.2s ease;
-          border-radius: 0;
-        }
-
-        .etb .ft-maps-btn::before {
-          content: '';
-          position: absolute;
-          inset: 1px;
-          border: 0.5px solid rgba(255, 255, 255, 0.12);
-          pointer-events: none;
-        }
-
-        .etb .ft-maps-btn:hover {
-          filter: brightness(1.08);
-          box-shadow:
-            0 0 0 1px rgba(0, 0, 0, 0.4),
-            inset 0 1px 0 rgba(255, 255, 255, 0.45),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.35),
-            0 3px 10px rgba(0, 40, 50, 0.45),
-            0 0 24px rgba(0, 184, 212, 0.4);
+          border-color: #FFFFFF;
+          background: rgba(255, 255, 255, 0.1);
         }
 
         /* Bottom spacing after B2B inside rail */
@@ -4092,57 +4266,23 @@
             grid-template-columns: 1fr 1fr 1fr !important;
           }
 
-          .etb-b2b-layout {
-            grid-template-columns: 1.15fr 0.95fr;
-            min-height: 420px;
-            align-items: stretch;
+          .etb-b2b {
+            min-height: 340px;
           }
 
           .etb-b2b-content {
-            padding: 48px 40px 48px 44px;
-            justify-content: center;
+            padding: 56px 40px 60px;
+            gap: 36px;
           }
 
-          .etb-b2b-media {
-            min-height: 100%;
-            align-self: stretch;
+          /* 3 points in a horizontal row: [icon]—text  [icon]—text  [icon]—text */
+          .etb-b2b-list {
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px 32px;
           }
 
-          .etb-b2b-img {
-            position: absolute;
-            inset: 0;
-            min-height: 0;
-            height: 100%;
-            width: 100%;
-          }
-
-          /* Soft blend from text panel into photo */
-          .etb-b2b-media::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 28%;
-            z-index: 2;
-            pointer-events: none;
-            background: linear-gradient(90deg, rgba(2, 24, 32, 0.85) 0%, transparent 100%);
-          }
-        }
-
-        @media (max-width: 799px) {
-          .etb-b2b-media {
-            order: -1;
-            min-height: 220px;
-            max-height: 280px;
-          }
-
-          .etb-b2b-img {
-            max-height: 280px;
-          }
-
-          .etb-b2b-content {
-            padding: 32px 22px 36px;
+          .etb-b2b-row {
+            align-items: center;
           }
         }
 
@@ -4156,8 +4296,22 @@
           }
 
           .etb-b2b {
-            padding: 32px 22px;
             margin-top: 48px;
+            min-height: 260px;
+          }
+
+          .etb-b2b-content {
+            padding: 36px 18px 40px;
+            gap: 24px;
+          }
+
+          .etb-b2b-list {
+            gap: 14px;
+          }
+
+          .etb-btn-ghost {
+            padding: 12px 28px;
+            font-size: 13px;
           }
 
           .etb-block {
@@ -4177,11 +4331,6 @@
             width: 140px;
             height: 90px;
             opacity: 0.07;
-          }
-
-          .etb-island--b2b {
-            width: 42%;
-            opacity: 0.08;
           }
 
           .etb-breath {
@@ -5028,13 +5177,13 @@
         .ss-card-title,
         .ss-sym-title,
         .etb-title,
-        .etb-b2b-title,
         .etb-personal-title,
         .etb-personal-headline,
         .ph-title,
         .ph-brand-title,
         .su-title,
-        .dg-title {
+        .dg-title,
+        .hk-title {
           font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
           font-weight: 400;
         }
@@ -5323,6 +5472,79 @@
               </a>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ Hinnakiri Blokk — Pricing ══ -->
+    <section class="hk" id="hinnakiri" aria-labelledby="hk-heading">
+      <svg class="hk-pattern-defs" aria-hidden="true" focusable="false">
+        <defs>
+          <pattern id="hk-diamond-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <rect x="10" y="10" width="20" height="20" fill="none" stroke="#171717" stroke-width="1"
+              transform="rotate(45 20 20)"></rect>
+          </pattern>
+        </defs>
+      </svg>
+
+      <div class="hk-inner">
+        <div class="hk-ticks" aria-hidden="true">
+          <sc-for list="{{ ticks }}" as="t" hint-placeholder-count="28">
+            <span class="hk-tick"></span>
+          </sc-for>
+        </div>
+
+        <header class="hk-header">
+          <div class="hk-island hk-island--header" aria-hidden="true">
+            <svg class="hk-fill" preserveAspectRatio="none">
+              <rect width="100%" height="100%" fill="url(#hk-diamond-grid)"></rect>
+            </svg>
+          </div>
+          <span class="hk-kicker">[ Läbipaistvad hinnad ]</span>
+          <h2 class="hk-title" id="hk-heading">Hinnakiri</h2>
+          <p class="hk-lead">
+            Kuna iga sõiduk ja mootor on erinev, soovitame täpse hinnapakkumise saamiseks võtta ühendust meie meistriga.
+          </p>
+        </header>
+
+        <div class="hk-table-wrap" role="table" aria-label="Hinnakiri">
+          <span class="hk-table-corner hk-table-corner--tl" aria-hidden="true"></span>
+          <span class="hk-table-corner hk-table-corner--br" aria-hidden="true"></span>
+
+          <div class="hk-table-head" role="row">
+            <span role="columnheader">Teenus</span>
+            <span role="columnheader">Hind</span>
+          </div>
+
+          <sc-for list="{{ priceRows }}" as="row" hint-placeholder-count="8">
+            <div class="hk-row" role="row">
+              <div class="hk-row-name" role="cell">
+                <span class="hk-row-num">{{ row.num }}</span>
+                <span>{{ row.name }}</span>
+              </div>
+              <div class="hk-row-price" role="cell">{{ row.price }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div class="hk-notes">
+          <p class="hk-note">
+            * Kui tellite meilt ka pihustite demonteerimise ja paigaldamise, kehtib pihustite testimisele 10% soodustus.
+          </p>
+          <p class="hk-note">
+            ** Remondi maksumusele lisandub pihustite demonteerimise ja paigaldamise töö. Töö arvestus toimub hinnaga
+            55,90 €/tund. Täpse maksumuse saamiseks palume võtta ühendust meie meistriga e-posti teel:
+            <a href="mailto:autodiislikeskus@gmail.com">autodiislikeskus@gmail.com</a>.
+          </p>
+        </div>
+
+        <div class="hk-actions">
+          <button type="button" class="ft-maps-btn" onClick="{{ openForm }}">[ KÜSI HINNAPAKKUMIST → ]</button>
+          <a href="tel:+37256702700" class="hk-phone" aria-label="Call +372 567 02 700">
+            <span>Tel.</span>
+            <span>+372 567 02 700</span>
+          </a>
         </div>
       </div>
     </section>
@@ -5728,69 +5950,56 @@
           </div>
         </div>
 
-        <!-- B2B — text left + workshop photo right -->
+        <!-- B2B — equipment bg; title → 3 points in a row → one CTA -->
         <aside class="etb-b2b" aria-labelledby="etb-b2b-heading">
-          <span class="etb-b2b-sight etb-b2b-sight--tl" aria-hidden="true"><span class="h"></span><span
-              class="v"></span></span>
-          <span class="etb-b2b-sight etb-b2b-sight--br" aria-hidden="true"><span class="h"></span><span
-              class="v"></span></span>
+          <div class="etb-b2b-bg" aria-hidden="true">
+            <img class="etb-b2b-img" src="./ad-img-2.jpg" alt="" width="1400" height="600" />
+            <div class="etb-b2b-tint"></div>
+          </div>
+          <div class="etb-b2b-content">
+            <h3 class="etb-b2b-title" id="etb-b2b-heading">
+              Pakkumised autoremondifirmadele
+            </h3>
 
-          <div class="etb-b2b-layout">
-            <div class="etb-b2b-content">
-              <span class="etb-b2b-kicker">[ B2B Pakkumine autoteeninduse ettevõtete jaoks ]</span>
-              <h3 class="etb-b2b-title" id="etb-b2b-heading">
-                AUTOHOOLDUSTE JA AUTOVARUOSADELE ÜLE EESTIS
-              </h3>
-
-              <div class="etb-b2b-list">
-                <sc-for list="{{ b2bPoints }}" as="pt" hint-placeholder-count="3">
-                  <div class="etb-b2b-row">
-                    <span class="etb-b2b-icon">
-                      <sc-if value="{{ pt.num === '01' }}">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                          stroke-linecap="round" stroke-linejoin="round">
-                          <rect x="1" y="4" width="13" height="11" rx="1" />
-                          <path d="M14 8h4.5l2.5 3v4h-7V8z" />
-                          <circle cx="4.5" cy="17.5" r="2" />
-                          <circle cx="17.5" cy="17.5" r="2" />
-                          <path d="M-1 9h2M-2 12h3" />
-                        </svg>
-                      </sc-if>
-                      <sc-if value="{{ pt.num === '02' }}">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                          stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M12 14l3-3" />
-                          <path d="M3.34 17a10 10 0 1 1 17.32 0" />
-                          <circle cx="12" cy="14" r="1.5" />
-                          <path d="M18 16a4 4 0 1 0 4 4" />
-                          <path d="M22 16v2h2" />
-                        </svg>
-                      </sc-if>
-                      <sc-if value="{{ pt.num === '03' }}">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                          stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                          <path d="m9 12 2 2 4-4" />
-                        </svg>
-                      </sc-if>
-                    </span>
-                    <p class="etb-b2b-text">{{ pt.text }}</p>
-                  </div>
-                </sc-for>
-              </div>
-
-              <div class="etb-b2b-actions">
-                <a href="#request-form" onClick="{{ scrollToForm }}" class="ft-maps-btn">[ SAADA SEADE REMONTI →
-                  ]</a>
-                <a href="https://pihustiremont.ee/adiesel.pdf" target="_blank" rel="noopener noreferrer"
-                  class="etb-btn-ghost">[ B2B HINNAD JA TINGIMUSED ]</a>
-              </div>
+            <div class="etb-b2b-list">
+              <sc-for list="{{ b2bPoints }}" as="pt" hint-placeholder-count="3">
+                <div class="etb-b2b-row">
+                  <span class="etb-b2b-icon">
+                    <sc-if value="{{ pt.num === '01' }}">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="1" y="4" width="13" height="11" rx="1" />
+                        <path d="M14 8h4.5l2.5 3v4h-7V8z" />
+                        <circle cx="4.5" cy="17.5" r="2" />
+                        <circle cx="17.5" cy="17.5" r="2" />
+                        <path d="M-1 9h2M-2 12h3" />
+                      </svg>
+                    </sc-if>
+                    <sc-if value="{{ pt.num === '02' }}">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 14l3-3" />
+                        <path d="M3.34 17a10 10 0 1 1 17.32 0" />
+                        <circle cx="12" cy="14" r="1.5" />
+                        <path d="M18 16a4 4 0 1 0 4 4" />
+                        <path d="M22 16v2h2" />
+                      </svg>
+                    </sc-if>
+                    <sc-if value="{{ pt.num === '03' }}">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        <path d="m9 12 2 2 4-4" />
+                      </svg>
+                    </sc-if>
+                  </span>
+                  <p class="etb-b2b-text">{{ pt.text }}</p>
+                </div>
+              </sc-for>
             </div>
 
-            <div class="etb-b2b-media" aria-hidden="true">
-              <img class="etb-b2b-img" src="./ad-img-stuff-5.jpg" alt="" width="800" height="600" />
-              <div class="etb-b2b-media-tint"></div>
-            </div>
+            <a href="https://pihustiremont.ee/adiesel.pdf" target="_blank" rel="noopener noreferrer"
+              class="etb-btn-ghost">Rohkem teavet</a>
           </div>
         </aside>
 
@@ -6198,6 +6407,18 @@ class Component extends DCLogic {
   /* scrollToForm → unified */
   /* renderVals → unified */
 
+  /* --- from Hinnakiri Blokk.dc.html --- */
+  priceRows = [
+    { num: '01', name: 'Arvutidiagnostika', price: '67 €' },
+    { num: '02', name: 'Common Rail pihustite test*', price: '22 €/tk' },
+    { num: '03', name: 'Common Rail pihustite remont, alates', price: '65 €/tk' },
+    { num: '04', name: 'Mehaaniliste pihustite kontroll*', price: '12 €/tk' },
+    { num: '05', name: 'Mehaaniliste pihustite remont, alates', price: '25 €/tk' },
+    { num: '06', name: 'Lukkseppatööd sõiduautodel ja kaubikutel', price: '55,90 €/tund' },
+    { num: '07', name: 'DPF pesu sõiduautodel ja kaubikutel', price: '199 €/tk' },
+    { num: '08', name: 'Elektritööd sõiduautodel ja kaubikutel', price: '59,90 €/tund' },
+  ];
+
   /* --- from EquipmentTeamB2B.dc.html --- */
   /* ticks → unified */
 
@@ -6600,6 +6821,9 @@ class Component extends DCLogic {
       services: this.services,
       symptoms: this.symptoms,
       ticks: this.ticks,
+
+      // Hinnakiri / Pricing
+      priceRows: this.priceRows,
 
       // Equipment / Team / B2B
       equipment: this.equipment,
