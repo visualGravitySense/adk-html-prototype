@@ -106,20 +106,17 @@
           font-family: var(--hd-sans);
           text-decoration: none;
           transition: color 0.25s ease;
-        }
-
-        .hd-utility-addr {
-          display: none;
+          display: inline-block;
         }
 
         /* Main bar */
         .hd-main {
           max-width: 1440px;
           margin: 0 auto;
-          display: grid;
-          grid-template-columns: auto 1fr auto;
+          display: flex;
           align-items: center;
-          column-gap: 24px;
+          justify-content: space-between;
+          gap: 24px;
           padding: 14px 24px;
           border-left: none;
           border-right: none;
@@ -127,14 +124,13 @@
           transition: background 0.25s ease;
         }
 
-        /* Brand: logo mark + wordmark */
+        /* Brand: hidden per client request */
         .hd-brand {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          min-width: 0;
-          text-decoration: none;
-          color: inherit;
+          display: none !important;
+        }
+
+        text-decoration: none;
+        color: inherit;
         }
 
         .hd-logo {
@@ -979,143 +975,132 @@
         }
 
         .ph-brand {
-          appearance: none;
-          -webkit-appearance: none;
-          display: block;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           width: 100%;
-          text-align: left;
           padding: 14px 18px;
-          font-family: var(--ph-sans);
-          font-size: 13px;
-          font-weight: 700;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
+          min-height: 54px;
           cursor: pointer;
           border: 1px solid var(--ph-line-mid);
           border-radius: 0;
-          background: transparent;
-          color: var(--ph-ink);
-          transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+          background: #ffffff;
+          transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .ph-brand-logo {
+          height: 30px;
+          max-width: 150px;
+          width: auto;
+          object-fit: contain;
+          display: block;
+          filter: grayscale(100%);
+          opacity: 0.65;
+          transition: filter 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        /* Equalize optical size & width to match BOSCH reference size */
+        .ph-brand--bosch .ph-brand-logo {
+          height: 28px;
+        }
+
+        .ph-brand--denso .ph-brand-logo {
+          height: 36px;
+          transform: scale(1.28);
+        }
+
+        .ph-brand--delphi .ph-brand-logo {
+          height: 36px;
+          transform: scale(1.28);
+        }
+
+        .ph-brand--siemens .ph-brand-logo {
+          height: 24px;
+          transform: scale(0.92);
         }
 
         .ph-brand:hover {
-          border-color: var(--ph-ink);
+          border-color: #E63946;
+          background: #ffffff;
         }
 
-        /* --- DENSO: Brand Red & Heavy Sans --- */
-        .ph-brand--denso {
-          font-family: 'Arial Black', Arial, sans-serif;
-          font-weight: 900;
-          letter-spacing: 0.1em;
+        .ph-brand:hover .ph-brand-logo {
+          filter: grayscale(0%);
+          opacity: 1;
         }
 
-        .ph-brand--denso:hover {
-          border-color: #E60012;
-          color: #E60012;
+        .ph-brand.is-active,
+        .ph-brand.is-active:hover {
+          background: #ffffff;
+          border: 2px solid #E63946;
+          box-shadow: 0 4px 14px rgba(230, 57, 70, 0.16);
         }
 
-        .ph-brand--denso.is-active,
-        .ph-brand--denso.is-active:hover {
-          background: #E60012;
-          border-color: #E60012;
-          color: #ffffff;
+        .ph-brand.is-active .ph-brand-logo {
+          filter: grayscale(0%);
+          opacity: 1;
         }
 
-        .ph-panel--denso .ph-brand-title {
-          font-family: 'Arial Black', Arial, sans-serif;
-          color: #E60012;
-          font-weight: 900;
+        .ph-brand.is-active.ph-brand--bosch .ph-brand-logo {
+          transform: scale(1.05);
         }
 
-        .ph-panel--denso .ph-bullet {
-          background: #E60012;
+        .ph-brand.is-active.ph-brand--denso .ph-brand-logo,
+        .ph-brand.is-active.ph-brand--delphi .ph-brand-logo {
+          transform: scale(1.35);
         }
 
-        /* --- BOSCH: Corporate Blue/Red & Clean Heavy Sans --- */
-        .ph-brand--bosch {
-          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        .ph-brand.is-active.ph-brand--siemens .ph-brand-logo {
+          transform: scale(0.96);
+        }
+
+        .ph-brand-title {
+          margin: 0 0 20px;
+          font-family: var(--ph-display);
+          font-size: clamp(22px, 2.6vw, 30px);
           font-weight: 800;
-          letter-spacing: 0.08em;
+          letter-spacing: 0.02em;
+          text-transform: uppercase;
+          color: #E63946;
+          line-height: 1.1;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          flex-wrap: wrap;
         }
 
-        .ph-brand--bosch:hover {
-          border-color: #005691;
-          color: #005691;
+        .ph-title-logo {
+          width: auto;
+          height: auto;
+          object-fit: contain;
+          vertical-align: middle;
+          display: inline-block;
         }
 
-        .ph-brand--bosch.is-active,
-        .ph-brand--bosch.is-active:hover {
-          background: #005691;
-          border-color: #005691;
-          color: #ffffff;
+        .ph-title-logo--bosch {
+          height: 40px;
+          max-width: 170px;
         }
 
-        .ph-panel--bosch .ph-brand-title {
-          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-          color: #005691;
-          font-weight: 800;
+        .ph-title-logo--denso {
+          height: 62px;
+          max-width: 220px;
+          transform: scale(1.35);
+          transform-origin: left center;
+          margin-right: 24px;
         }
 
-        .ph-panel--bosch .ph-bullet {
-          background: #005691;
+        .ph-title-logo--delphi {
+          height: 62px;
+          max-width: 220px;
+          transform: scale(1.35);
+          transform-origin: left center;
+          margin-right: 24px;
         }
 
-        /* --- DELPHI: Signature Orange & Geometric Sans --- */
-        .ph-brand--delphi {
-          font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
-          font-weight: 700;
-          letter-spacing: 0.1em;
-        }
-
-        .ph-brand--delphi:hover {
-          border-color: #E35205;
-          color: #E35205;
-        }
-
-        .ph-brand--delphi.is-active,
-        .ph-brand--delphi.is-active:hover {
-          background: #E35205;
-          border-color: #E35205;
-          color: #ffffff;
-        }
-
-        .ph-panel--delphi .ph-brand-title {
-          font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
-          color: #E35205;
-          font-weight: 700;
-        }
-
-        .ph-panel--delphi .ph-bullet {
-          background: #E35205;
-        }
-
-        /* --- SIEMENS / CONTINENTAL: Petroleum Teal & Tech Sans --- */
-        .ph-brand--siemens {
-          font-family: 'Segoe UI', 'Verdana', sans-serif;
-          font-weight: 700;
-          letter-spacing: 0.12em;
-        }
-
-        .ph-brand--siemens:hover {
-          border-color: #00646e;
-          color: #00646e;
-        }
-
-        .ph-brand--siemens.is-active,
-        .ph-brand--siemens.is-active:hover {
-          background: #00646e;
-          border-color: #00646e;
-          color: #ffffff;
-        }
-
-        .ph-panel--siemens .ph-brand-title {
-          font-family: 'Segoe UI', 'Verdana', sans-serif;
-          color: #00646e;
-          font-weight: 700;
-        }
-
-        .ph-panel--siemens .ph-bullet {
-          background: #00646e;
+        .ph-title-logo--siemens {
+          height: 40px;
+          max-width: 190px;
         }
 
         .ph-copy {
@@ -1134,10 +1119,10 @@
           margin: 0 0 20px;
           font-family: var(--ph-display);
           font-size: clamp(22px, 2.6vw, 30px);
-          font-weight: 400;
+          font-weight: 800;
           letter-spacing: 0.02em;
           text-transform: uppercase;
-          color: var(--ph-ink);
+          color: #E63946;
           line-height: 1.1;
         }
 
@@ -1165,7 +1150,7 @@
           width: 6px;
           height: 6px;
           margin-top: 8px;
-          background: var(--ph-accent);
+          background: #E63946;
         }
 
         .ph-media {
@@ -2178,10 +2163,13 @@
 
         .rf.rf--modal .rf-header {
           padding-top: 8px;
+          text-align: center;
         }
 
         .rf.rf--modal .rf-title {
-          font-size: clamp(22px, 3.2vw, 32px);
+          font-size: clamp(18px, 2.2vw, 24px);
+          color: #00B8D4;
+          text-align: center;
         }
 
         .rf.rf--modal .rf-ticks {
@@ -2323,7 +2311,8 @@
         .rf-header::after {
           content: '';
           position: absolute;
-          right: 0;
+          left: 50%;
+          transform: translateX(-50%);
           bottom: -1px;
           width: 56px;
           height: 2px;
@@ -2333,8 +2322,8 @@
 
         .rf-header-row {
           display: flex;
-          align-items: flex-end;
-          justify-content: space-between;
+          align-items: center;
+          justify-content: center;
           gap: 28px;
           flex-wrap: wrap;
         }
@@ -2342,7 +2331,9 @@
         .rf-header-copy {
           display: flex;
           flex-direction: column;
-          gap: 14px;
+          align-items: center;
+          text-align: center;
+          gap: 12px;
           max-width: 100%;
           width: 100%;
         }
@@ -2354,24 +2345,27 @@
           color: var(--rf-dim);
           font-family: var(--rf-mono);
           font-weight: 500;
+          text-align: center;
         }
 
         .rf-title {
           margin: 0;
-          font-size: clamp(28px, 4vw, 42px);
-          font-weight: 800;
-          letter-spacing: -0.025em;
-          text-transform: uppercase;
-          color: var(--rf-ink);
-          line-height: 1.05;
+          font-size: clamp(18px, 2.2vw, 24px);
+          font-weight: 500;
+          letter-spacing: 0.01em;
+          /* text-transform: uppercase; */
+          color: #00B8D4;
+          line-height: 1.15;
+          text-align: center;
         }
 
         .rf-lead {
-          margin: 0;
-          max-width: 100%;
-          font-size: 15px;
-          line-height: 1.65;
+          margin: 0 auto;
+          max-width: 800px;
+          font-size: 14.5px;
+          line-height: 1.6;
           color: var(--rf-muted);
+          text-align: center;
         }
 
         .rf-header-meta {
@@ -2439,8 +2433,8 @@
 
         /* Panel blocks */
         .rf-panel {
-          border: 1px solid var(--rf-line-mid);
-          background: var(--rf-surface);
+          border: none;
+          background: transparent;
           border-radius: 0;
         }
 
@@ -2511,16 +2505,16 @@
         }
 
         .rf-section-title .rf-panel-name {
-          font-size: 13px;
+          font-size: 17px;
           font-weight: 700;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          color: var(--rf-ink-soft);
+          letter-spacing: -0.01em;
+          text-transform: none;
+          color: #171717;
         }
 
         .rf-panel-body {
           position: relative;
-          padding: 20px 24px;
+          padding: 12px 0 16px;
           display: flex;
           flex-direction: column;
           gap: 16px;
@@ -2548,12 +2542,18 @@
           grid-column: span 2;
         }
 
+        .rf-grid-2col {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 16px 24px;
+        }
+
         .rf-label {
-          font-size: 10.5px;
-          font-family: var(--rf-mono);
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
-          color: var(--rf-dim);
+          font-size: 13px;
+          font-family: var(--rf-sans);
+          text-transform: none;
+          letter-spacing: 0;
+          color: #525252;
           font-weight: 500;
         }
 
@@ -2757,22 +2757,60 @@
           letter-spacing: 0.04em;
         }
 
-        /* Submit bar — industrial dark */
+        /* Submit bar */
         .rf-submit {
           position: relative;
-          margin-top: 36px;
-          background: #0a0a0a;
-          color: #ffffff;
-          padding: 28px 36px;
+          margin-top: 28px;
+          padding: 16px 0 0;
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          gap: 24px 32px;
+          flex-wrap: wrap;
+          isolation: isolate;
+        }
+
+        .rf-submit-info {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          text-align: left;
+        }
+
+        .rf-submit-pref-title {
+          font-size: 13px;
+          font-weight: 700;
+          color: #171717;
+          margin: 0;
+        }
+
+        .rf-radio-group {
           display: flex;
           align-items: center;
-          justify-content: center;
-          gap: 24px;
-          border: 1px solid #262626;
-          border-radius: 0;
-          overflow: hidden;
-          isolation: isolate;
-          text-align: center;
+          gap: 18px;
+          flex-wrap: wrap;
+        }
+
+        .rf-radio-label {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 13px;
+          color: #525252;
+          cursor: pointer;
+          font-weight: 500;
+        }
+
+        .rf-radio-label input[type="radio"] {
+          accent-color: #00B8D4;
+          cursor: pointer;
+          margin: 0;
+        }
+
+        .rf-submit-note {
+          font-size: 12px;
+          color: #737373;
+          margin: 4px 0 0;
         }
 
         .rf-submit-pat {
@@ -2830,11 +2868,9 @@
           z-index: 1;
           display: flex;
           flex-direction: column;
-          align-items: center;
+          align-items: flex-end;
           justify-content: center;
           gap: 10px;
-          width: 100%;
-          margin: 0 auto;
         }
 
         .rf-error {
@@ -2842,7 +2878,7 @@
           color: #ff6b6b;
           font-family: var(--rf-mono);
           letter-spacing: 0.06em;
-          text-align: center;
+          text-align: right;
         }
 
         /* Anodized red metallic button — large prominent submit */
@@ -3019,15 +3055,6 @@
           .rf-field--vin {
             grid-column: span 1 !important;
             max-width: none;
-          }
-
-          .rf-submit {
-            padding: 26px 20px;
-          }
-
-          .rf-submit-actions {
-            align-items: flex-start;
-            width: 100%;
           }
 
           .rf-input--plate {
@@ -3622,7 +3649,7 @@
           background: var(--etb-bg);
           color: var(--etb-ink);
           font-family: var(--etb-sans);
-          padding: 36px 24px 40px;
+          padding: 12px 24px 32px;
           position: relative;
           isolation: isolate;
         }
@@ -3716,11 +3743,7 @@
 
         /* Precision tick rail */
         .etb-ticks {
-          display: flex;
-          gap: 0;
-          padding-top: 36px;
-          opacity: 0.45;
-          color: var(--etb-ink);
+          display: none;
         }
 
         .etb-tick {
@@ -3740,8 +3763,8 @@
         .etb-header {
           display: flex;
           flex-direction: column;
-          gap: 16px;
-          padding: 28px 0 40px;
+          gap: 12px;
+          padding: 8px 0 20px;
           border-bottom: 1px solid var(--etb-line-mid);
           position: relative;
         }
@@ -4885,23 +4908,9 @@
           font-weight: 400;
         }
 
-        /* Ghost etched outline numbers */
+        /* Ghost etched outline numbers — hidden per client request (information noise) */
         .ft-ghost-num {
-          font-size: 48px;
-          font-weight: 200;
-          line-height: 1;
-          color: transparent;
-          -webkit-text-stroke: 0.75px rgba(23, 23, 23, 0.08);
-          letter-spacing: -0.04em;
-          font-family: var(--ft-sans);
-          user-select: none;
-          position: absolute;
-          right: 28px;
-          top: 28px;
-          z-index: 0;
-          opacity: 1;
-          text-shadow: none;
-          pointer-events: none;
+          display: none !important;
         }
 
         .ft-phone {
@@ -5164,6 +5173,241 @@
           }
         }
 
+        /* ── Hinnakiri Blokk ── */
+        .hk-block {
+          max-width: 1100px;
+          margin: 0 auto;
+          padding: 36px 32px 28px;
+          font-family: Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+          color: #171717;
+          box-sizing: border-box;
+        }
+
+        .hk-header {
+          text-align: center;
+          margin-bottom: 20px;
+        }
+
+        .hk-kicker {
+          font-size: 11px;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: #737373;
+          font-family: var(--ft-mono, monospace);
+          margin-bottom: 4px;
+          display: block;
+        }
+
+        .hk-title {
+          font-size: clamp(24px, 3vw, 34px);
+          font-weight: 800;
+          letter-spacing: -0.01em;
+          margin: 0 0 8px;
+          color: #171717;
+          text-transform: uppercase;
+        }
+
+        .hk-rule {
+          width: 56px;
+          height: 3px;
+          background: #00B8D4;
+          margin: 0 auto 10px;
+        }
+
+        .hk-lead {
+          font-size: 15px;
+          line-height: 1.5;
+          color: #525252;
+          max-width: 680px;
+          margin: 0 auto;
+        }
+
+        .hk-table-wrap {
+          border: 1px solid #e5e5e5;
+          border-radius: 8px;
+          overflow: hidden;
+          background: #ffffff;
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .hk-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 16px 28px;
+          border-bottom: 1px solid #f0f0f0;
+          gap: 20px;
+        }
+
+        .hk-row:last-child {
+          border-bottom: none;
+        }
+
+        .hk-row:nth-child(even) {
+          background: #fafafa;
+        }
+
+        .hk-name {
+          font-size: 15px;
+          font-weight: 700;
+          color: #171717;
+          line-height: 1.4;
+        }
+
+        .hk-price {
+          font-size: 15px;
+          font-weight: 400;
+          color: #525252;
+          white-space: nowrap;
+          text-align: right;
+        }
+
+        .hk-notes {
+          margin: 20px auto 0;
+          width: 100%;
+          max-width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          gap: 6px;
+          box-sizing: border-box;
+        }
+
+        .hk-note-item {
+          margin: 0 auto;
+          width: 100%;
+          max-width: 100%;
+          font-size: 13px;
+          line-height: 1.5;
+          color: #666666;
+          text-align: center;
+        }
+
+        .hk-vat-wrap {
+          margin-top: 14px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+        }
+
+        .hk-vat-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          border: 1px solid #2a2a2a;
+          padding: 8px 16px;
+          background: #141414;
+        }
+
+        .hk-vat-badge-dot {
+          width: 6px;
+          height: 6px;
+          background: #E63946;
+          display: inline-block;
+        }
+
+        .hk-vat-badge-text {
+          font-size: 11px;
+          letter-spacing: 0.12em;
+          font-family: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+          color: #ffffff;
+          font-weight: 500;
+          text-transform: uppercase;
+        }
+
+        /* Modal popup overlay */
+        .hk-modal {
+          position: fixed;
+          inset: 0;
+          z-index: 9999;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+          box-sizing: border-box;
+        }
+
+        .hk-modal-backdrop {
+          position: fixed;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.65);
+          backdrop-filter: blur(4px);
+          z-index: 1;
+        }
+
+        .hk-modal-container {
+          position: relative;
+          z-index: 2;
+          width: 100%;
+          max-width: 900px;
+          max-height: 90vh;
+          overflow-y: auto;
+          background: #ffffff;
+          border-radius: 16px;
+          padding: 32px 28px;
+          box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+          animation: hkModalFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes hkModalFadeIn {
+          from {
+            opacity: 0;
+            transform: scale(0.96) translateY(10px);
+          }
+
+          to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+          }
+        }
+
+        .hk-modal-close {
+          position: absolute;
+          top: 16px;
+          right: 16px;
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          border: 1px solid #e5e5e5;
+          background: #ffffff;
+          font-size: 24px;
+          line-height: 1;
+          color: #525252;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: background 0.15s ease, color 0.15s ease;
+          z-index: 10;
+        }
+
+        .hk-modal-close:hover {
+          background: #f5f5f5;
+          color: #171717;
+        }
+
+        @media (max-width: 640px) {
+          .hk-block {
+            padding: 40px 20px;
+          }
+
+          .hk-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+            padding: 14px 18px;
+          }
+
+          .hk-price {
+            text-align: left;
+            color: #525252;
+            font-weight: 500;
+          }
+        }
+
         /* Display headings — Fjalla One (single weight; avoid faux-bold) */
         h1,
         h2,
@@ -5202,13 +5446,14 @@
 
       <!-- Main bar -->
       <div class="hd-main">
-        <a href="/" class="hd-brand" aria-label="Auto Diislikeskus — home">
-          <span class="hd-brand-name">AUTO DIISLIKESKUS</span>
-        </a>
-
         <nav class="hd-nav main-nav" aria-label="Primary">
           <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="4">
-            <a href="{{ link.href }}" class="hd-nav-link">{{ link.label }}</a>
+            <sc-if value="{{ link.isModal }}">
+              <a href="{{ link.href }}" class="hd-nav-link" onClick="{{ openPriceListModal }}">{{ link.label }}</a>
+            </sc-if>
+            <sc-if value="{{ !link.isModal }}">
+              <a href="{{ link.href }}" class="hd-nav-link">{{ link.label }}</a>
+            </sc-if>
           </sc-for>
         </nav>
 
@@ -5255,7 +5500,12 @@
           </div>
           <nav class="hd-drawer-nav" aria-label="Mobile">
             <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="4">
-              <a href="{{ link.href }}" onClick="{{ toggleMenu }}" class="hd-drawer-link">{{ link.label }}</a>
+              <sc-if value="{{ link.isModal }}">
+                <a href="{{ link.href }}" class="hd-drawer-link" onClick="{{ openPriceListModal }}">{{ link.label }}</a>
+              </sc-if>
+              <sc-if value="{{ !link.isModal }}">
+                <a href="{{ link.href }}" onClick="{{ toggleMenu }}" class="hd-drawer-link">{{ link.label }}</a>
+              </sc-if>
             </sc-for>
           </nav>
           <div class="hd-drawer-foot">
@@ -5316,7 +5566,7 @@
 
 
     <!-- ══ Pihustite Blokk — Common Rail injectors ══ -->
-    <section class="ph" id="pihustid" aria-labelledby="ph-heading">
+    <section class="ph" id="teenused" aria-labelledby="ph-heading">
       <div class="ph-inner">
         <header class="ph-header">
           <span class="ph-kicker">[ COMMON RAIL / PIHUSTID ]</span>
@@ -5326,33 +5576,31 @@
 
         <div class="ph-grid">
           <div class="ph-brands" role="tablist" aria-label="Pihusti brändid">
-            <button type="button" class="ph-brand ph-brand--denso {{ brandClass0 }}" onClick="{{ selectBrand0 }}"
-              role="tab" aria-selected="{{ isBrand0 }}">DENSO PIHUSTID</button>
-            <button type="button" class="ph-brand ph-brand--bosch {{ brandClass1 }}" onClick="{{ selectBrand1 }}"
-              role="tab" aria-selected="{{ isBrand1 }}">BOSCH PIHUSTID</button>
+            <button type="button" class="ph-brand ph-brand--bosch {{ brandClass0 }}" onClick="{{ selectBrand0 }}"
+              role="tab" aria-selected="{{ isBrand0 }}">
+              <img src="./img/Bosch-logo.svg.webp" alt="BOSCH PIHUSTID" class="ph-brand-logo" />
+            </button>
+            <button type="button" class="ph-brand ph-brand--denso {{ brandClass1 }}" onClick="{{ selectBrand1 }}"
+              role="tab" aria-selected="{{ isBrand1 }}">
+              <img src="./img/DENSO-Logo.png" alt="DENSO PIHUSTID" class="ph-brand-logo" />
+            </button>
             <button type="button" class="ph-brand ph-brand--delphi {{ brandClass2 }}" onClick="{{ selectBrand2 }}"
-              role="tab" aria-selected="{{ isBrand2 }}">DELPHI PIHUSTID</button>
+              role="tab" aria-selected="{{ isBrand2 }}">
+              <img src="./img/logo delphi_Монтажна область 1.png" alt="DELPHI PIHUSTID" class="ph-brand-logo" />
+            </button>
             <button type="button" class="ph-brand ph-brand--siemens {{ brandClass3 }}" onClick="{{ selectBrand3 }}"
-              role="tab" aria-selected="{{ isBrand3 }}">SIEMENS PIHUSTID</button>
+              role="tab" aria-selected="{{ isBrand3 }}">
+              <img src="./img/Siemens-logo.svg.webp" alt="SIEMENS PIHUSTID" class="ph-brand-logo" />
+            </button>
           </div>
 
           <div class="ph-copy">
             <sc-if value="{{ isBrand0 }}" hint-placeholder-val="{{ true }}">
-              <div class="ph-panel ph-panel--denso ph-fade">
-                <h3 class="ph-brand-title">DENSO PIHUSTID</h3>
-                <ul class="ph-list">
-                  <sc-for list="{{ pointsDenso }}" as="point" hint-placeholder-count="9">
-                    <li class="ph-item">
-                      <span class="ph-bullet" aria-hidden="true"></span>
-                      <span>{{ point }}</span>
-                    </li>
-                  </sc-for>
-                </ul>
-              </div>
-            </sc-if>
-            <sc-if value="{{ isBrand1 }}" hint-placeholder-val="{{ false }}">
               <div class="ph-panel ph-panel--bosch ph-fade">
-                <h3 class="ph-brand-title">BOSCH PIHUSTID</h3>
+                <h3 class="ph-brand-title">
+                  <img src="./img/Bosch-logo.svg.webp" alt="BOSCH" class="ph-title-logo ph-title-logo--bosch" />
+                  <span>PIHUSTID</span>
+                </h3>
                 <ul class="ph-list">
                   <sc-for list="{{ pointsBosch }}" as="point" hint-placeholder-count="9">
                     <li class="ph-item">
@@ -5363,9 +5611,28 @@
                 </ul>
               </div>
             </sc-if>
+            <sc-if value="{{ isBrand1 }}" hint-placeholder-val="{{ false }}">
+              <div class="ph-panel ph-panel--denso ph-fade">
+                <h3 class="ph-brand-title">
+                  <img src="./img/DENSO-Logo.png" alt="DENSO" class="ph-title-logo ph-title-logo--denso" />
+                  <span>PIHUSTID</span>
+                </h3>
+                <ul class="ph-list">
+                  <sc-for list="{{ pointsDenso }}" as="point" hint-placeholder-count="9">
+                    <li class="ph-item">
+                      <span class="ph-bullet" aria-hidden="true"></span>
+                      <span>{{ point }}</span>
+                    </li>
+                  </sc-for>
+                </ul>
+              </div>
+            </sc-if>
             <sc-if value="{{ isBrand2 }}" hint-placeholder-val="{{ false }}">
               <div class="ph-panel ph-panel--delphi ph-fade">
-                <h3 class="ph-brand-title">DELPHI PIHUSTID</h3>
+                <h3 class="ph-brand-title">
+                  <img src="./img/logo delphi_Монтажна область 1.png" alt="DELPHI"
+                    class="ph-title-logo ph-title-logo--delphi" /> <span>PIHUSTID</span>
+                </h3>
                 <ul class="ph-list">
                   <sc-for list="{{ pointsDelphi }}" as="point" hint-placeholder-count="9">
                     <li class="ph-item">
@@ -5378,7 +5645,10 @@
             </sc-if>
             <sc-if value="{{ isBrand3 }}" hint-placeholder-val="{{ false }}">
               <div class="ph-panel ph-panel--siemens ph-fade">
-                <h3 class="ph-brand-title">SIEMENS PIHUSTID</h3>
+                <h3 class="ph-brand-title">
+                  <img src="./img/Siemens-logo.svg.webp" alt="SIEMENS" class="ph-title-logo ph-title-logo--siemens" />
+                  <span>PIHUSTID</span>
+                </h3>
                 <ul class="ph-list">
                   <sc-for list="{{ pointsSiemens }}" as="point" hint-placeholder-count="7">
                     <li class="ph-item">
@@ -5478,7 +5748,7 @@
 
 
     <!-- ══ Hinnakiri Blokk — Pricing ══ -->
-    <section class="hk" id="hinnakiri" aria-labelledby="hk-heading">
+    <!-- <section class="hk" id="hinnakiri" aria-labelledby="hk-heading">
       <svg class="hk-pattern-defs" aria-hidden="true" focusable="false">
         <defs>
           <pattern id="hk-diamond-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -5547,7 +5817,7 @@
           </a>
         </div>
       </div>
-    </section>
+    </section> -->
 
 
     <!-- ══ RequestForm popup ══ -->
@@ -5620,7 +5890,7 @@
                 <div class="rf-header-row">
                   <div class="rf-header-copy">
                     <!-- <span class="rf-kicker">[ HINNAPAKKUMINE / ЦЕНОВОЕ ПРЕДЛОЖЕНИЕ ]</span> -->
-                    <h2 class="rf-title" id="rf-modal-title">ЗАПРОС ЦЕНОВОГО ПРЕДЛОЖЕНИЯ</h2>
+                    <h2 class="rf-title" id="rf-modal-title">Запрос ценового предложения</h2>
                     <p class="rf-lead">Заполните форму ниже, чтобы отправить запрос на расчет стоимости. Мы обычно
                       отвечаем на обращения в течение одного рабочего дня. Пожалуйста, заполните все обязательные поля
                       (отмечены *), чтобы мы могли подготовить для Вас максимально точное ценовое предложение. Укажите
@@ -5660,112 +5930,111 @@
               <sc-if value="{{ isFormVisible }}" hint-placeholder-val="{{ true }}">
                 <form class="rf-form" onSubmit="{{ handleSubmit }}">
 
-                  <!-- ── 01 VEHICLE ── -->
+                  <!-- ── 01 PERSONAL DATA ── -->
                   <section class="rf-panel">
                     <div class="rf-panel-body">
                       <div class="rf-section-title">
-                        <!-- <span class="rf-panel-num">01</span> -->
-                        <span class="rf-panel-name">Данные автомобиля</span>
+                        <span class="rf-panel-name">Личные данные</span>
                       </div>
 
-                      <p class="rf-vehicle-hint">
-                        Если автомобиль не имеет регистрационного номера в автомобиле, укажите данные автомобиля
-                      </p>
-
-                      <div class="rf-vehicle-grid manual-grid">
-                        <div class="rf-field rf-field--plate">
-                          <label class="rf-label" for="rf-plate">Рег. номер автомобиля</label>
-                          <div class="rf-plate-wrap">
-                            <span class="rf-plate-badge" aria-hidden="true">EE</span>
-                            <input id="rf-plate" class="rf-input rf-input--plate" value="{{ plate }}"
-                              onChange="{{ onPlateChange }}" placeholder="123 ABC" autocomplete="off"
-                              spellcheck="false" />
-                          </div>
-                        </div>
-
+                      <div class="rf-grid-2col">
                         <div class="rf-field">
-                          <label class="rf-label" for="rf-make">Марка и модель</label>
-                          <input id="rf-make" class="rf-input" value="{{ make }}" onChange="{{ onMakeChange }}"
-                            placeholder="BMW 530d" />
+                          <label class="rf-label" for="rf-name">Имя и фамилия*</label>
+                          <input id="rf-name" class="rf-input" value="{{ name }}" onChange="{{ onNameChange }}"
+                            required="{{ true }}" autocomplete="name" />
                         </div>
-
                         <div class="rf-field">
-                          <label class="rf-label" for="rf-year">Год выпуска</label>
-                          <input id="rf-year" class="rf-input" value="{{ year }}" onChange="{{ onYearChange }}"
-                            placeholder="2018" inputmode="numeric" />
+                          <label class="rf-label" for="rf-email">Эл. адрес*</label>
+                          <input id="rf-email" class="rf-input" type="email" value="{{ email }}"
+                            onChange="{{ onEmailChange }}" required="{{ true }}" autocomplete="email" />
                         </div>
-
                         <div class="rf-field">
-                          <label class="rf-label" for="rf-displacement">Объем</label>
-                          <input id="rf-displacement" class="rf-input" value="{{ displacement }}"
-                            onChange="{{ onDisplacementChange }}" placeholder="3.0" />
-                        </div>
-
-                        <div class="rf-field">
-                          <label class="rf-label" for="rf-power">Мощность</label>
-                          <input id="rf-power" class="rf-input" value="{{ power }}" onChange="{{ onPowerChange }}"
-                            placeholder="195 kW" />
-                        </div>
-
-                        <div class="rf-field rf-field--vin">
-                          <label class="rf-label" for="rf-vin">Идентификационный код</label>
-                          <input id="rf-vin" class="rf-input" value="{{ vin }}" onChange="{{ onVinChange }}"
-                            placeholder="WBAXXXXXX" autocomplete="off" spellcheck="false" />
+                          <label class="rf-label" for="rf-phone">Телефон*</label>
+                          <input id="rf-phone" class="rf-input" type="tel" value="{{ phone }}"
+                            onChange="{{ onPhoneChange }}" required="{{ true }}" autocomplete="tel" />
                         </div>
                       </div>
                     </div>
                   </section>
 
-                  <div class="rf-split-row">
-                    <!-- ── 02 PROBLEM ── -->
-                    <section class="rf-panel">
-                      <div class="rf-panel-body">
-                        <div class="rf-section-title">
-                          <!-- <span class="rf-panel-num">02</span> -->
-                          <span class="rf-panel-name">Желаемые работы</span>
+                  <!-- ── 02 VEHICLE DATA ── -->
+                  <section class="rf-panel">
+                    <div class="rf-panel-body">
+                      <div class="rf-section-title">
+                        <span class="rf-panel-name">Данные автомобиля</span>
+                      </div>
+
+                      <div class="rf-grid-2col">
+                        <div class="rf-field">
+                          <label class="rf-label" for="rf-make">Марка и модель*</label>
+                          <input id="rf-make" class="rf-input" value="{{ make }}" onChange="{{ onMakeChange }}"
+                            required="{{ true }}" />
                         </div>
 
-                        <div class="rf-field" style="flex:1;">
-                          <label class="rf-label" for="rf-desc">Ремонт / обслуживание</label>
-                          <textarea id="rf-desc" class="rf-input rf-input--area" value="{{ description }}"
-                            onChange="{{ onDescriptionChange }}" rows="5"
-                            placeholder="Машина плохо заводится, черный дым, плавают обороты..."></textarea>
+                        <div class="rf-field">
+                          <label class="rf-label" for="rf-year">Год выпуска*</label>
+                          <input id="rf-year" class="rf-input" value="{{ year }}" onChange="{{ onYearChange }}"
+                            inputmode="numeric" required="{{ true }}" />
                         </div>
-                      </div>
-                    </section>
 
-                    <!-- ── 03 CONTACT ── -->
-                    <section class="rf-panel">
-                      <div class="rf-panel-body">
-                        <div class="rf-section-title">
-                          <!-- <span class="rf-panel-num">03</span> -->
-                          <span class="rf-panel-name">КОНТАКТЫ</span>
+                        <div class="rf-field">
+                          <label class="rf-label" for="rf-displacement">Объём*</label>
+                          <input id="rf-displacement" class="rf-input" value="{{ displacement }}"
+                            onChange="{{ onDisplacementChange }}" required="{{ true }}" />
                         </div>
-                        <div class="rf-contact contact-grid">
-                          <div class="rf-field">
-                            <label class="rf-label" for="rf-name">ИМЯ</label>
-                            <input id="rf-name" class="rf-input" value="{{ name }}" onChange="{{ onNameChange }}"
-                              required="{{ true }}" autocomplete="name" />
-                          </div>
-                          <div class="rf-field">
-                            <label class="rf-label" for="rf-phone">ТЕЛЕФОН</label>
-                            <input id="rf-phone" class="rf-input" type="tel" value="{{ phone }}"
-                              onChange="{{ onPhoneChange }}" required="{{ true }}" autocomplete="tel" />
-                          </div>
-                          <div class="rf-field">
-                            <label class="rf-label" for="rf-email">EMAIL</label>
-                            <input id="rf-email" class="rf-input" type="email" value="{{ email }}"
-                              onChange="{{ onEmailChange }}" required="{{ true }}" autocomplete="email" />
-                          </div>
+
+                        <div class="rf-field">
+                          <label class="rf-label" for="rf-power">Мощность*</label>
+                          <input id="rf-power" class="rf-input" value="{{ power }}" onChange="{{ onPowerChange }}"
+                            required="{{ true }}" />
+                        </div>
+
+                        <div class="rf-field">
+                          <label class="rf-label" for="rf-vin">Идентификационный код</label>
+                          <input id="rf-vin" class="rf-input" value="{{ vin }}" onChange="{{ onVinChange }}"
+                            autocomplete="off" spellcheck="false" />
+                        </div>
+
+                        <div class="rf-field">
+                          <label class="rf-label" for="rf-plate">Рег. номер*</label>
+                          <input id="rf-plate" class="rf-input" value="{{ plate }}" onChange="{{ onPlateChange }}"
+                            autocomplete="off" spellcheck="false" required="{{ true }}" />
                         </div>
                       </div>
-                    </section>
-                  </div>
+                    </div>
+                  </section>
+
+                  <!-- ── 03 PROBLEM DESCRIPTION ── -->
+                  <section class="rf-panel">
+                    <div class="rf-panel-body">
+                      <div class="rf-section-title">
+                        <span class="rf-panel-name">Описание проблемы</span>
+                      </div>
+
+                      <div class="rf-field" style="flex:1;">
+                        <label class="rf-label" for="rf-desc">Опишите здесь более подробно свою проблему*</label>
+                        <textarea id="rf-desc" class="rf-input rf-input--area" value="{{ description }}"
+                          onChange="{{ onDescriptionChange }}" rows="5" required="{{ true }}"></textarea>
+                      </div>
+                    </div>
+                  </section>
 
                   <!-- ── SUBMIT BAR ── -->
                   <div class="rf-submit">
-                    <span class="rf-cta-corner rf-cta-corner--tl" aria-hidden="true"></span>
-                    <span class="rf-cta-corner rf-cta-corner--br" aria-hidden="true"></span>
+                    <div class="rf-submit-info">
+                      <p class="rf-submit-pref-title">Свяжитесь с нами:</p>
+                      <div class="rf-radio-group">
+                        <label class="rf-radio-label">
+                          <input type="radio" name="contactPref" value="email" checked />
+                          По электронной почте
+                        </label>
+                        <label class="rf-radio-label">
+                          <input type="radio" name="contactPref" value="phone" />
+                          По телефону
+                        </label>
+                      </div>
+                      <p class="rf-submit-note">Обязательные поля к заполнению отмечены*.</p>
+                    </div>
 
                     <div class="rf-submit-actions">
                       <button type="submit" class="ft-maps-btn" disabled="{{ isSubmitting }}">
@@ -5795,9 +6064,52 @@
 
 
 
-    <!-- ══ ServicesSymptoms.dc.html ══ -->
+    <!-- ══ Hinnakiri Blokk (Pop-up Modal) ══ -->
+    <sc-if value="{{ isPriceListModalOpen }}" hint-placeholder-val="{{ false }}">
+      <div class="hk-modal" role="dialog" aria-modal="true" aria-labelledby="hk-heading">
+        <div class="hk-modal-backdrop" onClick="{{ closePriceListModal }}"></div>
+        <div class="hk-modal-container">
+          <button type="button" onClick="{{ closePriceListModal }}" class="hk-modal-close"
+            aria-label="Sulge">&times;</button>
 
+          <section class="hk-block" id="hinnakiri" aria-labelledby="hk-heading">
+            <div class="hk-header">
+              <span class="hk-kicker">[ LÄBIPAISTVAD HINNAD ]</span>
+              <h2 class="hk-title" id="hk-heading">HINNAKIRI</h2>
+              <div class="hk-rule" aria-hidden="true"></div>
+              <p class="hk-lead">Kuna iga sõiduk ja mootor on erinev, soovitame täpse hinnapakkumise saamiseks võtta
+                ühendust
+                meie meistriga.</p>
+            </div>
 
+            <div class="hk-table-wrap">
+              <sc-for list="{{ rows }}" as="row" hint-placeholder-count="8">
+                <div class="hk-row">
+                  <span class="hk-name">{{ row.name }}</span>
+                  <span class="hk-price">{{ row.price }}</span>
+                </div>
+              </sc-for>
+            </div>
+
+            <div class="hk-notes">
+              <p class="hk-note-item">* Kui tellite meilt ka pihustite demonteerimise ja paigaldamise, kehtib pihustite
+                testimisele 10% soodustus.</p>
+              <p class="hk-note-item">** Remondi maksumusele lisandub pihustite demonteerimise ja paigaldamise töö. Töö
+                arvestus toimub hinnaga 55,90 €/tund. Täpse maksumuse saamiseks palume võtta ühendust meie meistriga
+                e-posti
+                teel: <a href="mailto:autodiislikeskus@gmail.com"
+                  style="color:#00B8D4;text-decoration:underline;">autodiislikeskus@gmail.com</a>.</p>
+              <div class="hk-vat-wrap">
+                <div class="hk-vat-badge">
+                  <span class="hk-vat-badge-dot" aria-hidden="true"></span>
+                  <span class="hk-vat-badge-text">HINNAD SISALDAVAD KÄIBEMAKSU</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </sc-if>
 
     <!-- ══ EquipmentTeamB2B.dc.html ══ -->
     <section class="etb" id="seadmed" aria-labelledby="etb-heading">
@@ -5961,43 +6273,6 @@
               Pakkumised autoremondifirmadele
             </h3>
 
-            <div class="etb-b2b-list">
-              <sc-for list="{{ b2bPoints }}" as="pt" hint-placeholder-count="3">
-                <div class="etb-b2b-row">
-                  <span class="etb-b2b-icon">
-                    <sc-if value="{{ pt.num === '01' }}">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="1" y="4" width="13" height="11" rx="1" />
-                        <path d="M14 8h4.5l2.5 3v4h-7V8z" />
-                        <circle cx="4.5" cy="17.5" r="2" />
-                        <circle cx="17.5" cy="17.5" r="2" />
-                        <path d="M-1 9h2M-2 12h3" />
-                      </svg>
-                    </sc-if>
-                    <sc-if value="{{ pt.num === '02' }}">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 14l3-3" />
-                        <path d="M3.34 17a10 10 0 1 1 17.32 0" />
-                        <circle cx="12" cy="14" r="1.5" />
-                        <path d="M18 16a4 4 0 1 0 4 4" />
-                        <path d="M22 16v2h2" />
-                      </svg>
-                    </sc-if>
-                    <sc-if value="{{ pt.num === '03' }}">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        <path d="m9 12 2 2 4-4" />
-                      </svg>
-                    </sc-if>
-                  </span>
-                  <p class="etb-b2b-text">{{ pt.text }}</p>
-                </div>
-              </sc-for>
-            </div>
-
             <a href="https://pihustiremont.ee/adiesel.pdf" target="_blank" rel="noopener noreferrer"
               class="etb-btn-ghost">Rohkem teavet</a>
           </div>
@@ -6084,43 +6359,38 @@
           </div>
         </div>
 
-        <!-- Full-width map (clickable to open Google Maps) -->
-        <a href="https://maps.app.goo.gl/xG31jhzgyHaB2XmCA" target="_blank" rel="noopener noreferrer"
-          class="ft-map-link" style="display:block;text-decoration:none;color:inherit;position:relative;"
-          title="Ava Google Mapsis">
-          <div class="ft-map-grid map-grid">
-            <span class="ft-sight ft-sight--tl" aria-hidden="true">
-              <span class="ft-sight-arm ft-sight-h"></span>
-              <span class="ft-sight-arm ft-sight-v"></span>
-              <span class="ft-sight-arm ft-sight-dot"></span>
-              <span class="ft-sight-arm ft-sight-notch"></span>
-            </span>
-            <span class="ft-sight ft-sight--br" aria-hidden="true">
-              <span class="ft-sight-arm ft-sight-h"></span>
-              <span class="ft-sight-arm ft-sight-v"></span>
-              <span class="ft-sight-arm ft-sight-plate"></span>
-              <span class="ft-sight-tick ft-sight-tick-1"></span>
-              <span class="ft-sight-tick ft-sight-tick-2"></span>
-              <span class="ft-sight-tick ft-sight-tick-3"></span>
-              <span class="ft-sight-tick ft-sight-tick-4"></span>
-            </span>
+        <!-- Full-width interactive Google Maps iframe embed -->
+        <div class="ft-map-grid map-grid" style="position:relative;">
+          <span class="ft-sight ft-sight--tl" aria-hidden="true" style="pointer-events:none;z-index:2;">
+            <span class="ft-sight-arm ft-sight-h"></span>
+            <span class="ft-sight-arm ft-sight-v"></span>
+            <span class="ft-sight-arm ft-sight-dot"></span>
+            <span class="ft-sight-arm ft-sight-notch"></span>
+          </span>
+          <span class="ft-sight ft-sight--br" aria-hidden="true" style="pointer-events:none;z-index:2;">
+            <span class="ft-sight-arm ft-sight-h"></span>
+            <span class="ft-sight-arm ft-sight-v"></span>
+            <span class="ft-sight-arm ft-sight-plate"></span>
+            <span class="ft-sight-tick ft-sight-tick-1"></span>
+            <span class="ft-sight-tick ft-sight-tick-2"></span>
+            <span class="ft-sight-tick ft-sight-tick-3"></span>
+            <span class="ft-sight-tick ft-sight-tick-4"></span>
+          </span>
 
-            <div class="ft-map-cell">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4056.1445583785426!2d24.705575!3d59.44854600000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x469293866c8cfc59%3A0xbea4b20746189fba!2sPaavli%20tn%204%2C%2010412%20Tallinn%2C%20Estonia!5e0!3m2!1sen!2sus!4v1785153193393!5m2!1sen!2sus"
-                title="Paavli 4, 10412 Tallinn — AUTO DIISLIKESKUS" width="100%" height="100%"
-                style="border:0;display:block;width:100%;height:100%;position:absolute;inset:0;filter:grayscale(0.2) contrast(1.02);pointer-events:none;"
-                allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            </div>
+          <div class="ft-map-cell">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d507.0133513142244!2d24.704905181993897!3d59.44886073191653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x469293866c8cfc59%3A0xea1d19e1c6322cbd!2sPaavli%20tn%204%2F1%2C%2010412%20Tallinn!5e0!3m2!1sen!2see!4v1785347591408!5m2!1sen!2see"
+              title="Paavli 4, 10412 Tallinn — AUTO DIISLIKESKUS" width="100%" height="450"
+              style="border:0;display:block;width:100%;height:100%;position:absolute;inset:0;pointer-events:auto;"
+              allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
           </div>
-        </a>
+        </div>
 
         <div class="ft-contact-grid contact-grid">
           <div class="ft-col">
             <svg class="ft-fill-pattern" aria-hidden="true" preserveAspectRatio="none" style="opacity:0.08;">
               <rect width="100%" height="100%" fill="url(#ft-diagonal-hatch)"></rect>
             </svg>
-            <span class="ft-ghost-num" aria-hidden="true">01</span>
             <div class="ft-col-head">
               <span class="ft-col-label">{{ labelContacts }}</span>
             </div>
@@ -6132,7 +6402,6 @@
             <svg class="ft-fill-pattern" aria-hidden="true" preserveAspectRatio="none" style="opacity:0.07;">
               <rect width="100%" height="100%" fill="url(#ft-tick-rows)"></rect>
             </svg>
-            <span class="ft-ghost-num" aria-hidden="true">02</span>
             <div class="ft-col-head">
               <span class="ft-col-label">{{ labelHours }}</span>
             </div>
@@ -6143,7 +6412,6 @@
             <svg class="ft-fill-pattern" aria-hidden="true" preserveAspectRatio="none" style="opacity:0.08;">
               <rect width="100%" height="100%" fill="url(#ft-frame-stack)"></rect>
             </svg>
-            <span class="ft-ghost-num" aria-hidden="true">03</span>
             <div class="ft-col-head">
               <span class="ft-col-label">{{ labelCompany }}</span>
             </div>
@@ -6191,26 +6459,26 @@ class Component extends DCLogic {
 
   navLinksByLang = {
     EE: [
-      { href: '#teenused-sumptoomid', label: 'Teenused' },
-      <!-- { href: '#request-form', label: 'Päring' }, -->
+      { href: '#teenused', label: 'Teenused' },
+      { href: '#hinnakiri', label: 'Hinnakiri', isModal: true },
       { href: '#seadmed', label: 'Meist' },
       { href: '#kontakt', label: 'Kontakt' },
     ],
     RU: [
-      { href: '#teenused-sumptoomid', label: 'Услуги' },
-      { href: '#request-form', label: 'Запрос' },
+      { href: '#teenused', label: 'Услуги' },
+      { href: '#hinnakiri', label: 'Цены', isModal: true },
       { href: '#seadmed', label: 'Оборудование' },
       { href: '#kontakt', label: 'Контакты' },
     ],
     EN: [
-      { href: '#teenused-sumptoomid', label: 'Services' },
-      { href: '#request-form', label: 'Quote' },
+      { href: '#teenused', label: 'Services' },
+      { href: '#hinnakiri', label: 'Pricing', isModal: true },
       { href: '#seadmed', label: 'Equipment' },
       { href: '#kontakt', label: 'Contact' },
     ],
     FI: [
-      { href: '#teenused-sumptoomid', label: 'Palvelut' },
-      { href: '#request-form', label: 'Tarjous' },
+      { href: '#teenused', label: 'Palvelut' },
+      { href: '#hinnakiri', label: 'Hinnasto', isModal: true },
       { href: '#seadmed', label: 'Laitteet' },
       { href: '#kontakt', label: 'Yhteystiedot' },
     ],
@@ -6230,6 +6498,12 @@ class Component extends DCLogic {
   setLangEN = () => this.setState({ lang: 'EN', langOpen: false });
   setLangFI = () => this.setState({ lang: 'FI', langOpen: false });
 
+  openPriceListModal = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    this.setState({ isPriceListModalOpen: true, menuOpen: false });
+  };
+  closePriceListModal = () => this.setState({ isPriceListModalOpen: false });
+
   /* renderVals → unified */
 
   /* --- from Hero.dc.html --- */
@@ -6247,8 +6521,8 @@ class Component extends DCLogic {
   /* --- from Pihustite Blokk.dc.html --- */
   injectorBrandsData = [
     {
-      name: 'DENSO',
-      imageId: 'img-denso',
+      name: 'BOSCH',
+      imageId: 'img-bosch',
       points: [
         'Pihustite maha võtmine autolt',
         'Puhastamine ultraheliga ja testimine stendil',
@@ -6262,8 +6536,8 @@ class Component extends DCLogic {
       ],
     },
     {
-      name: 'BOSCH',
-      imageId: 'img-bosch',
+      name: 'DENSO',
+      imageId: 'img-denso',
       points: [
         'Pihustite maha võtmine autolt',
         'Puhastamine ultraheliga ja testimine stendil',
@@ -6409,14 +6683,14 @@ class Component extends DCLogic {
 
   /* --- from Hinnakiri Blokk.dc.html --- */
   priceRows = [
-    { num: '01', name: 'Arvutidiagnostika', price: '67 €' },
-    { num: '02', name: 'Common Rail pihustite test*', price: '22 €/tk' },
-    { num: '03', name: 'Common Rail pihustite remont, alates', price: '65 €/tk' },
-    { num: '04', name: 'Mehaaniliste pihustite kontroll*', price: '12 €/tk' },
-    { num: '05', name: 'Mehaaniliste pihustite remont, alates', price: '25 €/tk' },
-    { num: '06', name: 'Lukkseppatööd sõiduautodel ja kaubikutel', price: '55,90 €/tund' },
-    { num: '07', name: 'DPF pesu sõiduautodel ja kaubikutel', price: '199 €/tk' },
-    { num: '08', name: 'Elektritööd sõiduautodel ja kaubikutel', price: '59,90 €/tund' },
+    { name: 'Arvutidiagnostika', price: '67 eur' },
+    { name: 'Common Rail pihustite test*', price: '22 eur/tk' },
+    { name: 'Common Rail pihustite remont, alates', price: '65 eur/tk' },
+    { name: 'Mehaaniliste pihustite kontroll*', price: '12 eur/tk' },
+    { name: 'Mehaaniliste pihustite remont, alates', price: '25 eur/tk' },
+    { name: 'Lukkseppatööd sõiduautodel ja kaubikutel', price: '55.90 eur/tund' },
+    { name: 'DPF pesu sõiduautodel ja kaubikutel**', price: '199 eur/tk' },
+    { name: 'Elektritööd sõiduautodel ja kaubikutel', price: '59.90 eur/tund' },
   ];
 
   /* --- from EquipmentTeamB2B.dc.html --- */
@@ -6823,7 +7097,11 @@ class Component extends DCLogic {
       ticks: this.ticks,
 
       // Hinnakiri / Pricing
+      isPriceListModalOpen: !!s.isPriceListModalOpen,
+      openPriceListModal: this.openPriceListModal,
+      closePriceListModal: this.closePriceListModal,
       priceRows: this.priceRows,
+      rows: this.priceRows,
 
       // Equipment / Team / B2B
       equipment: this.equipment,
