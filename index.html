@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Open+Sans:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Fjalla+One&family=Open+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
   <script src="./support.js"></script>
 </head>
@@ -44,7 +44,7 @@
           --hd-lang-menu-bg: #1a1a1a;
           --hd-lang-menu-border: rgba(255, 255, 255, 0.18);
           --hd-lang-item-hover: rgba(255, 255, 255, 0.06);
-          --hd-red: #E63946;
+          --hd-red: #EC0000;
           /* Second accent — cyan from brand phone color */
           --hd-cyan: #00B8D4;
           --hd-display: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
@@ -462,7 +462,7 @@
           --h-line: #2a2a2a;
           --h-line-mid: #2e2e2e;
           --h-line-soft: #242424;
-          --h-red-bright: #E63946;
+          --h-red-bright: #EC0000;
           --h-cyan: #00B8D4;
           --h-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
           --h-sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -470,7 +470,7 @@
           overflow: hidden;
           background: var(--h-bg);
           font-family: var(--h-sans);
-          min-height: 560px;
+          min-height: 100vh;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -571,7 +571,7 @@
         .hero-lead {
           margin: 0 auto;
           max-width: 720px;
-          font-size: clamp(15px, 1.8vw, 20px);
+          font-size: clamp(16px, 1.8vw, 22px);
           line-height: 1.5;
           color: rgba(255, 255, 255, 0.92);
           font-weight: 500;
@@ -780,7 +780,7 @@
           -webkit-appearance: none;
           background:
             linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, transparent 40%),
-            linear-gradient(145deg, #6e1219 0%, #C41E2A 30%, #E63946 50%, #9a1a24 75%, #4a0c11 100%);
+            #EC0000;
           box-shadow:
             0 0 0 1px rgba(0, 0, 0, 0.55),
             inset 0 1px 0 rgba(255, 255, 255, 0.35),
@@ -908,7 +908,7 @@
           --ph-dim: #737373;
           --ph-line: #E5E7EB;
           --ph-line-mid: #D1D5DB;
-          --ph-accent: #E63946;
+          --ph-accent: #EC0000;
           --ph-sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
           --ph-display: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
           background: var(--ph-bg);
@@ -1020,7 +1020,7 @@
         }
 
         .ph-brand:hover {
-          border-color: #E63946;
+          border-color: #EC0000;
           background: #ffffff;
         }
 
@@ -1032,7 +1032,7 @@
         .ph-brand.is-active,
         .ph-brand.is-active:hover {
           background: #ffffff;
-          border: 2px solid #E63946;
+          border: 2px solid #EC0000;
           box-shadow: 0 4px 14px rgba(230, 57, 70, 0.16);
         }
 
@@ -1061,7 +1061,7 @@
           font-weight: 800;
           letter-spacing: 0.02em;
           text-transform: uppercase;
-          color: #E63946;
+          color: #EC0000;
           line-height: 1.1;
           display: flex;
           align-items: center;
@@ -1122,7 +1122,7 @@
           font-weight: 800;
           letter-spacing: 0.02em;
           text-transform: uppercase;
-          color: #E63946;
+          color: #EC0000;
           line-height: 1.1;
         }
 
@@ -1150,17 +1150,101 @@
           width: 6px;
           height: 6px;
           margin-top: 8px;
-          background: #E63946;
+          background: #EC0000;
         }
 
+        /* Hidden legacy media slot — replaced by mini-CTA card */
         .ph-media {
           display: none !important;
         }
 
+        /* Mini-CTA card — right column, action-focused (not decorative) */
+        .ph-cta {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          gap: 16px;
+          padding: 28px 22px 26px;
+          border: 1px solid var(--ph-line-mid);
+          background:
+            linear-gradient(165deg, rgba(236, 0, 0, 0.03) 0%, transparent 48%),
+            var(--ph-surface);
+          min-height: 0;
+          position: relative;
+        }
+
+        .ph-cta-icon {
+          width: 48px;
+          height: 48px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--ph-accent);
+          border: 1px solid rgba(236, 0, 0, 0.28);
+          background: rgba(236, 0, 0, 0.05);
+          flex: none;
+        }
+
+        .ph-cta-icon svg {
+          width: 24px;
+          height: 24px;
+          display: block;
+        }
+
+        .ph-cta-title {
+          margin: 0;
+          font-size: clamp(15px, 1.5vw, 17px);
+          font-weight: 600;
+          letter-spacing: 0.01em;
+          line-height: 1.35;
+          color: var(--ph-ink);
+          max-width: 14em;
+        }
+
+        .ph-cta-hint {
+          margin: -6px 0 0;
+          font-size: 12px;
+          line-height: 1.45;
+          color: var(--ph-dim);
+          max-width: 16em;
+        }
+
+        .ph-cta-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 4px;
+          padding: 14px 22px;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          font-family: var(--ph-sans);
+          text-decoration: none;
+          color: #ffffff;
+          background: var(--ph-accent);
+          border: 1px solid var(--ph-accent);
+          cursor: pointer;
+          transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+          white-space: nowrap;
+        }
+
+        .ph-cta-btn:hover {
+          filter: brightness(1.06);
+          box-shadow: 0 6px 18px rgba(236, 0, 0, 0.22);
+        }
+
+        .ph-cta-btn:focus-visible {
+          outline: 2px solid var(--ph-accent);
+          outline-offset: 3px;
+        }
+
         @media (min-width: 900px) {
           .ph-grid {
-            grid-template-columns: 240px 1fr;
-            gap: 48px;
+            grid-template-columns: 220px minmax(0, 1fr) minmax(200px, 240px);
+            gap: 40px;
             align-items: start;
           }
 
@@ -1168,12 +1252,45 @@
             position: sticky;
             top: 96px;
           }
+
+          .ph-cta {
+            position: sticky;
+            top: 96px;
+            min-height: 280px;
+            padding: 32px 20px 28px;
+          }
         }
 
         @media (min-width: 640px) and (max-width: 899px) {
           .ph-grid {
-            grid-template-columns: 200px 1fr;
+            grid-template-columns: 200px minmax(0, 1fr);
             gap: 28px;
+          }
+
+          .ph-cta {
+            grid-column: 1 / -1;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            text-align: left;
+            gap: 16px 20px;
+            padding: 20px 22px;
+          }
+
+          .ph-cta-title,
+          .ph-cta-hint {
+            max-width: none;
+            flex: 1 1 180px;
+          }
+
+          .ph-cta-hint {
+            flex-basis: 100%;
+            margin: -8px 0 0 68px;
+          }
+
+          .ph-cta-btn {
+            margin-top: 0;
+            margin-left: auto;
           }
         }
 
@@ -1196,6 +1313,14 @@
             text-align: center;
             padding: 12px 10px;
             font-size: 12px;
+          }
+
+          .ph-cta {
+            padding: 22px 18px;
+          }
+
+          .ph-cta-btn {
+            width: 100%;
           }
         }
 
@@ -1220,7 +1345,7 @@
           --su-dim: #737373;
           --su-line: #E5E7EB;
           --su-line-mid: #D1D5DB;
-          --su-accent: #E63946;
+          --su-accent: #EC0000;
           --su-accent-soft: rgba(230, 57, 70, 0.08);
           --su-sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
           --su-display: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
@@ -1497,7 +1622,7 @@
           --dg-dim: #737373;
           --dg-line: #E5E7EB;
           --dg-line-mid: #D1D5DB;
-          --dg-accent: #E63946;
+          --dg-accent: #EC0000;
           --dg-sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
           --dg-display: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
           background: var(--dg-bg);
@@ -1743,8 +1868,8 @@
           --hk-dim: #737373;
           --hk-line: #E5E7EB;
           --hk-line-mid: #D1D5DB;
-          --hk-red: #C41E2A;
-          --hk-red-bright: #E63946;
+          --hk-red: #EC0000;
+          --hk-red-bright: #EC0000;
           --hk-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
           --hk-sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
           --hk-display: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
@@ -2064,7 +2189,7 @@
           }
         }
 
-        /* === Request form modal popup === */
+        /* === Request form modal — compact email capture (mini-popup) === */
         .rf-modal {
           position: fixed;
           inset: 0;
@@ -2079,51 +2204,263 @@
         .rf-modal-backdrop {
           position: absolute;
           inset: 0;
-          background: rgba(0, 0, 0, 0.72);
-          backdrop-filter: blur(5px);
-          -webkit-backdrop-filter: blur(5px);
+          background: rgba(0, 0, 0, 0.48);
+          backdrop-filter: blur(4px);
+          -webkit-backdrop-filter: blur(4px);
           cursor: pointer;
         }
 
         .rf-modal-panel {
           position: relative;
           z-index: 1;
+          background: #FFFFFF;
+          border: none;
+          box-sizing: border-box;
+        }
+
+        /* Mini email capture */
+        .rf-modal-panel--mini {
+          width: min(480px, 100%);
+          max-height: none;
+          overflow: visible;
+          border-radius: 16px;
+          box-shadow:
+            0 4px 16px rgba(15, 23, 42, 0.08),
+            0 24px 56px rgba(15, 23, 42, 0.16);
+          padding: 36px 36px 28px;
+        }
+
+        /* Full multi-field quote form (hero) */
+        .rf-modal-panel--full {
           width: min(960px, 100%);
           max-height: min(92vh, 920px);
           overflow: auto;
-          background: #FFFFFF;
+          border-radius: 0;
           border: 1px solid rgba(255, 255, 255, 0.08);
           box-shadow:
             0 0 0 1px rgba(0, 0, 0, 0.35),
             0 24px 80px rgba(0, 0, 0, 0.45),
             0 8px 24px rgba(0, 0, 0, 0.25);
+          padding: 0;
           -webkit-overflow-scrolling: touch;
         }
 
         .rf-modal-close {
-          position: sticky;
-          top: 0;
-          float: right;
+          position: absolute;
+          top: 12px;
+          right: 12px;
           z-index: 5;
-          margin: 10px 10px 0 0;
-          width: 40px;
-          height: 40px;
+          margin: 0;
+          width: 36px;
+          height: 36px;
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          border: 1px solid #d4d4d4;
-          background: #FFFFFF;
-          color: #171717;
+          border: none;
+          border-radius: 50%;
+          background: transparent;
+          color: #737373;
           font-size: 26px;
           line-height: 1;
           cursor: pointer;
-          transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+          transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+        }
+
+        .rf-modal-panel--full .rf-modal-close {
+          position: sticky;
+          top: 0;
+          float: right;
+          margin: 10px 10px 0 0;
+          width: 40px;
+          height: 40px;
+          border: 1px solid #d4d4d4;
+          border-radius: 0;
+          background: #FFFFFF;
+          color: #171717;
         }
 
         .rf-modal-close:hover {
+          background: #F3F4F6;
+          color: #171717;
+        }
+
+        .rf-modal-panel--full .rf-modal-close:hover {
           background: #171717;
           border-color: #171717;
           color: #FFFFFF;
+        }
+
+        /* Compact email form card */
+        .rf-mini {
+          display: flex;
+          flex-direction: column;
+          gap: 0;
+          margin: 0;
+          padding: 4px 4px 0 0;
+        }
+
+        .rf-mini-title {
+          margin: 0 0 12px;
+          padding-right: 28px;
+          font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
+          font-size: clamp(22px, 3.2vw, 28px);
+          font-weight: 400;
+          letter-spacing: 0.01em;
+          text-transform: uppercase;
+          color: #171717;
+          line-height: 1.15;
+        }
+
+        .rf-mini-lead {
+          margin: 0 0 22px;
+          font-size: 14px;
+          line-height: 1.55;
+          color: #737373;
+          font-weight: 400;
+        }
+
+        .rf-mini-label {
+          display: block;
+          margin: 0 0 8px;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: #EC0000;
+        }
+
+        .rf-mini-input {
+          display: block;
+          width: 100%;
+          box-sizing: border-box;
+          margin: 0 0 18px;
+          padding: 14px 16px;
+          font-size: 15px;
+          font-family: inherit;
+          color: #171717;
+          background: #F8F9FA;
+          border: 1px solid #E5E7EB;
+          border-radius: 10px;
+          outline: none;
+          transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+        }
+
+        .rf-mini-input::placeholder {
+          color: #A3A3A3;
+        }
+
+        .rf-mini-input:focus {
+          background: #FFFFFF;
+          border-color: #EC0000;
+          box-shadow: 0 0 0 3px rgba(236, 0, 0, 0.12);
+        }
+
+        .rf-mini-submit {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          width: 100%;
+          margin: 0 0 14px;
+          padding: 15px 20px;
+          border: none;
+          border-radius: 10px;
+          background: #EC0000;
+          color: #FFFFFF;
+          font-size: 13px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          font-family: inherit;
+          cursor: pointer;
+          transition: filter 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+          box-shadow: 0 4px 14px rgba(236, 0, 0, 0.22);
+        }
+
+        .rf-mini-submit:hover:not(:disabled) {
+          filter: brightness(1.06);
+          transform: scale(1.01);
+          box-shadow: 0 6px 18px rgba(236, 0, 0, 0.28);
+        }
+
+        .rf-mini-submit:disabled {
+          opacity: 0.65;
+          cursor: wait;
+        }
+
+        .rf-mini-submit-icon {
+          width: 18px;
+          height: 18px;
+          flex: none;
+          display: block;
+        }
+
+        .rf-mini-error {
+          display: block;
+          margin: -6px 0 12px;
+          font-size: 12px;
+          color: #EC0000;
+          font-weight: 600;
+        }
+
+        .rf-mini-dismiss {
+          display: block;
+          margin: 0 auto;
+          padding: 4px 8px;
+          border: none;
+          background: none;
+          color: #737373;
+          font-size: 14px;
+          font-family: inherit;
+          text-decoration: underline;
+          text-underline-offset: 3px;
+          cursor: pointer;
+          transition: color 0.15s ease;
+        }
+
+        .rf-mini-dismiss:hover {
+          color: #171717;
+        }
+
+        .rf-mini-success {
+          text-align: center;
+          padding: 12px 8px 8px;
+        }
+
+        .rf-mini-success-title {
+          margin: 0 0 10px;
+          font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
+          font-size: 24px;
+          font-weight: 400;
+          text-transform: uppercase;
+          letter-spacing: 0.02em;
+          color: #171717;
+        }
+
+        .rf-mini-success-text {
+          margin: 0 0 20px;
+          font-size: 14px;
+          line-height: 1.55;
+          color: #737373;
+        }
+
+        .rf-mini-success .rf-mini-dismiss {
+          margin-top: 4px;
+        }
+
+        @media (max-width: 640px) {
+          .rf-modal-panel--mini {
+            padding: 28px 20px 22px;
+            border-radius: 14px;
+          }
+
+          .rf-modal-panel--full {
+            max-height: 96vh;
+          }
+
+          .rf-mini-title {
+            font-size: 20px;
+          }
         }
 
         /* === RequestForm (.rf) — lives inside modal === */
@@ -2136,8 +2473,8 @@
           --rf-dim: #737373;
           --rf-line: #E5E7EB;
           --rf-line-mid: #D1D5DB;
-          --rf-red: #C41E2A;
-          --rf-red-bright: #E63946;
+          --rf-red: #EC0000;
+          --rf-red-bright: #EC0000;
           --rf-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
           --rf-sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
           position: relative;
@@ -2903,7 +3240,7 @@
           cursor: pointer;
           background:
             linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, transparent 40%),
-            linear-gradient(145deg, #6e1219 0%, #C41E2A 30%, #E63946 50%, #9a1a24 75%, #4a0c11 100%);
+            linear-gradient(145deg, #6e1219 0%, #EC0000 30%, #EC0000 50%, #9a1a24 75%, #4a0c11 100%);
           box-shadow:
             0 0 0 1px rgba(0, 0, 0, 0.55),
             inset 0 1px 0 rgba(255, 255, 255, 0.35),
@@ -3010,20 +3347,7 @@
 
         @media (max-width: 640px) {
           .rf-modal {
-            padding: 10px 8px;
-            align-items: flex-start;
-          }
-
-          .rf-modal-panel {
-            max-height: 96vh;
-          }
-
-          .rf.rf--modal {
-            padding: 0 12px 20px;
-          }
-
-          .rf.rf--modal .rf-inner {
-            padding: 0 2px 4px;
+            padding: 16px 12px;
           }
 
           .rf:not(.rf--modal) {
@@ -3073,8 +3397,8 @@
           --ss-dim: #737373;
           --ss-line: #E5E7EB;
           --ss-line-mid: #D1D5DB;
-          --ss-red: #C41E2A;
-          --ss-red-bright: #E63946;
+          --ss-red: #EC0000;
+          --ss-red-bright: #EC0000;
           --ss-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
           --ss-sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
           position: relative;
@@ -3563,7 +3887,7 @@
           cursor: pointer;
           background:
             linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, transparent 40%),
-            linear-gradient(145deg, #6e1219 0%, #C41E2A 30%, #E63946 50%, #9a1a24 75%, #4a0c11 100%);
+            linear-gradient(145deg, #6e1219 0%, #EC0000 30%, #EC0000 50%, #9a1a24 75%, #4a0c11 100%);
           box-shadow:
             0 0 0 1px rgba(0, 0, 0, 0.55),
             inset 0 1px 0 rgba(255, 255, 255, 0.35),
@@ -3641,8 +3965,8 @@
           --etb-dim: #737373;
           --etb-line: #E5E7EB;
           --etb-line-mid: #D1D5DB;
-          --etb-red: #C41E2A;
-          --etb-red-bright: #E63946;
+          --etb-red: #EC0000;
+          --etb-red-bright: #EC0000;
           --etb-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
           --etb-sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
           --ft-mono: var(--etb-mono);
@@ -3885,134 +4209,258 @@
           aspect-ratio: 3/4;
         }
 
-        /* Personal / team — copy above photo, clean image (no overlay) */
+        /* Personal / team — full-bleed photo with integrated typography overlay */
         .etb-personal {
           margin-top: 8px;
-        }
-
-        .etb-personal-head {
-          text-align: center;
-          margin-bottom: 28px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .etb-personal-kicker {
-          display: block;
-          font-size: 11px;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          color: var(--etb-dim);
-          font-weight: 500;
-          margin-bottom: 10px;
-        }
-
-        .etb-personal-title {
-          margin: 0;
-          font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
-          font-size: clamp(28px, 3.6vw, 40px);
-          font-weight: 400;
-          letter-spacing: -0.015em;
-          text-transform: uppercase;
-          color: var(--etb-ink);
-          line-height: 1.05;
-        }
-
-        .etb-personal-rule {
-          width: 56px;
-          height: 2px;
-          background: var(--etb-red-bright, #E63946);
-          margin: 16px auto 0;
-        }
-
-        .etb-personal-copy {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 10px;
-          margin-top: 20px;
-          max-width: 640px;
-          width: 100%;
-        }
-
-        .etb-personal-headline {
-          margin: 0;
-          font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
-          font-size: clamp(18px, 2.4vw, 26px);
-          font-weight: 400;
-          letter-spacing: 0.02em;
-          text-transform: uppercase;
-          color: var(--etb-ink);
-          line-height: 1.15;
-        }
-
-        .etb-personal-text {
-          margin: 0;
-          font-size: clamp(14px, 1.4vw, 16px);
-          line-height: 1.65;
-          color: var(--etb-dim, #8a8a8a);
-          font-weight: 400;
-          max-width: 520px;
-        }
-
-        .etb-personal-meta {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 10px 18px;
-          margin-top: 6px;
-          font-size: 11px;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: var(--etb-dim, #8a8a8a);
-          font-weight: 500;
-        }
-
-        .etb-personal-meta span {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-        }
-
-        .etb-personal-meta span::before {
-          content: '';
-          width: 5px;
-          height: 5px;
-          background: var(--etb-red-bright, #E63946);
-          flex: none;
+          gap: 0;
         }
 
         .etb-personal-banner {
           position: relative;
           overflow: hidden;
-          border: 1px solid var(--etb-line-mid, #D1D5DB);
-          background: var(--etb-surface, #FFFFFF);
-          min-height: 380px;
+          border: none;
+          border-radius: 0;
+          background: #0a1628;
+          min-height: clamp(420px, 52vw, 560px);
+          display: flex;
+          align-items: stretch;
         }
 
         .etb-personal-img {
+          position: absolute;
+          inset: 0;
           display: block;
           width: 100%;
           height: 100%;
-          min-height: 380px;
-          max-height: 520px;
           object-fit: cover;
-          object-position: center 30%;
+          object-position: center 28%;
+          z-index: 0;
+        }
+
+        /* Soft darken from bottom-left → clear (keeps faces readable, lifts white type) */
+        .etb-personal-shade {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          pointer-events: none;
+          background:
+            linear-gradient(105deg,
+              rgba(8, 16, 32, 0.78) 0%,
+              rgba(10, 22, 40, 0.55) 28%,
+              rgba(10, 22, 40, 0.18) 52%,
+              transparent 72%),
+            linear-gradient(0deg,
+              rgba(8, 16, 32, 0.55) 0%,
+              rgba(8, 16, 32, 0.22) 38%,
+              transparent 68%);
+        }
+
+        /* SVG accent layer — red corner / diagonal / soft geometry (TurnKey-style) */
+        .etb-personal-decor {
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          pointer-events: none;
+          overflow: hidden;
+        }
+
+        .etb-personal-decor svg {
+          position: absolute;
+          display: block;
+        }
+
+        .etb-personal-decor-corner {
+          left: 0;
+          top: 0;
+          width: min(220px, 42%);
+          height: min(180px, 40%);
+        }
+
+        .etb-personal-decor-blob {
+          left: 4%;
+          top: 18%;
+          width: min(280px, 48%);
+          height: min(280px, 55%);
+          opacity: 0.22;
+        }
+
+        .etb-personal-decor-slash {
+          right: 0;
+          bottom: 0;
+          width: min(160px, 28%);
+          height: min(140px, 32%);
+          opacity: 0.85;
+        }
+
+        .etb-personal-overlay {
+          position: relative;
+          z-index: 3;
+          display: flex;
+          align-items: flex-end;
+          justify-content: flex-start;
+          width: 100%;
+          padding: clamp(28px, 4vw, 48px) clamp(20px, 3.5vw, 44px);
+          min-height: inherit;
+        }
+
+        .etb-personal-copy {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+          max-width: min(560px, 92%);
+          width: 100%;
+        }
+
+        .etb-personal-headline {
+          margin: 0;
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+          font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
+          font-size: clamp(28px, 5.2vw, 60px);
+          font-weight: 400;
+          letter-spacing: 0.01em;
+          text-transform: uppercase;
+          color: #FFFFFF;
+          line-height: 1.05;
+          text-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.12),
+            0 2px 18px rgba(0, 0, 0, 0.55),
+            0 0 2px rgba(0, 0, 0, 0.65);
+        }
+
+        .etb-personal-headline-text {
+          display: block;
+        }
+
+        .etb-personal-check {
+          flex: none;
+          width: clamp(22px, 2.4vw, 28px);
+          height: clamp(22px, 2.4vw, 28px);
+          margin-top: 0.18em;
+          color: #EC0000;
+          filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.45));
+        }
+
+        .etb-personal-check svg {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+
+        .etb-personal-text {
+          margin: 0;
+          font-size: clamp(14px, 1.5vw, 17px);
+          line-height: 1.55;
+          color: rgba(255, 255, 255, 0.92);
+          font-weight: 500;
+          max-width: 440px;
+          text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .etb-personal-text+.etb-personal-text {
+          margin-top: -4px;
+        }
+
+        .etb-personal-badges {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 8px;
+          margin-top: 8px;
+        }
+
+        .etb-personal-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 7px 12px 7px 10px;
+          border-radius: 999px;
+          background: rgba(8, 16, 32, 0.48);
+          border: 1px solid rgba(255, 255, 255, 0.22);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+          color: #FFFFFF;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          line-height: 1;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .etb-personal-badge-icon {
+          flex: none;
+          width: 12px;
+          height: 12px;
+          color: #EC0000;
+        }
+
+        .etb-personal-badge-icon svg {
+          display: block;
+          width: 100%;
+          height: 100%;
         }
 
         @media (max-width: 639px) {
           .etb-personal-banner {
-            min-height: 280px;
+            min-height: 360px;
+          }
+
+          .etb-personal-overlay {
+            align-items: flex-end;
+            padding: 24px 16px 22px;
+          }
+
+          .etb-personal-headline {
+            font-size: clamp(24px, 7.2vw, 32px);
+            gap: 8px;
+          }
+
+          .etb-personal-text {
+            font-size: 14px;
+            max-width: 100%;
+          }
+
+          .etb-personal-badges {
+            gap: 6px;
+          }
+
+          .etb-personal-badge {
+            padding: 6px 10px 6px 8px;
+            font-size: 9px;
+            letter-spacing: 0.1em;
+          }
+
+          .etb-personal-shade {
+            background:
+              linear-gradient(115deg,
+                rgba(8, 16, 32, 0.82) 0%,
+                rgba(10, 22, 40, 0.62) 42%,
+                rgba(10, 22, 40, 0.28) 68%,
+                transparent 88%),
+              linear-gradient(0deg,
+                rgba(8, 16, 32, 0.65) 0%,
+                rgba(8, 16, 32, 0.28) 42%,
+                transparent 72%);
+          }
+        }
+
+        @media (min-width: 900px) {
+          .etb-personal-overlay {
+            /* Center-left on sky/wall zone — type becomes part of the photo */
+            align-items: center;
+            padding-top: clamp(36px, 4vw, 56px);
+            padding-bottom: clamp(40px, 5vw, 64px);
+          }
+
+          .etb-personal-copy {
+            max-width: 540px;
           }
 
           .etb-personal-img {
-            min-height: 280px;
-            max-height: 420px;
-          }
-
-          .etb-personal-head {
-            margin-bottom: 20px;
+            object-position: center 22%;
           }
         }
 
@@ -4128,9 +4576,8 @@
           border-bottom: 1.5px solid;
         }
 
-        /* ── B2B banner — like old site: equipment photo + cyan wash, centered title + one link ── */
+        /* ── B2B banner — neutral dark grade, restrained type, soft vignette ── */
         .etb-b2b {
-          --etb-cyan: #00B8D4;
           margin-top: 64px;
           margin-bottom: 0;
           position: relative;
@@ -4138,7 +4585,7 @@
           border: none;
           border-radius: 0;
           color: #FFFFFF;
-          background: #021820;
+          background: #0a0a0a;
           padding: 0;
           min-height: 300px;
           display: flex;
@@ -4158,29 +4605,43 @@
           height: 100%;
           object-fit: cover;
           object-position: center center;
+          /* Quiet the photo: mild desat + slight darken — no cyan cast */
+          filter: saturate(0.72) brightness(0.9) contrast(1.02);
         }
 
-        /* Cyan wash over equipment photo (old-site look, no people) */
+        /* Neutral dark overlay + edge vignette (left/right/bottom) — no color wash */
         .etb-b2b-tint {
           position: absolute;
           inset: 0;
           z-index: 1;
           pointer-events: none;
           background:
-            linear-gradient(180deg, rgba(0, 90, 110, 0.45) 0%, rgba(0, 140, 160, 0.55) 50%, rgba(0, 100, 120, 0.6) 100%),
-            rgba(0, 160, 180, 0.45);
-          mix-blend-mode: multiply;
+            /* side vignette */
+            linear-gradient(90deg,
+              rgba(0, 0, 0, 0.52) 0%,
+              rgba(0, 0, 0, 0.12) 18%,
+              transparent 32%,
+              transparent 68%,
+              rgba(0, 0, 0, 0.12) 82%,
+              rgba(0, 0, 0, 0.52) 100%),
+            /* bottom vignette */
+            linear-gradient(0deg,
+              rgba(0, 0, 0, 0.55) 0%,
+              rgba(0, 0, 0, 0.18) 36%,
+              transparent 62%),
+            /* soft top */
+            linear-gradient(180deg,
+              rgba(0, 0, 0, 0.28) 0%,
+              transparent 34%),
+            /* overall dark veil ~48% */
+            rgba(0, 0, 0, 0.48);
         }
 
         .etb-b2b-tint::after {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: rgba(0, 184, 212, 0.28);
-          mix-blend-mode: soft-light;
+          content: none;
         }
 
-        /* TITLE → 3 points in a row → button (wireframe layout) */
+        /* Title + CTA — hierarchy via space & hairlines, not frames */
         .etb-b2b-content {
           position: relative;
           z-index: 2;
@@ -4189,22 +4650,34 @@
           align-items: center;
           justify-content: center;
           text-align: center;
-          gap: 32px;
-          padding: 48px 28px 52px;
+          gap: 28px;
+          padding: 44px 32px 48px;
           width: 100%;
-          max-width: 1080px;
+          max-width: 720px;
           margin: 0 auto;
+          /* subtle top/bottom accent lines framing the text block */
+          border-top: 1px solid rgba(255, 255, 255, 0.18);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.18);
         }
 
         .etb-b2b-title {
           margin: 0;
-          font-size: clamp(22px, 3.2vw, 34px);
-          font-weight: 400;
-          letter-spacing: 0.01em;
+          font-family: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+          font-size: clamp(20px, 2.7vw, 30px);
+          font-weight: 500;
+          letter-spacing: 0.045em;
           text-transform: none;
-          line-height: 1.25;
-          color: #FFFFFF;
-          text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+          line-height: 1.35;
+          color: rgba(255, 255, 255, 0.96);
+          text-shadow: 0 1px 14px rgba(0, 0, 0, 0.35);
+        }
+
+        .etb-b2b-rule {
+          width: 40px;
+          height: 1px;
+          background: rgba(255, 255, 255, 0.38);
+          margin: 0;
+          flex: none;
         }
 
         .etb-b2b-list {
@@ -4231,8 +4704,8 @@
           align-items: center;
           justify-content: center;
           color: #FFFFFF;
-          background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.45);
+          background: rgba(255, 255, 255, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.28);
         }
 
         .etb-b2b-icon svg {
@@ -4245,33 +4718,43 @@
           margin: 0;
           font-size: 13px;
           line-height: 1.45;
-          color: rgba(255, 255, 255, 0.92);
-          text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+          color: rgba(255, 255, 255, 0.88);
+          text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
         }
 
-        /* Single outline CTA — terms & prices (old-site style) */
+        /* Quiet premium CTA — thin border, uppercase micro-label */
         .etb-btn-ghost {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          font-size: 14px;
-          font-weight: 400;
-          letter-spacing: 0.04em;
-          text-transform: none;
+          font-size: 12px;
+          font-weight: 600;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
           font-family: var(--etb-sans);
           text-decoration: none;
-          color: #FFFFFF;
-          padding: 14px 40px;
+          color: rgba(255, 255, 255, 0.92);
+          padding: 16px 38px;
           white-space: nowrap;
-          border: 1px solid rgba(255, 255, 255, 0.92);
+          border: 1px solid rgba(255, 255, 255, 0.4);
           background: transparent;
           border-radius: 0;
-          transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+          transition:
+            border-color 0.3s ease,
+            background 0.3s ease,
+            color 0.3s ease,
+            letter-spacing 0.3s ease;
         }
 
         .etb-btn-ghost:hover {
-          border-color: #FFFFFF;
-          background: rgba(255, 255, 255, 0.1);
+          border-color: rgba(255, 255, 255, 0.72);
+          background: rgba(255, 255, 255, 0.12);
+          color: #FFFFFF;
+        }
+
+        .etb-btn-ghost:focus-visible {
+          outline: 1px solid rgba(255, 255, 255, 0.55);
+          outline-offset: 3px;
         }
 
         /* Bottom spacing after B2B inside rail */
@@ -4294,8 +4777,9 @@
           }
 
           .etb-b2b-content {
-            padding: 56px 40px 60px;
-            gap: 36px;
+            padding: 52px 48px 56px;
+            gap: 28px;
+            max-width: 760px;
           }
 
           /* 3 points in a horizontal row: [icon]—text  [icon]—text  [icon]—text */
@@ -4324,8 +4808,9 @@
           }
 
           .etb-b2b-content {
-            padding: 36px 18px 40px;
-            gap: 24px;
+            padding: 36px 20px 40px;
+            gap: 22px;
+            max-width: 100%;
           }
 
           .etb-b2b-list {
@@ -4333,8 +4818,9 @@
           }
 
           .etb-btn-ghost {
-            padding: 12px 28px;
-            font-size: 13px;
+            padding: 14px 28px;
+            font-size: 11px;
+            letter-spacing: 0.14em;
           }
 
           .etb-block {
@@ -4381,10 +4867,10 @@
           --ft-text: #404040;
           --ft-white: #171717;
           --ft-ink: #171717;
-          --ft-red: #C41E2A;
-          --ft-red-bright: #E63946;
+          --ft-red: #EC0000;
+          --ft-red-bright: #EC0000;
           --ft-red-deep: #8B1520;
-          --ft-red-metal: linear-gradient(145deg, #6e1219 0%, #C41E2A 28%, #E63946 48%, #9a1a24 72%, #4a0c11 100%);
+          --ft-red-metal: linear-gradient(145deg, #6e1219 0%, #EC0000 28%, #EC0000 48%, #9a1a24 72%, #4a0c11 100%);
           --ft-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
           --ft-sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
           position: relative;
@@ -4445,116 +4931,53 @@
           margin: 0 auto;
           border-left: none;
           border-right: none;
-          padding: 0;
+          padding: 0 24px;
           background: transparent;
           box-shadow: none;
         }
 
-        /* Brand row: logo lockup + address beside it (top of footer) */
-        .ft-brand-row {
-          display: flex;
-          align-items: flex-start;
-          justify-content: flex-start;
-          gap: 24px 48px;
-          flex-wrap: wrap;
-          padding: 28px 0 0;
+        /* Main row: map left (~48%) + info right */
+        .ft-main {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 28px;
+          padding-top: 36px;
+          align-items: stretch;
         }
 
-        .ft-brand {
-          display: flex;
-          align-items: center;
-          gap: 20px;
-          position: relative;
-          min-width: 0;
+        @media (min-width: 800px) {
+          .ft-main {
+            grid-template-columns: minmax(0, 0.48fr) minmax(0, 0.52fr);
+            gap: 32px 40px;
+            align-items: stretch;
+            padding-top: 44px;
+          }
         }
 
-        .ft-brand-mark {
-          flex-shrink: 0;
-          width: 64px;
-          height: 64px;
-          display: block;
-          filter: none;
-          color: #171717;
-        }
-
-        .ft-brand-mark rect,
-        .ft-brand-mark line {
-          stroke: currentColor;
-        }
-
-        .ft-brand-text {
+        /* Right info panel: address heading + contact stack */
+        .ft-info {
           display: flex;
           flex-direction: column;
-          gap: 6px;
+          gap: 24px;
           min-width: 0;
+          justify-content: center;
         }
 
-        .ft-brand-name {
+        .ft-info-address {
           margin: 0;
-          font-size: clamp(18px, 2.2vw, 28px);
-          font-weight: 800;
-          letter-spacing: -0.02em;
+          font-size: clamp(16px, 1.8vw, 22px);
+          font-weight: 700;
+          letter-spacing: 0.02em;
           text-transform: uppercase;
           color: var(--ft-ink);
-          line-height: 1.05;
-          white-space: nowrap;
-          text-shadow: none;
+          line-height: 1.3;
         }
 
-        .ft-brand-sub {
-          font-size: 11px;
-          font-family: var(--ft-mono);
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          color: var(--ft-muted);
-        }
-
-        .ft-brand-rule {
-          width: 48px;
+        .ft-info-rule {
+          width: 40px;
           height: 2px;
-          margin-top: 2px;
           background: var(--ft-red-bright);
-          box-shadow: none;
-        }
-
-        /* Nested-frame corners on brand lockup */
-        .ft-brand-frame {
-          position: absolute;
-          width: 10px;
-          height: 10px;
-          pointer-events: none;
-          opacity: 0.7;
-        }
-
-        .ft-brand-frame--tl {
-          left: -8px;
-          top: -8px;
-          border-left: 1.5px solid #171717;
-          border-top: 1.5px solid #171717;
-        }
-
-        .ft-brand-frame--br {
-          right: -4px;
-          bottom: -4px;
-          border-right: 1.5px solid var(--ft-red-bright);
-          border-bottom: 1.5px solid var(--ft-red-bright);
-        }
-
-        /* Address block next to logo (was beside map) */
-        .ft-loc-head {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 12px;
-          text-align: left;
-          max-width: min(440px, 100%);
-          min-width: 0;
-          padding-left: 28px;
-          border-left: 1px solid var(--ft-line-mid);
-        }
-
-        .ft-premium .ft-loc-head .ft-maps-btn {
-          align-self: flex-start;
+          flex: none;
         }
 
         /* Local pattern fill used inside cells (SVG absolute) */
@@ -4610,208 +5033,45 @@
           opacity: 1;
         }
 
-        /* Full-width map (like old site) — address lives in .ft-loc-head above */
+        /* Map — left column only (~48% of main row) */
         .ft-map-grid {
           display: block;
-          margin-top: 36px;
+          margin: 0;
           position: relative;
           border: 1px solid var(--ft-line-mid);
           box-shadow: none;
+          min-width: 0;
+          height: 100%;
         }
 
-        /* Intricate anodized red metal corner sights */
+        /* Decorative corner sights removed (no map badges/overlays) */
         .ft-sight {
-          position: absolute;
-          z-index: 3;
-          pointer-events: none;
-        }
-
-        .ft-sight--tl {
-          left: -1px;
-          top: -1px;
-          width: 22px;
-          height: 22px;
-        }
-
-        .ft-sight--br {
-          right: -1px;
-          bottom: -1px;
-          width: 28px;
-          height: 28px;
-        }
-
-        .ft-sight-arm {
-          position: absolute;
-          background: var(--ft-red-metal);
-          box-shadow:
-            0 0 0 0.5px rgba(255, 200, 200, 0.25),
-            inset 0 1px 0 rgba(255, 255, 255, 0.35),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.45),
-            0 1px 3px rgba(0, 0, 0, 0.5);
-        }
-
-        .ft-sight--tl .ft-sight-h {
-          top: 0;
-          left: 0;
-          width: 18px;
-          height: 2.5px;
-        }
-
-        .ft-sight--tl .ft-sight-v {
-          top: 0;
-          left: 0;
-          width: 2.5px;
-          height: 18px;
-        }
-
-        .ft-sight--tl .ft-sight-dot {
-          top: 5px;
-          left: 5px;
-          width: 4px;
-          height: 4px;
-          border-radius: 50%;
-          background: radial-gradient(circle at 35% 30%, #ff6b6b, #C41E2A 55%, #5c0f16);
-          box-shadow:
-            inset 0 1px 1px rgba(255, 255, 255, 0.4),
-            0 0 4px rgba(196, 30, 42, 0.5),
-            0 1px 2px rgba(0, 0, 0, 0.6);
-        }
-
-        .ft-sight--tl .ft-sight-notch {
-          top: 0;
-          left: 14px;
-          width: 2px;
-          height: 2.5px;
-          background: linear-gradient(180deg, #2a080c, #C41E2A);
-          box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.8);
-        }
-
-        .ft-sight--br .ft-sight-h {
-          bottom: 0;
-          right: 0;
-          width: 24px;
-          height: 3px;
-        }
-
-        .ft-sight--br .ft-sight-v {
-          bottom: 0;
-          right: 0;
-          width: 3px;
-          height: 24px;
-        }
-
-        .ft-sight--br .ft-sight-plate {
-          bottom: 5px;
-          right: 5px;
-          width: 10px;
-          height: 10px;
-          background:
-            linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, transparent 40%),
-            linear-gradient(145deg, #3d0a0e 0%, #C41E2A 40%, #8B1520 70%, #2a080c 100%);
-          box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.3),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.5),
-            0 0 0 0.5px rgba(255, 180, 180, 0.2),
-            0 2px 4px rgba(0, 0, 0, 0.55);
-          border: 0.5px solid rgba(0, 0, 0, 0.4);
-        }
-
-        .ft-sight--br .ft-sight-plate::after {
-          content: '';
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 3px;
-          height: 3px;
-          margin: -1.5px 0 0 -1.5px;
-          border-radius: 50%;
-          background: radial-gradient(circle at 30% 30%, #ff8a8a, #5c0f16);
-          box-shadow: inset 0 0.5px 1px rgba(255, 255, 255, 0.5);
-        }
-
-        .ft-sight--br .ft-sight-tick {
-          position: absolute;
-          background: linear-gradient(90deg, #5c0f16, #E63946, #5c0f16);
-          box-shadow: 0 0 1px rgba(255, 100, 100, 0.4);
-        }
-
-        .ft-sight--br .ft-sight-tick-1 {
-          bottom: 0;
-          right: 10px;
-          width: 1px;
-          height: 5px;
-        }
-
-        .ft-sight--br .ft-sight-tick-2 {
-          bottom: 0;
-          right: 16px;
-          width: 1px;
-          height: 3.5px;
-        }
-
-        .ft-sight--br .ft-sight-tick-3 {
-          bottom: 10px;
-          right: 0;
-          width: 5px;
-          height: 1px;
-        }
-
-        .ft-sight--br .ft-sight-tick-4 {
-          bottom: 16px;
-          right: 0;
-          width: 3.5px;
-          height: 1px;
+          display: none !important;
         }
 
         .ft-map-cell {
-          background: var(--ft-surface);
-          /* Wide banner map — full content width, like old site */
-          aspect-ratio: 21/9;
+          background: #e8e8e8;
+          aspect-ratio: 4/3;
           position: relative;
-          min-height: 260px;
-          max-height: 420px;
+          min-height: 240px;
+          max-height: none;
           width: 100%;
+          height: 100%;
           overflow: hidden;
         }
 
         .ft-map-cell::before {
-          content: '';
+          content: none;
+        }
+
+        .ft-map-cell iframe {
+          border: 0;
+          display: block;
+          width: 100%;
+          height: 100%;
           position: absolute;
           inset: 0;
-          pointer-events: none;
-          background-image:
-            linear-gradient(rgba(23, 23, 23, 0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(23, 23, 23, 0.04) 1px, transparent 1px);
-          background-size: 24px 24px;
-          opacity: 1;
-          z-index: 1;
-        }
-
-        .ft-loc-tag {
-          font-size: 9px;
-          letter-spacing: 0.32em;
-          text-transform: uppercase;
-          font-family: var(--ft-mono);
-          white-space: nowrap;
-          font-weight: 600;
-          color: var(--ft-red-bright);
-          background: none;
-          -webkit-background-clip: unset;
-          background-clip: unset;
-          -webkit-text-fill-color: unset;
-          text-shadow: none;
-          filter: none;
-        }
-
-        .ft-address {
-          margin: 0;
-          font-size: clamp(18px, 2.2vw, 28px);
-          font-weight: 800;
-          letter-spacing: -0.02em;
-          text-transform: uppercase;
-          color: var(--ft-ink);
-          line-height: 1.15;
-          text-shadow: none;
+          pointer-events: auto;
         }
 
         /* Anodized red metallic engraved button */
@@ -4833,7 +5093,7 @@
           cursor: pointer;
           background:
             linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, transparent 40%),
-            linear-gradient(145deg, #6e1219 0%, #C41E2A 30%, #E63946 50%, #9a1a24 75%, #4a0c11 100%);
+            linear-gradient(145deg, #6e1219 0%, #EC0000 30%, #EC0000 50%, #9a1a24 75%, #4a0c11 100%);
           box-shadow:
             0 0 0 1px rgba(0, 0, 0, 0.55),
             inset 0 1px 0 rgba(255, 255, 255, 0.35),
@@ -4863,26 +5123,33 @@
             0 0 22px rgba(230, 57, 70, 0.28);
         }
 
-        /* Three columns */
+        /* Compact contact columns under address (inside right panel) */
         .ft-contact-grid {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 1px;
-          background: var(--ft-line-mid);
-          margin-top: 56px;
-          border-top: 1px solid var(--ft-line);
-          border-bottom: 1px solid var(--ft-line);
+          gap: 20px;
+          background: transparent;
+          margin-top: 0;
+          border: none;
           box-shadow: none;
         }
 
+        @media (min-width: 560px) {
+          .ft-contact-grid {
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px 20px;
+          }
+        }
+
         .ft-col {
-          background: var(--ft-surface);
-          padding: 42px 36px;
+          background: transparent;
+          padding: 0;
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: 8px;
           position: relative;
-          overflow: hidden;
+          overflow: visible;
+          min-width: 0;
         }
 
         .ft-col>*:not(.ft-fill-pattern):not(.ft-ghost-num) {
@@ -4890,34 +5157,19 @@
           z-index: 1;
         }
 
-        .ft-col-head {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          position: relative;
-          z-index: 1;
-        }
-
-        .ft-col-label {
-          font-size: 9.5px;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          color: var(--ft-dim);
-          font-family: var(--ft-mono);
-          white-space: nowrap;
-          font-weight: 400;
-        }
-
-        /* Ghost etched outline numbers — hidden per client request (information noise) */
+        /* Column section labels removed */
+        .ft-col-head,
+        .ft-col-label,
+        .ft-fill-pattern,
         .ft-ghost-num {
           display: none !important;
         }
 
         .ft-phone {
-          font-size: 20px;
+          font-size: 15px;
           font-weight: 700;
           font-family: var(--ft-mono);
-          letter-spacing: 0.04em;
+          letter-spacing: 0.03em;
           text-decoration: none;
           color: #00B8D4;
           position: relative;
@@ -4931,13 +5183,13 @@
         }
 
         .ft-email {
-          font-size: 13.5px;
+          font-size: 12.5px;
           color: var(--ft-dim);
           text-decoration: none;
           word-break: break-word;
           position: relative;
           z-index: 1;
-          letter-spacing: 0.02em;
+          letter-spacing: 0.01em;
           transition: color 0.15s ease;
         }
 
@@ -4946,19 +5198,19 @@
         }
 
         .ft-hours-main {
-          font-size: 15.5px;
+          font-size: 13.5px;
           font-weight: 700;
           color: var(--ft-ink);
           font-family: var(--ft-mono);
-          letter-spacing: 0.06em;
+          letter-spacing: 0.04em;
           position: relative;
           z-index: 1;
         }
 
         .ft-hours-sub {
-          font-size: 12px;
+          font-size: 11px;
           color: var(--ft-muted);
-          letter-spacing: 0.12em;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
           font-family: var(--ft-mono);
           position: relative;
@@ -4966,7 +5218,7 @@
         }
 
         .ft-company {
-          font-size: 15.5px;
+          font-size: 13.5px;
           font-weight: 700;
           color: var(--ft-ink);
           letter-spacing: 0.01em;
@@ -4975,10 +5227,10 @@
         }
 
         .ft-reg {
-          font-size: 11.5px;
+          font-size: 11px;
           color: var(--ft-muted);
           font-family: var(--ft-mono);
-          letter-spacing: 0.08em;
+          letter-spacing: 0.06em;
           position: relative;
           z-index: 1;
         }
@@ -5021,11 +5273,9 @@
           opacity: 1;
         }
 
+        /* Privacy / terms links removed from footer */
         .ft-bottom-links {
-          display: flex;
-          align-items: center;
-          gap: 28px;
-          flex-wrap: wrap;
+          display: none !important;
         }
 
         .ft-bottom-right {
@@ -5115,25 +5365,26 @@
           margin-top: 2px;
         }
 
-        @media (min-width: 800px) {
-          .ft-contact-grid {
-            grid-template-columns: 1fr 1fr 1fr !important;
-          }
-        }
-
         @media (max-width: 640px) {
           .ft-inner {
-            padding: 0 20px;
+            padding: 0 16px;
           }
 
-          .ft-col {
-            padding: 32px 24px;
+          .ft-main {
+            padding-top: 28px;
+            gap: 22px;
           }
 
-          .ft-ghost-num {
-            font-size: 36px;
-            right: 20px;
-            top: 20px;
+          .ft-info {
+            gap: 18px;
+          }
+
+          .ft-info-address {
+            font-size: 15px;
+          }
+
+          .ft-contact-grid {
+            gap: 18px;
           }
 
           .ft-serial {
@@ -5141,35 +5392,13 @@
             font-size: 8.5px;
           }
 
-          .ft-brand-row {
-            padding-top: 22px;
-            gap: 20px;
-          }
-
-          .ft-brand {
-            gap: 14px;
-          }
-
-          .ft-brand-mark {
-            width: 52px;
-            height: 52px;
-          }
-
-          .ft-brand-name {
-            white-space: normal;
-          }
-
-          .ft-loc-head {
-            width: 100%;
-            max-width: none;
-            padding-left: 0;
-            border-left: none;
-          }
-
           .ft-map-cell {
             aspect-ratio: 16/10;
-            max-height: none;
-            min-height: 220px;
+            min-height: 200px;
+          }
+
+          .ft-ticks {
+            padding-top: 28px;
           }
         }
 
@@ -5305,7 +5534,7 @@
         .hk-vat-badge-dot {
           width: 6px;
           height: 6px;
-          background: #E63946;
+          background: #EC0000;
           display: inline-block;
         }
 
@@ -5431,6 +5660,418 @@
           font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
           font-weight: 400;
         }
+
+        /* ═══════════════════════════════════════════════════════════
+           MOTION SYSTEM — restrained page + popup motion
+           200–600ms, ease-out / cubic-bezier; no infinite loops
+           ═══════════════════════════════════════════════════════════ */
+        :root {
+          --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+          --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+          --motion-fast: 150ms;
+          --motion-mid: 250ms;
+          --motion-slow: 560ms;
+        }
+
+        /* Scroll-in sections */
+        .motion-reveal {
+          opacity: 0;
+          transform: translate3d(0, 26px, 0);
+          transition:
+            opacity var(--motion-slow) var(--motion-ease),
+            transform var(--motion-slow) var(--motion-ease);
+          will-change: opacity, transform;
+        }
+
+        .motion-reveal.is-in {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
+
+        /* Stagger children (lists, cards, checkboxes) */
+        .motion-stagger>.motion-item,
+        .motion-stagger>.ph-item,
+        .motion-stagger>.su-item,
+        .motion-stagger>.etb-card,
+        .motion-stagger>article {
+          opacity: 0;
+          transform: translate3d(0, 18px, 0);
+          transition:
+            opacity 0.48s var(--motion-ease),
+            transform 0.48s var(--motion-ease);
+        }
+
+        .motion-stagger.is-in>.motion-item,
+        .motion-stagger.is-in>.ph-item,
+        .motion-stagger.is-in>.su-item,
+        .motion-stagger.is-in>.etb-card,
+        .motion-stagger.is-in>article {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
+
+        .motion-stagger.is-in> :nth-child(1) {
+          transition-delay: 0ms;
+        }
+
+        .motion-stagger.is-in> :nth-child(2) {
+          transition-delay: 80ms;
+        }
+
+        .motion-stagger.is-in> :nth-child(3) {
+          transition-delay: 160ms;
+        }
+
+        .motion-stagger.is-in> :nth-child(4) {
+          transition-delay: 240ms;
+        }
+
+        .motion-stagger.is-in> :nth-child(5) {
+          transition-delay: 320ms;
+        }
+
+        .motion-stagger.is-in> :nth-child(6) {
+          transition-delay: 400ms;
+        }
+
+        .motion-stagger.is-in> :nth-child(7) {
+          transition-delay: 480ms;
+        }
+
+        .motion-stagger.is-in> :nth-child(8) {
+          transition-delay: 560ms;
+        }
+
+        .motion-stagger.is-in> :nth-child(9) {
+          transition-delay: 640ms;
+        }
+
+        .motion-stagger.is-in> :nth-child(10) {
+          transition-delay: 720ms;
+        }
+
+        .motion-stagger.is-in> :nth-child(11) {
+          transition-delay: 800ms;
+        }
+
+        .motion-stagger.is-in> :nth-child(12) {
+          transition-delay: 880ms;
+        }
+
+        /* Brand panel list items — stagger on tab switch */
+        @keyframes motion-item-in {
+          from {
+            opacity: 0;
+            transform: translate3d(0, 12px, 0);
+          }
+
+          to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+          }
+        }
+
+        .ph-panel.ph-fade .ph-item {
+          animation: motion-item-in 0.42s var(--motion-ease) both;
+        }
+
+        .ph-panel.ph-fade .ph-item:nth-child(1) {
+          animation-delay: 0.04s;
+        }
+
+        .ph-panel.ph-fade .ph-item:nth-child(2) {
+          animation-delay: 0.1s;
+        }
+
+        .ph-panel.ph-fade .ph-item:nth-child(3) {
+          animation-delay: 0.16s;
+        }
+
+        .ph-panel.ph-fade .ph-item:nth-child(4) {
+          animation-delay: 0.22s;
+        }
+
+        .ph-panel.ph-fade .ph-item:nth-child(5) {
+          animation-delay: 0.28s;
+        }
+
+        .ph-panel.ph-fade .ph-item:nth-child(6) {
+          animation-delay: 0.34s;
+        }
+
+        .ph-panel.ph-fade .ph-item:nth-child(7) {
+          animation-delay: 0.4s;
+        }
+
+        .ph-panel.ph-fade .ph-item:nth-child(8) {
+          animation-delay: 0.46s;
+        }
+
+        .ph-panel.ph-fade .ph-item:nth-child(9) {
+          animation-delay: 0.52s;
+        }
+
+        /* Hero intro on load */
+        @keyframes hero-enter {
+          from {
+            opacity: 0;
+            transform: translate3d(0, 22px, 0);
+          }
+
+          to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+          }
+        }
+
+        @keyframes hero-cta-enter {
+          from {
+            opacity: 0;
+            transform: translate3d(0, 14px, 0) scale(0.95);
+          }
+
+          to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+        }
+
+        .hero .hero-title {
+          opacity: 0;
+          animation: hero-enter 0.55s var(--motion-ease-out) 0.1s forwards;
+        }
+
+        .hero .hero-lead {
+          opacity: 0;
+          animation: hero-enter 0.55s var(--motion-ease-out) 0.24s forwards;
+        }
+
+        .hero .hero-cta-row {
+          opacity: 0;
+          animation: hero-cta-enter 0.5s var(--motion-ease-out) 0.38s forwards;
+        }
+
+        /* Hero bg room for subtle parallax */
+        .hero-bg {
+          inset: -6% 0;
+          height: 112%;
+          will-change: transform;
+          transform: translate3d(0, 0, 0) scale(1.04);
+          transition: none;
+        }
+
+        .hero-bg image-slot,
+        .hero-bg>image-slot,
+        .hero-bg img {
+          transform: none;
+        }
+
+        /* CTA buttons — soft hover lift */
+        .ft-maps-btn,
+        .ph-cta-btn,
+        .hd-phone,
+        .etb-btn-ghost,
+        .hk-phone,
+        .su-cta-phone,
+        .dg-phone {
+          transition:
+            filter var(--motion-fast) ease,
+            box-shadow var(--motion-fast) ease,
+            background var(--motion-fast) ease,
+            border-color var(--motion-fast) ease,
+            color var(--motion-fast) ease,
+            transform var(--motion-fast) var(--motion-ease);
+        }
+
+        .ft-maps-btn:hover,
+        .ph-cta-btn:hover,
+        .etb-btn-ghost:hover {
+          transform: scale(1.02);
+        }
+
+        .hd-phone:hover {
+          transform: scale(1.02);
+        }
+
+        /* Brand tabs — already transitioned; ensure smooth active border */
+        .ph-brand {
+          transition:
+            background 0.2s ease,
+            border-color 0.2s ease,
+            box-shadow 0.2s ease,
+            transform 0.2s var(--motion-ease);
+        }
+
+        .ph-brand:hover {
+          transform: translateY(-1px);
+        }
+
+        /* Symptom checkboxes — micro bounce when checked */
+        @keyframes check-bounce {
+          0% {
+            transform: scale(1);
+          }
+
+          45% {
+            transform: scale(1.18);
+          }
+
+          100% {
+            transform: scale(1);
+          }
+        }
+
+        .su-check {
+          transition:
+            background 0.15s ease,
+            border-color 0.15s ease,
+            color 0.15s ease,
+            transform 0.15s var(--motion-ease);
+        }
+
+        .su-item.is-active .su-check {
+          animation: check-bounce 0.16s var(--motion-ease);
+        }
+
+        /* Equipment cards — soft lift */
+        .etb-card {
+          transition:
+            transform 0.2s var(--motion-ease),
+            box-shadow 0.2s ease;
+        }
+
+        .etb-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 14px 32px rgba(15, 23, 42, 0.1);
+          z-index: 2;
+        }
+
+        /* Modal open / close */
+        @keyframes modal-bg-in {
+          from {
+            opacity: 0;
+          }
+
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes modal-bg-out {
+          from {
+            opacity: 1;
+          }
+
+          to {
+            opacity: 0;
+          }
+        }
+
+        @keyframes modal-panel-in {
+          from {
+            opacity: 0;
+            transform: translate3d(0, 10px, 0) scale(0.95);
+          }
+
+          to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+        }
+
+        @keyframes modal-panel-out {
+          from {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+
+          to {
+            opacity: 0;
+            transform: translate3d(0, 8px, 0) scale(0.97);
+          }
+        }
+
+        .rf-modal-backdrop {
+          animation: modal-bg-in 0.2s ease-out both;
+        }
+
+        .rf-modal-panel {
+          animation: modal-panel-in 0.28s var(--motion-ease-out) both;
+          transform-origin: center center;
+        }
+
+        .rf-modal.is-closing .rf-modal-backdrop {
+          animation: modal-bg-out 0.16s ease-in both;
+        }
+
+        .rf-modal.is-closing .rf-modal-panel {
+          animation: modal-panel-out 0.16s ease-in both;
+        }
+
+        .hk-modal-backdrop {
+          animation: modal-bg-in 0.2s ease-out both;
+        }
+
+        .hk-modal-container {
+          animation: modal-panel-in 0.28s var(--motion-ease-out) both;
+          transform-origin: center center;
+        }
+
+        .hk-modal.is-closing .hk-modal-backdrop {
+          animation: modal-bg-out 0.16s ease-in both;
+        }
+
+        .hk-modal.is-closing .hk-modal-container {
+          animation: modal-panel-out 0.16s ease-in both;
+        }
+
+        /* prefers-reduced-motion: no transforms / no staged delays */
+        @media (prefers-reduced-motion: reduce) {
+          html {
+            scroll-behavior: auto;
+          }
+
+          .motion-reveal,
+          .motion-stagger>.motion-item,
+          .motion-stagger>.ph-item,
+          .motion-stagger>.su-item,
+          .motion-stagger>.etb-card,
+          .motion-stagger>article {
+            opacity: 1 !important;
+            transform: none !important;
+            transition: none !important;
+            animation: none !important;
+          }
+
+          .hero .hero-title,
+          .hero .hero-lead,
+          .hero .hero-cta-row,
+          .ph-panel.ph-fade .ph-item,
+          .rf-modal-backdrop,
+          .rf-modal-panel,
+          .hk-modal-backdrop,
+          .hk-modal-container,
+          .su-item.is-active .su-check {
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+          }
+
+          .hero-bg {
+            inset: 0 !important;
+            height: 100% !important;
+            transform: none !important;
+          }
+
+          .ft-maps-btn:hover,
+          .ph-cta-btn:hover,
+          .etb-btn-ghost:hover,
+          .hd-phone:hover,
+          .etb-card:hover,
+          .ph-brand:hover {
+            transform: none !important;
+          }
+        }
       </style>
     </helmet>
 
@@ -5538,26 +6179,23 @@
 
 
     <!-- ══ Hero.dc.html ══ -->
-    <section class="hero">
-      <div class="hero-bg">
+    <section class="hero" data-motion="hero">
+      <div class="hero-bg" data-parallax="hero">
         <image-slot id="hero-picture" shape="rect" fit="cover" position="center" src="./ad-img-hero-1.jpg"
           placeholder="Drop workshop / diesel bench photo"></image-slot>
       </div>
 
       <div class="hero-shell">
         <div class="hero-main">
-          <div class="hero-badge">
-            <span class="hero-badge-dot" aria-hidden="true"></span>
-            <span class="hero-badge-text">DIAGNOSTIKA JA REMONT TALLINNAS</span>
-          </div>
+
 
           <h1 class="hero-title">AUTO DIISLIKESKUS</h1>
 
           <p class="hero-lead">DIISELMOOTORITE DIAGNOSTIKA- JA REMONDIKESKUS</p>
 
           <div class="hero-cta-row">
-            <button type="button" onClick="{{ openForm }}" class="ft-maps-btn">
-              [ {{ ctaText }} → ]
+            <button type="button" onClick="{{ openFullForm }}" class="ft-maps-btn">
+              {{ ctaText }}
             </button>
           </div>
         </div>
@@ -5566,10 +6204,10 @@
 
 
     <!-- ══ Pihustite Blokk — Common Rail injectors ══ -->
-    <section class="ph" id="teenused" aria-labelledby="ph-heading">
+    <section class="ph motion-reveal" id="teenused" aria-labelledby="ph-heading">
       <div class="ph-inner">
         <header class="ph-header">
-          <span class="ph-kicker">[ COMMON RAIL / PIHUSTID ]</span>
+
           <h2 class="ph-title" id="ph-heading">Common Rail pihustite testimine<br />ja remont Tallinnas</h2>
           <div class="ph-rule" aria-hidden="true"></div>
         </header>
@@ -5660,16 +6298,32 @@
               </div>
             </sc-if>
           </div>
+
+          <!-- Mini-CTA: right column — drives booking action -->
+          <aside class="ph-cta" aria-label="{{ phCtaTitle }}">
+            <span class="ph-cta-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 3v3M16 3v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                <rect x="4" y="5" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.6" />
+                <path d="M4 10h16" stroke="currentColor" stroke-width="1.6" />
+                <path d="M9.2 15.2l1.8 1.8 3.8-3.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </span>
+            <p class="ph-cta-title">{{ phCtaTitle }}</p>
+            <p class="ph-cta-hint">{{ phCtaHint }}</p>
+            <button type="button" class="ph-cta-btn" onClick="{{ openForm }}">{{ phCtaBtn }}</button>
+          </aside>
         </div>
       </div>
     </section>
 
 
     <!-- ══ Uslugi / Sümptomite Blokk — premium symptoms ══ -->
-    <section class="su" id="uslugi" aria-labelledby="su-heading">
+    <section class="su motion-reveal" id="uslugi" aria-labelledby="su-heading">
       <div class="su-inner">
         <header class="su-header">
-          <span class="su-kicker">[ TEENUSED / SÜMPTOMID ]</span>
+
           <h2 class="su-title" id="su-heading">
             Pakkumine on aktuaalne diisel autoomanikele,<br />
             kelle sõidukitel esineb järgmiseid probleeme
@@ -5678,7 +6332,7 @@
           <p class="su-lead">Vali oma auto probleemid — saad kohe teada, kas vajad kontrolli.</p>
         </header>
 
-        <div class="su-grid" role="group" aria-label="Sümptomid">
+        <div class="su-grid motion-stagger" role="group" aria-label="Sümptomid">
           <sc-for list="{{ symptomItems }}" as="it" hint-placeholder-count="11">
             <button type="button" class="su-item {{ it.activeClass }}" onClick="{{ it.onToggle }}"
               aria-pressed="{{ it.isActive }}">
@@ -5696,30 +6350,28 @@
         </sc-if>
 
         <div class="su-cta-row">
-          <button type="button" class="ft-maps-btn" onClick="{{ openForm }}">
-            [ PANGE AEG KINNI · E-POST → ]
-          </button>
           <a href="tel:+37256702700" class="su-cta-phone">
             Tel. +372 567 02 700
           </a>
+          <button type="button" class="ft-maps-btn" onClick="{{ openForm }}">
+            PANGE AEG KINNI · E-POST
+          </button>
         </div>
-        <p class="su-foot">Diagnostika · Common Rail · TNVD · Tallinn</p>
+
       </div>
     </section>
 
 
     <!-- ══ Diagnostika Blokk — computer diagnostics ══ -->
-    <section class="dg" id="diagnostika" aria-labelledby="dg-heading">
+    <section class="dg motion-reveal" id="diagnostika" aria-labelledby="dg-heading">
       <div class="dg-inner">
         <div class="dg-grid">
           <div class="dg-media">
             <img class="dg-img" src="./img/IMG_DIAGNOST.JPG" alt="Auto kompuuterdiagnostika" width="960" height="720" />
           </div>
           <div class="dg-copy">
-            <span class="dg-mark" aria-hidden="true">
-              <span class="dg-mark-dot"></span>
-            </span>
-            <p class="dg-kicker">[ DIAGNOSTIKA / ELECTRONICS ]</p>
+
+
             <h2 class="dg-title" id="dg-heading">Auto<br />kompuuterdiagnostika</h2>
             <span class="dg-rule" aria-hidden="true"></span>
             <p class="dg-text">
@@ -5727,19 +6379,15 @@
               välja selgitada rikked. Kompuuterdiagnostika tulemuste põhjal võtab meister vastu otsuse
               selle kohta, millistele süsteemidele/sõlmedele on vajalik remont ja milline.
             </p>
-            <div class="dg-meta" aria-hidden="true">
-              <span>OBD / ECU</span>
-              <span>Common Rail</span>
-              <span>Live data</span>
-            </div>
+
             <div class="dg-actions">
-              <button type="button" class="ft-maps-btn" onClick="{{ openForm }}">
-                [ PANGE AEG KINNI → ]
-              </button>
               <a href="tel:+37256702700" class="dg-phone" aria-label="Call +372 567 02 700">
                 <span>Tel.</span>
                 <span>+372 567 02 700</span>
               </a>
+              <button type="button" class="ft-maps-btn" onClick="{{ openForm }}">
+                PANGE AEG KINNI
+              </button>
             </div>
           </div>
         </div>
@@ -5771,7 +6419,7 @@
               <rect width="100%" height="100%" fill="url(#hk-diamond-grid)"></rect>
             </svg>
           </div>
-          <span class="hk-kicker">[ Läbipaistvad hinnad ]</span>
+
           <h2 class="hk-title" id="hk-heading">Hinnakiri</h2>
           <p class="hk-lead">
             Kuna iga sõiduk ja mootor on erinev, soovitame täpse hinnapakkumise saamiseks võtta ühendust meie meistriga.
@@ -5810,254 +6458,203 @@
         </div>
 
         <div class="hk-actions">
-          <button type="button" class="ft-maps-btn" onClick="{{ openForm }}">[ KÜSI HINNAPAKKUMIST → ]</button>
           <a href="tel:+37256702700" class="hk-phone" aria-label="Call +372 567 02 700">
             <span>Tel.</span>
             <span>+372 567 02 700</span>
           </a>
+          <button type="button" class="ft-maps-btn" onClick="{{ openForm }}">KÜSI HINNAPAKKUMIST</button>
         </div>
       </div>
     </section> -->
 
 
-    <!-- ══ RequestForm popup ══ -->
+    <!-- ══ Request form popup: mini (email) OR full (hero detailed) ══ -->
     <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ false }}">
       <div class="rf-modal" role="dialog" aria-modal="true" aria-labelledby="rf-modal-title">
         <div class="rf-modal-backdrop" onClick="{{ closeForm }}" aria-hidden="true"></div>
-        <div class="rf-modal-panel">
-          <button type="button" class="rf-modal-close" onClick="{{ closeForm }}"
-            aria-label="Close form">&times;</button>
-          <section id="request-form" class="rf rf--modal">
-            <!-- TEXTURE-01 pattern defs (Patterns.dc.html) — geometry fixed -->
-            <svg class="rf-pattern-defs" aria-hidden="true" focusable="false">
-              <defs>
-                <pattern id="rf-diamond-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <rect x="10" y="10" width="20" height="20" fill="none" stroke="#171717" stroke-width="1.5"
-                    transform="rotate(45 20 20)"></rect>
-                </pattern>
-                <pattern id="rf-tick-rows" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-                  <line x1="0" y1="0" x2="0" y2="10" stroke="#171717" stroke-width="2"></line>
-                  <line x1="12" y1="0" x2="12" y2="6" stroke="#171717" stroke-width="1"></line>
-                </pattern>
-                <pattern id="rf-dot-matrix" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
-                  <circle cx="4" cy="4" r="2.5" fill="#E63946"></circle>
-                </pattern>
-                <pattern id="rf-crosshair" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-                  <line x1="0" y1="30" x2="60" y2="30" stroke="#d4d4d4" stroke-width="1"></line>
-                  <line x1="30" y1="0" x2="30" y2="60" stroke="#d4d4d4" stroke-width="1"></line>
-                  <circle cx="30" cy="30" r="3" fill="#171717"></circle>
-                </pattern>
-                <pattern id="rf-diagonal-hatch" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
-                  <line x1="0" y1="16" x2="16" y2="0" stroke="#171717" stroke-width="1.5"></line>
-                </pattern>
-                <pattern id="rf-frame-stack" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
-                  <rect x="4" y="4" width="40" height="40" fill="none" stroke="#171717" stroke-width="1"></rect>
-                  <rect x="14" y="14" width="20" height="20" fill="none" stroke="#E63946" stroke-width="1"></rect>
-                </pattern>
-                <!-- Dark surface variants -->
-                <pattern id="rf-hatch-dark" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
-                  <line x1="0" y1="16" x2="16" y2="0" stroke="#ffffff" stroke-width="1.5"></line>
-                </pattern>
-                <pattern id="rf-crosshair-dark" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-                  <line x1="0" y1="30" x2="60" y2="30" stroke="#ffffff" stroke-width="1"></line>
-                  <line x1="30" y1="0" x2="30" y2="60" stroke="#ffffff" stroke-width="1"></line>
-                  <circle cx="30" cy="30" r="3" fill="#E63946"></circle>
-                </pattern>
-                <pattern id="rf-ticks-dark" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-                  <line x1="0" y1="0" x2="0" y2="10" stroke="#ffffff" stroke-width="2"></line>
-                  <line x1="12" y1="0" x2="12" y2="6" stroke="#ffffff" stroke-width="1"></line>
-                </pattern>
-              </defs>
-            </svg>
+        <div class="rf-modal-panel {{ formPanelClass }}">
+          <button type="button" class="rf-modal-close" onClick="{{ closeForm }}" aria-label="Sulge">&times;</button>
 
-            <div class="rf-inner">
-
-              <!-- Precision tick rail -->
-              <div class="rf-ticks" aria-hidden="true">
-                <sc-for list="{{ ticks }}" as="t" hint-placeholder-count="28">
-                  <span class="rf-tick"></span>
-                </sc-for>
+          <!-- ── MINI: email only ── -->
+          <sc-if value="{{ isMiniForm }}" hint-placeholder-val="{{ true }}">
+            <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
+              <div class="rf-mini-success">
+                <h2 class="rf-mini-success-title" id="rf-modal-title">Aitäh!</h2>
+                <p class="rf-mini-success-text">Päring saadetud — võtame Sinuga ühendust ühe tööpäeva jooksul.</p>
+                <button type="button" class="rf-mini-dismiss" onClick="{{ closeForm }}">Sulge</button>
               </div>
+            </sc-if>
 
-              <!-- Top index bar -->
-              <!-- <div class="rf-index">
-                <span class="rf-index-left">[ 05 / SERVICE REQUEST ]</span>
-                <span class="rf-index-right">FORM · PRECISION QUOTE</span>
-              </div> -->
+            <sc-if value="{{ isFormVisible }}" hint-placeholder-val="{{ true }}">
+              <form class="rf-mini" id="request-form-mini" onSubmit="{{ handleSubmit }}">
+                <h2 class="rf-mini-title" id="rf-modal-title">Kiire hinnapäring</h2>
+                <p class="rf-mini-lead">
+                  Sisesta e-post, vajuta saatmisnupule — võtame Sinuga ühendust hinnapakkumisega ühe tööpäeva jooksul.
+                </p>
 
-              <!-- ══ HEADER ══ -->
-              <header class="rf-header">
-                <div class="rf-header-row">
-                  <div class="rf-header-copy">
-                    <!-- <span class="rf-kicker">[ HINNAPAKKUMINE / ЦЕНОВОЕ ПРЕДЛОЖЕНИЕ ]</span> -->
-                    <h2 class="rf-title" id="rf-modal-title">Запрос ценового предложения</h2>
-                    <p class="rf-lead">Заполните форму ниже, чтобы отправить запрос на расчет стоимости. Мы обычно
-                      отвечаем на обращения в течение одного рабочего дня. Пожалуйста, заполните все обязательные поля
-                      (отмечены *), чтобы мы могли подготовить для Вас максимально точное ценовое предложение. Укажите
-                      номер авто или опишите симптомы для быстрой оценки стоимости.</p>
-                  </div>
-                  <!-- <div class="rf-header-meta">
-                    <span class="rf-loc">EST. PRECISION — TALLINN</span>
-                    <span class="rf-loc-rule" aria-hidden="true"></span>
-                    <span class="rf-meta-line">RESPONSE &lt; 30 MIN</span>
-                  </div> -->
-                </div>
-              </header>
+                <label class="rf-mini-label" for="rf-email-mini">E-post*</label>
+                <input id="rf-email-mini" class="rf-mini-input" style="border-radius: 0;" type="email" name="email"
+                  value="{{ email }}" onChange="{{ onEmailChange }}" placeholder="nimi@ettevote.ee"
+                  required="{{ true }}" autocomplete="email" inputmode="email" />
 
+                <sc-if value="{{ isError }}" hint-placeholder-val="{{ false }}">
+                  <span class="rf-mini-error">Palun sisesta korrektne e-posti aadress.</span>
+                </sc-if>
 
+                <button type="submit" class="rf-mini-submit" style="border-radius: 0;" disabled="{{ isSubmitting }}">
+                  <svg class="rf-mini-submit-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.5 11.5 L20 4 L13 20.5 L11 13 L3.5 11.5 Z" stroke="currentColor" stroke-width="1.7"
+                      stroke-linejoin="round" stroke-linecap="round" />
+                    <path d="M11 13 L20 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                  </svg>
+                  <span>{{ submitLabel }}</span>
+                </button>
 
-              <!-- Success state -->
-              <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
-                <div class="rf-success">
-                  <div class="rf-success-pat" aria-hidden="true">
-                    <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
-                      <rect width="100%" height="100%" fill="url(#rf-hatch-dark)"></rect>
-                    </svg>
-                  </div>
-                  <div class="rf-success-pat rf-success-pat--cross" aria-hidden="true">
-                    <svg class="rf-fill" width="100%" height="100%" preserveAspectRatio="none">
-                      <rect width="100%" height="100%" fill="url(#rf-crosshair-dark)"></rect>
-                    </svg>
-                  </div>
-                  <span class="rf-cta-corner rf-cta-corner--tl" aria-hidden="true"></span>
-                  <span class="rf-cta-corner rf-cta-corner--br" aria-hidden="true"></span>
-                  <span class="rf-success-code">[ OK · 200 ]</span>
-                  <p class="rf-success-text">PÄRING SAADETUD! VÕTAME ÜHENDUST 30 MIN JOOKSUL<br /><span
-                      class="rf-success-ru">ЗАПРОС ОТПРАВЛЕН — СВЯЖЕМСЯ В ТЕЧЕНИЕ 30 МИНУТ</span></p>
-                </div>
-              </sc-if>
+                <button type="button" class="rf-mini-dismiss" onClick="{{ closeForm }}">Sulge</button>
+              </form>
+            </sc-if>
+          </sc-if>
 
-              <sc-if value="{{ isFormVisible }}" hint-placeholder-val="{{ true }}">
-                <form class="rf-form" onSubmit="{{ handleSubmit }}">
-
-                  <!-- ── 01 PERSONAL DATA ── -->
-                  <section class="rf-panel">
-                    <div class="rf-panel-body">
-                      <div class="rf-section-title">
-                        <span class="rf-panel-name">Личные данные</span>
-                      </div>
-
-                      <div class="rf-grid-2col">
-                        <div class="rf-field">
-                          <label class="rf-label" for="rf-name">Имя и фамилия*</label>
-                          <input id="rf-name" class="rf-input" value="{{ name }}" onChange="{{ onNameChange }}"
-                            required="{{ true }}" autocomplete="name" />
-                        </div>
-                        <div class="rf-field">
-                          <label class="rf-label" for="rf-email">Эл. адрес*</label>
-                          <input id="rf-email" class="rf-input" type="email" value="{{ email }}"
-                            onChange="{{ onEmailChange }}" required="{{ true }}" autocomplete="email" />
-                        </div>
-                        <div class="rf-field">
-                          <label class="rf-label" for="rf-phone">Телефон*</label>
-                          <input id="rf-phone" class="rf-input" type="tel" value="{{ phone }}"
-                            onChange="{{ onPhoneChange }}" required="{{ true }}" autocomplete="tel" />
-                        </div>
-                      </div>
-                    </div>
-                  </section>
-
-                  <!-- ── 02 VEHICLE DATA ── -->
-                  <section class="rf-panel">
-                    <div class="rf-panel-body">
-                      <div class="rf-section-title">
-                        <span class="rf-panel-name">Данные автомобиля</span>
-                      </div>
-
-                      <div class="rf-grid-2col">
-                        <div class="rf-field">
-                          <label class="rf-label" for="rf-make">Марка и модель*</label>
-                          <input id="rf-make" class="rf-input" value="{{ make }}" onChange="{{ onMakeChange }}"
-                            required="{{ true }}" />
-                        </div>
-
-                        <div class="rf-field">
-                          <label class="rf-label" for="rf-year">Год выпуска*</label>
-                          <input id="rf-year" class="rf-input" value="{{ year }}" onChange="{{ onYearChange }}"
-                            inputmode="numeric" required="{{ true }}" />
-                        </div>
-
-                        <div class="rf-field">
-                          <label class="rf-label" for="rf-displacement">Объём*</label>
-                          <input id="rf-displacement" class="rf-input" value="{{ displacement }}"
-                            onChange="{{ onDisplacementChange }}" required="{{ true }}" />
-                        </div>
-
-                        <div class="rf-field">
-                          <label class="rf-label" for="rf-power">Мощность*</label>
-                          <input id="rf-power" class="rf-input" value="{{ power }}" onChange="{{ onPowerChange }}"
-                            required="{{ true }}" />
-                        </div>
-
-                        <div class="rf-field">
-                          <label class="rf-label" for="rf-vin">Идентификационный код</label>
-                          <input id="rf-vin" class="rf-input" value="{{ vin }}" onChange="{{ onVinChange }}"
-                            autocomplete="off" spellcheck="false" />
-                        </div>
-
-                        <div class="rf-field">
-                          <label class="rf-label" for="rf-plate">Рег. номер*</label>
-                          <input id="rf-plate" class="rf-input" value="{{ plate }}" onChange="{{ onPlateChange }}"
-                            autocomplete="off" spellcheck="false" required="{{ true }}" />
-                        </div>
-                      </div>
-                    </div>
-                  </section>
-
-                  <!-- ── 03 PROBLEM DESCRIPTION ── -->
-                  <section class="rf-panel">
-                    <div class="rf-panel-body">
-                      <div class="rf-section-title">
-                        <span class="rf-panel-name">Описание проблемы</span>
-                      </div>
-
-                      <div class="rf-field" style="flex:1;">
-                        <label class="rf-label" for="rf-desc">Опишите здесь более подробно свою проблему*</label>
-                        <textarea id="rf-desc" class="rf-input rf-input--area" value="{{ description }}"
-                          onChange="{{ onDescriptionChange }}" rows="5" required="{{ true }}"></textarea>
-                      </div>
-                    </div>
-                  </section>
-
-                  <!-- ── SUBMIT BAR ── -->
-                  <div class="rf-submit">
-                    <div class="rf-submit-info">
-                      <p class="rf-submit-pref-title">Свяжитесь с нами:</p>
-                      <div class="rf-radio-group">
-                        <label class="rf-radio-label">
-                          <input type="radio" name="contactPref" value="email" checked />
-                          По электронной почте
-                        </label>
-                        <label class="rf-radio-label">
-                          <input type="radio" name="contactPref" value="phone" />
-                          По телефону
-                        </label>
-                      </div>
-                      <p class="rf-submit-note">Обязательные поля к заполнению отмечены*.</p>
-                    </div>
-
-                    <div class="rf-submit-actions">
-                      <button type="submit" class="ft-maps-btn" disabled="{{ isSubmitting }}">
-                        {{ submitLabel }}
-                      </button>
-                      <sc-if value="{{ isError }}" hint-placeholder-val="{{ false }}">
-                        <span class="rf-error">[ ERROR — PALUN TÄITKE NÕUTUD VÄLJAD ]</span>
-                      </sc-if>
+          <!-- ── FULL: detailed quote form (hero) ── -->
+          <sc-if value="{{ isFullForm }}" hint-placeholder-val="{{ false }}">
+            <section id="request-form" class="rf rf--modal">
+              <div class="rf-inner">
+                <header class="rf-header">
+                  <div class="rf-header-row">
+                    <div class="rf-header-copy">
+                      <h2 class="rf-title" id="rf-modal-title">Запрос ценового предложения</h2>
+                      <p class="rf-lead">Заполните форму ниже, чтобы отправить запрос на расчет стоимости. Мы обычно
+                        отвечаем на обращения в течение одного рабочего дня. Пожалуйста, заполните все обязательные поля
+                        (отмечены *), чтобы мы могли подготовить для Вас максимально точное ценовое предложение. Укажите
+                        номер авто или опишите симптомы для быстной оценки стоимости.</p>
                     </div>
                   </div>
+                </header>
 
-                </form>
-              </sc-if>
+                <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
+                  <div class="rf-success">
+                    <span class="rf-success-code">[ OK · 200 ]</span>
+                    <p class="rf-success-text">PÄRING SAADETUD! VÕTAME ÜHENDUST 30 MIN JOOKSUL<br /><span
+                        class="rf-success-ru">ЗАПРОС ОТПРАВЛЕН — СВЯЖЕМСЯ В ТЕЧЕНИЕ 30 МИНУТ</span></p>
+                  </div>
+                </sc-if>
 
-              <!-- Bottom tick rail -->
-              <div class="rf-ticks rf-ticks--bottom" aria-hidden="true">
-                <sc-for list="{{ ticks }}" as="t" hint-placeholder-count="28">
-                  <span class="rf-tick"></span>
-                </sc-for>
+                <sc-if value="{{ isFormVisible }}" hint-placeholder-val="{{ true }}">
+                  <form class="rf-form" onSubmit="{{ handleSubmit }}">
+                    <section class="rf-panel">
+                      <div class="rf-panel-body">
+                        <div class="rf-section-title">
+                          <span class="rf-panel-name">Личные данные</span>
+                          <p class="rf-panel-desc"
+                            style="font-size: 13px; color: #666; margin-top: 4px; margin-bottom: 0;">Укажите контактные
+                            данные</p>
+                        </div>
+                        <div class="rf-grid-2col">
+                          <div class="rf-field">
+                            <label class="rf-label" for="rf-name">Имя и фамилия</label>
+                            <input id="rf-name" class="rf-input" value="{{ name }}" onChange="{{ onNameChange }}"
+                              autocomplete="name" />
+                          </div>
+                          <div class="rf-field">
+                            <label class="rf-label" for="rf-email-full">Эл. адрес</label>
+                            <input id="rf-email-full" class="rf-input" type="email" value="{{ email }}"
+                              onChange="{{ onEmailChange }}" autocomplete="email" />
+                          </div>
+                          <div class="rf-field">
+                            <label class="rf-label" for="rf-phone">Телефон</label>
+                            <input id="rf-phone" class="rf-input" type="tel" value="{{ phone }}"
+                              onChange="{{ onPhoneChange }}" autocomplete="tel" />
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+
+                    <section class="rf-panel">
+                      <div class="rf-panel-body">
+                        <div class="rf-section-title">
+                          <span class="rf-panel-name">Данные автомобиля</span>
+                          <p class="rf-panel-desc"
+                            style="font-size: 13px; color: #666; margin-top: 4px; margin-bottom: 0;">Пожалуйста укажите
+                            точные данные</p>
+                        </div>
+                        <div class="rf-grid-2col" style="margin-bottom: 16px;">
+                          <div class="rf-field">
+                            <label class="rf-label" for="rf-plate">Рег. номер</label>
+                            <input id="rf-plate" class="rf-input" value="{{ plate }}" onChange="{{ onPlateChange }}"
+                              autocomplete="off" spellcheck="false" />
+                          </div>
+                        </div>
+                        <div class="rf-section-title" style="margin-top: 32px;">
+                          <span class="rf-panel-name">Данные из техпаспорта</span>
+                          <p class="rf-panel-desc"
+                            style="font-size: 13px; color: #666; margin-top: 4px; margin-bottom: 0;">Если автомобиль не
+                            имеет регистрационного номера в автомобиле, укажите данные автомобиля</p>
+                        </div>
+
+                        <div class="rf-grid-2col">
+                          <div class="rf-field">
+                            <label class="rf-label" for="rf-make">Марка и модель</label>
+                            <input id="rf-make" class="rf-input" value="{{ make }}" onChange="{{ onMakeChange }}" />
+                          </div>
+                          <div class="rf-field">
+                            <label class="rf-label" for="rf-year">Год выпуска</label>
+                            <input id="rf-year" class="rf-input" value="{{ year }}" onChange="{{ onYearChange }}"
+                              inputmode="numeric" />
+                          </div>
+                          <div class="rf-field">
+                            <label class="rf-label" for="rf-displacement">Объём</label>
+                            <input id="rf-displacement" class="rf-input" value="{{ displacement }}"
+                              onChange="{{ onDisplacementChange }}" />
+                          </div>
+                          <div class="rf-field">
+                            <label class="rf-label" for="rf-power">Мощность</label>
+                            <input id="rf-power" class="rf-input" value="{{ power }}" onChange="{{ onPowerChange }}" />
+                          </div>
+                          <div class="rf-field">
+                            <label class="rf-label" for="rf-vin">Идентификационный код</label>
+                            <input id="rf-vin" class="rf-input" value="{{ vin }}" onChange="{{ onVinChange }}"
+                              autocomplete="off" spellcheck="false" />
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+
+                    <section class="rf-panel">
+                      <div class="rf-panel-body">
+                        <div class="rf-section-title">
+                          <span class="rf-panel-name">Описание проблемы</span>
+                          <p class="rf-panel-desc" style="font-size: 13px; color: #666; margin-top: 4px; margin-bottom: 0;">Укажите желаемые работы или подробно опишите проблемы</p>
+                        </div>
+                        <div class="rf-field" style="flex:1;">
+                          <textarea id="rf-desc" class="rf-input rf-input--area" value="{{ description }}"
+                            onChange="{{ onDescriptionChange }}" rows="5"></textarea>
+                        </div>
+                      </div>
+                    </section>
+
+                    <div class="rf-submit"
+                      style="display: flex; width: 100%; padding-top: 24px; margin-top: 24px; border-top: 1px solid var(--rf-line); box-sizing: border-box;">
+                      <div class="rf-submit-actions"
+                        style="display: flex; flex-direction: row; gap: 16px; align-items: stretch; width: 100%;">
+                        <a href="tel:+37256702700" class="su-cta-phone"
+                          style="flex: 1; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; height: 46px; padding: 0 24px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: 1px solid #171717; background: #ffffff; color: #171717; margin: 0;">Tel.
+                          +372 567 02 700</a>
+                        <button type="submit" class="ft-maps-btn" disabled="{{ isSubmitting }}"
+                          style="flex: 1; min-width: 0; margin: 0;">
+                          {{ submitLabel }}
+                        </button>
+                        <sc-if value="{{ isError }}" hint-placeholder-val="{{ false }}">
+                          <span class="rf-error" style="position: absolute; bottom: -20px;">[ ERROR — PALUN TÄITKE
+                            NÕUTUD VÄLJAD ]</span>
+                        </sc-if>
+                      </div>
+                    </div>
+                  </form>
+                </sc-if>
               </div>
-
-            </div>
-          </section>
+            </section>
+          </sc-if>
         </div>
       </div>
     </sc-if>
@@ -6074,7 +6671,7 @@
 
           <section class="hk-block" id="hinnakiri" aria-labelledby="hk-heading">
             <div class="hk-header">
-              <span class="hk-kicker">[ LÄBIPAISTVAD HINNAD ]</span>
+
               <h2 class="hk-title" id="hk-heading">HINNAKIRI</h2>
               <div class="hk-rule" aria-hidden="true"></div>
               <p class="hk-lead">Kuna iga sõiduk ja mootor on erinev, soovitame täpse hinnapakkumise saamiseks võtta
@@ -6112,7 +6709,7 @@
     </sc-if>
 
     <!-- ══ EquipmentTeamB2B.dc.html ══ -->
-    <section class="etb" id="seadmed" aria-labelledby="etb-heading">
+    <section class="etb motion-reveal" id="seadmed" aria-labelledby="etb-heading">
 
       <!-- TEXTURE-01 registry — geometry from Patterns.dc.html; light ink, whisper weight -->
       <svg class="etb-pattern-defs" aria-hidden="true" focusable="false">
@@ -6167,7 +6764,7 @@
               <rect width="100%" height="100%" fill="url(#etb-diamond-grid)"></rect>
             </svg>
           </div>
-          <span class="etb-kicker">[ SEADMED, MEESKOND JA B2B ]</span>
+
           <h2 class="etb-title" id="etb-heading">
             SEADMED JA MEESKOND
           </h2>
@@ -6188,7 +6785,7 @@
             <span class="etb-block-title">SEADMED</span>
             <!-- <span class="etb-block-meta">[ 03 ÜHIKUT · LABORIKLASS ]</span> -->
           </div>
-          <div class="etb-grid etb-grid--equip equip-grid">
+          <div class="etb-grid etb-grid--equip equip-grid motion-stagger">
             <sc-for list="{{ equipment }}" as="eq" hint-placeholder-count="3">
               <article class="etb-card">
                 <span class="etb-card-corner etb-card-corner--tl" aria-hidden="true"></span>
@@ -6229,27 +6826,84 @@
           </div>
         </div>
 
-        <!-- Personal / team — all copy above photo; clean image, no overlay -->
-        <div class="etb-block etb-personal" style="padding-top:32px;" id="personal" aria-labelledby="personal-heading">
-          <div class="etb-personal-head">
-            <!-- <span class="etb-personal-kicker">[ MEESKOND ]</span>
-            <h3 class="etb-personal-title" id="personal-heading">Personal</h3> -->
-            <div class="etb-personal-copy">
-              <h4 class="etb-personal-headline">Diplomeeritud spetsialistid</h4>
-              <div class="etb-personal-rule" aria-hidden="true"></div>
-              <p class="etb-personal-text">Meie spetsialistid on läbinud koolituse.</p>
-              <p class="etb-personal-text">Bosch sertifikaadid kinnitavad kõrget kvalifikatsiooni.</p>
-              <div class="etb-personal-meta">
-                <span>Bosch certified</span>
-                <span>Common Rail</span>
-                <span>TNVD</span>
-              </div>
-            </div>
-          </div>
-
+        <!-- Personal / team — full-bleed photo, type + SVG accents integrated into image -->
+        <div class="etb-block etb-personal motion-reveal" style="padding-top:32px;" id="personal"
+          aria-labelledby="personal-heading">
           <div class="etb-personal-banner">
             <img class="etb-personal-img" src="./ad-img-stuff-4.jpg" alt="Auto Diislikeskus meeskond" width="1400"
               height="700" />
+
+            <div class="etb-personal-shade" aria-hidden="true"></div>
+
+            <div class="etb-personal-decor" aria-hidden="true">
+              <!-- Soft red circle behind type (accent layer, low opacity) -->
+              <svg class="etb-personal-decor-blob" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="110" cy="140" r="108" fill="#EC0000" fill-opacity="0.55" />
+                <circle cx="110" cy="140" r="108" fill="none" stroke="#EC0000" stroke-opacity="0.35"
+                  stroke-width="1.5" />
+              </svg>
+              <!-- Thin red corner / diagonal — top-left accent like reference -->
+              <svg class="etb-personal-decor-corner" viewBox="0 0 220 180" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0 H148" stroke="#EC0000" stroke-width="3" />
+                <path d="M0 0 V118" stroke="#EC0000" stroke-width="3" />
+                <path d="M0 0 L92 92" stroke="#EC0000" stroke-width="1.5" stroke-opacity="0.85" />
+                <path d="M18 0 L18 42" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.35" />
+              </svg>
+              <!-- Bottom-right slash accent -->
+              <svg class="etb-personal-decor-slash" viewBox="0 0 160 140" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M160 140 H48" stroke="#EC0000" stroke-width="2.5" />
+                <path d="M160 140 V38" stroke="#EC0000" stroke-width="2.5" />
+                <path d="M160 140 L78 58" stroke="#EC0000" stroke-width="1.25" stroke-opacity="0.7" />
+              </svg>
+            </div>
+
+            <div class="etb-personal-overlay">
+              <div class="etb-personal-copy">
+                <h3 class="etb-personal-headline" id="personal-heading">
+                  <span class="etb-personal-check" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.75" />
+                      <path d="M7.2 12.4 L10.4 15.5 L16.8 8.6" stroke="currentColor" stroke-width="2.1"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                  <span class="etb-personal-headline-text">Diplomeeritud spetsialistid</span>
+                </h3>
+                <p class="etb-personal-text">Meie spetsialistid on läbinud koolituse.</p>
+                <p class="etb-personal-text">Bosch sertifikaadid kinnitavad kõrget kvalifikatsiooni.</p>
+                <div class="etb-personal-badges">
+                  <span class="etb-personal-badge">
+                    <span class="etb-personal-badge-icon" aria-hidden="true">
+                      <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.2 6.2 L4.7 8.6 L9.8 3.4" stroke="currentColor" stroke-width="1.7"
+                          stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                    Bosch certified
+                  </span>
+                  <span class="etb-personal-badge">
+                    <span class="etb-personal-badge-icon" aria-hidden="true">
+                      <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.2 6.2 L4.7 8.6 L9.8 3.4" stroke="currentColor" stroke-width="1.7"
+                          stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                    Common Rail
+                  </span>
+                  <span class="etb-personal-badge">
+                    <span class="etb-personal-badge-icon" aria-hidden="true">
+                      <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.2 6.2 L4.7 8.6 L9.8 3.4" stroke="currentColor" stroke-width="1.7"
+                          stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                    TNVD
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -6262,8 +6916,8 @@
           </div>
         </div>
 
-        <!-- B2B — equipment bg; title → 3 points in a row → one CTA -->
-        <aside class="etb-b2b" aria-labelledby="etb-b2b-heading">
+        <!-- B2B — neutral dark grade; restrained type + hairlines; quiet CTA -->
+        <aside class="etb-b2b motion-reveal" aria-labelledby="etb-b2b-heading">
           <div class="etb-b2b-bg" aria-hidden="true">
             <img class="etb-b2b-img" src="./ad-img-2.jpg" alt="" width="1400" height="600" />
             <div class="etb-b2b-tint"></div>
@@ -6272,7 +6926,7 @@
             <h3 class="etb-b2b-title" id="etb-b2b-heading">
               Pakkumised autoremondifirmadele
             </h3>
-
+            <div class="etb-b2b-rule" aria-hidden="true"></div>
             <a href="https://pihustiremont.ee/adiesel.pdf" target="_blank" rel="noopener noreferrer"
               class="etb-btn-ghost">Rohkem teavet</a>
           </div>
@@ -6285,7 +6939,7 @@
 
 
     <!-- ══ Footer.dc.html ══ -->
-    <footer class="ft-premium" id="kontakt">
+    <footer class="ft-premium motion-reveal" id="kontakt">
 
       <!-- TEXTURE-01 pattern registry (from Patterns.dc.html) — dark-theme stroke values -->
       <svg class="ft-pattern-defs" aria-hidden="true" focusable="false">
@@ -6344,90 +6998,41 @@
           </sc-for>
         </div>
 
-        <!-- Brand lockup + address -->
-        <div class="ft-brand-row">
-          <div class="ft-brand">
-            <div class="ft-brand-text">
-              <h2 class="ft-brand-name">AUTO DIISLIKESKUS</h2>
-              <span class="ft-brand-sub">DIISELMOOTORITE DIAGNOSTIKA- JA REMONDIKESKUS</span>
-              <span class="ft-brand-rule" aria-hidden="true"></span>
+        <!-- Map left (~48%) + address & contacts right -->
+        <div class="ft-main">
+          <div class="ft-map-grid map-grid">
+            <div class="ft-map-cell">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d507.0133513142244!2d24.704905181993897!3d59.44886073191653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x469293866c8cfc59%3A0xea1d19e1c6322cbd!2sPaavli%20tn%204%2F1%2C%2010412%20Tallinn!5e0!3m2!1sen!2see!4v1785347591408!5m2!1sen!2see"
+                title="Paavli 4, 10412 Tallinn — AUTO DIISLIKESKUS" width="100%" height="450" allowfullscreen=""
+                loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
           </div>
 
-          <div class="ft-loc-head">
-            <h3 class="ft-address">Paavli 4, Tallinn, Eesti 10412</h3>
-          </div>
-        </div>
+          <div class="ft-info">
+            <h2 class="ft-info-address">AUTO DIISLIKESKUS, Paavli 4, Tallinn, Eesti 10412</h2>
+            <span class="ft-info-rule" aria-hidden="true"></span>
 
-        <!-- Full-width interactive Google Maps iframe embed -->
-        <div class="ft-map-grid map-grid" style="position:relative;">
-          <span class="ft-sight ft-sight--tl" aria-hidden="true" style="pointer-events:none;z-index:2;">
-            <span class="ft-sight-arm ft-sight-h"></span>
-            <span class="ft-sight-arm ft-sight-v"></span>
-            <span class="ft-sight-arm ft-sight-dot"></span>
-            <span class="ft-sight-arm ft-sight-notch"></span>
-          </span>
-          <span class="ft-sight ft-sight--br" aria-hidden="true" style="pointer-events:none;z-index:2;">
-            <span class="ft-sight-arm ft-sight-h"></span>
-            <span class="ft-sight-arm ft-sight-v"></span>
-            <span class="ft-sight-arm ft-sight-plate"></span>
-            <span class="ft-sight-tick ft-sight-tick-1"></span>
-            <span class="ft-sight-tick ft-sight-tick-2"></span>
-            <span class="ft-sight-tick ft-sight-tick-3"></span>
-            <span class="ft-sight-tick ft-sight-tick-4"></span>
-          </span>
-
-          <div class="ft-map-cell">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d507.0133513142244!2d24.704905181993897!3d59.44886073191653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x469293866c8cfc59%3A0xea1d19e1c6322cbd!2sPaavli%20tn%204%2F1%2C%2010412%20Tallinn!5e0!3m2!1sen!2see!4v1785347591408!5m2!1sen!2see"
-              title="Paavli 4, 10412 Tallinn — AUTO DIISLIKESKUS" width="100%" height="450"
-              style="border:0;display:block;width:100%;height:100%;position:absolute;inset:0;pointer-events:auto;"
-              allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-          </div>
-        </div>
-
-        <div class="ft-contact-grid contact-grid">
-          <div class="ft-col">
-            <svg class="ft-fill-pattern" aria-hidden="true" preserveAspectRatio="none" style="opacity:0.08;">
-              <rect width="100%" height="100%" fill="url(#ft-diagonal-hatch)"></rect>
-            </svg>
-            <div class="ft-col-head">
-              <span class="ft-col-label">{{ labelContacts }}</span>
+            <div class="ft-contact-grid contact-grid">
+              <div class="ft-col">
+                <a href="tel:+37256702700" class="ft-phone">+372 567 02 700</a>
+                <a href="tel:+37256653772" class="ft-phone">+372 566 53 772</a>
+                <a href="mailto:autodiislikeskus@gmail.com" class="ft-email">autodiislikeskus@gmail.com</a>
+              </div>
+              <div class="ft-col">
+                <span class="ft-hours-main">{{ hoursMain }}</span>
+                <span class="ft-hours-sub">{{ hoursSub }}</span>
+              </div>
+              <div class="ft-col">
+                <span class="ft-company">AUTO DIISLIKESKUS OÜ</span>
+                <span class="ft-reg">{{ regNr }}</span>
+              </div>
             </div>
-            <a href="tel:+37256702700" class="ft-phone">+372 567 02 700</a>
-            <a href="tel:+37256653772" class="ft-phone">+372 566 53 772</a>
-            <a href="mailto:autodiislikeskus@gmail.com" class="ft-email">autodiislikeskus@gmail.com</a>
-          </div>
-          <div class="ft-col">
-            <svg class="ft-fill-pattern" aria-hidden="true" preserveAspectRatio="none" style="opacity:0.07;">
-              <rect width="100%" height="100%" fill="url(#ft-tick-rows)"></rect>
-            </svg>
-            <div class="ft-col-head">
-              <span class="ft-col-label">{{ labelHours }}</span>
-            </div>
-            <span class="ft-hours-main">{{ hoursMain }}</span>
-            <span class="ft-hours-sub">{{ hoursSub }}</span>
-          </div>
-          <div class="ft-col">
-            <svg class="ft-fill-pattern" aria-hidden="true" preserveAspectRatio="none" style="opacity:0.08;">
-              <rect width="100%" height="100%" fill="url(#ft-frame-stack)"></rect>
-            </svg>
-            <div class="ft-col-head">
-              <span class="ft-col-label">{{ labelCompany }}</span>
-            </div>
-            <!-- Company name fixed (RU form) for all locales -->
-            <span class="ft-company">AUTO DIISLIKESKUS OÜ</span>
-            <span class="ft-reg">{{ regNr }}</span>
-            <span class="ft-reg">{{ vatNr }}</span>
           </div>
         </div>
 
         <div class="ft-bottom">
           <span class="ft-micro">{{ copyright }}</span>
-          <div class="ft-bottom-links">
-            <a href="#privacy" class="ft-micro-link">{{ privacy }}</a>
-            <a href="#terms" class="ft-micro-link">{{ terms }}</a>
-          </div>
           <div class="ft-bottom-right">
             <div class="ft-lang" role="group" aria-label="Language">
               <button type="button" onClick="{{ setLangEE }}" class="{{ langClassEE }}">EE</button>
@@ -6500,9 +7105,27 @@ class Component extends DCLogic {
 
   openPriceListModal = (e) => {
     if (e && e.preventDefault) e.preventDefault();
+    this._priceModalClosing = false;
     this.setState({ isPriceListModalOpen: true, menuOpen: false });
+    try { document.body.style.overflow = 'hidden'; } catch (_) {}
   };
-  closePriceListModal = () => this.setState({ isPriceListModalOpen: false });
+  closePriceListModal = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    if (this._priceModalClosing) return;
+    const modal = document.querySelector('.hk-modal');
+    if (modal && !this.prefersReducedMotion()) {
+      this._priceModalClosing = true;
+      modal.classList.add('is-closing');
+      window.setTimeout(() => {
+        this._priceModalClosing = false;
+        this.setState({ isPriceListModalOpen: false });
+        try { document.body.style.overflow = ''; } catch (_) {}
+      }, 180);
+      return;
+    }
+    this.setState({ isPriceListModalOpen: false });
+    try { document.body.style.overflow = ''; } catch (_) {}
+  };
 
   /* renderVals → unified */
 
@@ -6630,34 +7253,65 @@ class Component extends DCLogic {
   handleSubmit = (e) => {
     e.preventDefault();
     const s = this.state;
-    const hasVehicleInfo =
-      s.plate.trim() ||
-      s.make.trim() ||
-      s.vin.trim() ||
-      (s.year.trim() && (s.displacement.trim() || s.power.trim()));
-    if (!hasVehicleInfo || !s.description.trim() || !s.name.trim() || !s.phone.trim() || !s.email.trim()) {
+    const mode = s.formMode === 'full' ? 'full' : 'mini';
+
+    if (mode === 'full') {
+      const hasVehicleInfo =
+        (s.plate || '').trim() ||
+        (s.make || '').trim() ||
+        (s.vin || '').trim() ||
+        ((s.year || '').trim() && ((s.displacement || '').trim() || (s.power || '').trim()));
+      if (
+        !hasVehicleInfo ||
+        !(s.description || '').trim() ||
+        !(s.name || '').trim() ||
+        !(s.phone || '').trim() ||
+        !(s.email || '').trim()
+      ) {
+        this.setState({ isError: true });
+        return;
+      }
+      this.setState({ isSubmitting: true, isError: false });
+      const payload = {
+        type: 'full-quote-request',
+        plate: s.plate,
+        make: s.make,
+        year: s.year,
+        displacement: s.displacement,
+        power: s.power,
+        vin: s.vin,
+        description: s.description,
+        name: s.name,
+        phone: s.phone,
+        email: s.email,
+        timestamp: new Date().toISOString(),
+        recipient: 'autodiislikeskus@gmail.com',
+      };
+      setTimeout(() => {
+        console.log('Full quote request payload', payload);
+        this.setState({ isSubmitting: false, isSuccess: true });
+      }, 900);
+      return;
+    }
+
+    // Mini email capture
+    const email = (s.email || '').trim();
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!emailOk) {
       this.setState({ isError: true });
       return;
     }
     this.setState({ isSubmitting: true, isError: false });
     const payload = {
-      plate: s.plate,
-      make: s.make,
-      year: s.year,
-      displacement: s.displacement,
-      power: s.power,
-      vin: s.vin,
-      description: s.description,
-      name: s.name,
-      phone: s.phone,
-      email: s.email,
+      email,
+      type: 'quick-email-request',
       timestamp: new Date().toISOString(),
       recipient: 'autodiislikeskus@gmail.com',
     };
     setTimeout(() => {
-      console.log('Service request payload', payload);
+      console.log('Quick email request payload', payload);
       this.setState({ isSubmitting: false, isSuccess: true });
-    }, 900);
+    }, 700);
   };
 
   /* renderVals → unified */
@@ -6784,7 +7438,7 @@ class Component extends DCLogic {
       metaGeo: "[ ЭСТОНИЯ / ТАЛЛИН — N59°26' E24°45' ]",
       metaBrand: '[ TEXTURE-01 · AUTO DIISLIKESKUS ]',
       locTag: '[ 04 / ЛОКАЦИЯ И КОНТАКТЫ ]',
-      mapsBtn: '[ ОТКРЫТЬ В GOOGLE MAPS → ]',
+      mapsBtn: 'ОТКРЫТЬ В GOOGLE MAPS',
       labelContacts: '[ КОНТАКТЫ ]',
       labelHours: '[ ВРЕМЯ РАБОТЫ ]',
       hoursMain: 'ПН–ПТ: 09:00 – 18:00',
@@ -6796,13 +7450,16 @@ class Component extends DCLogic {
       privacy: 'Политика конфиденциальности',
       terms: 'Условия использования',
       toTop: 'Наверх',
+      phCtaTitle: 'Запишитесь на диагностику',
+      phCtaHint: 'Проверим Common Rail / TNVD и подготовим предложение',
+      phCtaBtn: 'Записаться',
     },
     EE: {
       brandCode: 'DIISELMOOTORITE DIAGNOSTIKA- JA REMONDIKESKUS',
       metaGeo: "[ Diiselautode remontimise autoteenindus Tallinnas ]",
       metaBrand: '[ Auto Diislikeskus OÜ ]',
       locTag: '[ LOKATSIOON JA KONTAKTID ]',
-      mapsBtn: '[ AVA GOOGLE MAPSIS → ]',
+      mapsBtn: 'AVA GOOGLE MAPSIS',
       labelContacts: '[ KONTAKTID ]',
       labelHours: '[ TÖÖAEG ]',
       hoursMain: 'E–R: 09:00 – 18:00',
@@ -6814,13 +7471,16 @@ class Component extends DCLogic {
       privacy: 'Isikuandmete kaitse',
       terms: 'Kasutustingimused',
       toTop: 'Tagasi üles',
+      phCtaTitle: 'Broneerige diagnostika',
+      phCtaHint: 'Kontrollime Common Rail / TNVD ja valmistame pakkumise',
+      phCtaBtn: 'Broneeri aeg',
     },
     EN: {
       brandCode: 'DIISELMOOTORITE DIAGNOSTIKA- JA REMONDIKESKUS',
       metaGeo: "[ ESTONIA / TALLINN — N59°26' E24°45' ]",
       metaBrand: '[ TEXTURE-01 · AUTO DIISLIKESKUS ]',
       locTag: '[ 04 / LOCATION & CONTACTS ]',
-      mapsBtn: '[ OPEN IN GOOGLE MAPS → ]',
+      mapsBtn: 'OPEN IN GOOGLE MAPS',
       labelContacts: '[ CONTACTS ]',
       labelHours: '[ OPENING HOURS ]',
       hoursMain: 'MON–FRI: 09:00 – 18:00',
@@ -6832,13 +7492,16 @@ class Component extends DCLogic {
       privacy: 'Privacy Policy',
       terms: 'Terms of Service',
       toTop: 'Back to top',
+      phCtaTitle: 'Book a diagnostics',
+      phCtaHint: 'We check Common Rail / TNVD and prepare a quote',
+      phCtaBtn: 'Book now',
     },
     FI: {
       brandCode: 'DIISELMOOTORITE DIAGNOSTIKA- JA REMONDIKESKUS',
       metaGeo: "[ VIRO / TALLINNA — N59°26' E24°45' ]",
       metaBrand: '[ TEXTURE-01 · AUTO DIISLIKESKUS ]',
       locTag: '[ 04 / SIJAINTI JA YHTEYSTIEDOT ]',
-      mapsBtn: '[ AVAA GOOGLE MAPSISSA → ]',
+      mapsBtn: 'AVAA GOOGLE MAPSISSA',
       labelContacts: '[ YHTEYSTIEDOT ]',
       labelHours: '[ AUKIOLOAJAT ]',
       hoursMain: 'MA–PE: 09:00 – 18:00',
@@ -6850,6 +7513,9 @@ class Component extends DCLogic {
       privacy: 'Tietosuojakäytäntö',
       terms: 'Käyttöehdot',
       toTop: 'Takaisin ylös',
+      phCtaTitle: 'Varaa diagnostiikka',
+      phCtaHint: 'Tarkistamme Common Rail / TNVD ja teemme tarjouksen',
+      phCtaBtn: 'Varaa aika',
     },
   };
 
@@ -6861,6 +7527,7 @@ class Component extends DCLogic {
     menuOpen: false,
     langOpen: false,
     formOpen: false,
+    formMode: 'mini', // 'mini' | 'full' — hero uses full detailed form
     headerLight: false,
     activeBrandIndex: 0,
     symptomSelected: [false, false, false, false, false, false, false, false, false, false, false],
@@ -6888,14 +7555,68 @@ class Component extends DCLogic {
     } catch (_) {}
   };
 
+  prefersReducedMotion = () => {
+    try {
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    } catch (_) {
+      return false;
+    }
+  };
+
+  initMotion = () => {
+    try {
+      const reduce = this.prefersReducedMotion();
+      const revealEls = document.querySelectorAll('.motion-reveal, .motion-stagger');
+
+      if (reduce) {
+        revealEls.forEach((el) => el.classList.add('is-in'));
+        return;
+      }
+
+      if (this._motionIO) {
+        try { this._motionIO.disconnect(); } catch (_) {}
+      }
+
+      this._motionIO = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-in');
+            this._motionIO.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }
+      );
+
+      revealEls.forEach((el) => this._motionIO.observe(el));
+
+      // Subtle hero parallax (5–10% of scroll) — driven from scroll handler
+      this._heroBg = document.querySelector('[data-parallax="hero"]');
+      this._onParallax = () => {
+        if (!this._heroBg || this.prefersReducedMotion()) return;
+        const y = window.scrollY || 0;
+        const max = window.innerHeight || 800;
+        if (y > max * 1.25) return;
+        const t = Math.min(y, max) * 0.08;
+        this._heroBg.style.transform = `translate3d(0, ${t}px, 0) scale(1.04)`;
+      };
+      this._onParallax();
+    } catch (_) {}
+  };
+
   componentDidMount() {
-    this._onHeaderScroll = () => this.updateHeaderTheme();
+    this._onHeaderScroll = () => {
+      this.updateHeaderTheme();
+      if (this._onParallax) this._onParallax();
+    };
     try {
       window.addEventListener('scroll', this._onHeaderScroll, { passive: true });
       window.addEventListener('resize', this._onHeaderScroll, { passive: true });
       this.updateHeaderTheme();
-      // re-check after layout settles
-      requestAnimationFrame(() => this.updateHeaderTheme());
+      requestAnimationFrame(() => {
+        this.updateHeaderTheme();
+        this.initMotion();
+      });
     } catch (_) {}
   }
 
@@ -6905,22 +7626,65 @@ class Component extends DCLogic {
         window.removeEventListener('scroll', this._onHeaderScroll);
         window.removeEventListener('resize', this._onHeaderScroll);
       }
+      if (this._motionIO) {
+        this._motionIO.disconnect();
+        this._motionIO = null;
+      }
+      this._onParallax = null;
+      this._heroBg = null;
     } catch (_) {}
   }
 
   openForm = (e) => {
     if (e && e.preventDefault) e.preventDefault();
-    this.setState({ formOpen: true, menuOpen: false, langOpen: false });
+    this._formClosing = false;
+    this.setState({
+      formOpen: true,
+      formMode: 'mini',
+      menuOpen: false,
+      langOpen: false,
+      isSuccess: false,
+      isError: false,
+      isSubmitting: false,
+    });
+    try { document.body.style.overflow = 'hidden'; } catch (_) {}
+  };
+
+  /** Hero CTA — full multi-field quote form */
+  openFullForm = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    this._formClosing = false;
+    this.setState({
+      formOpen: true,
+      formMode: 'full',
+      menuOpen: false,
+      langOpen: false,
+      isSuccess: false,
+      isError: false,
+      isSubmitting: false,
+    });
     try { document.body.style.overflow = 'hidden'; } catch (_) {}
   };
 
   closeForm = (e) => {
     if (e && e.preventDefault) e.preventDefault();
+    if (this._formClosing) return;
+    const modal = document.querySelector('.rf-modal');
+    if (modal && !this.prefersReducedMotion()) {
+      this._formClosing = true;
+      modal.classList.add('is-closing');
+      window.setTimeout(() => {
+        this._formClosing = false;
+        this.setState({ formOpen: false });
+        try { document.body.style.overflow = ''; } catch (_) {}
+      }, 180);
+      return;
+    }
     this.setState({ formOpen: false });
     try { document.body.style.overflow = ''; } catch (_) {}
   };
 
-  /* Opens quote form popup (was page scroll) */
+  /* Mini form by default; hero uses openFullForm */
   scrollToForm = (e) => this.openForm(e);
 
   scrollToTop = (e) => {
@@ -7034,6 +7798,7 @@ class Component extends DCLogic {
       ctaText: this.ctaText,
       specs: this.specs,
       openForm: this.openForm,
+      openFullForm: this.openFullForm,
       closeForm: this.closeForm,
       scrollToForm: this.scrollToForm || this.openForm,
 
@@ -7064,6 +7829,10 @@ class Component extends DCLogic {
 
       // RequestForm fields + handlers
       formOpen: !!s.formOpen,
+      formMode: s.formMode === 'full' ? 'full' : 'mini',
+      isMiniForm: s.formMode !== 'full',
+      isFullForm: s.formMode === 'full',
+      formPanelClass: s.formMode === 'full' ? 'rf-modal-panel--full' : 'rf-modal-panel--mini',
       plate: s.plate,
       make: s.make,
       year: s.year,
@@ -7078,7 +7847,11 @@ class Component extends DCLogic {
       isSuccess: s.isSuccess,
       isError: s.isError,
       isFormVisible: !s.isSuccess,
-      submitLabel: s.isSubmitting ? '[ SAATMINE... ]' : '[ SAADA HINNAPÄRING → ]',
+      submitLabel: s.isSubmitting
+        ? 'SAATMINE...'
+        : s.formMode === 'full'
+          ? 'SAADA HINNAPÄRING'
+          : 'SAADA PÄRING',
       onPlateChange: this.onPlateChange,
       onMakeChange: this.onMakeChange,
       onYearChange: this.onYearChange,
@@ -7111,8 +7884,8 @@ class Component extends DCLogic {
       // Footer
       scrollToTop: this.scrollToTop,
       ...footerI18n,
-      accentColor: (this.props && this.props.accentColor) || '#E63946',
-      accent: (this.props && this.props.accentColor) || '#E63946',
+      accentColor: (this.props && this.props.accentColor) || '#EC0000',
+      accent: (this.props && this.props.accentColor) || '#EC0000',
       langClassRU: lang === 'RU' ? 'ft-lang-active' : 'ft-lang-muted',
       langClassEE: lang === 'EE' ? 'ft-lang-active' : 'ft-lang-muted',
       langClassEN: lang === 'EN' ? 'ft-lang-active' : 'ft-lang-muted',
@@ -7125,6 +7898,65 @@ class Component extends DCLogic {
 }
 
 </script>
+  <style>
+    .su-cta-row,
+    .dg-actions,
+    .hk-actions {
+      display: flex !important;
+      align-items: stretch !important;
+    }
+
+    .su-cta-phone,
+    .dg-phone,
+    .hk-phone,
+    .su-cta-row .ft-maps-btn,
+    .dg-actions .ft-maps-btn,
+    .hk-actions .ft-maps-btn {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-sizing: border-box !important;
+      height: 46px !important;
+      padding: 0 24px !important;
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.12em !important;
+      text-transform: uppercase !important;
+      text-decoration: none !important;
+      margin: 0 !important;
+    }
+
+    .su-cta-phone,
+    .dg-phone,
+    .hk-phone {
+      border: 1px solid #171717 !important;
+      background: #ffffff !important;
+      color: #171717 !important;
+    }
+
+    .su-cta-phone:hover,
+    .dg-phone:hover,
+    .hk-phone:hover {
+      background: #f5f5f5 !important;
+    }
+
+    .ft-maps-btn {
+      background: #EC0000 !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+    }
+
+    .ft-maps-btn::before {
+      display: none !important;
+    }
+
+    .ft-maps-btn:hover {
+      opacity: 0.9 !important;
+      filter: none !important;
+      background: #EC0000 !important;
+      box-shadow: none !important;
+    }
+  </style>
 </body>
 
 </html>
