@@ -1418,11 +1418,10 @@
         }
 
         .pm-btn--list {
-          color: var(--pm-muted);
+          color: var(--pm-ink);
           background: #ffffff;
-          border: 1px solid var(--pm-line-mid);
-          opacity: 0.7;
-          cursor: not-allowed;
+          border: 1px solid var(--pm-ink);
+          cursor: pointer;
         }
 
         .pm-btn-note {
@@ -6457,7 +6456,6 @@
     <section class="pm motion-reveal" id="pihustite-muuk" aria-labelledby="pm-heading">
       <div class="pm-inner">
         <header class="pm-header">
-          <span class="pm-kicker">[ PLACEHOLDER — SISU TÄPSUSTAMISEL ]</span>
           <h2 class="pm-title" id="pm-heading">Taastatud pihustid müügil</h2>
           <div class="pm-rule" aria-hidden="true"></div>
           <p class="pm-lead">
@@ -6467,9 +6465,8 @@
         </header>
 
         <div class="pm-actions">
-          <a class="pm-btn pm-btn--list" href="javascript:void(0)" title="PDF-link lisatakse, kui kliendi materjal on käes">
+          <a class="pm-btn pm-btn--list" href="http://rvae.ee/renoveeritud_pihustid.pdf" target="_blank" title="Vaata PDF nimekirja">
             Vaata pihustite nimekirja (PDF)
-            <span class="pm-btn-note">[ link lisatakse ]</span>
           </a>
           <button type="button" class="pm-btn pm-btn--ask ft-maps-btn" onClick="{{ openForm }}">
             Ei leia oma pihustit? Küsi meilt
@@ -6656,30 +6653,42 @@
                   Täida väljad ja vajuta saatmisnupule — võtame Sinuga ühendust ühe tööpäeva jooksul.
                 </p>
 
-                <label class="rf-mini-label" for="rf-name-mini">Nimi*</label>
-                <input id="rf-name-mini" class="rf-mini-input" style="border-radius: 0;" type="text" name="name"
-                  value="{{ name }}" onChange="{{ onNameChange }}" placeholder="Eesnimi Perekonnanimi"
-                  required="{{ true }}" autocomplete="name" />
+                <div class="rf-mini-grid">
+                  <div class="rf-mini-field">
+                    <label class="rf-mini-label" for="rf-name-mini">Nimi*</label>
+                    <input id="rf-name-mini" class="rf-mini-input" type="text" name="name"
+                      value="{{ name }}" onChange="{{ onNameChange }}" placeholder="Eesnimi Perekonnanimi"
+                      required="{{ true }}" autocomplete="name" />
+                  </div>
 
-                <label class="rf-mini-label" for="rf-phone-mini">Telefon*</label>
-                <input id="rf-phone-mini" class="rf-mini-input" style="border-radius: 0;" type="tel" name="phone"
-                  value="{{ phone }}" onChange="{{ onPhoneChange }}" placeholder="+372 5xxx xxxx"
-                  required="{{ true }}" autocomplete="tel" />
+                  <div class="rf-mini-field">
+                    <label class="rf-mini-label" for="rf-phone-mini">Telefon*</label>
+                    <input id="rf-phone-mini" class="rf-mini-input" type="tel" name="phone"
+                      value="{{ phone }}" onChange="{{ onPhoneChange }}" placeholder="+372 5xxx xxxx"
+                      required="{{ true }}" autocomplete="tel" />
+                  </div>
 
-                <label class="rf-mini-label" for="rf-email-mini">E-post*</label>
-                <input id="rf-email-mini" class="rf-mini-input" style="border-radius: 0;" type="email" name="email"
-                  value="{{ email }}" onChange="{{ onEmailChange }}" placeholder="nimi@ettevote.ee"
-                  required="{{ true }}" autocomplete="email" inputmode="email" />
+                  <div class="rf-mini-field">
+                    <label class="rf-mini-label" for="rf-email-mini">E-post*</label>
+                    <input id="rf-email-mini" class="rf-mini-input" type="email" name="email"
+                      value="{{ email }}" onChange="{{ onEmailChange }}" placeholder="nimi@ettevote.ee"
+                      required="{{ true }}" autocomplete="email" inputmode="email" />
+                  </div>
 
-                <label class="rf-mini-label" for="rf-plate-mini">Auto reg. number*</label>
-                <input id="rf-plate-mini" class="rf-mini-input" style="border-radius: 0;" type="text" name="plate"
-                  value="{{ plate }}" onChange="{{ onPlateChange }}" placeholder="123 ABC"
-                  required="{{ true }}" autocomplete="off" spellcheck="false" />
+                  <div class="rf-mini-field">
+                    <label class="rf-mini-label" for="rf-plate-mini">Auto reg. number*</label>
+                    <input id="rf-plate-mini" class="rf-mini-input" type="text" name="plate"
+                      value="{{ plate }}" onChange="{{ onPlateChange }}" placeholder="123 ABC"
+                      required="{{ true }}" autocomplete="off" spellcheck="false" />
+                  </div>
+                </div>
 
-                <label class="rf-mini-label" for="rf-desc-mini">Probleemi kirjeldus</label>
-                <textarea id="rf-desc-mini" class="rf-mini-input" style="border-radius: 0; resize: vertical;"
-                  name="description" value="{{ description }}" onChange="{{ onDescriptionChange }}" rows="3"
-                  placeholder="Lühidalt, mis on probleem"></textarea>
+                <div class="rf-mini-field rf-mini-field--full">
+                  <label class="rf-mini-label" for="rf-desc-mini">Probleemi kirjeldus</label>
+                  <textarea id="rf-desc-mini" class="rf-mini-input" style="resize: vertical;"
+                    name="description" value="{{ description }}" onChange="{{ onDescriptionChange }}" rows="3"
+                    placeholder="Lühidalt, mis on probleem"></textarea>
+                </div>
 
                 <p class="rf-mini-lead" style="margin-top: -8px;">
                   Soovid tasuda ette pangaülekandega? Kirjuta see kirjeldusse — teatame Sulle sooduspakkumise ja
@@ -6690,7 +6699,7 @@
                   <span class="rf-mini-error">Palun täida kõik kohustuslikud väljad (*) korrektselt.</span>
                 </sc-if>
 
-                <button type="submit" class="rf-mini-submit" style="border-radius: 0;" disabled="{{ isSubmitting }}">
+                <button type="submit" class="rf-mini-submit" disabled="{{ isSubmitting }}">
                   <svg class="rf-mini-submit-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.5 11.5 L20 4 L13 20.5 L11 13 L3.5 11.5 Z" stroke="currentColor" stroke-width="1.7"
