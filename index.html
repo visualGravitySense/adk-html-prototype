@@ -96,9 +96,25 @@
           flex-wrap: wrap;
         }
 
+        .hd-utility-left {
+          display: flex;
+          align-items: baseline;
+          gap: 18px;
+          flex-wrap: wrap;
+          min-width: 0;
+        }
+
+        .hd-utility-sep {
+          display: inline-block;
+          width: 5px;
+          height: 5px;
+          border: 1.5px solid var(--hd-red);
+          align-self: center;
+        }
+
         .hd-utility-addr,
         .hd-utility-hours {
-          font-size: 14px;
+          font-size: 16px;
           letter-spacing: 0.08em;
           text-transform: uppercase;
           color: var(--hd-utility-text);
@@ -150,7 +166,7 @@
 
         .hd-brand-name {
           font-family: var(--hd-display);
-          font-size: clamp(18px, 1.6vw, 22px);
+          font-size: clamp(20px, 1.6vw, 24px);
           font-weight: 400;
           letter-spacing: 0.02em;
           text-transform: uppercase;
@@ -160,7 +176,7 @@
         }
 
         .hd-brand--drawer .hd-brand-name {
-          font-size: 22px;
+          font-size: 24px;
         }
 
         .hd-nav {
@@ -171,7 +187,7 @@
         }
 
         .hd-nav-link {
-          font-size: 13px;
+          font-size: 15px;
           font-weight: 600;
           letter-spacing: 0.06em;
           text-transform: uppercase;
@@ -194,29 +210,28 @@
           min-width: 0;
         }
 
-        /* Large cyan phone — same display face as H1 */
+        /* Phone — matched to utility address */
         .hd-phone {
           display: inline-flex;
           align-items: baseline;
           gap: 0.28em;
-          font-family: var(--hd-display);
-          font-size: clamp(18px, 1.9vw, 26px);
-          font-weight: 400;
-          letter-spacing: 0.02em;
-          color: var(--hd-cyan);
+          font-size: 16px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--hd-utility-text);
+          font-weight: 600;
+          font-family: var(--hd-sans);
           text-decoration: none;
-          white-space: nowrap;
-          line-height: 1.1;
-          transition: color 0.15s ease, opacity 0.15s ease;
+          transition: color 0.25s ease;
         }
 
         .hd-phone:hover {
-          color: #33cceb;
+          opacity: 0.8;
         }
 
         .hd-phone-label {
           font-family: inherit;
-          font-weight: 400;
+          font-weight: 600;
         }
 
         /* Language dropdown */
@@ -235,7 +250,7 @@
           padding: 7px 10px 7px 12px;
           cursor: pointer;
           font-family: var(--hd-sans);
-          font-size: 13px;
+          font-size: 15px;
           font-weight: 700;
           letter-spacing: 0.06em;
           text-transform: uppercase;
@@ -249,7 +264,7 @@
         }
 
         .hd-lang-caret {
-          font-size: 10px;
+          font-size: 12px;
           color: var(--hd-muted);
           line-height: 1;
         }
@@ -274,7 +289,7 @@
           padding: 9px 14px;
           cursor: pointer;
           font-family: var(--hd-sans);
-          font-size: 13px;
+          font-size: 15px;
           font-weight: 600;
           letter-spacing: 0.04em;
           text-transform: uppercase;
@@ -339,7 +354,7 @@
           background: none;
           border: none;
           cursor: pointer;
-          font-size: 28px;
+          font-size: 30px;
           line-height: 1;
           color: #ffffff;
           padding: 0;
@@ -353,7 +368,7 @@
         }
 
         .hd-drawer-link {
-          font-size: 22px;
+          font-size: 24px;
           font-weight: 700;
           letter-spacing: -0.01em;
           text-transform: uppercase;
@@ -374,7 +389,7 @@
 
         .hd-drawer-phone {
           font-family: var(--hd-display);
-          font-size: 22px;
+          font-size: 24px;
           font-weight: 400;
           letter-spacing: 0.02em;
           color: var(--hd-cyan);
@@ -382,7 +397,7 @@
         }
 
         .hd-drawer-meta {
-          font-size: 13px;
+          font-size: 15px;
           color: var(--hd-muted);
           font-family: var(--hd-mono);
         }
@@ -427,7 +442,7 @@
 
         @media (max-width: 767px) {
           .hd-phone {
-            font-size: 15px;
+            font-size: 17px;
           }
 
           .hd-main {
@@ -438,7 +453,7 @@
 
         @media (max-width: 420px) {
           .hd-brand-name {
-            font-size: 14px;
+            font-size: 16px;
           }
 
           .hd-logo {
@@ -549,7 +564,7 @@
         }
 
         .hero-badge-text {
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.14em;
           text-transform: uppercase;
           color: rgba(255, 255, 255, 0.9);
@@ -558,7 +573,7 @@
 
         .hero-title {
           margin: 0;
-          font-size: clamp(38px, 6.5vw, 84px);
+          font-size: clamp(40px, 6.5vw, 86px);
           font-weight: 400;
           letter-spacing: -0.01em;
           text-transform: uppercase;
@@ -571,7 +586,7 @@
         .hero-lead {
           margin: 0 auto;
           max-width: 720px;
-          font-size: clamp(16px, 1.8vw, 22px);
+          font-size: clamp(18px, 1.8vw, 24px);
           line-height: 1.5;
           color: rgba(255, 255, 255, 0.92);
           font-weight: 500;
@@ -598,7 +613,7 @@
         }
 
         .hero-cta-meta {
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.12em;
           text-transform: uppercase;
           color: rgba(255, 255, 255, 0.45);
@@ -696,7 +711,7 @@
 
         .hero-media-meta-item {
           font-family: var(--h-mono);
-          font-size: 10px;
+          font-size: 12px;
           letter-spacing: 0.12em;
           text-transform: uppercase;
           color: rgba(255, 255, 255, 0.92);
@@ -705,7 +720,7 @@
 
         .hero-media-meta-sep {
           color: rgba(255, 255, 255, 0.35);
-          font-size: 10px;
+          font-size: 12px;
         }
 
         /* Specs */
@@ -731,7 +746,7 @@
 
         .hero-spec-num {
           font-family: var(--h-mono);
-          font-size: 11px;
+          font-size: 13px;
           color: rgba(255, 255, 255, 0.4);
           letter-spacing: 0.05em;
           flex: 0 0 auto;
@@ -746,7 +761,7 @@
         }
 
         .hero-spec-label {
-          font-size: 13px;
+          font-size: 15px;
           font-weight: 700;
           letter-spacing: 0.04em;
           text-transform: uppercase;
@@ -754,7 +769,7 @@
         }
 
         .hero-spec-detail {
-          font-size: 12px;
+          font-size: 14px;
           color: var(--h-dim);
           line-height: 1.45;
         }
@@ -764,7 +779,7 @@
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          font-size: 11px;
+          font-size: 15px;
           font-weight: 700;
           letter-spacing: 0.12em;
           text-transform: uppercase;
@@ -879,7 +894,7 @@
           }
 
           .hero-media-meta-item {
-            font-size: 9px;
+            font-size: 11px;
             letter-spacing: 0.08em;
             white-space: normal;
           }
@@ -935,7 +950,7 @@
 
         .ph-kicker {
           display: block;
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.18em;
           text-transform: uppercase;
           color: var(--ph-dim);
@@ -946,7 +961,7 @@
         .ph-title {
           margin: 0;
           font-family: var(--ph-display);
-          font-size: clamp(28px, 4vw, 42px);
+          font-size: clamp(30px, 4vw, 44px);
           font-weight: 400;
           letter-spacing: -0.02em;
           text-transform: uppercase;
@@ -1057,7 +1072,7 @@
         .ph-brand-title {
           margin: 0 0 20px;
           font-family: var(--ph-display);
-          font-size: clamp(22px, 2.6vw, 30px);
+          font-size: clamp(24px, 2.6vw, 32px);
           font-weight: 800;
           letter-spacing: 0.02em;
           text-transform: uppercase;
@@ -1118,7 +1133,7 @@
         .ph-brand-title {
           margin: 0 0 20px;
           font-family: var(--ph-display);
-          font-size: clamp(22px, 2.6vw, 30px);
+          font-size: clamp(24px, 2.6vw, 32px);
           font-weight: 800;
           letter-spacing: 0.02em;
           text-transform: uppercase;
@@ -1139,7 +1154,7 @@
           display: flex;
           gap: 12px;
           align-items: flex-start;
-          font-size: 15px;
+          font-size: 17px;
           line-height: 1.55;
           color: var(--ph-muted);
           font-weight: 400;
@@ -1195,7 +1210,7 @@
 
         .ph-cta-title {
           margin: 0;
-          font-size: clamp(15px, 1.5vw, 17px);
+          font-size: clamp(17px, 1.5vw, 19px);
           font-weight: 600;
           letter-spacing: 0.01em;
           line-height: 1.35;
@@ -1205,7 +1220,7 @@
 
         .ph-cta-hint {
           margin: -6px 0 0;
-          font-size: 12px;
+          font-size: 14px;
           line-height: 1.45;
           color: var(--ph-dim);
           max-width: 16em;
@@ -1217,7 +1232,7 @@
           justify-content: center;
           margin-top: 4px;
           padding: 14px 22px;
-          font-size: 11px;
+          font-size: 13px;
           font-weight: 700;
           letter-spacing: 0.14em;
           text-transform: uppercase;
@@ -1312,7 +1327,7 @@
           .ph-brand {
             text-align: center;
             padding: 12px 10px;
-            font-size: 12px;
+            font-size: 14px;
           }
 
           .ph-cta {
@@ -1320,6 +1335,118 @@
           }
 
           .ph-cta-btn {
+            width: 100%;
+          }
+        }
+
+        /* === Pihustite Müük (.pm) — reconditioned injectors for sale (PLACEHOLDER content) === */
+        .pm {
+          --pm-bg: #F8F9FA;
+          --pm-ink: #171717;
+          --pm-muted: #525252;
+          --pm-dim: #737373;
+          --pm-line-mid: #D1D5DB;
+          --pm-accent: #EC0000;
+          --pm-sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
+          background: var(--pm-bg);
+          color: var(--pm-ink);
+          font-family: var(--pm-sans);
+          padding: 36px 24px 40px;
+          border-top: 1px dashed var(--pm-line-mid);
+          border-bottom: 1px dashed var(--pm-line-mid);
+        }
+
+        .pm-inner {
+          max-width: 900px;
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        .pm-kicker {
+          display: inline-block;
+          margin-bottom: 12px;
+          padding: 4px 10px;
+          font-size: 13px;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: var(--pm-accent);
+          border: 1px dashed var(--pm-accent);
+        }
+
+        .pm-title {
+          margin: 0;
+          font-size: clamp(28px, 3.6vw, 40px);
+          font-weight: 400;
+          letter-spacing: -0.015em;
+          text-transform: uppercase;
+          color: var(--pm-ink);
+          line-height: 1.1;
+        }
+
+        .pm-rule {
+          width: 64px;
+          height: 2px;
+          background: var(--pm-accent);
+          margin: 18px auto;
+        }
+
+        .pm-lead {
+          margin: 0 auto;
+          max-width: 620px;
+          font-size: 16px;
+          line-height: 1.6;
+          color: var(--pm-dim);
+          font-style: italic;
+        }
+
+        .pm-actions {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+          gap: 14px;
+          margin-top: 28px;
+        }
+
+        .pm-btn {
+          display: inline-flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 2px;
+          padding: 14px 22px;
+          font-size: 15px;
+          font-weight: 700;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          font-family: var(--pm-sans);
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+        .pm-btn--list {
+          color: var(--pm-muted);
+          background: #ffffff;
+          border: 1px solid var(--pm-line-mid);
+          opacity: 0.7;
+          cursor: not-allowed;
+        }
+
+        .pm-btn-note {
+          font-size: 12px;
+          font-weight: 500;
+          letter-spacing: 0.04em;
+          text-transform: none;
+          font-style: italic;
+          color: var(--pm-dim);
+        }
+
+        @media (max-width: 639px) {
+          .pm {
+            padding: 32px 16px 36px;
+          }
+
+          .pm-btn {
             width: 100%;
           }
         }
@@ -1378,7 +1505,7 @@
 
         .su-kicker {
           display: block;
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.2em;
           text-transform: uppercase;
           color: var(--su-dim);
@@ -1389,7 +1516,7 @@
         .su-title {
           margin: 0;
           font-family: var(--su-display);
-          font-size: clamp(26px, 3.8vw, 40px);
+          font-size: clamp(28px, 3.8vw, 42px);
           font-weight: 400;
           letter-spacing: -0.015em;
           text-transform: uppercase;
@@ -1406,7 +1533,7 @@
 
         .su-lead {
           margin: 0;
-          font-size: 15px;
+          font-size: 17px;
           line-height: 1.6;
           color: var(--su-muted);
           font-weight: 400;
@@ -1435,7 +1562,7 @@
           background: transparent;
           color: var(--su-muted);
           font-family: var(--su-sans);
-          font-size: 14.5px;
+          font-size: 16.5px;
           line-height: 1.5;
           font-weight: 400;
           cursor: pointer;
@@ -1465,7 +1592,7 @@
           border: 1px solid #c4c4c4;
           background: #ffffff;
           color: #ffffff;
-          font-size: 11px;
+          font-size: 13px;
           font-weight: 700;
           line-height: 16px;
           text-align: center;
@@ -1487,7 +1614,7 @@
           border: 1px solid rgba(230, 57, 70, 0.28);
           background: var(--su-accent-soft);
           color: #9a1a24;
-          font-size: 15px;
+          font-size: 17px;
           font-weight: 600;
           line-height: 1.45;
           text-align: left;
@@ -1503,7 +1630,7 @@
         .su-banner-count {
           flex: none;
           font-family: var(--su-display);
-          font-size: 28px;
+          font-size: 30px;
           font-weight: 400;
           line-height: 1;
           letter-spacing: 0.02em;
@@ -1531,7 +1658,7 @@
           background: transparent;
           color: var(--su-ink);
           font-family: var(--su-sans);
-          font-size: 13px;
+          font-size: 15px;
           font-weight: 700;
           letter-spacing: 0.08em;
           text-transform: uppercase;
@@ -1553,7 +1680,7 @@
         .su-foot {
           margin-top: 28px;
           text-align: center;
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.14em;
           text-transform: uppercase;
           color: var(--su-dim);
@@ -1713,7 +1840,7 @@
         }
 
         .dg-kicker {
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.18em;
           text-transform: uppercase;
           color: var(--dg-dim);
@@ -1724,7 +1851,7 @@
         .dg-title {
           margin: 0;
           font-family: var(--dg-display);
-          font-size: clamp(26px, 3.4vw, 38px);
+          font-size: clamp(28px, 3.4vw, 40px);
           font-weight: 400;
           letter-spacing: -0.015em;
           text-transform: uppercase;
@@ -1743,7 +1870,7 @@
         .dg-text {
           margin: 0;
           max-width: 480px;
-          font-size: 15.5px;
+          font-size: 17.5px;
           line-height: 1.7;
           color: var(--dg-muted);
           font-weight: 400;
@@ -1753,7 +1880,7 @@
           display: flex;
           flex-wrap: wrap;
           gap: 10px 18px;
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.12em;
           text-transform: uppercase;
           color: var(--dg-dim);
@@ -1791,7 +1918,7 @@
           align-items: baseline;
           gap: 0.3em;
           font-family: var(--dg-display);
-          font-size: 18px;
+          font-size: 20px;
           font-weight: 400;
           letter-spacing: 0.02em;
           color: #00B8D4;
@@ -1970,7 +2097,7 @@
         }
 
         .hk-kicker {
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.2em;
           text-transform: uppercase;
           color: var(--hk-dim);
@@ -1981,7 +2108,7 @@
         .hk-title {
           margin: 0;
           font-family: var(--hk-display);
-          font-size: clamp(30px, 4.4vw, 50px);
+          font-size: clamp(32px, 4.4vw, 52px);
           font-weight: 400;
           letter-spacing: -0.02em;
           text-transform: uppercase;
@@ -1992,7 +2119,7 @@
         .hk-lead {
           margin: 0;
           max-width: 640px;
-          font-size: 15px;
+          font-size: 17px;
           line-height: 1.65;
           color: var(--hk-muted);
         }
@@ -2035,7 +2162,7 @@
 
         .hk-table-head span {
           padding: 12px 24px;
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.16em;
           text-transform: uppercase;
           font-family: var(--hk-mono);
@@ -2065,7 +2192,7 @@
 
         .hk-row-name {
           padding: 16px 24px;
-          font-size: 15px;
+          font-size: 17px;
           line-height: 1.45;
           color: var(--hk-ink-soft);
           display: flex;
@@ -2076,14 +2203,14 @@
         .hk-row-num {
           flex: 0 0 auto;
           font-family: var(--hk-mono);
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.08em;
           color: var(--hk-dim);
         }
 
         .hk-row-price {
           padding: 16px 24px;
-          font-size: 15px;
+          font-size: 17px;
           font-weight: 700;
           text-align: right;
           color: var(--hk-red-bright);
@@ -2105,7 +2232,7 @@
 
         .hk-note {
           margin: 0;
-          font-size: 13px;
+          font-size: 15px;
           line-height: 1.65;
           color: var(--hk-muted);
         }
@@ -2138,7 +2265,7 @@
           align-items: baseline;
           gap: 0.3em;
           font-family: var(--hk-display);
-          font-size: 17px;
+          font-size: 19px;
           font-weight: 400;
           letter-spacing: 0.02em;
           color: #00B8D4;
@@ -2167,11 +2294,11 @@
           }
 
           .hk-row-name {
-            font-size: 14px;
+            font-size: 16px;
           }
 
           .hk-row-price {
-            font-size: 14px;
+            font-size: 16px;
           }
 
           .hk-row-num {
@@ -2260,7 +2387,7 @@
           border-radius: 50%;
           background: transparent;
           color: #737373;
-          font-size: 26px;
+          font-size: 28px;
           line-height: 1;
           cursor: pointer;
           transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
@@ -2303,7 +2430,7 @@
           margin: 0 0 12px;
           padding-right: 28px;
           font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
-          font-size: clamp(22px, 3.2vw, 28px);
+          font-size: clamp(24px, 3.2vw, 30px);
           font-weight: 400;
           letter-spacing: 0.01em;
           text-transform: uppercase;
@@ -2313,7 +2440,7 @@
 
         .rf-mini-lead {
           margin: 0 0 22px;
-          font-size: 14px;
+          font-size: 16px;
           line-height: 1.55;
           color: #737373;
           font-weight: 400;
@@ -2322,7 +2449,7 @@
         .rf-mini-label {
           display: block;
           margin: 0 0 8px;
-          font-size: 11px;
+          font-size: 13px;
           font-weight: 700;
           letter-spacing: 0.14em;
           text-transform: uppercase;
@@ -2335,7 +2462,7 @@
           box-sizing: border-box;
           margin: 0 0 18px;
           padding: 14px 16px;
-          font-size: 15px;
+          font-size: 17px;
           font-family: inherit;
           color: #171717;
           background: #F8F9FA;
@@ -2367,7 +2494,7 @@
           border-radius: 10px;
           background: #EC0000;
           color: #FFFFFF;
-          font-size: 13px;
+          font-size: 15px;
           font-weight: 700;
           letter-spacing: 0.12em;
           text-transform: uppercase;
@@ -2398,7 +2525,7 @@
         .rf-mini-error {
           display: block;
           margin: -6px 0 12px;
-          font-size: 12px;
+          font-size: 14px;
           color: #EC0000;
           font-weight: 600;
         }
@@ -2410,7 +2537,7 @@
           border: none;
           background: none;
           color: #737373;
-          font-size: 14px;
+          font-size: 16px;
           font-family: inherit;
           text-decoration: underline;
           text-underline-offset: 3px;
@@ -2430,7 +2557,7 @@
         .rf-mini-success-title {
           margin: 0 0 10px;
           font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
-          font-size: 24px;
+          font-size: 26px;
           font-weight: 400;
           text-transform: uppercase;
           letter-spacing: 0.02em;
@@ -2439,7 +2566,7 @@
 
         .rf-mini-success-text {
           margin: 0 0 20px;
-          font-size: 14px;
+          font-size: 16px;
           line-height: 1.55;
           color: #737373;
         }
@@ -2459,7 +2586,7 @@
           }
 
           .rf-mini-title {
-            font-size: 20px;
+            font-size: 22px;
           }
         }
 
@@ -2504,7 +2631,7 @@
         }
 
         .rf.rf--modal .rf-title {
-          font-size: clamp(18px, 2.2vw, 24px);
+          font-size: clamp(20px, 2.2vw, 26px);
           color: #00B8D4;
           text-align: center;
         }
@@ -2622,7 +2749,7 @@
           flex-wrap: wrap;
           padding: 18px 0 0;
           font-family: var(--rf-mono);
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.16em;
           text-transform: uppercase;
           color: var(--rf-dim);
@@ -2676,7 +2803,7 @@
         }
 
         .rf-kicker {
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.18em;
           text-transform: uppercase;
           color: var(--rf-dim);
@@ -2687,7 +2814,7 @@
 
         .rf-title {
           margin: 0;
-          font-size: clamp(18px, 2.2vw, 24px);
+          font-size: clamp(20px, 2.2vw, 26px);
           font-weight: 500;
           letter-spacing: 0.01em;
           /* text-transform: uppercase; */
@@ -2699,7 +2826,7 @@
         .rf-lead {
           margin: 0 auto;
           max-width: 800px;
-          font-size: 14.5px;
+          font-size: 16.5px;
           line-height: 1.6;
           color: var(--rf-muted);
           text-align: center;
@@ -2714,7 +2841,7 @@
         }
 
         .rf-loc {
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.14em;
           text-transform: uppercase;
           color: var(--rf-dim);
@@ -2729,7 +2856,7 @@
         }
 
         .rf-meta-line {
-          font-size: 10px;
+          font-size: 12px;
           letter-spacing: 0.14em;
           text-transform: uppercase;
           color: #a3a3a3;
@@ -2792,7 +2919,7 @@
         }
 
         .rf-panel-num {
-          font-size: 28px;
+          font-size: 30px;
           font-weight: 800;
           line-height: 1;
           letter-spacing: -0.03em;
@@ -2809,7 +2936,7 @@
         }
 
         .rf-panel-code {
-          font-size: 10px;
+          font-size: 12px;
           font-family: var(--rf-mono);
           letter-spacing: 0.12em;
           text-transform: uppercase;
@@ -2817,7 +2944,7 @@
         }
 
         .rf-panel-name {
-          font-size: 12px;
+          font-size: 14px;
           font-weight: 700;
           letter-spacing: 0.1em;
           text-transform: uppercase;
@@ -2832,7 +2959,7 @@
         }
 
         .rf-section-title .rf-panel-num {
-          font-size: 22px;
+          font-size: 24px;
           font-weight: 800;
           line-height: 1;
           letter-spacing: -0.03em;
@@ -2842,7 +2969,7 @@
         }
 
         .rf-section-title .rf-panel-name {
-          font-size: 17px;
+          font-size: 19px;
           font-weight: 700;
           letter-spacing: -0.01em;
           text-transform: none;
@@ -2886,7 +3013,7 @@
         }
 
         .rf-label {
-          font-size: 13px;
+          font-size: 15px;
           font-family: var(--rf-sans);
           text-transform: none;
           letter-spacing: 0;
@@ -2900,7 +3027,7 @@
           border: 1px solid var(--rf-line-mid);
           background: #FFFFFF;
           padding: 13px 14px;
-          font-size: 14px;
+          font-size: 16px;
           color: var(--rf-ink);
           outline: none;
           border-radius: 0;
@@ -2951,7 +3078,7 @@
           justify-content: center;
           padding: 0 16px;
           font-family: var(--rf-mono);
-          font-size: 12px;
+          font-size: 14px;
           font-weight: 800;
           letter-spacing: 0.16em;
           color: #FFFFFF;
@@ -2964,7 +3091,7 @@
           border: none;
           box-shadow: none;
           padding: 18px 18px;
-          font-size: 24px;
+          font-size: 26px;
           font-family: var(--rf-mono);
           letter-spacing: 0.16em;
           text-transform: uppercase;
@@ -2986,7 +3113,7 @@
           border: none;
           padding: 0;
           cursor: pointer;
-          font-size: 13px;
+          font-size: 15px;
           line-height: 1.45;
           color: var(--rf-muted);
           font-weight: 500;
@@ -3007,7 +3134,7 @@
 
         .rf-vehicle-hint {
           margin: 0 0 4px;
-          font-size: 13px;
+          font-size: 15px;
           line-height: 1.45;
           color: var(--rf-muted);
           font-weight: 500;
@@ -3022,7 +3149,7 @@
         }
 
         .rf-field--plate .rf-input--plate {
-          font-size: 18px;
+          font-size: 20px;
           padding: 14px 14px;
           letter-spacing: 0.1em;
         }
@@ -3070,7 +3197,7 @@
           z-index: 1;
           display: block;
           font-family: var(--rf-mono);
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.14em;
           color: #a3a3a3;
           margin-bottom: 10px;
@@ -3080,7 +3207,7 @@
           position: relative;
           z-index: 1;
           margin: 0;
-          font-size: 14px;
+          font-size: 16px;
           font-weight: 700;
           letter-spacing: 0.06em;
           text-transform: uppercase;
@@ -3115,7 +3242,7 @@
         }
 
         .rf-submit-pref-title {
-          font-size: 13px;
+          font-size: 15px;
           font-weight: 700;
           color: #171717;
           margin: 0;
@@ -3132,7 +3259,7 @@
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          font-size: 13px;
+          font-size: 15px;
           color: #525252;
           cursor: pointer;
           font-weight: 500;
@@ -3145,7 +3272,7 @@
         }
 
         .rf-submit-note {
-          font-size: 12px;
+          font-size: 14px;
           color: #737373;
           margin: 4px 0 0;
         }
@@ -3211,7 +3338,7 @@
         }
 
         .rf-error {
-          font-size: 11px;
+          font-size: 13px;
           color: #ff6b6b;
           font-family: var(--rf-mono);
           letter-spacing: 0.06em;
@@ -3225,7 +3352,7 @@
           align-items: center;
           justify-content: center;
           gap: 10px;
-          font-size: 13px;
+          font-size: 15px;
           font-weight: 700;
           letter-spacing: 0.16em;
           text-transform: uppercase;
@@ -3382,7 +3509,7 @@
           }
 
           .rf-input--plate {
-            font-size: 18px;
+            font-size: 20px;
             padding: 14px 14px;
           }
         }
@@ -3569,7 +3696,7 @@
         }
 
         .ss-kicker {
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.2em;
           text-transform: uppercase;
           color: var(--ss-dim);
@@ -3579,7 +3706,7 @@
 
         .ss-title {
           margin: 0;
-          font-size: clamp(30px, 4.4vw, 50px);
+          font-size: clamp(32px, 4.4vw, 52px);
           font-weight: 800;
           letter-spacing: -0.025em;
           text-transform: uppercase;
@@ -3590,7 +3717,7 @@
         .ss-lead {
           margin: 0;
           max-width: 680px;
-          font-size: 15px;
+          font-size: 17px;
           line-height: 1.65;
           color: var(--ss-muted);
         }
@@ -3604,7 +3731,7 @@
         }
 
         .ss-loc {
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.14em;
           text-transform: uppercase;
           color: var(--ss-dim);
@@ -3647,7 +3774,7 @@
         }
 
         .ss-block-title {
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.16em;
           text-transform: uppercase;
           color: var(--ss-ink-soft);
@@ -3655,7 +3782,7 @@
         }
 
         .ss-block-meta {
-          font-size: 11px;
+          font-size: 13px;
           font-family: var(--ss-mono);
           color: var(--ss-dim);
           letter-spacing: 0.06em;
@@ -3717,18 +3844,18 @@
         }
 
         .ss-num--lg {
-          font-size: 44px;
+          font-size: 46px;
           letter-spacing: -0.03em;
         }
 
         .ss-num--md {
-          font-size: 28px;
+          font-size: 30px;
           letter-spacing: -0.02em;
         }
 
         .ss-card-title {
           margin: 0;
-          font-size: 16px;
+          font-size: 18px;
           font-weight: 800;
           letter-spacing: 0.01em;
           text-transform: uppercase;
@@ -3738,7 +3865,7 @@
 
         .ss-card-desc {
           margin: 0;
-          font-size: 13.5px;
+          font-size: 15.5px;
           line-height: 1.65;
           color: var(--ss-muted);
           flex: 1;
@@ -3767,7 +3894,7 @@
 
         .ss-sym-title {
           margin: 0;
-          font-size: 14px;
+          font-size: 16px;
           font-weight: 800;
           text-transform: uppercase;
           letter-spacing: 0.01em;
@@ -3777,7 +3904,7 @@
 
         .ss-sym-ru {
           margin: 0;
-          font-size: 13px;
+          font-size: 15px;
           line-height: 1.55;
           color: var(--ss-dim);
           font-style: italic;
@@ -3854,7 +3981,7 @@
         .ss-cta-text {
           margin: 0;
           max-width: 560px;
-          font-size: 15px;
+          font-size: 17px;
           line-height: 1.5;
           font-weight: 500;
           position: relative;
@@ -3873,7 +4000,7 @@
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          font-size: 10.5px;
+          font-size: 12.5px;
           font-weight: 700;
           letter-spacing: 0.14em;
           text-transform: uppercase;
@@ -4110,7 +4237,7 @@
         }
 
         .etb-kicker {
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.2em;
           text-transform: uppercase;
           color: var(--etb-dim);
@@ -4120,7 +4247,7 @@
 
         .etb-title {
           margin: 0;
-          font-size: clamp(30px, 4.4vw, 50px);
+          font-size: clamp(32px, 4.4vw, 52px);
           font-weight: 800;
           letter-spacing: -0.025em;
           text-transform: uppercase;
@@ -4131,7 +4258,7 @@
         .etb-lead {
           margin: 0;
           max-width: 720px;
-          font-size: 15px;
+          font-size: 17px;
           line-height: 1.65;
           color: var(--etb-muted);
         }
@@ -4161,7 +4288,7 @@
         }
 
         .etb-block-title {
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.18em;
           text-transform: uppercase;
           color: var(--etb-ink);
@@ -4170,7 +4297,7 @@
         }
 
         .etb-block-meta {
-          font-size: 10px;
+          font-size: 12px;
           letter-spacing: 0.14em;
           text-transform: uppercase;
           color: var(--etb-dim);
@@ -4318,9 +4445,9 @@
           align-items: flex-start;
           gap: 12px;
           font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
-          font-size: clamp(28px, 5.2vw, 60px);
+          font-size: clamp(24px, 4.4vw, 62px);
           font-weight: 400;
-          letter-spacing: 0.01em;
+          letter-spacing: -0.015em;
           text-transform: uppercase;
           color: #FFFFFF;
           line-height: 1.05;
@@ -4332,6 +4459,7 @@
 
         .etb-personal-headline-text {
           display: block;
+          white-space: nowrap;
         }
 
         .etb-personal-check {
@@ -4351,7 +4479,7 @@
 
         .etb-personal-text {
           margin: 0;
-          font-size: clamp(14px, 1.5vw, 17px);
+          font-size: clamp(16px, 1.5vw, 19px);
           line-height: 1.55;
           color: rgba(255, 255, 255, 0.92);
           font-weight: 500;
@@ -4382,7 +4510,7 @@
           backdrop-filter: blur(6px);
           -webkit-backdrop-filter: blur(6px);
           color: #FFFFFF;
-          font-size: 10px;
+          font-size: 12px;
           font-weight: 700;
           letter-spacing: 0.12em;
           text-transform: uppercase;
@@ -4414,12 +4542,12 @@
           }
 
           .etb-personal-headline {
-            font-size: clamp(24px, 7.2vw, 32px);
+            font-size: clamp(17px, 6vw, 34px);
             gap: 8px;
           }
 
           .etb-personal-text {
-            font-size: 14px;
+            font-size: 16px;
             max-width: 100%;
           }
 
@@ -4429,7 +4557,7 @@
 
           .etb-personal-badge {
             padding: 6px 10px 6px 8px;
-            font-size: 9px;
+            font-size: 11px;
             letter-spacing: 0.1em;
           }
 
@@ -4481,7 +4609,7 @@
           height: auto;
           background: var(--etb-ink);
           color: #FFFFFF;
-          font-size: 10px;
+          font-size: 12px;
           font-family: var(--etb-mono);
           letter-spacing: 0.08em;
           text-transform: uppercase;
@@ -4504,7 +4632,7 @@
         }
 
         .etb-card-name {
-          font-size: 13px;
+          font-size: 15px;
           font-weight: 800;
           text-transform: uppercase;
           letter-spacing: 0.02em;
@@ -4512,7 +4640,7 @@
         }
 
         .etb-card-spec {
-          font-size: 12.5px;
+          font-size: 14.5px;
           line-height: 1.55;
           color: var(--etb-muted);
           display: flex;
@@ -4521,13 +4649,13 @@
 
         .etb-card-spec-num {
           font-family: var(--etb-mono);
-          font-size: 11px;
+          font-size: 13px;
           color: var(--etb-dim);
           flex: 0 0 auto;
         }
 
         .etb-member-name {
-          font-size: 16px;
+          font-size: 18px;
           font-weight: 800;
           text-transform: uppercase;
           color: var(--etb-ink);
@@ -4535,7 +4663,7 @@
         }
 
         .etb-member-role {
-          font-size: 11px;
+          font-size: 13px;
           font-family: var(--etb-mono);
           letter-spacing: 0.08em;
           text-transform: uppercase;
@@ -4543,7 +4671,7 @@
         }
 
         .etb-member-exp {
-          font-size: 11px;
+          font-size: 13px;
           font-family: var(--etb-mono);
           letter-spacing: 0.06em;
           text-transform: uppercase;
@@ -4662,12 +4790,10 @@
 
         .etb-b2b-title {
           margin: 0;
-          font-family: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
-          font-size: clamp(20px, 2.7vw, 30px);
-          font-weight: 500;
-          letter-spacing: 0.045em;
-          text-transform: none;
-          line-height: 1.35;
+          font-size: clamp(22px, 2.7vw, 32px);
+          letter-spacing: 0.01em;
+          text-transform: uppercase;
+          line-height: 1.2;
           color: rgba(255, 255, 255, 0.96);
           text-shadow: 0 1px 14px rgba(0, 0, 0, 0.35);
         }
@@ -4716,7 +4842,7 @@
 
         .etb-b2b-text {
           margin: 0;
-          font-size: 13px;
+          font-size: 15px;
           line-height: 1.45;
           color: rgba(255, 255, 255, 0.88);
           text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
@@ -4727,7 +4853,7 @@
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          font-size: 12px;
+          font-size: 14px;
           font-weight: 600;
           letter-spacing: 0.16em;
           text-transform: uppercase;
@@ -4819,7 +4945,7 @@
 
           .etb-btn-ghost {
             padding: 14px 28px;
-            font-size: 11px;
+            font-size: 13px;
             letter-spacing: 0.14em;
           }
 
@@ -4965,7 +5091,7 @@
 
         .ft-info-address {
           margin: 0;
-          font-size: clamp(16px, 1.8vw, 22px);
+          font-size: clamp(18px, 1.8vw, 24px);
           font-weight: 700;
           letter-spacing: 0.02em;
           text-transform: uppercase;
@@ -5022,7 +5148,7 @@
         }
 
         .ft-serial {
-          font-size: 9.5px;
+          font-size: 11.5px;
           letter-spacing: 0.28em;
           text-transform: uppercase;
           color: var(--ft-muted);
@@ -5079,7 +5205,7 @@
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          font-size: 10.5px;
+          font-size: 12.5px;
           font-weight: 700;
           letter-spacing: 0.14em;
           text-transform: uppercase;
@@ -5166,7 +5292,7 @@
         }
 
         .ft-phone {
-          font-size: 15px;
+          font-size: 17px;
           font-weight: 700;
           font-family: var(--ft-mono);
           letter-spacing: 0.03em;
@@ -5183,7 +5309,7 @@
         }
 
         .ft-email {
-          font-size: 12.5px;
+          font-size: 14.5px;
           color: var(--ft-dim);
           text-decoration: none;
           word-break: break-word;
@@ -5198,7 +5324,7 @@
         }
 
         .ft-hours-main {
-          font-size: 13.5px;
+          font-size: 15.5px;
           font-weight: 700;
           color: var(--ft-ink);
           font-family: var(--ft-mono);
@@ -5208,7 +5334,7 @@
         }
 
         .ft-hours-sub {
-          font-size: 11px;
+          font-size: 13px;
           color: var(--ft-muted);
           letter-spacing: 0.1em;
           text-transform: uppercase;
@@ -5218,7 +5344,7 @@
         }
 
         .ft-company {
-          font-size: 13.5px;
+          font-size: 15.5px;
           font-weight: 700;
           color: var(--ft-ink);
           letter-spacing: 0.01em;
@@ -5227,7 +5353,7 @@
         }
 
         .ft-reg {
-          font-size: 11px;
+          font-size: 13px;
           color: var(--ft-muted);
           font-family: var(--ft-mono);
           letter-spacing: 0.06em;
@@ -5247,7 +5373,7 @@
         }
 
         .ft-micro {
-          font-size: 8.5px;
+          font-size: 10.5px;
           font-family: var(--ft-mono);
           letter-spacing: 0.14em;
           color: var(--ft-muted);
@@ -5258,7 +5384,7 @@
         }
 
         .ft-micro-link {
-          font-size: 8.5px;
+          font-size: 10.5px;
           font-family: var(--ft-mono);
           letter-spacing: 0.14em;
           text-transform: uppercase;
@@ -5289,7 +5415,7 @@
           display: flex;
           align-items: center;
           gap: 8px;
-          font-size: 10px;
+          font-size: 12px;
           font-weight: 700;
           letter-spacing: 0.12em;
           font-family: var(--ft-mono);
@@ -5330,7 +5456,7 @@
           flex-direction: column;
           align-items: center;
           gap: 5px;
-          font-size: 8px;
+          font-size: 10px;
           font-family: var(--ft-mono);
           letter-spacing: 0.16em;
           text-transform: uppercase;
@@ -5380,7 +5506,7 @@
           }
 
           .ft-info-address {
-            font-size: 15px;
+            font-size: 17px;
           }
 
           .ft-contact-grid {
@@ -5389,7 +5515,7 @@
 
           .ft-serial {
             letter-spacing: 0.16em;
-            font-size: 8.5px;
+            font-size: 10.5px;
           }
 
           .ft-map-cell {
@@ -5418,7 +5544,7 @@
         }
 
         .hk-kicker {
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.18em;
           text-transform: uppercase;
           color: #737373;
@@ -5428,7 +5554,7 @@
         }
 
         .hk-title {
-          font-size: clamp(24px, 3vw, 34px);
+          font-size: clamp(26px, 3vw, 36px);
           font-weight: 800;
           letter-spacing: -0.01em;
           margin: 0 0 8px;
@@ -5444,7 +5570,7 @@
         }
 
         .hk-lead {
-          font-size: 15px;
+          font-size: 17px;
           line-height: 1.5;
           color: #525252;
           max-width: 680px;
@@ -5477,14 +5603,14 @@
         }
 
         .hk-name {
-          font-size: 15px;
+          font-size: 17px;
           font-weight: 700;
           color: #171717;
           line-height: 1.4;
         }
 
         .hk-price {
-          font-size: 15px;
+          font-size: 17px;
           font-weight: 400;
           color: #525252;
           white-space: nowrap;
@@ -5508,7 +5634,7 @@
           margin: 0 auto;
           width: 100%;
           max-width: 100%;
-          font-size: 13px;
+          font-size: 15px;
           line-height: 1.5;
           color: #666666;
           text-align: center;
@@ -5539,7 +5665,7 @@
         }
 
         .hk-vat-badge-text {
-          font-size: 11px;
+          font-size: 13px;
           letter-spacing: 0.12em;
           font-family: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
           color: #ffffff;
@@ -5602,7 +5728,7 @@
           border-radius: 50%;
           border: 1px solid #e5e5e5;
           background: #ffffff;
-          font-size: 24px;
+          font-size: 26px;
           line-height: 1;
           color: #525252;
           cursor: pointer;
@@ -5656,7 +5782,10 @@
         .ph-brand-title,
         .su-title,
         .dg-title,
-        .hk-title {
+        .hk-title,
+        .etb-b2b-title,
+        .ft-info-address,
+        .pm-title {
           font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
           font-weight: 400;
         }
@@ -6077,10 +6206,17 @@
 
     <!-- ══ Header.dc.html ══ -->
     <header class="hd {{ hdThemeClass }}">
-      <!-- Utility bar: address + hours (phone moved to main bar) -->
+      <!-- Utility bar: phone + address + hours -->
       <div class="hd-utility">
         <div class="hd-utility-inner">
-          <span class="hd-utility-addr">Paavli 4, 10412 Tallinn</span>
+          <div class="hd-utility-left">
+            <a href="tel:+37256702700" class="hd-phone" aria-label="Call +372 567 02 700">
+              <span class="hd-phone-label">Tel.</span>
+              <span>+372 567 02 700</span>
+            </a>
+            <span class="hd-utility-sep"></span>
+            <span class="hd-utility-addr">Paavli 4, 10412 Tallinn</span>
+          </div>
           <span class="hd-utility-hours">{{ hoursText }}</span>
         </div>
       </div>
@@ -6088,23 +6224,23 @@
       <!-- Main bar -->
       <div class="hd-main">
         <nav class="hd-nav main-nav" aria-label="Primary">
-          <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="4">
+          <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="7">
             <sc-if value="{{ link.isModal }}">
               <a href="{{ link.href }}" class="hd-nav-link" onClick="{{ openPriceListModal }}">{{ link.label }}</a>
             </sc-if>
-            <sc-if value="{{ !link.isModal }}">
+            <sc-if value="{{ link.isForm }}">
+              <a href="{{ link.href }}" class="hd-nav-link" onClick="{{ openFullForm }}">{{ link.label }}</a>
+            </sc-if>
+            <sc-if value="{{ link.isExternal }}">
+              <a href="{{ link.href }}" class="hd-nav-link" target="_blank">{{ link.label }}</a>
+            </sc-if>
+            <sc-if value="{{ link.isStandard }}">
               <a href="{{ link.href }}" class="hd-nav-link">{{ link.label }}</a>
             </sc-if>
           </sc-for>
         </nav>
 
         <div class="hd-actions">
-          <a href="tel:+37256702700" class="hd-phone" aria-label="Call +372 567 02 700">
-            <span class="hd-phone-label">Tel.</span>
-            <span>+372 567 02 700</span>
-          </a>
-
-
           <div class="hd-lang lang-switch">
             <button type="button" class="hd-lang-toggle" onClick="{{ toggleLangMenu }}" aria-expanded="{{ langOpen }}"
               aria-haspopup="listbox" aria-label="Language">
@@ -6140,11 +6276,17 @@
             <button type="button" onClick="{{ toggleMenu }}" aria-label="Close" class="hd-drawer-close">&times;</button>
           </div>
           <nav class="hd-drawer-nav" aria-label="Mobile">
-            <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="4">
+            <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="7">
               <sc-if value="{{ link.isModal }}">
                 <a href="{{ link.href }}" class="hd-drawer-link" onClick="{{ openPriceListModal }}">{{ link.label }}</a>
               </sc-if>
-              <sc-if value="{{ !link.isModal }}">
+              <sc-if value="{{ link.isForm }}">
+                <a href="{{ link.href }}" class="hd-drawer-link" onClick="{{ openFullForm }}">{{ link.label }}</a>
+              </sc-if>
+              <sc-if value="{{ link.isExternal }}">
+                <a href="{{ link.href }}" class="hd-drawer-link" target="_blank">{{ link.label }}</a>
+              </sc-if>
+              <sc-if value="{{ !link.isModal && !link.isForm && !link.isExternal }}">
                 <a href="{{ link.href }}" onClick="{{ toggleMenu }}" class="hd-drawer-link">{{ link.label }}</a>
               </sc-if>
             </sc-for>
@@ -6319,6 +6461,32 @@
     </section>
 
 
+    <!-- ══ Pihustite Müük Blokk — taastatud pihustite müük (PLACEHOLDER: lõplik tekst ja PDF-link tulevad kliendilt) ══ -->
+    <section class="pm motion-reveal" id="pihustite-muuk" aria-labelledby="pm-heading">
+      <div class="pm-inner">
+        <header class="pm-header">
+          <span class="pm-kicker">[ PLACEHOLDER — SISU TÄPSUSTAMISEL ]</span>
+          <h2 class="pm-title" id="pm-heading">Taastatud pihustid müügil</h2>
+          <div class="pm-rule" aria-hidden="true"></div>
+          <p class="pm-lead">
+            [ TODO: siia tuleb kliendi lõplik tekst taastatud/renoveeritud Common Rail pihustite müügi kohta —
+            praegu on see plats hoitud koha peal, kuni lõplik sõnastus saabub. ]
+          </p>
+        </header>
+
+        <div class="pm-actions">
+          <a class="pm-btn pm-btn--list" href="javascript:void(0)" title="PDF-link lisatakse, kui kliendi materjal on käes">
+            Vaata pihustite nimekirja (PDF)
+            <span class="pm-btn-note">[ link lisatakse ]</span>
+          </a>
+          <button type="button" class="pm-btn pm-btn--ask ft-maps-btn" onClick="{{ openForm }}">
+            Ei leia oma pihustit? Küsi meilt
+          </button>
+        </div>
+      </div>
+    </section>
+
+
     <!-- ══ Uslugi / Sümptomite Blokk — premium symptoms ══ -->
     <section class="su motion-reveal" id="uslugi" aria-labelledby="su-heading">
       <div class="su-inner">
@@ -6379,6 +6547,10 @@
               välja selgitada rikked. Kompuuterdiagnostika tulemuste põhjal võtab meister vastu otsuse
               selle kohta, millistele süsteemidele/sõlmedele on vajalik remont ja milline.
             </p>
+
+            <div class="dg-meta">
+              <span>Hind: 67 €</span>
+            </div>
 
             <div class="dg-actions">
               <a href="tel:+37256702700" class="dg-phone" aria-label="Call +372 567 02 700">
@@ -6487,18 +6659,43 @@
 
             <sc-if value="{{ isFormVisible }}" hint-placeholder-val="{{ true }}">
               <form class="rf-mini" id="request-form-mini" onSubmit="{{ handleSubmit }}">
-                <h2 class="rf-mini-title" id="rf-modal-title">Kiire hinnapäring</h2>
+                <h2 class="rf-mini-title" id="rf-modal-title">Broneeri aeg</h2>
                 <p class="rf-mini-lead">
-                  Sisesta e-post, vajuta saatmisnupule — võtame Sinuga ühendust hinnapakkumisega ühe tööpäeva jooksul.
+                  Täida väljad ja vajuta saatmisnupule — võtame Sinuga ühendust ühe tööpäeva jooksul.
                 </p>
+
+                <label class="rf-mini-label" for="rf-name-mini">Nimi*</label>
+                <input id="rf-name-mini" class="rf-mini-input" style="border-radius: 0;" type="text" name="name"
+                  value="{{ name }}" onChange="{{ onNameChange }}" placeholder="Eesnimi Perekonnanimi"
+                  required="{{ true }}" autocomplete="name" />
+
+                <label class="rf-mini-label" for="rf-phone-mini">Telefon*</label>
+                <input id="rf-phone-mini" class="rf-mini-input" style="border-radius: 0;" type="tel" name="phone"
+                  value="{{ phone }}" onChange="{{ onPhoneChange }}" placeholder="+372 5xxx xxxx"
+                  required="{{ true }}" autocomplete="tel" />
 
                 <label class="rf-mini-label" for="rf-email-mini">E-post*</label>
                 <input id="rf-email-mini" class="rf-mini-input" style="border-radius: 0;" type="email" name="email"
                   value="{{ email }}" onChange="{{ onEmailChange }}" placeholder="nimi@ettevote.ee"
                   required="{{ true }}" autocomplete="email" inputmode="email" />
 
+                <label class="rf-mini-label" for="rf-plate-mini">Auto reg. number*</label>
+                <input id="rf-plate-mini" class="rf-mini-input" style="border-radius: 0;" type="text" name="plate"
+                  value="{{ plate }}" onChange="{{ onPlateChange }}" placeholder="123 ABC"
+                  required="{{ true }}" autocomplete="off" spellcheck="false" />
+
+                <label class="rf-mini-label" for="rf-desc-mini">Probleemi kirjeldus</label>
+                <textarea id="rf-desc-mini" class="rf-mini-input" style="border-radius: 0; resize: vertical;"
+                  name="description" value="{{ description }}" onChange="{{ onDescriptionChange }}" rows="3"
+                  placeholder="Lühidalt, mis on probleem"></textarea>
+
+                <p class="rf-mini-lead" style="margin-top: -8px;">
+                  Soovid tasuda ette pangaülekandega? Kirjuta see kirjeldusse — teatame Sulle sooduspakkumise ja
+                  arve saadame meili teel.
+                </p>
+
                 <sc-if value="{{ isError }}" hint-placeholder-val="{{ false }}">
-                  <span class="rf-mini-error">Palun sisesta korrektne e-posti aadress.</span>
+                  <span class="rf-mini-error">Palun täida kõik kohustuslikud väljad (*) korrektselt.</span>
                 </sc-if>
 
                 <button type="submit" class="rf-mini-submit" style="border-radius: 0;" disabled="{{ isSubmitting }}">
@@ -6547,7 +6744,7 @@
                         <div class="rf-section-title">
                           <span class="rf-panel-name">Личные данные</span>
                           <p class="rf-panel-desc"
-                            style="font-size: 13px; color: #666; margin-top: 4px; margin-bottom: 0;">Укажите контактные
+                            style="font-size: 15px; color: #666; margin-top: 4px; margin-bottom: 0;">Укажите контактные
                             данные</p>
                         </div>
                         <div class="rf-grid-2col">
@@ -6575,7 +6772,7 @@
                         <div class="rf-section-title">
                           <span class="rf-panel-name">Данные автомобиля</span>
                           <p class="rf-panel-desc"
-                            style="font-size: 13px; color: #666; margin-top: 4px; margin-bottom: 0;">Пожалуйста укажите
+                            style="font-size: 15px; color: #666; margin-top: 4px; margin-bottom: 0;">Пожалуйста укажите
                             точные данные</p>
                         </div>
                         <div class="rf-grid-2col" style="margin-bottom: 16px;">
@@ -6588,7 +6785,7 @@
                         <div class="rf-section-title" style="margin-top: 32px;">
                           <span class="rf-panel-name">Данные из техпаспорта</span>
                           <p class="rf-panel-desc"
-                            style="font-size: 13px; color: #666; margin-top: 4px; margin-bottom: 0;">Если автомобиль не
+                            style="font-size: 15px; color: #666; margin-top: 4px; margin-bottom: 0;">Если автомобиль не
                             имеет регистрационного номера в автомобиле, укажите данные автомобиля</p>
                         </div>
 
@@ -6624,7 +6821,7 @@
                       <div class="rf-panel-body">
                         <div class="rf-section-title">
                           <span class="rf-panel-name">Описание проблемы</span>
-                          <p class="rf-panel-desc" style="font-size: 13px; color: #666; margin-top: 4px; margin-bottom: 0;">Укажите желаемые работы или подробно опишите проблемы</p>
+                          <p class="rf-panel-desc" style="font-size: 15px; color: #666; margin-top: 4px; margin-bottom: 0;">Укажите желаемые работы или подробно опишите проблемы</p>
                         </div>
                         <div class="rf-field" style="flex:1;">
                           <textarea id="rf-desc" class="rf-input rf-input--area" value="{{ description }}"
@@ -6638,7 +6835,7 @@
                       <div class="rf-submit-actions"
                         style="display: flex; flex-direction: row; gap: 16px; align-items: stretch; width: 100%;">
                         <a href="tel:+37256702700" class="su-cta-phone"
-                          style="flex: 1; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; height: 46px; padding: 0 24px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: 1px solid #171717; background: #ffffff; color: #171717; margin: 0;">Tel.
+                          style="flex: 1; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; height: 46px; padding: 0 24px; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: 1px solid #171717; background: #ffffff; color: #171717; margin: 0;">Tel.
                           +372 567 02 700</a>
                         <button type="submit" class="ft-maps-btn" disabled="{{ isSubmitting }}"
                           style="flex: 1; min-width: 0; margin: 0;">
@@ -7031,9 +7228,30 @@
           </div>
         </div>
 
-        <div class="ft-bottom">
-          <span class="ft-micro">{{ copyright }}</span>
-          <div class="ft-bottom-right">
+        <div class="ft-bottom" style="display: flex; flex-direction: column; gap: 16px;">
+          <!-- First line -->
+          <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <span class="ft-micro">{{ copyright }}</span>
+            <div class="ft-bottom-nav" style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: flex-end;">
+              <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="7">
+                <sc-if value="{{ link.isModal }}">
+                  <a href="{{ link.href }}" class="ft-micro-link" onClick="{{ openPriceListModal }}">{{ link.label }}</a>
+                </sc-if>
+                <sc-if value="{{ link.isForm }}">
+                  <a href="{{ link.href }}" class="ft-micro-link" onClick="{{ openFullForm }}">{{ link.label }}</a>
+                </sc-if>
+                <sc-if value="{{ link.isExternal }}">
+                  <a href="{{ link.href }}" class="ft-micro-link" target="_blank">{{ link.label }}</a>
+                </sc-if>
+                <sc-if value="{{ link.isStandard }}">
+                  <a href="{{ link.href }}" class="ft-micro-link">{{ link.label }}</a>
+                </sc-if>
+              </sc-for>
+            </div>
+          </div>
+
+          <!-- Second line -->
+          <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
             <div class="ft-lang" role="group" aria-label="Language">
               <button type="button" onClick="{{ setLangEE }}" class="{{ langClassEE }}">EE</button>
               <span class="ft-lang-sep">|</span>
@@ -7043,7 +7261,8 @@
               <span class="ft-lang-sep">|</span>
               <button type="button" onClick="{{ setLangFI }}" class="{{ langClassFI }}">FI</button>
             </div>
-            <button onClick="{{ scrollToTop }}" class="ft-totop" aria-label="{{ toTop }}">
+            
+            <button onClick="{{ scrollToTop }}" class="ft-totop" aria-label="{{ toTop }}" style="margin-left: 0;">
               <span class="ft-totop-arrow"></span>
               <span class="ft-totop-dot"></span>
               <span class="ft-totop-label">{{ toTop }}</span>
@@ -7064,28 +7283,40 @@ class Component extends DCLogic {
 
   navLinksByLang = {
     EE: [
-      { href: '#teenused', label: 'Teenused' },
+      { href: '#teenused', label: 'Teenused', isStandard: true },
       { href: '#hinnakiri', label: 'Hinnakiri', isModal: true },
-      { href: '#seadmed', label: 'Meist' },
-      { href: '#kontakt', label: 'Kontakt' },
+      { href: '#seadmed', label: 'Meist', isStandard: true },
+      { href: 'javascript:void(0)', label: 'Küsi hinnapakkumist', isForm: true },
+      { href: 'broneeri.html', label: 'Broneeri aeg', isStandard: true },
+      { href: 'https://rvae.ee/renoveeritud_pihustid.pdf', label: 'E-pood', isExternal: true },
+      { href: '#kontakt', label: 'Kontakt', isStandard: true },
     ],
     RU: [
-      { href: '#teenused', label: 'Услуги' },
+      { href: '#teenused', label: 'Услуги', isStandard: true },
       { href: '#hinnakiri', label: 'Цены', isModal: true },
-      { href: '#seadmed', label: 'Оборудование' },
-      { href: '#kontakt', label: 'Контакты' },
+      { href: '#seadmed', label: 'Оборудование', isStandard: true },
+      { href: 'javascript:void(0)', label: 'Сделать запрос', isForm: true },
+      { href: 'broneeri.html', label: 'Бронирование', isStandard: true },
+      { href: 'https://rvae.ee/renoveeritud_pihustid.pdf', label: 'Э-магазин', isExternal: true },
+      { href: '#kontakt', label: 'Контакты', isStandard: true },
     ],
     EN: [
-      { href: '#teenused', label: 'Services' },
+      { href: '#teenused', label: 'Services', isStandard: true },
       { href: '#hinnakiri', label: 'Pricing', isModal: true },
-      { href: '#seadmed', label: 'Equipment' },
-      { href: '#kontakt', label: 'Contact' },
+      { href: '#seadmed', label: 'Equipment', isStandard: true },
+      { href: 'javascript:void(0)', label: 'Get quote', isForm: true },
+      { href: 'broneeri.html', label: 'Book time', isStandard: true },
+      { href: 'https://rvae.ee/renoveeritud_pihustid.pdf', label: 'E-shop', isExternal: true },
+      { href: '#kontakt', label: 'Contact', isStandard: true },
     ],
     FI: [
-      { href: '#teenused', label: 'Palvelut' },
+      { href: '#teenused', label: 'Palvelut', isStandard: true },
       { href: '#hinnakiri', label: 'Hinnasto', isModal: true },
-      { href: '#seadmed', label: 'Laitteet' },
-      { href: '#kontakt', label: 'Yhteystiedot' },
+      { href: '#seadmed', label: 'Laitteet', isStandard: true },
+      { href: 'javascript:void(0)', label: 'Pyydä tarjous', isForm: true },
+      { href: 'broneeri.html', label: 'Varaa aika', isStandard: true },
+      { href: 'https://rvae.ee/renoveeritud_pihustid.pdf', label: 'Verkkokauppa', isExternal: true },
+      { href: '#kontakt', label: 'Yhteystiedot', isStandard: true },
     ],
   };
 
@@ -7294,22 +7525,26 @@ class Component extends DCLogic {
       return;
     }
 
-    // Mini email capture
+    // Mini booking request
     const email = (s.email || '').trim();
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if (!emailOk) {
+    if (!emailOk || !(s.name || '').trim() || !(s.phone || '').trim() || !(s.plate || '').trim()) {
       this.setState({ isError: true });
       return;
     }
     this.setState({ isSubmitting: true, isError: false });
     const payload = {
+      name: s.name,
+      phone: s.phone,
       email,
-      type: 'quick-email-request',
+      plate: s.plate,
+      description: s.description,
+      type: 'quick-booking-request',
       timestamp: new Date().toISOString(),
       recipient: 'autodiislikeskus@gmail.com',
     };
     setTimeout(() => {
-      console.log('Quick email request payload', payload);
+      console.log('Quick booking request payload', payload);
       this.setState({ isSubmitting: false, isSuccess: true });
     }, 700);
   };
@@ -7918,7 +8153,7 @@ class Component extends DCLogic {
       box-sizing: border-box !important;
       height: 46px !important;
       padding: 0 24px !important;
-      font-size: 11px !important;
+      font-size: 13px !important;
       font-weight: 700 !important;
       letter-spacing: 0.12em !important;
       text-transform: uppercase !important;
