@@ -606,6 +606,66 @@
           margin: 0 auto;
         }
 
+        /* Secondary / tertiary hero CTAs — same footprint as .ft-maps-btn, different weight */
+        .hero-cta-btn {
+          align-self: flex-start;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 16px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          font-family: var(--h-mono, 'Open Sans', sans-serif);
+          text-decoration: none;
+          padding: 14px 22px 13px;
+          white-space: nowrap;
+          position: relative;
+          cursor: pointer;
+          transition: box-shadow 0.2s ease, filter 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+          border-radius: 0;
+        }
+
+        /* Broneeri aeg — filled with the brand's second accent (same cyan used for the phone number),
+           so "book directly" reads as a distinct, deliberate action rather than a weaker red */
+        .hero-cta-btn--blue {
+          border: none;
+          color: #f5fdff;
+          background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, transparent 40%),
+            var(--hd-cyan, #00B8D4);
+          box-shadow:
+            0 0 0 1px rgba(0, 0, 0, 0.55),
+            inset 0 1px 0 rgba(255, 255, 255, 0.35),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+            inset 1px 0 0 rgba(255, 255, 255, 0.08),
+            0 2px 6px rgba(0, 0, 0, 0.45),
+            0 0 16px rgba(0, 184, 212, 0.2);
+          text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-cta-btn--blue:hover {
+          filter: brightness(1.08);
+          box-shadow:
+            0 0 0 1px rgba(0, 0, 0, 0.55),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+            0 3px 10px rgba(0, 0, 0, 0.5),
+            0 0 22px rgba(0, 184, 212, 0.35);
+        }
+
+        /* E-pood — ghost outline, no fill: lowest priority action (browse only, leaves the site) */
+        .hero-cta-btn--ghost {
+          border: 1.5px solid rgba(255, 255, 255, 0.75);
+          background: transparent;
+          color: #ffffff;
+        }
+
+        .hero-cta-btn--ghost:hover {
+          border-color: #ffffff;
+          background: rgba(255, 255, 255, 0.1);
+        }
+
         .hero-cta-meta-block {
           display: flex;
           flex-direction: column;
@@ -888,7 +948,8 @@
             gap: 20px;
           }
 
-          .ft-maps-btn {
+          .ft-maps-btn,
+          .hero-cta-btn {
             width: 100%;
             justify-content: center;
           }
@@ -2418,6 +2479,8 @@
 
         /* Compact email form card */
         .rf-mini {
+          --rf-line-mid: #D1D5DB;
+          --rf-red-bright: #EC0000;
           display: flex;
           flex-direction: column;
           gap: 0;
@@ -3042,16 +3105,15 @@
         .rf-input {
           width: 100%;
           box-sizing: border-box;
-          border: 1px solid var(--rf-line-mid);
-          background: #FFFFFF;
+          border: 1px solid #E5E7EB;
+          background: #F8F9FA;
           padding: 13px 14px;
           font-size: 16px;
           color: var(--rf-ink);
           outline: none;
-          border-radius: 0;
+          border-radius: 10px;
           font-family: var(--rf-sans);
-          transition: border-color 0.15s ease, box-shadow 0.15s ease;
-          box-shadow: inset 0 1px 0 rgba(15, 23, 42, 0.02);
+          transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
         }
 
         .rf-input::placeholder {
@@ -3063,10 +3125,9 @@
         }
 
         .rf-input:focus {
+          background: #FFFFFF;
           border-color: var(--rf-red-bright);
-          box-shadow:
-            0 0 0 1px var(--rf-red-bright),
-            inset 0 1px 0 rgba(15, 23, 42, 0.02);
+          box-shadow: 0 0 0 3px rgba(236, 0, 0, 0.12);
         }
 
         .rf-input--area {
@@ -6227,16 +6288,40 @@
     <header class="hd {{ hdThemeClass }}">
       <!-- Utility bar: phone + address + hours -->
       <div class="hd-utility">
-        <div class="hd-utility-inner">
-          <div class="hd-utility-left">
-            <a href="tel:+37256702700" class="hd-phone" aria-label="Call +372 567 02 700">
+        <div class="hd-utility-inner" style="padding: 0 0 0 24px;">
+          <div class="hd-utility-left" style="padding: 10px 0;">
+            <a href="tel:+37256702700" class="hd-phone" aria-label="Call +372 567 02 700" style="color: #00B8D4;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px; vertical-align:text-bottom;">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
               <span class="hd-phone-label">Tel.</span>
               <span>+372 567 02 700</span>
             </a>
-            <span class="hd-utility-sep"></span>
-            <span class="hd-utility-addr">Paavli 4, 10412 Tallinn</span>
+            <span class="hd-utility-addr" style="display:inline-flex; align-items:center; margin-left: 12px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              Paavli 4, 10412 Tallinn
+            </span>
+            <span class="hd-utility-hours" style="display:inline-flex; align-items:center; margin-left: 12px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              {{ hoursText }}
+            </span>
           </div>
-          <span class="hd-utility-hours">{{ hoursText }}</span>
+          <button type="button" onClick="{{ openForm }}"
+            style="background-color: #EC0000; color: #FFF; border: none; align-self: stretch; display: flex; align-items: center; justify-content: center; padding: 0 32px; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: filter 0.15s; margin: 0;"
+            onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter='none'">
+            Broneeri aeg
+          </button>
         </div>
       </div>
 
@@ -6358,6 +6443,12 @@
             <button type="button" onClick="{{ openFullForm }}" class="ft-maps-btn">
               {{ ctaText }}
             </button>
+            <button type="button" onClick="{{ openForm }}" class="hero-cta-btn hero-cta-btn--blue">
+              {{ heroBookLabel }}
+            </button>
+            <a href="{{ heroShopHref }}" target="_blank" rel="noopener" class="hero-cta-btn hero-cta-btn--ghost">
+              {{ heroShopLabel }}
+            </a>
           </div>
         </div>
       </div>
@@ -6492,13 +6583,15 @@
         </header>
 
         <div class="pm-actions">
-          <a class="pm-btn pm-btn--list" href="http://rvae.ee/renoveeritud_pihustid.pdf" target="_blank"
+          <button type="button" class="pm-btn pm-btn--ask pm-btn--list" onClick="{{ openForm }}">
+            Ei leia oma pihustit? Küsi meilt
+          </button>
+
+          <a class="pm-btn ft-maps-btn" href="http://rvae.ee/renoveeritud_pihustid.pdf" target="_blank"
             title="Vaata PDF nimekirja">
             Vaata pihustite nimekirja (PDF)
           </a>
-          <button type="button" class="pm-btn pm-btn--ask ft-maps-btn" onClick="{{ openForm }}">
-            Ei leia oma pihustit? Küsi meilt
-          </button>
+
         </div>
       </div>
     </section>
@@ -6676,37 +6769,41 @@
 
             <sc-if value="{{ isFormVisible }}" hint-placeholder-val="{{ true }}">
               <form class="rf-mini" id="request-form-mini" onSubmit="{{ handleSubmit }}">
-                <h2 class="rf-mini-title" id="rf-modal-title">Broneeri aeg</h2>
-                <p class="rf-mini-lead">
-                  Täida väljad ja vajuta saatmisnupule — võtame Sinuga ühendust ühe tööpäeva jooksul.
-                </p>
+                <header class="rf-header" style="padding-top: 0; padding-bottom: 24px; margin-bottom: 24px;">
+                  <div class="rf-header-row">
+                    <div class="rf-header-copy">
+                      <h2 class="rf-title" id="rf-modal-title">Забронировать время</h2>
+                      <p class="rf-lead">
+                        Täida väljad ja vajuta saatmisnupule — võtame Sinuga ühendust ühe tööpäeva jooksul.
+                      </p>
+                    </div>
+                  </div>
+                </header>
 
                 <div class="rf-mini-grid">
                   <div class="rf-mini-field">
                     <label class="rf-mini-label" for="rf-name-mini">Nimi*</label>
                     <input id="rf-name-mini" class="rf-mini-input" type="text" name="name" value="{{ name }}"
-                      onChange="{{ onNameChange }}" placeholder="Eesnimi Perekonnanimi" required="{{ true }}"
-                      autocomplete="name" />
+                      onChange="{{ onNameChange }}" placeholder="" required="{{ true }}" autocomplete="name" />
                   </div>
 
                   <div class="rf-mini-field">
                     <label class="rf-mini-label" for="rf-phone-mini">Telefon*</label>
                     <input id="rf-phone-mini" class="rf-mini-input" type="tel" name="phone" value="{{ phone }}"
-                      onChange="{{ onPhoneChange }}" placeholder="+372 5xxx xxxx" required="{{ true }}"
-                      autocomplete="tel" />
+                      onChange="{{ onPhoneChange }}" placeholder="" required="{{ true }}" autocomplete="tel" />
                   </div>
 
                   <div class="rf-mini-field">
                     <label class="rf-mini-label" for="rf-email-mini">E-post*</label>
                     <input id="rf-email-mini" class="rf-mini-input" type="email" name="email" value="{{ email }}"
-                      onChange="{{ onEmailChange }}" placeholder="nimi@ettevote.ee" required="{{ true }}"
-                      autocomplete="email" inputmode="email" />
+                      onChange="{{ onEmailChange }}" placeholder="" required="{{ true }}" autocomplete="email"
+                      inputmode="email" />
                   </div>
 
                   <div class="rf-mini-field">
                     <label class="rf-mini-label" for="rf-plate-mini">Auto reg. number*</label>
                     <input id="rf-plate-mini" class="rf-mini-input" type="text" name="plate" value="{{ plate }}"
-                      onChange="{{ onPlateChange }}" placeholder="123 ABC" required="{{ true }}" autocomplete="off"
+                      onChange="{{ onPlateChange }}" placeholder="" required="{{ true }}" autocomplete="off"
                       spellcheck="false" />
                   </div>
                 </div>
@@ -6714,8 +6811,7 @@
                 <div class="rf-mini-field rf-mini-field--full">
                   <label class="rf-mini-label" for="rf-desc-mini">Probleemi kirjeldus</label>
                   <textarea id="rf-desc-mini" class="rf-mini-input" style="resize: vertical;" name="description"
-                    value="{{ description }}" onChange="{{ onDescriptionChange }}" rows="3"
-                    placeholder="Lühidalt, mis on probleem"></textarea>
+                    value="{{ description }}" onChange="{{ onDescriptionChange }}" rows="3" placeholder=""></textarea>
                 </div>
 
                 <p class="rf-mini-lead" style="margin-top: -8px;">
@@ -6778,17 +6874,17 @@
                         </div>
                         <div class="rf-grid-2col">
                           <div class="rf-field">
-                            <label class="rf-label" for="rf-name">Имя и фамилия</label>
+                            <label class="rf-mini-label" for="rf-name">Имя и фамилия</label>
                             <input id="rf-name" class="rf-input" value="{{ name }}" onChange="{{ onNameChange }}"
                               autocomplete="name" />
                           </div>
                           <div class="rf-field">
-                            <label class="rf-label" for="rf-email-full">Эл. адрес</label>
+                            <label class="rf-mini-label" for="rf-email-full">Эл. адрес</label>
                             <input id="rf-email-full" class="rf-input" type="email" value="{{ email }}"
                               onChange="{{ onEmailChange }}" autocomplete="email" />
                           </div>
                           <div class="rf-field">
-                            <label class="rf-label" for="rf-phone">Телефон</label>
+                            <label class="rf-mini-label" for="rf-phone">Телефон</label>
                             <input id="rf-phone" class="rf-input" type="tel" value="{{ phone }}"
                               onChange="{{ onPhoneChange }}" autocomplete="tel" />
                           </div>
@@ -6806,7 +6902,7 @@
                         </div>
                         <div class="rf-grid-2col" style="margin-bottom: 16px;">
                           <div class="rf-field">
-                            <label class="rf-label" for="rf-plate">Рег. номер</label>
+                            <label class="rf-mini-label" for="rf-plate">Рег. номер</label>
                             <input id="rf-plate" class="rf-input" value="{{ plate }}" onChange="{{ onPlateChange }}"
                               autocomplete="off" spellcheck="false" />
                           </div>
@@ -6820,25 +6916,25 @@
 
                         <div class="rf-grid-2col">
                           <div class="rf-field">
-                            <label class="rf-label" for="rf-make">Марка и модель</label>
+                            <label class="rf-mini-label" for="rf-make">Марка и модель</label>
                             <input id="rf-make" class="rf-input" value="{{ make }}" onChange="{{ onMakeChange }}" />
                           </div>
                           <div class="rf-field">
-                            <label class="rf-label" for="rf-year">Год выпуска</label>
+                            <label class="rf-mini-label" for="rf-year">Год выпуска</label>
                             <input id="rf-year" class="rf-input" value="{{ year }}" onChange="{{ onYearChange }}"
                               inputmode="numeric" />
                           </div>
                           <div class="rf-field">
-                            <label class="rf-label" for="rf-displacement">Объём</label>
+                            <label class="rf-mini-label" for="rf-displacement">Объём</label>
                             <input id="rf-displacement" class="rf-input" value="{{ displacement }}"
                               onChange="{{ onDisplacementChange }}" />
                           </div>
                           <div class="rf-field">
-                            <label class="rf-label" for="rf-power">Мощность</label>
+                            <label class="rf-mini-label" for="rf-power">Мощность</label>
                             <input id="rf-power" class="rf-input" value="{{ power }}" onChange="{{ onPowerChange }}" />
                           </div>
                           <div class="rf-field">
-                            <label class="rf-label" for="rf-vin">Идентификационный код</label>
+                            <label class="rf-mini-label" for="rf-vin">Идентификационный код</label>
                             <input id="rf-vin" class="rf-input" value="{{ vin }}" onChange="{{ onVinChange }}"
                               autocomplete="off" spellcheck="false" />
                           </div>
@@ -6927,7 +7023,7 @@
               <div class="hk-vat-wrap">
                 <div class="hk-vat-badge">
                   <span class="hk-vat-badge-dot" aria-hidden="true"></span>
-                  <span class="hk-vat-badge-text">HINNAD SISALDAVAD KÄIBEMAKSU</span>
+                  <span class="hk-vat-badge-text">HINNAD EI SISALDA KÄIBEMAKSU</span>
                 </div>
               </div>
             </div>
@@ -7320,7 +7416,6 @@ class Component extends DCLogic {
       { href: '#hinnakiri', label: 'Hinnakiri', isModal: true },
       { href: '#seadmed', label: 'Meist', isStandard: true },
       { href: 'javascript:void(0)', label: 'Küsi hinnapakkumist', isForm: true },
-      { href: 'broneeri.html', label: 'Broneeri aeg', isStandard: true },
       { href: 'https://rvae.ee/renoveeritud_pihustid.pdf', label: 'E-pood', isExternal: true },
       { href: '#kontakt', label: 'Kontakt', isStandard: true },
     ],
@@ -7329,7 +7424,6 @@ class Component extends DCLogic {
       { href: '#hinnakiri', label: 'Цены', isModal: true },
       { href: '#seadmed', label: 'Оборудование', isStandard: true },
       { href: 'javascript:void(0)', label: 'Сделать запрос', isForm: true },
-      { href: 'broneeri.html', label: 'Бронирование', isStandard: true },
       { href: 'https://rvae.ee/renoveeritud_pihustid.pdf', label: 'Э-магазин', isExternal: true },
       { href: '#kontakt', label: 'Контакты', isStandard: true },
     ],
@@ -7338,7 +7432,6 @@ class Component extends DCLogic {
       { href: '#hinnakiri', label: 'Pricing', isModal: true },
       { href: '#seadmed', label: 'Equipment', isStandard: true },
       { href: 'javascript:void(0)', label: 'Get quote', isForm: true },
-      { href: 'broneeri.html', label: 'Book time', isStandard: true },
       { href: 'https://rvae.ee/renoveeritud_pihustid.pdf', label: 'E-shop', isExternal: true },
       { href: '#kontakt', label: 'Contact', isStandard: true },
     ],
@@ -7347,7 +7440,6 @@ class Component extends DCLogic {
       { href: '#hinnakiri', label: 'Hinnasto', isModal: true },
       { href: '#seadmed', label: 'Laitteet', isStandard: true },
       { href: 'javascript:void(0)', label: 'Pyydä tarjous', isForm: true },
-      { href: 'broneeri.html', label: 'Varaa aika', isStandard: true },
       { href: 'https://rvae.ee/renoveeritud_pihustid.pdf', label: 'Verkkokauppa', isExternal: true },
       { href: '#kontakt', label: 'Yhteystiedot', isStandard: true },
     ],
@@ -8037,6 +8129,11 @@ class Component extends DCLogic {
       onToggle: () => toggleSymptom(i),
     }));
 
+    const resolvedNavLinks = navLinksByLang[lang] || navLinksByLang.EE;
+    const heroBookLabelsByLang = { EE: 'Broneeri aeg', RU: 'Бронирование', EN: 'Book time', FI: 'Varaa aika' };
+    const currentHeroBookLabel = heroBookLabelsByLang[lang] || 'Broneeri aeg';
+    const heroShopLink = resolvedNavLinks.find((l) => l.isExternal) || {};
+
     return {
       // Header
       menuOpen: s.menuOpen,
@@ -8049,7 +8146,7 @@ class Component extends DCLogic {
       setLangRU: this.setLangRU || (() => this.setState({ lang: 'RU', langOpen: false })),
       setLangEN: this.setLangEN || (() => this.setState({ lang: 'EN', langOpen: false })),
       setLangFI: this.setLangFI || (() => this.setState({ lang: 'FI', langOpen: false })),
-      navLinks: navLinksByLang[lang] || navLinksByLang.EE,
+      navLinks: resolvedNavLinks,
       hoursText: hoursByLang[lang] || hoursByLang.EE,
       langCode: lang,
       langItemClassEE: lang === 'EE' ? 'is-active' : '',
@@ -8064,6 +8161,10 @@ class Component extends DCLogic {
       // Hero
       subtitleText: this.subtitleText,
       ctaText: this.ctaText,
+      heroBookLabel: currentHeroBookLabel,
+      heroBookHref: 'broneeri.html',
+      heroShopLabel: heroShopLink.label,
+      heroShopHref: heroShopLink.href,
       specs: this.specs,
       openForm: this.openForm,
       openFullForm: this.openFullForm,
