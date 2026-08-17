@@ -1414,9 +1414,68 @@
         }
 
         .pm-inner {
-          max-width: 900px;
+          max-width: 1100px;
           margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 32px;
           text-align: center;
+        }
+
+        .pm-copy {
+          width: 100%;
+        }
+
+        .pm-media {
+          width: 100%;
+          max-width: 480px;
+        }
+
+        .pm-media-img {
+          display: block;
+          width: 100%;
+          height: auto;
+          border: 1px solid var(--pm-line-mid);
+          object-fit: cover;
+        }
+
+        @media (min-width: 800px) {
+          .pm-inner {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 56px;
+            text-align: left;
+          }
+
+          .pm-copy {
+            flex: 1 1 auto;
+            max-width: 560px;
+          }
+
+          .pm-media {
+            flex: 0 0 auto;
+            width: min(38%, 420px);
+            max-width: none;
+          }
+
+          .pm-rule {
+            margin: 18px 0;
+          }
+
+          .pm-lead {
+            margin: 0;
+          }
+
+          .pm-ask {
+            margin: 24px 0 0;
+            max-width: none;
+          }
+
+          .pm-actions {
+            justify-content: flex-start;
+          }
         }
 
         .pm-kicker {
@@ -1455,6 +1514,31 @@
           line-height: 1.6;
           color: var(--pm-dim);
           font-style: italic;
+        }
+
+        .pm-ask {
+          margin: 24px auto 0;
+          max-width: 480px;
+          padding: 16px 18px;
+          border: 1px dashed var(--pm-line-mid);
+          background: #ffffff;
+          text-align: left;
+        }
+
+        .pm-ask-title {
+          margin: 0 0 8px;
+          font-size: 13px;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: var(--pm-accent);
+        }
+
+        .pm-ask-text {
+          margin: 0;
+          font-size: 14px;
+          line-height: 1.6;
+          color: var(--pm-muted);
         }
 
         .pm-actions {
@@ -6677,24 +6761,38 @@
     <!-- ══ Pihustite Müük Blokk — taastatud pihustite müük (PLACEHOLDER: lõplik tekst ja PDF-link tulevad kliendilt) ══ -->
     <section class="pm motion-reveal" id="pihustite-muuk" aria-labelledby="pm-heading">
       <div class="pm-inner">
-        <header class="pm-header">
-          <h2 class="pm-title" id="pm-heading">Taastatud pihustid müügil</h2>
-          <div class="pm-rule" aria-hidden="true"></div>
-          <p class="pm-lead">
-            Uute ja renoveeritud DENSO, DELPHI, BOSCH ja SEIEMENS pihustite müük
-          </p>
-        </header>
+        <div class="pm-copy" style="text-align: left;">
+          <header class="pm-header">
+            <h2 class="pm-title" id="pm-heading">Taastatud pihustid – taskukohased hinnad</h2>
+            <div class="pm-rule" aria-hidden="true" style="margin-left: 0;"></div>
+            <p class="pm-lead">
+              Uute ja renoveeritud DENSO, DELPHI, BOSCH ja SEIEMENS pihustite müük
+            </p>
+          </header>
 
-        <div class="pm-actions">
-          <button type="button" class="pm-btn pm-btn--ask pm-btn--list" onClick="{{ openForm }}">
-            Ei leia oma pihustit? Küsi meilt
-          </button>
+          <div class="pm-ask" style="margin-left: 0; text-align: left;">
+            <h3 class="pm-ask-title">Küsi hinda</h3>
+            <p class="pm-ask-text">Lisa päringule pihusti kood. Kui kood ei ole teada, märgi auto
+              registreerimisnumber. Välismaal registreeritud auto puhul lisa auto mark, mudel, aasta ja mootori
+              andmed.</p>
+          </div>
 
-          <a class="pm-btn ft-maps-btn" href="http://rvae.ee/renoveeritud_pihustid.pdf" target="_blank"
-            title="Vaata PDF nimekirja">
-            Vaata pihustite nimekirja (PDF)
-          </a>
+          <div class="pm-actions" style="justify-content: flex-start; text-align: left;">
+            <button type="button" class="pm-btn pm-btn--ask pm-btn--list" onClick="{{ openForm }}">
+              Ei leia oma pihustit? Küsi meilt
+            </button>
 
+            <a class="pm-btn ft-maps-btn" href="http://rvae.ee/renoveeritud_pihustid.pdf" target="_blank"
+              title="Vaata PDF nimekirja">
+              Vaata pihustite nimekirja (PDF)
+            </a>
+
+          </div>
+        </div>
+
+        <div class="pm-media">
+          <img src="img/stand-pihusti.jpg" alt="Taastatud pihustite stend" class="pm-media-img" width="640" height="480"
+            loading="lazy" />
         </div>
       </div>
     </section>
@@ -7334,8 +7432,8 @@
         <!-- B2B — neutral dark grade; restrained type + hairlines; quiet CTA -->
         <aside class="etb-b2b motion-reveal" aria-labelledby="etb-b2b-heading">
           <div class="etb-b2b-bg" aria-hidden="true">
-            <img class="etb-b2b-img" src="./ad-img-2.jpg" alt="" width="1400" height="600" />
-            <div class="etb-b2b-tint"></div>
+            <img class="etb-b2b-img" src="./b2b-banner.jpg" alt="" width="1400" height="600" />
+            <div class="etb-b2b-tint" style="opacity: 0.3;"></div>
           </div>
           <div class="etb-b2b-content">
             <h3 class="etb-b2b-title" id="etb-b2b-heading">
