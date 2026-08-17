@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="et">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meist — Auto Diislikeskus</title>
+  <meta name="description"
+    content="Auto Diislikeskus — professionaalne diislikütuse süsteemide diagnostika ja remont Tallinnas alates 2012. aastast.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Open+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0F172A;
+      --muted: #525252;
+      --dim: #737373;
+      --line: #E5E7EB;
+      --line-mid: #D1D5DB;
+      --red: #EC0000;
+      --cyan: #00B8D4;
+      --dark: #111111;
+      --dark-deep: #0a0a0a;
+      --sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
+      --display: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
+      --mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #FFFFFF;
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* ── Header ── */
+    .hd {
+      background: var(--dark);
+      color: #fff;
+    }
+
+    .hd-utility {
+      background: var(--dark-deep);
+      border-bottom: 1px solid #1f1f1f;
+    }
+
+    .hd-utility-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      color: rgba(255, 255, 255, 0.78);
+      flex-wrap: wrap;
+    }
+
+    .hd-utility-inner a {
+      text-decoration: none;
+      color: var(--cyan);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hd-utility-inner span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hd-main {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hd-brand {
+      font-family: var(--display);
+      font-size: 21px;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .hd-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+
+    .hd-back:hover {
+      color: #fff;
+    }
+
+    /* ── Intro / hero ── */
+    .intro {
+      background: var(--dark);
+      color: #fff;
+      padding: 64px 24px 68px;
+      position: relative;
+    }
+
+    .intro-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .intro-kicker {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin: 0 0 18px;
+    }
+
+    .intro-title {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(30px, 4.6vw, 50px);
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin: 0 0 24px;
+    }
+
+    .intro-lead {
+      font-size: 17px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.82);
+      margin: 0 0 16px;
+      max-width: 720px;
+    }
+
+    .intro-lead strong {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    /* ── Feature list section ── */
+    .feats {
+      background: #fff;
+      padding: 72px 24px 40px;
+    }
+
+    .feats-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .feats-head {
+      max-width: 640px;
+      margin: 0 0 40px;
+    }
+
+    .feats-kicker {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin: 0 0 12px;
+    }
+
+    .feats-title {
+      font-family: var(--sans);
+      font-weight: 800;
+      font-size: clamp(24px, 3vw, 34px);
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin: 0;
+      line-height: 1.15;
+    }
+
+    .feats-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: var(--line-mid);
+      border: 1px solid var(--line-mid);
+    }
+
+    .feat {
+      background: #fff;
+      padding: 28px 28px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .feat-num {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--dim);
+      letter-spacing: 0.04em;
+    }
+
+    .feat-title {
+      font-size: 17px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      margin: 0;
+    }
+
+    .feat-text {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    @media (min-width: 820px) {
+      .feats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* ── Closing / CTA band ── */
+    .closing {
+      background: #F5F5F4;
+      padding: 64px 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .closing-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .closing-text {
+      font-size: 16.5px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin: 0 0 22px;
+    }
+
+    .closing-tagline {
+      font-family: var(--sans);
+      font-weight: 800;
+      font-size: clamp(19px, 2.4vw, 25px);
+      line-height: 1.4;
+      letter-spacing: -0.005em;
+      color: var(--ink);
+      margin: 0 0 36px;
+    }
+
+    .closing-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 15px 30px;
+      border: none;
+      cursor: pointer;
+      transition: filter 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn--red {
+      background: var(--red);
+      color: #fff;
+    }
+
+    .btn--red:hover {
+      filter: brightness(1.08);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--ink);
+    }
+
+    .btn--ghost:hover {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    /* ── Footer ── */
+    .ft {
+      background: var(--dark-deep);
+      color: rgba(255, 255, 255, 0.65);
+      padding: 28px 24px;
+    }
+
+    .ft-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 13px;
+    }
+
+    .ft-inner a {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .ft-inner a:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 640px) {
+      .hd-main {
+        padding: 16px 20px;
+      }
+
+      .intro {
+        padding: 48px 20px 52px;
+      }
+
+      .feats {
+        padding: 52px 20px 28px;
+      }
+
+      .feat {
+        padding: 24px 20px 28px;
+      }
+
+      .closing {
+        padding: 48px 20px;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="hd">
+    <div class="hd-utility">
+      <div class="hd-utility-inner">
+        <a href="tel:+37256702700" aria-label="Helista +372 567 02 700">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+            </path>
+          </svg>
+          +372 567 02 700
+        </a>
+        <span>Paavli 4, 10412 Tallinn</span>
+        <span>Avatud E–R 9–18</span>
+      </div>
+    </div>
+    <div class="hd-main">
+      <a href="index.html" class="hd-brand">AUTO DIISLIKESKUS</a>
+      <a href="index.html" class="hd-back">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5"></path>
+          <path d="M12 19l-7-7 7-7"></path>
+        </svg>
+        Tagasi avalehele
+      </a>
+    </div>
+  </header>
+
+  <section class="intro">
+    <div class="intro-inner">
+      <p class="intro-kicker">MEIST</p>
+      <h1 class="intro-title">Auto Diislikeskus — professionaalne lahendus kütusesüsteemide remondiks</h1>
+      <p class="intro-lead">Auto Diislikeskus alustas tegevust <strong>2012. aastal</strong> ning alates
+        <strong>2017. aastast</strong> tegutseme eraldiseisva ettevõttena, mille põhivaldkonnaks on diislikütuse
+        süsteemide diagnostika ja remont.
+      </p>
+      <p class="intro-lead">Meie eesmärk ei ole lihtsalt parandada ühte detaili, vaid leida rikke tegelik põhjus ja
+        pakkuda kliendile toimiv ning usaldusväärne lahendus.</p>
+    </div>
+  </section>
+
+  <section class="feats">
+    <div class="feats-inner">
+      <div class="feats-head">
+        <p class="feats-kicker">Mida klient meie juures saab?</p>
+        <h2 class="feats-title">Terviklik teenus algusest lõpuni</h2>
+      </div>
+      <div class="feats-grid">
+
+        <article class="feat">
+          <span class="feat-num">01</span>
+          <h3 class="feat-title">Täpne diagnostika ja professionaalne remont</h3>
+          <p class="feat-text">Meie spetsialistid on läbinud erialased koolitused kütusesüsteemide diagnostika ja
+            remondi alal. Kasutame professionaalset diagnostika- ja remonditehnikat, et leida võimalikult täpselt
+            rikke põhjus ning vältida asjatut detailide vahetamist.</p>
+        </article>
+
+        <article class="feat">
+          <span class="feat-num">02</span>
+          <h3 class="feat-title">Teenindus ka väljastpoolt Eestit</h3>
+          <p class="feat-text">Meie poole pöörduvad kliendid lisaks Eestile ka Soomest, Rootsist, Lätist ja Leedust.
+            Kui kliendil ei ole võimalik ise kohale tulla, saab näiteks pihustid meile remonti saata.</p>
+        </article>
+
+        <article class="feat">
+          <span class="feat-num">03</span>
+          <h3 class="feat-title">Mugav saatmine Omniva ja DPD kaudu</h3>
+          <p class="feat-text">Teeme koostööd Omniva ja DPD-ga, mis võimaldab saata pihusteid ja teisi komponente
+            meile remonti ka teisest linnast või riigist. Pärast remonti saadame valmis detailid kliendile tagasi.
+            Nii ei pea klient oma autot transportima ega ise kohale sõitma.</p>
+        </article>
+
+        <article class="feat">
+          <span class="feat-num">04</span>
+          <h3 class="feat-title">Kõik vajalik ühest kohast</h3>
+          <p class="feat-text">Meie teenuste valik ei piirdu ainult kütuseaparatuuri remondiga. Tegeleme autode
+            diagnostika ja erinevate remonditöödega, sealhulgas mootorite diagnostika ja remondiga. See annab
+            kliendile võimaluse lahendada mitu probleemi ühes töökojas, säästes aega ja vähendades vajadust otsida
+            erinevaid teenusepakkujaid.</p>
+        </article>
+
+        <article class="feat">
+          <span class="feat-num">05</span>
+          <h3 class="feat-title">Vajalikud varuosad ja komponendid</h3>
+          <p class="feat-text">Käime regulaarselt rahvusvahelistel autotööstuse ja tehnika messidel, kus tutvume
+            uute tehnoloogiate, seadmete ja lahendustega. Samuti teeme koostööd erinevate tarnijatega ning sõlmime
+            lepinguid varuosade ja agregaatide hankimiseks.</p>
+        </article>
+
+        <article class="feat">
+          <span class="feat-num">06</span>
+          <h3 class="feat-title">Kogemus ja kvalifitseeritud spetsialistid</h3>
+          <p class="feat-text">Meie töötajad täiendavad regulaarselt oma teadmisi ja oskusi. Tänu kogemustele ning
+            spetsialiseerumisele kütusesüsteemidele oskame läheneda probleemidele süsteemselt — mitte ainult
+            parandada tagajärge, vaid otsida ka rikke põhjust.</p>
+        </article>
+
+        <article class="feat">
+          <span class="feat-num">07</span>
+          <h3 class="feat-title">Mugav asukoht</h3>
+          <p class="feat-text">Töökoda asub mugavalt linna keskuse lähedal. Päevasel ajal on klientidele olemas
+            tasuta parkimisvõimalus, mis muudab meie külastamise lihtsamaks ja mugavamaks.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="closing-inner">
+      <p class="closing-text">Auto rike tähendab kliendile sageli lisakulu, ajakadu ja ebamugavust. Seetõttu
+        püüame muuta kogu remondiprotsessi võimalikult lihtsaks — alates diagnostikast ja detaili saatmisest kuni
+        remondi ning valmis detaili tagastamiseni.</p>
+      <p class="closing-tagline">Auto Diislikeskus — professionaalne diagnostika, kvaliteetne remont ja mugav
+        teenindus ühest kohast.</p>
+      <div class="closing-actions">
+        <a href="tel:+37256702700" class="btn btn--ghost">Helista +372 567 02 700</a>
+        <a href="index.html#kontakt" class="btn btn--red">Küsi hinnapakkumist</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="ft">
+    <div class="ft-inner">
+      <span>© Auto Diislikeskus · Paavli 4, 10412 Tallinn</span>
+      <a href="index.html">Tagasi avalehele</a>
+    </div>
+  </footer>
+
+</body>
+
+</html>

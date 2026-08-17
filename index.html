@@ -145,10 +145,6 @@
           display: none !important;
         }
 
-        text-decoration: none;
-        color: inherit;
-        }
-
         .hd-logo {
           display: block;
           flex-shrink: 0;
@@ -213,14 +209,14 @@
         /* Phone — matched to utility address */
         .hd-phone {
           display: inline-flex;
-          align-items: baseline;
+          align-items: center;
           gap: 0.28em;
           font-size: 16px;
           letter-spacing: 0.08em;
           text-transform: uppercase;
           color: var(--hd-utility-text);
-          font-weight: 600;
-          font-family: var(--hd-sans);
+          font-weight: 400;
+          font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
           text-decoration: none;
           transition: color 0.25s ease;
         }
@@ -1293,7 +1289,7 @@
           justify-content: center;
           margin-top: 4px;
           padding: 14px 22px;
-          font-size: 13px;
+          font-size: 16px;
           font-weight: 700;
           letter-spacing: 0.14em;
           text-transform: uppercase;
@@ -4383,6 +4379,104 @@
           font-family: var(--etb-mono);
         }
 
+        /* About us teaser — quiet hairline panel, links out to the full Meist page */
+        .etb-about-panel {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 28px;
+          border: 1px solid var(--etb-line-mid);
+          background: var(--etb-surface);
+          padding: 28px 24px;
+        }
+
+        .etb-about-copy {
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+        }
+
+        .etb-about-heading {
+          margin: 0;
+          font-size: clamp(20px, 2.4vw, 27px);
+          font-weight: 800;
+          letter-spacing: -0.01em;
+          text-transform: uppercase;
+          color: var(--etb-ink);
+          line-height: 1.2;
+          font-family: var(--etb-sans);
+        }
+
+        .etb-about-text {
+          margin: 0;
+          font-size: 15.5px;
+          line-height: 1.65;
+          color: var(--etb-muted);
+          max-width: 46em;
+        }
+
+        .etb-about-btn {
+          align-self: flex-start;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          margin-top: 4px;
+          font-size: 16px;
+          font-weight: 700;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          font-family: var(--etb-sans);
+          text-decoration: none;
+          color: var(--etb-ink);
+          padding: 14px 26px;
+          border: 1.5px solid var(--etb-ink);
+          transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+        }
+
+        .etb-about-btn:hover {
+          background: var(--etb-red);
+          border-color: var(--etb-red);
+          color: #fff;
+        }
+
+        .etb-about-facts {
+          display: flex;
+          flex-direction: column;
+          gap: 18px;
+          border-top: 1px solid var(--etb-line);
+          padding-top: 20px;
+        }
+
+        .etb-about-fact {
+          display: flex;
+          gap: 12px;
+          font-size: 14.5px;
+          line-height: 1.55;
+          color: var(--etb-muted);
+        }
+
+        .etb-about-fact .etb-card-spec-num {
+          flex: 0 0 auto;
+          font-family: var(--etb-mono);
+          font-size: 13px;
+          color: var(--etb-dim);
+        }
+
+        @media (min-width: 800px) {
+          .etb-about-panel {
+            grid-template-columns: 1.3fr 1fr;
+            gap: 48px;
+            padding: 44px 48px;
+          }
+
+          .etb-about-facts {
+            border-top: none;
+            border-left: 1px solid var(--etb-line);
+            padding-top: 0;
+            padding-left: 40px;
+            justify-content: center;
+          }
+        }
+
         /* Shared grid shells — 1px hairlines, zero radius */
         .etb-grid {
           display: grid;
@@ -4427,7 +4521,7 @@
           border: none;
           border-radius: 0;
           background: #0a1628;
-          min-height: clamp(420px, 52vw, 560px);
+          min-height: clamp(280px, 35vw, 400px);
           display: flex;
           align-items: stretch;
         }
@@ -4523,7 +4617,7 @@
           display: flex;
           align-items: flex-start;
           gap: 12px;
-          font-family: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+          font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
           font-size: clamp(24px, 4.4vw, 62px);
           font-weight: 400;
           letter-spacing: -0.015em;
@@ -4558,6 +4652,7 @@
 
         .etb-personal-text {
           margin: 0;
+          margin-left: calc(clamp(22px, 2.4vw, 28px) + 12px);
           font-size: clamp(16px, 1.5vw, 19px);
           line-height: 1.55;
           color: rgba(255, 255, 255, 0.92);
@@ -4932,7 +5027,7 @@
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          font-size: 14px;
+          font-size: 16px;
           font-weight: 600;
           letter-spacing: 0.16em;
           text-transform: uppercase;
@@ -6281,6 +6376,14 @@
             transform: none !important;
           }
         }
+
+        /* Override font sizes for CTA buttons in bottom sections to 16px as requested */
+        .su-cta-phone,
+        .dg-phone,
+        .su-cta-row .ft-maps-btn,
+        .dg-actions .ft-maps-btn {
+          font-size: 16px !important;
+        }
       </style>
     </helmet>
 
@@ -7090,54 +7193,41 @@
           </div>
 
           <h2 class="etb-title" id="etb-heading">
-            SEADMED JA MEESKOND
+            MEIST JA MEESKOND
           </h2>
           <p class="etb-lead">
-            Täppisdiagnostika stendid, sertifitseeritud meistrid ja usaldusväärne koostöö partneritega üle Eesti.
+            Professionaalne diagnostika, sertifitseeritud meistrid ja usaldusväärne koostöö partneritega üle Eesti.
           </p>
         </header>
 
-        <!-- Equipment -->
+        <!-- About us teaser — links out to the full Meist page -->
         <div class="etb-block">
           <div class="etb-block-label">
-            <!-- Nested Frames mark beside label -->
-            <div class="etb-island etb-island--label" aria-hidden="true">
-              <svg class="etb-fill" preserveAspectRatio="none">
-                <rect width="100%" height="100%" fill="url(#etb-frame-stack)"></rect>
-              </svg>
-            </div>
-            <span class="etb-block-title">SEADMED</span>
-            <!-- <span class="etb-block-meta">[ 03 ÜHIKUT · LABORIKLASS ]</span> -->
+            <span class="etb-block-title">MEIST</span>
           </div>
-          <div class="etb-grid etb-grid--equip equip-grid motion-stagger">
-            <sc-for list="{{ equipment }}" as="eq" hint-placeholder-count="3">
-              <article class="etb-card">
-                <span class="etb-card-corner etb-card-corner--tl" aria-hidden="true"></span>
-                <span class="etb-card-corner etb-card-corner--br" aria-hidden="true"></span>
-                <div class="etb-card-media etb-card-media--equip">
-                  <image-slot id="{{ eq.slotId }}" shape="rect" placeholder="{{ eq.placeholder }}" src="{{ eq.src }}"
-                    credit="{{ eq.credit }}" credit-href="{{ eq.creditHref }}" fit="cover"></image-slot>
-                  <span class="etb-card-tag">{{ eq.tag }}</span>
-                </div>
-                <div class="etb-card-body">
-                  <!-- Crosshair corner only — card stays mostly empty -->
-                  <div class="etb-island etb-island--card" aria-hidden="true">
-                    <svg class="etb-fill" preserveAspectRatio="none">
-                      <rect width="100%" height="100%" fill="url(#etb-crosshair)"></rect>
-                    </svg>
-                  </div>
-                  <span class="etb-card-name">{{ eq.name }}</span>
-                  <span class="etb-card-spec">
-                    <span class="etb-card-spec-num">01</span>
-                    <span>{{ eq.spec1 }}</span>
-                  </span>
-                  <span class="etb-card-spec">
-                    <span class="etb-card-spec-num">02</span>
-                    <span>{{ eq.spec2 }}</span>
-                  </span>
-                </div>
-              </article>
-            </sc-for>
+          <div class="etb-about-panel">
+            <div class="etb-about-copy">
+              <h3 class="etb-about-heading">Alustasime 2012. aastal — kütusesüsteemide diagnostika ja remont on meie
+                põhivaldkond</h3>
+              <p class="etb-about-text">Alates 2017. aastast tegutseme eraldiseisva ettevõttena. Meie eesmärk ei ole
+                lihtsalt parandada ühte detaili, vaid leida rikke tegelik põhjus ja pakkuda usaldusväärne lahendus.
+              </p>
+              <a href="meist.html" class="etb-about-btn">Loe lähemalt meist →</a>
+            </div>
+            <div class="etb-about-facts">
+              <div class="etb-about-fact">
+                <span class="etb-card-spec-num">01</span>
+                <span>Kliendid ka Soomest, Rootsist, Lätist ja Leedust</span>
+              </div>
+              <div class="etb-about-fact">
+                <span class="etb-card-spec-num">02</span>
+                <span>Pihustite saatmine remonti Omniva ja DPD kaudu</span>
+              </div>
+              <div class="etb-about-fact">
+                <span class="etb-card-spec-num">03</span>
+                <span>Kvalifitseeritud spetsialistid, regulaarne täienduskoolitus</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -7198,7 +7288,7 @@
                 <p class="etb-personal-text">Meie spetsialistid on läbinud koolituse. Bosch sertifikaadid kinnitavad
                   kõrget kvalifikatsiooni.</p>
                 <!-- <p class="etb-personal-text">Bosch sertifikaadid kinnitavad kõrget kvalifikatsiooni.</p> -->
-                <div class="etb-personal-badges">
+                <!-- <div class="etb-personal-badges">
                   <span class="etb-personal-badge">
                     <span class="etb-personal-badge-icon" aria-hidden="true">
                       <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -7226,7 +7316,7 @@
                     </span>
                     TNVD
                   </span>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -7414,7 +7504,7 @@ class Component extends DCLogic {
     EE: [
       { href: '#teenused', label: 'Teenused', isStandard: true },
       { href: '#hinnakiri', label: 'Hinnakiri', isModal: true },
-      { href: '#seadmed', label: 'Meist', isStandard: true },
+      { href: 'meist.html', label: 'Meist', isStandard: true },
       { href: 'javascript:void(0)', label: 'Küsi hinnapakkumist', isForm: true },
       { href: 'https://rvae.ee/renoveeritud_pihustid.pdf', label: 'E-pood', isExternal: true },
       { href: '#kontakt', label: 'Kontakt', isStandard: true },
@@ -7422,7 +7512,7 @@ class Component extends DCLogic {
     RU: [
       { href: '#teenused', label: 'Услуги', isStandard: true },
       { href: '#hinnakiri', label: 'Цены', isModal: true },
-      { href: '#seadmed', label: 'Оборудование', isStandard: true },
+      { href: 'meist.html', label: 'О нас', isStandard: true },
       { href: 'javascript:void(0)', label: 'Сделать запрос', isForm: true },
       { href: 'https://rvae.ee/renoveeritud_pihustid.pdf', label: 'Э-магазин', isExternal: true },
       { href: '#kontakt', label: 'Контакты', isStandard: true },
@@ -7430,7 +7520,7 @@ class Component extends DCLogic {
     EN: [
       { href: '#teenused', label: 'Services', isStandard: true },
       { href: '#hinnakiri', label: 'Pricing', isModal: true },
-      { href: '#seadmed', label: 'Equipment', isStandard: true },
+      { href: 'meist.html', label: 'About us', isStandard: true },
       { href: 'javascript:void(0)', label: 'Get quote', isForm: true },
       { href: 'https://rvae.ee/renoveeritud_pihustid.pdf', label: 'E-shop', isExternal: true },
       { href: '#kontakt', label: 'Contact', isStandard: true },
@@ -7438,7 +7528,7 @@ class Component extends DCLogic {
     FI: [
       { href: '#teenused', label: 'Palvelut', isStandard: true },
       { href: '#hinnakiri', label: 'Hinnasto', isModal: true },
-      { href: '#seadmed', label: 'Laitteet', isStandard: true },
+      { href: 'meist.html', label: 'Meistä', isStandard: true },
       { href: 'javascript:void(0)', label: 'Pyydä tarjous', isForm: true },
       { href: 'https://rvae.ee/renoveeritud_pihustid.pdf', label: 'Verkkokauppa', isExternal: true },
       { href: '#kontakt', label: 'Yhteystiedot', isStandard: true },
@@ -8246,7 +8336,6 @@ class Component extends DCLogic {
       rows: this.priceRows,
 
       // Equipment / Team / B2B
-      equipment: this.equipment,
       team: this.team,
       b2bPoints: this.b2bPoints,
 
@@ -8287,7 +8376,7 @@ class Component extends DCLogic {
       box-sizing: border-box !important;
       height: 46px !important;
       padding: 0 24px !important;
-      font-size: 13px !important;
+      font-size: 16px !important;
       font-weight: 700 !important;
       letter-spacing: 0.12em !important;
       text-transform: uppercase !important;
@@ -8301,6 +8390,8 @@ class Component extends DCLogic {
       border: 1px solid #171717 !important;
       background: #ffffff !important;
       color: #171717 !important;
+      font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif !important;
+      font-weight: 400 !important;
     }
 
     .su-cta-phone:hover,
