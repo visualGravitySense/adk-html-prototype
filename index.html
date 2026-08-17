@@ -442,8 +442,19 @@
           }
 
           .hd-main {
-            padding: 10px 16px;
-            column-gap: 12px;
+            display: none !important;
+          }
+
+          .hd-burger {
+            margin-right: 24px;
+            align-self: center;
+          }
+
+          .hd-utility-addr,
+          .hd-utility-hours,
+          .hd-utility-inner > button.broneeri-btn,
+          .hd-lang {
+            display: none !important;
           }
         }
 
@@ -3671,6 +3682,14 @@
             font-size: 20px;
             padding: 14px 14px;
           }
+
+          .rf-submit-actions {
+            flex-direction: column !important;
+          }
+
+          .rf--modal .su-cta-phone {
+            display: none !important;
+          }
         }
 
         /* === ServicesSymptoms (.ss) === */
@@ -5568,7 +5587,7 @@
         }
 
         .ft-email {
-          font-size: 14.5px;
+          font-size: 13px;
           color: var(--ft-dim);
           text-decoration: none;
           word-break: break-word;
@@ -6504,10 +6523,13 @@
               {{ hoursText }}
             </span>
           </div>
-          <button type="button" onClick="{{ openForm }}"
+          <button type="button" onClick="{{ openForm }}" class="broneeri-btn"
             style="background-color: #EC0000; color: #FFF; border: none; align-self: stretch; display: flex; align-items: center; justify-content: center; padding: 0 32px; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: filter 0.15s; margin: 0;"
             onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter='none'">
             Broneeri aeg
+          </button>
+          <button type="button" onClick="{{ toggleMenu }}" aria-label="Menu" class="hd-burger hamburger">
+            <span></span><span></span><span></span>
           </button>
         </div>
       </div>
@@ -6551,10 +6573,6 @@
               </div>
             </sc-if>
           </div>
-
-          <button type="button" onClick="{{ toggleMenu }}" aria-label="Menu" class="hd-burger hamburger">
-            <span></span><span></span><span></span>
-          </button>
         </div>
       </div>
 
@@ -6577,7 +6595,7 @@
               <sc-if value="{{ link.isExternal }}">
                 <a href="{{ link.href }}" class="hd-drawer-link" target="_blank">{{ link.label }}</a>
               </sc-if>
-              <sc-if value="{{ !link.isModal && !link.isForm && !link.isExternal }}">
+              <sc-if value="{{ link.isStandard }}">
                 <a href="{{ link.href }}" onClick="{{ toggleMenu }}" class="hd-drawer-link">{{ link.label }}</a>
               </sc-if>
             </sc-for>
@@ -7163,10 +7181,10 @@
                       <div class="rf-submit-actions"
                         style="display: flex; flex-direction: row; gap: 16px; align-items: stretch; width: 100%;">
                         <a href="tel:+37256702700" class="su-cta-phone"
-                          style="flex: 1; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; height: 46px; padding: 0 24px; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: 1px solid #171717; background: #ffffff; color: #171717; margin: 0;">Tel.
+                          style="flex: 1; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box !important; height: 56px !important; padding: 0 24px; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: 1px solid #171717; background: #ffffff; color: #171717; margin: 0;">Tel.
                           +372 567 02 700</a>
                         <button type="submit" class="ft-maps-btn" disabled="{{ isSubmitting }}"
-                          style="flex: 1; min-width: 0; margin: 0;">
+                          style="flex: 1; min-width: 0; margin: 0; height: 56px !important; box-sizing: border-box !important;">
                           {{ submitLabel }}
                         </button>
                         <sc-if value="{{ isError }}" hint-placeholder-val="{{ false }}">
@@ -7523,7 +7541,8 @@
           </div>
 
           <div class="ft-info">
-            <h2 class="ft-info-address">AUTO DIISLIKESKUS, Paavli 4, Tallinn, Eesti 10412</h2>
+            <h2 class="ft-info-address">AUTO DIISLIKESKUS</h2>
+            <p class="ft-reg">Paavli 4, Tallinn, Eesti 10412</p>
             <span class="ft-info-rule" aria-hidden="true"></span>
 
             <div class="ft-contact-grid contact-grid">
