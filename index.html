@@ -7129,146 +7129,271 @@
           <sc-if value="{{ isFullForm }}" hint-placeholder-val="{{ false }}">
             <section id="request-form" class="rf rf--modal">
               <div class="rf-inner">
-                <header class="rf-header">
-                  <div class="rf-header-row">
-                    <div class="rf-header-copy">
-                      <h2 class="rf-title" id="rf-modal-title">Запрос ценового предложения</h2>
-                      <p class="rf-lead">Заполните форму ниже, чтобы отправить запрос на расчет стоимости. Мы обычно
-                        отвечаем на обращения в течение одного рабочего дня. Пожалуйста, заполните все обязательные поля
-                        (отмечены *), чтобы мы могли подготовить для Вас максимально точное ценовое предложение. </p>
-                    </div>
-                  </div>
-                </header>
 
-                <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
-                  <div class="rf-success">
-                    <span class="rf-success-code">[ OK · 200 ]</span>
-                    <p class="rf-success-text">PÄRING SAADETUD! VÕTAME ÜHENDUST 30 MIN JOOKSUL<br /><span
-                        class="rf-success-ru">ЗАПРОС ОТПРАВЛЕН — СВЯЖЕМСЯ В ТЕЧЕНИЕ 30 МИНУТ</span></p>
-                  </div>
+                <!-- ════ RU VERSION ════ -->
+                <sc-if value="{{ isRU }}">
+                  <header class="rf-header">
+                    <div class="rf-header-row">
+                      <div class="rf-header-copy">
+                        <h2 class="rf-title" id="rf-modal-title">Запрос ценового предложения</h2>
+                        <p class="rf-lead">Заполните форму ниже, чтобы отправить запрос на расчет стоимости. Мы обычно
+                          отвечаем на обращения в течение одного рабочего дня. Пожалуйста, заполните все обязательные поля
+                          (отмечены *), чтобы мы могли подготовить для Вас максимально точное ценовое предложение.</p>
+                      </div>
+                    </div>
+                  </header>
+
+                  <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
+                    <div class="rf-success">
+                      <span class="rf-success-code">[ OK · 200 ]</span>
+                      <p class="rf-success-text">ЗАПРОС ОТПРАВЛЕН!<br /><span
+                          class="rf-success-ru">Мы свяжемся с вами в течение одного рабочего дня.</span></p>
+                    </div>
+                  </sc-if>
+
+                  <sc-if value="{{ isFormVisible }}" hint-placeholder-val="{{ true }}">
+                    <form class="rf-form" onSubmit="{{ handleSubmit }}">
+                      <section class="rf-panel">
+                        <div class="rf-panel-body">
+                          <div class="rf-section-title">
+                            <span class="rf-panel-name">Данные автомобиля</span>
+                          </div>
+                          <div class="rf-grid-2col" style="margin-bottom: 16px;">
+                            <div class="rf-field">
+                              <p class="rf-panel-desc"
+                                style="font-size: 16px; color: #666; margin-top: 4px; margin-bottom: 0;">
+                                Пожалуйста укажите точные данные</p>
+                              <label class="rf-mini-label" for="rf-plate">Рег. номер</label>
+                              <input id="rf-plate" class="rf-input" value="{{ plate }}" onChange="{{ onPlateChange }}"
+                                autocomplete="off" spellcheck="false" />
+                              <p class="rf-panel-desc"
+                                style="font-size: 16px; color: #666; margin-top: 4px; margin-bottom: 0;">
+                                Если автомобиль не
+                                имеет регистрационного номера в автомобиле, укажите данные автомобиля</p>
+                            </div>
+                          </div>
+                          <div class="rf-section-title" style="margin-top: 32px;">
+                            <span class="rf-panel-name">Данные из техпаспорта</span>
+                          </div>
+
+                          <div class="rf-grid-2col">
+                            <div class="rf-field">
+                              <label class="rf-mini-label" for="rf-make">Марка и модель</label>
+                              <input id="rf-make" class="rf-input" value="{{ make }}" onChange="{{ onMakeChange }}" />
+                            </div>
+                            <div class="rf-field">
+                              <label class="rf-mini-label" for="rf-year">Год выпуска</label>
+                              <input id="rf-year" class="rf-input" value="{{ year }}" onChange="{{ onYearChange }}"
+                                inputmode="numeric" />
+                            </div>
+                            <div class="rf-field">
+                              <label class="rf-mini-label" for="rf-displacement">Объём</label>
+                              <input id="rf-displacement" class="rf-input" value="{{ displacement }}"
+                                onChange="{{ onDisplacementChange }}" />
+                            </div>
+                            <div class="rf-field">
+                              <label class="rf-mini-label" for="rf-power">Мощность</label>
+                              <input id="rf-power" class="rf-input" value="{{ power }}" onChange="{{ onPowerChange }}" />
+                            </div>
+                            <div class="rf-field">
+                              <label class="rf-mini-label" for="rf-vin">Идентификационный код</label>
+                              <input id="rf-vin" class="rf-input" value="{{ vin }}" onChange="{{ onVinChange }}"
+                                autocomplete="off" spellcheck="false" />
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+
+                      <section class="rf-panel">
+                        <div class="rf-panel-body">
+                          <div class="rf-section-title">
+                            <span class="rf-panel-name">Личные данные</span>
+                          </div>
+                          <div class="rf-grid-2col">
+                            <div class="rf-field">
+                              <label class="rf-mini-label" for="rf-name">Имя и фамилия</label>
+                              <input id="rf-name" class="rf-input" value="{{ name }}" onChange="{{ onNameChange }}"
+                                autocomplete="name" />
+                            </div>
+                            <div class="rf-field">
+                              <label class="rf-mini-label" for="rf-email-full">Эл. адрес</label>
+                              <input id="rf-email-full" class="rf-input" type="email" value="{{ email }}"
+                                onChange="{{ onEmailChange }}" autocomplete="email" />
+                            </div>
+                            <div class="rf-field">
+                              <label class="rf-mini-label" for="rf-phone">Телефон</label>
+                              <input id="rf-phone" class="rf-input" type="tel" value="{{ phone }}"
+                                onChange="{{ onPhoneChange }}" autocomplete="tel" />
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+
+                      <section class="rf-panel">
+                        <div class="rf-panel-body">
+                          <div class="rf-section-title">
+                            <span class="rf-panel-name">Описание проблемы</span>
+                          </div>
+                          <div class="rf-field" style="flex:1;">
+                            <p class="rf-panel-desc"
+                              style="font-size: 16px; color: #666; margin-top: 4px; margin-bottom: 0;">Укажите желаемые
+                              работы или подробно опишите проблемы</p>
+                            <textarea id="rf-desc" class="rf-input rf-input--area" value="{{ description }}"
+                              onChange="{{ onDescriptionChange }}" rows="5"></textarea>
+                          </div>
+                        </div>
+                      </section>
+
+                      <div class="rf-submit"
+                        style="display: flex; width: 100%; padding-top: 24px; margin-top: 24px; border-top: 1px solid var(--rf-line); box-sizing: border-box;">
+                        <div class="rf-submit-actions"
+                          style="display: flex; flex-direction: row; gap: 16px; align-items: stretch; width: 100%;">
+                          <a href="tel:+37256702700" class="su-cta-phone"
+                            style="flex: 1; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box !important; height: 56px !important; padding: 0 24px; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: 1px solid #171717; background: #ffffff; color: #171717; margin: 0;">Tel.
+                            +372 567 02 700</a>
+                          <button type="submit" class="ft-maps-btn" disabled="{{ isSubmitting }}"
+                            style="flex: 1; min-width: 0; margin: 0; height: 56px !important; box-sizing: border-box !important;">
+                            {{ submitLabel }}
+                          </button>
+                          <sc-if value="{{ isError }}" hint-placeholder-val="{{ false }}">
+                            <span class="rf-error" style="position: absolute; bottom: -20px;">[ ОШИБКА — ПОЖАЛУЙСТА, ЗАПОЛНИТЕ ОБЯЗАТЕЛЬНЫЕ ПОЛЯ ]</span>
+                          </sc-if>
+                        </div>
+                      </div>
+                    </form>
+                  </sc-if>
                 </sc-if>
 
-                <section class="rf-panel">
-                  <div class="rf-panel-body">
-                    <div class="rf-section-title">
-                      <span class="rf-panel-name">Данные автомобиля</span>
-
-                    </div>
-                    <div class="rf-grid-2col" style="margin-bottom: 16px;">
-                      <div class="rf-field">
-                        <p class="rf-panel-desc"
-                          style="font-size: 16px; color: #666; margin-top: 4px; margin-bottom: 0;">
-                          Пожалуйста укажите точные данные</p>
-                        <label class="rf-mini-label" for="rf-plate">Рег. номер</label>
-                        <input id="rf-plate" class="rf-input" value="{{ plate }}" onChange="{{ onPlateChange }}"
-                          autocomplete="off" spellcheck="false" />
-                        <p class="rf-panel-desc"
-                          style="font-size: 16px; color: #666; margin-top: 4px; margin-bottom: 0;">
-                          Если автомобиль не
-                          имеет регистрационного номера в автомобиле, укажите данные автомобиля</p>
+                <!-- ════ EE (DEFAULT) VERSION ════ -->
+                <sc-if value="{{ isNotRU }}">
+                  <header class="rf-header">
+                    <div class="rf-header-row">
+                      <div class="rf-header-copy">
+                        <h2 class="rf-title" id="rf-modal-title">Hinnapakkumise päring</h2>
+                        <p class="rf-lead">Täitke allolev vorm, et saata hinnapäring. Tavaliselt vastame pöördumistele ühe tööpäeva jooksul. Palun täitke kõik kohustuslikud väljad (tähistatud *), et saaksime koostada võimalikult täpse pakkumise.</p>
                       </div>
                     </div>
-                    <div class="rf-section-title" style="margin-top: 32px;">
-                      <span class="rf-panel-name">Данные из техпаспорта</span>
+                  </header>
 
+                  <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
+                    <div class="rf-success">
+                      <span class="rf-success-code">[ OK · 200 ]</span>
+                      <p class="rf-success-text">PÄRING SAADETUD!<br /><span
+                          class="rf-success-ru">Võtame teiega ühendust ühe tööpäeva jooksul.</span></p>
                     </div>
+                  </sc-if>
 
-                    <div class="rf-grid-2col">
-                      <div class="rf-field">
-                        <label class="rf-mini-label" for="rf-make">Марка и модель</label>
-                        <input id="rf-make" class="rf-input" value="{{ make }}" onChange="{{ onMakeChange }}" />
-                      </div>
-                      <div class="rf-field">
-                        <label class="rf-mini-label" for="rf-year">Год выпуска</label>
-                        <input id="rf-year" class="rf-input" value="{{ year }}" onChange="{{ onYearChange }}"
-                          inputmode="numeric" />
-                      </div>
-                      <div class="rf-field">
-                        <label class="rf-mini-label" for="rf-displacement">Объём</label>
-                        <input id="rf-displacement" class="rf-input" value="{{ displacement }}"
-                          onChange="{{ onDisplacementChange }}" />
-                      </div>
-                      <div class="rf-field">
-                        <label class="rf-mini-label" for="rf-power">Мощность</label>
-                        <input id="rf-power" class="rf-input" value="{{ power }}" onChange="{{ onPowerChange }}" />
-                      </div>
-                      <div class="rf-field">
-                        <label class="rf-mini-label" for="rf-vin">Идентификационный код</label>
-                        <input id="rf-vin" class="rf-input" value="{{ vin }}" onChange="{{ onVinChange }}"
-                          autocomplete="off" spellcheck="false" />
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                <sc-if value="{{ isFormVisible }}" hint-placeholder-val="{{ true }}">
-                  <form class="rf-form" onSubmit="{{ handleSubmit }}">
-                    <section class="rf-panel">
-                      <div class="rf-panel-body">
-                        <div class="rf-section-title">
-                          <span class="rf-panel-name">Личные данные</span>
-                          <!-- <p class="rf-panel-desc"
-                            style="font-size: 16px; color: #666; margin-top: 4px; margin-bottom: 0;">Укажите контактные
-                            данные</p> -->
-                        </div>
-                        <div class="rf-grid-2col">
-                          <div class="rf-field">
-                            <label class="rf-mini-label" for="rf-name">Имя и фамилия</label>
-                            <input id="rf-name" class="rf-input" value="{{ name }}" onChange="{{ onNameChange }}"
-                              autocomplete="name" />
+                  <sc-if value="{{ isFormVisible }}" hint-placeholder-val="{{ true }}">
+                    <form class="rf-form" onSubmit="{{ handleSubmit }}">
+                      <section class="rf-panel">
+                        <div class="rf-panel-body">
+                          <div class="rf-section-title">
+                            <span class="rf-panel-name">Sõiduki andmed</span>
                           </div>
-                          <div class="rf-field">
-                            <label class="rf-mini-label" for="rf-email-full">Эл. адрес</label>
-                            <input id="rf-email-full" class="rf-input" type="email" value="{{ email }}"
-                              onChange="{{ onEmailChange }}" autocomplete="email" />
+                          <div class="rf-grid-2col" style="margin-bottom: 16px;">
+                            <div class="rf-field">
+                              <p class="rf-panel-desc"
+                                style="font-size: 16px; color: #666; margin-top: 4px; margin-bottom: 0;">
+                                Palun sisestage täpsed andmed</p>
+                              <label class="rf-mini-label" for="rf-plate-ee">Reg. number</label>
+                              <input id="rf-plate-ee" class="rf-input" value="{{ plate }}" onChange="{{ onPlateChange }}"
+                                autocomplete="off" spellcheck="false" />
+                              <p class="rf-panel-desc"
+                                style="font-size: 16px; color: #666; margin-top: 4px; margin-bottom: 0;">
+                                Kui sõidukil puudub registreerimisnumber, märkige sõiduki tehnilised andmed</p>
+                            </div>
                           </div>
-                          <div class="rf-field">
-                            <label class="rf-mini-label" for="rf-phone">Телефон</label>
-                            <input id="rf-phone" class="rf-input" type="tel" value="{{ phone }}"
-                              onChange="{{ onPhoneChange }}" autocomplete="tel" />
+                          <div class="rf-section-title" style="margin-top: 32px;">
+                            <span class="rf-panel-name">Tehnilise passi andmed</span>
+                          </div>
+
+                          <div class="rf-grid-2col">
+                            <div class="rf-field">
+                              <label class="rf-mini-label" for="rf-make-ee">Mark ja mudel</label>
+                              <input id="rf-make-ee" class="rf-input" value="{{ make }}" onChange="{{ onMakeChange }}" />
+                            </div>
+                            <div class="rf-field">
+                              <label class="rf-mini-label" for="rf-year-ee">Väljalaskeaasta</label>
+                              <input id="rf-year-ee" class="rf-input" value="{{ year }}" onChange="{{ onYearChange }}"
+                                inputmode="numeric" />
+                            </div>
+                            <div class="rf-field">
+                              <label class="rf-mini-label" for="rf-displacement-ee">Mootori maht</label>
+                              <input id="rf-displacement-ee" class="rf-input" value="{{ displacement }}"
+                                onChange="{{ onDisplacementChange }}" />
+                            </div>
+                            <div class="rf-field">
+                              <label class="rf-mini-label" for="rf-power-ee">Võimsus</label>
+                              <input id="rf-power-ee" class="rf-input" value="{{ power }}" onChange="{{ onPowerChange }}" />
+                            </div>
+                            <div class="rf-field">
+                              <label class="rf-mini-label" for="rf-vin-ee">Tehasetähis (VIN-kood)</label>
+                              <input id="rf-vin-ee" class="rf-input" value="{{ vin }}" onChange="{{ onVinChange }}"
+                                autocomplete="off" spellcheck="false" />
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </section>
+                      </section>
 
-
-
-                    <section class="rf-panel">
-                      <div class="rf-panel-body">
-                        <div class="rf-section-title">
-                          <span class="rf-panel-name">Описание проблемы</span>
-
-
+                      <section class="rf-panel">
+                        <div class="rf-panel-body">
+                          <div class="rf-section-title">
+                            <span class="rf-panel-name">Kontaktandmed</span>
+                          </div>
+                          <div class="rf-grid-2col">
+                            <div class="rf-field">
+                              <label class="rf-mini-label" for="rf-name-ee">Ees- ja perekonnanimi</label>
+                              <input id="rf-name-ee" class="rf-input" value="{{ name }}" onChange="{{ onNameChange }}"
+                                autocomplete="name" />
+                            </div>
+                            <div class="rf-field">
+                              <label class="rf-mini-label" for="rf-email-ee">E-posti aadress</label>
+                              <input id="rf-email-ee" class="rf-input" type="email" value="{{ email }}"
+                                onChange="{{ onEmailChange }}" autocomplete="email" />
+                            </div>
+                            <div class="rf-field">
+                              <label class="rf-mini-label" for="rf-phone-ee">Telefoninumber</label>
+                              <input id="rf-phone-ee" class="rf-input" type="tel" value="{{ phone }}"
+                                onChange="{{ onPhoneChange }}" autocomplete="tel" />
+                            </div>
+                          </div>
                         </div>
-                        <div class="rf-field" style="flex:1;">
-                          <p class="rf-panel-desc"
-                            style="font-size: 16px; color: #666; margin-top: 4px; margin-bottom: 0;">Укажите желаемые
-                            работы или подробно опишите проблемы</p>
-                          <textarea id="rf-desc" class="rf-input rf-input--area" value="{{ description }}"
-                            onChange="{{ onDescriptionChange }}" rows="5"></textarea>
+                      </section>
+
+                      <section class="rf-panel">
+                        <div class="rf-panel-body">
+                          <div class="rf-section-title">
+                            <span class="rf-panel-name">Probleemi kirjeldus</span>
+                          </div>
+                          <div class="rf-field" style="flex:1;">
+                            <p class="rf-panel-desc"
+                              style="font-size: 16px; color: #666; margin-top: 4px; margin-bottom: 0;">Märkige soovitud tööd või kirjeldage sümptomeid võimalikult täpselt</p>
+                            <textarea id="rf-desc-ee" class="rf-input rf-input--area" value="{{ description }}"
+                              onChange="{{ onDescriptionChange }}" rows="5"></textarea>
+                          </div>
+                        </div>
+                      </section>
+
+                      <div class="rf-submit"
+                        style="display: flex; width: 100%; padding-top: 24px; margin-top: 24px; border-top: 1px solid var(--rf-line); box-sizing: border-box;">
+                        <div class="rf-submit-actions"
+                          style="display: flex; flex-direction: row; gap: 16px; align-items: stretch; width: 100%;">
+                          <a href="tel:+37256702700" class="su-cta-phone"
+                            style="flex: 1; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box !important; height: 56px !important; padding: 0 24px; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: 1px solid #171717; background: #ffffff; color: #171717; margin: 0;">Tel.
+                            +372 567 02 700</a>
+                          <button type="submit" class="ft-maps-btn" disabled="{{ isSubmitting }}"
+                            style="flex: 1; min-width: 0; margin: 0; height: 56px !important; box-sizing: border-box !important;">
+                            {{ submitLabel }}
+                          </button>
+                          <sc-if value="{{ isError }}" hint-placeholder-val="{{ false }}">
+                            <span class="rf-error" style="position: absolute; bottom: -20px;">[ VIGA — PALUN TÄITKE NÕUTUD VÄLJAD ]</span>
+                          </sc-if>
                         </div>
                       </div>
-                    </section>
-
-                    <div class="rf-submit"
-                      style="display: flex; width: 100%; padding-top: 24px; margin-top: 24px; border-top: 1px solid var(--rf-line); box-sizing: border-box;">
-                      <div class="rf-submit-actions"
-                        style="display: flex; flex-direction: row; gap: 16px; align-items: stretch; width: 100%;">
-                        <a href="tel:+37256702700" class="su-cta-phone"
-                          style="flex: 1; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box !important; height: 56px !important; padding: 0 24px; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: 1px solid #171717; background: #ffffff; color: #171717; margin: 0;">Tel.
-                          +372 567 02 700</a>
-                        <button type="submit" class="ft-maps-btn" disabled="{{ isSubmitting }}"
-                          style="flex: 1; min-width: 0; margin: 0; height: 56px !important; box-sizing: border-box !important;">
-                          {{ submitLabel }}
-                        </button>
-                        <sc-if value="{{ isError }}" hint-placeholder-val="{{ false }}">
-                          <span class="rf-error" style="position: absolute; bottom: -20px;">[ ERROR — PALUN TÄITKE
-                            NÕUTUD VÄLJAD ]</span>
-                        </sc-if>
-                      </div>
-                    </div>
-                  </form>
+                    </form>
+                  </sc-if>
                 </sc-if>
+
               </div>
             </section>
           </sc-if>
@@ -8442,6 +8567,7 @@ class Component extends DCLogic {
       isRU: lang === 'RU',
       isEN: lang === 'EN',
       isFI: lang === 'FI',
+      isNotRU: lang !== 'RU',
 
       // Hero
       subtitleText: this.subtitleText,
@@ -8502,10 +8628,10 @@ class Component extends DCLogic {
       isError: s.isError,
       isFormVisible: !s.isSuccess,
       submitLabel: s.isSubmitting
-        ? 'SAATMINE...'
+        ? (lang === 'RU' ? 'ОТПРАВКА...' : 'SAATMINE...')
         : s.formMode === 'full'
-          ? 'SAADA HINNAPÄRING'
-          : 'SAADA PÄRING',
+          ? (lang === 'RU' ? 'ОТПРАВИТЬ ЗАПРОС' : 'SAADA HINNAPÄRING')
+          : (lang === 'RU' ? 'ОТПРАВИТЬ ЗАПРОС' : 'SAADA PÄRING'),
       onPlateChange: this.onPlateChange,
       onMakeChange: this.onMakeChange,
       onYearChange: this.onYearChange,
