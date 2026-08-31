@@ -6878,8 +6878,7 @@
         </div>
 
         <div class="pm-media">
-          <img src="img/stand-pihusti - Copy.jpg" alt="Taastatud pihustite stend" class="pm-media-img"
-            loading="lazy" />
+          <img src="img/stand-pihusti - Copy.jpg" alt="Taastatud pihustite stend" class="pm-media-img" loading="lazy" />
         </div>
       </div>
     </section>
@@ -7136,8 +7135,7 @@
                       <h2 class="rf-title" id="rf-modal-title">Запрос ценового предложения</h2>
                       <p class="rf-lead">Заполните форму ниже, чтобы отправить запрос на расчет стоимости. Мы обычно
                         отвечаем на обращения в течение одного рабочего дня. Пожалуйста, заполните все обязательные поля
-                        (отмечены *), чтобы мы могли подготовить для Вас максимально точное ценовое предложение. Укажите
-                        номер авто или опишите симптомы для быстной оценки стоимости.</p>
+                        (отмечены *), чтобы мы могли подготовить для Вас максимально точное ценовое предложение. </p>
                     </div>
                   </div>
                 </header>
@@ -7150,15 +7148,68 @@
                   </div>
                 </sc-if>
 
+                <section class="rf-panel">
+                  <div class="rf-panel-body">
+                    <div class="rf-section-title">
+                      <span class="rf-panel-name">Данные автомобиля</span>
+
+                    </div>
+                    <div class="rf-grid-2col" style="margin-bottom: 16px;">
+                      <div class="rf-field">
+                        <p class="rf-panel-desc"
+                          style="font-size: 16px; color: #666; margin-top: 4px; margin-bottom: 0;">
+                          Пожалуйста укажите точные данные</p>
+                        <label class="rf-mini-label" for="rf-plate">Рег. номер</label>
+                        <input id="rf-plate" class="rf-input" value="{{ plate }}" onChange="{{ onPlateChange }}"
+                          autocomplete="off" spellcheck="false" />
+                        <p class="rf-panel-desc"
+                          style="font-size: 16px; color: #666; margin-top: 4px; margin-bottom: 0;">
+                          Если автомобиль не
+                          имеет регистрационного номера в автомобиле, укажите данные автомобиля</p>
+                      </div>
+                    </div>
+                    <div class="rf-section-title" style="margin-top: 32px;">
+                      <span class="rf-panel-name">Данные из техпаспорта</span>
+
+                    </div>
+
+                    <div class="rf-grid-2col">
+                      <div class="rf-field">
+                        <label class="rf-mini-label" for="rf-make">Марка и модель</label>
+                        <input id="rf-make" class="rf-input" value="{{ make }}" onChange="{{ onMakeChange }}" />
+                      </div>
+                      <div class="rf-field">
+                        <label class="rf-mini-label" for="rf-year">Год выпуска</label>
+                        <input id="rf-year" class="rf-input" value="{{ year }}" onChange="{{ onYearChange }}"
+                          inputmode="numeric" />
+                      </div>
+                      <div class="rf-field">
+                        <label class="rf-mini-label" for="rf-displacement">Объём</label>
+                        <input id="rf-displacement" class="rf-input" value="{{ displacement }}"
+                          onChange="{{ onDisplacementChange }}" />
+                      </div>
+                      <div class="rf-field">
+                        <label class="rf-mini-label" for="rf-power">Мощность</label>
+                        <input id="rf-power" class="rf-input" value="{{ power }}" onChange="{{ onPowerChange }}" />
+                      </div>
+                      <div class="rf-field">
+                        <label class="rf-mini-label" for="rf-vin">Идентификационный код</label>
+                        <input id="rf-vin" class="rf-input" value="{{ vin }}" onChange="{{ onVinChange }}"
+                          autocomplete="off" spellcheck="false" />
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
                 <sc-if value="{{ isFormVisible }}" hint-placeholder-val="{{ true }}">
                   <form class="rf-form" onSubmit="{{ handleSubmit }}">
                     <section class="rf-panel">
                       <div class="rf-panel-body">
                         <div class="rf-section-title">
                           <span class="rf-panel-name">Личные данные</span>
-                          <p class="rf-panel-desc"
+                          <!-- <p class="rf-panel-desc"
                             style="font-size: 16px; color: #666; margin-top: 4px; margin-bottom: 0;">Укажите контактные
-                            данные</p>
+                            данные</p> -->
                         </div>
                         <div class="rf-grid-2col">
                           <div class="rf-field">
@@ -7180,65 +7231,19 @@
                       </div>
                     </section>
 
-                    <section class="rf-panel">
-                      <div class="rf-panel-body">
-                        <div class="rf-section-title">
-                          <span class="rf-panel-name">Данные автомобиля</span>
-                          <p class="rf-panel-desc"
-                            style="font-size: 16px; color: #666; margin-top: 4px; margin-bottom: 0;">Пожалуйста укажите
-                            точные данные</p>
-                        </div>
-                        <div class="rf-grid-2col" style="margin-bottom: 16px;">
-                          <div class="rf-field">
-                            <label class="rf-mini-label" for="rf-plate">Рег. номер</label>
-                            <input id="rf-plate" class="rf-input" value="{{ plate }}" onChange="{{ onPlateChange }}"
-                              autocomplete="off" spellcheck="false" />
-                          </div>
-                        </div>
-                        <div class="rf-section-title" style="margin-top: 32px;">
-                          <span class="rf-panel-name">Данные из техпаспорта</span>
-                          <p class="rf-panel-desc"
-                            style="font-size: 16px; color: #666; margin-top: 4px; margin-bottom: 0;">Если автомобиль не
-                            имеет регистрационного номера в автомобиле, укажите данные автомобиля</p>
-                        </div>
 
-                        <div class="rf-grid-2col">
-                          <div class="rf-field">
-                            <label class="rf-mini-label" for="rf-make">Марка и модель</label>
-                            <input id="rf-make" class="rf-input" value="{{ make }}" onChange="{{ onMakeChange }}" />
-                          </div>
-                          <div class="rf-field">
-                            <label class="rf-mini-label" for="rf-year">Год выпуска</label>
-                            <input id="rf-year" class="rf-input" value="{{ year }}" onChange="{{ onYearChange }}"
-                              inputmode="numeric" />
-                          </div>
-                          <div class="rf-field">
-                            <label class="rf-mini-label" for="rf-displacement">Объём</label>
-                            <input id="rf-displacement" class="rf-input" value="{{ displacement }}"
-                              onChange="{{ onDisplacementChange }}" />
-                          </div>
-                          <div class="rf-field">
-                            <label class="rf-mini-label" for="rf-power">Мощность</label>
-                            <input id="rf-power" class="rf-input" value="{{ power }}" onChange="{{ onPowerChange }}" />
-                          </div>
-                          <div class="rf-field">
-                            <label class="rf-mini-label" for="rf-vin">Идентификационный код</label>
-                            <input id="rf-vin" class="rf-input" value="{{ vin }}" onChange="{{ onVinChange }}"
-                              autocomplete="off" spellcheck="false" />
-                          </div>
-                        </div>
-                      </div>
-                    </section>
 
                     <section class="rf-panel">
                       <div class="rf-panel-body">
                         <div class="rf-section-title">
                           <span class="rf-panel-name">Описание проблемы</span>
+
+
+                        </div>
+                        <div class="rf-field" style="flex:1;">
                           <p class="rf-panel-desc"
                             style="font-size: 16px; color: #666; margin-top: 4px; margin-bottom: 0;">Укажите желаемые
                             работы или подробно опишите проблемы</p>
-                        </div>
-                        <div class="rf-field" style="flex:1;">
                           <textarea id="rf-desc" class="rf-input rf-input--area" value="{{ description }}"
                             onChange="{{ onDescriptionChange }}" rows="5"></textarea>
                         </div>
