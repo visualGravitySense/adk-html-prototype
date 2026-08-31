@@ -1820,7 +1820,7 @@
           border: 1px solid var(--su-ink);
           background: transparent;
           color: var(--su-ink);
-          font-family: var(--su-sans);
+          font-family: var(--ph-sans);
           font-size: 16px;
           font-weight: 700;
           letter-spacing: 0.08em;
@@ -2092,7 +2092,7 @@
           display: inline-flex;
           align-items: baseline;
           gap: 0.3em;
-          font-family: var(--dg-display);
+          font-family: var(--ph-sans);
           font-size: 20px;
           font-weight: 400;
           letter-spacing: 0.02em;
@@ -2439,7 +2439,7 @@
           display: inline-flex;
           align-items: baseline;
           gap: 0.3em;
-          font-family: var(--hk-display);
+          font-family: var(--ph-sans);
           font-size: 19px;
           font-weight: 400;
           letter-spacing: 0.02em;
@@ -6924,9 +6924,9 @@
               selle kohta, millistele süsteemidele/sõlmedele on vajalik remont ja milline.
             </p>
 
-            <div class="dg-meta">
+            <!-- <div class="dg-meta">
               <span>Hind: 67 €</span>
-            </div>
+            </div> -->
 
             <div class="dg-actions">
               <a href="tel:+37256702700" class="dg-phone" aria-label="Call +372 567 02 700">
@@ -7363,46 +7363,6 @@
           </p>
         </header>
 
-        <!-- About us teaser — links out to the full Meist page -->
-        <div class="etb-block">
-          <div class="etb-block-label">
-            <span class="etb-block-title">MEIST</span>
-          </div>
-          <div class="etb-about-panel">
-            <div class="etb-about-copy">
-              <h3 class="etb-about-heading">Alustasime 2012. aastal — kütusesüsteemide diagnostika ja remont on meie
-                põhivaldkond</h3>
-              <p class="etb-about-text">Alates 2017. aastast tegutseme eraldiseisva ettevõttena. Meie eesmärk ei ole
-                lihtsalt parandada ühte detaili, vaid leida rikke tegelik põhjus ja pakkuda usaldusväärne lahendus.
-              </p>
-              <a href="meist.html" class="etb-about-btn">Loe lähemalt meist →</a>
-            </div>
-            <div class="etb-about-facts">
-              <div class="etb-about-fact">
-                <span class="etb-card-spec-num">01</span>
-                <span>Kliendid ka Soomest, Rootsist, Lätist ja Leedust</span>
-              </div>
-              <div class="etb-about-fact">
-                <span class="etb-card-spec-num">02</span>
-                <span>Pihustite saatmine remonti Omniva ja DPD kaudu</span>
-              </div>
-              <div class="etb-about-fact">
-                <span class="etb-card-spec-num">03</span>
-                <span>Kvalifitseeritud spetsialistid, regulaarne täienduskoolitus</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Spacer: empty air + short hatch band (not full bleed wallpaper) -->
-        <div class="etb-breath" aria-hidden="true">
-          <div class="etb-breath-band etb-breath-band--short">
-            <svg class="etb-fill" preserveAspectRatio="none">
-              <rect width="100%" height="100%" fill="url(#etb-diagonal-hatch)"></rect>
-            </svg>
-          </div>
-        </div>
-
         <!-- Personal / team — full-bleed photo, type + SVG accents integrated into image -->
         <div class="etb-block etb-personal motion-reveal" style="padding-top:32px;" id="personal"
           aria-labelledby="personal-heading">
@@ -7484,6 +7444,50 @@
             </div>
           </div>
         </div>
+
+
+
+        <!-- Spacer: empty air + short hatch band (not full bleed wallpaper) -->
+        <div class="etb-breath" aria-hidden="true">
+          <div class="etb-breath-band etb-breath-band--short">
+            <svg class="etb-fill" preserveAspectRatio="none">
+              <rect width="100%" height="100%" fill="url(#etb-diagonal-hatch)"></rect>
+            </svg>
+          </div>
+        </div>
+
+        <!-- About us teaser — links out to the full Meist page -->
+        <div class="etb-block">
+          <div class="etb-block-label">
+            <span class="etb-block-title">MEIST</span>
+          </div>
+          <div class="etb-about-panel">
+            <div class="etb-about-copy">
+              <h3 class="etb-about-heading">Alustasime 2012. aastal — kütusesüsteemide diagnostika ja remont on meie
+                põhivaldkond</h3>
+              <p class="etb-about-text">Alates 2017. aastast tegutseme eraldiseisva ettevõttena. Meie eesmärk ei ole
+                lihtsalt parandada ühte detaili, vaid leida rikke tegelik põhjus ja pakkuda usaldusväärne lahendus.
+              </p>
+              <a href="meist.html" class="etb-about-btn">Loe lähemalt meist →</a>
+            </div>
+            <div class="etb-about-facts">
+              <div class="etb-about-fact">
+                <span class="etb-card-spec-num">01</span>
+                <span>Kliendid ka Soomest, Rootsist, Lätist ja Leedust</span>
+              </div>
+              <div class="etb-about-fact">
+                <span class="etb-card-spec-num">02</span>
+                <span>Pihustite saatmine remonti Omniva ja DPD kaudu</span>
+              </div>
+              <div class="etb-about-fact">
+                <span class="etb-card-spec-num">03</span>
+                <span>Kvalifitseeritud spetsialistid, regulaarne täienduskoolitus</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
 
         <!-- Spacer before B2B -->
         <div class="etb-breath" aria-hidden="true">
@@ -8554,8 +8558,8 @@ class Component extends DCLogic {
       border: 1px solid #171717 !important;
       background: #ffffff !important;
       color: #171717 !important;
-      font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif !important;
-      font-weight: 400 !important;
+      /* font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif !important; */
+      font-weight: 800 !important;
     }
 
     .su-cta-phone:hover,
