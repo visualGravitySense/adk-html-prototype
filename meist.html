@@ -54,95 +54,356 @@
       color: inherit;
     }
 
-    /* ── Header ── */
+    /* ── Header (.hd) — 2-line header matching main page ── */
     .hd {
-      background: var(--dark);
-      color: #fff;
+      --hd-bg: #111111;
+      --hd-utility-bg: #0a0a0a;
+      --hd-bg-elevated: #1a1a1a;
+      --hd-ink: #ffffff;
+      --hd-muted: #a3a3a3;
+      --hd-line: #2a2a2a;
+      --hd-line-soft: #262626;
+      --hd-nav: rgba(255, 255, 255, 0.82);
+      --hd-utility-text: rgba(255, 255, 255, 0.88);
+      --hd-lang-border: rgba(255, 255, 255, 0.22);
+      --hd-lang-menu-bg: #1a1a1a;
+      --hd-lang-menu-border: rgba(255, 255, 255, 0.18);
+      --hd-lang-item-hover: rgba(255, 255, 255, 0.06);
+      --hd-red: #EC0000;
+      --hd-cyan: #00B8D4;
+      --hd-display: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
+      --hd-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+      --hd-sans: 'Open Sans', Helvetica Neue, Helvetica, Arial, sans-serif;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--hd-bg);
+      font-family: var(--hd-sans);
+      color: var(--hd-ink);
+      border-bottom: 1px solid var(--hd-line);
+      transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
     }
 
     .hd-utility {
-      background: var(--dark-deep);
-      border-bottom: 1px solid #1f1f1f;
+      border-bottom: 1px solid var(--hd-line);
+      background: var(--hd-utility-bg);
+      transition: background 0.25s ease, border-color 0.25s ease;
     }
 
     .hd-utility-inner {
-      max-width: 1240px;
+      max-width: 1440px;
       margin: 0 auto;
-      padding: 10px 24px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      font-size: 13px;
-      letter-spacing: 0.02em;
-      color: rgba(255, 255, 255, 0.78);
-      flex-wrap: wrap;
-    }
-
-    .hd-utility-inner a {
-      text-decoration: none;
-      color: var(--cyan);
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hd-utility-inner span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hd-main {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 18px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 24px;
+      padding: 0;
       flex-wrap: wrap;
     }
 
-    .hd-brand {
-      font-family: var(--display);
-      font-size: 21px;
-      letter-spacing: 0.02em;
-      text-decoration: none;
-      color: #fff;
+    .hd-utility-left {
+      display: flex;
+      align-items: baseline;
+      gap: 18px;
+      flex-wrap: wrap;
+      min-width: 0;
+      padding: 10px 0;
     }
 
-    .hd-back {
+    .hd-utility-addr,
+    .hd-utility-hours {
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--hd-utility-text);
+      font-weight: 600;
+      font-family: var(--hd-sans);
+      text-decoration: none;
+      transition: color 0.25s ease;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      color: rgba(255, 255, 255, 0.85);
-      font-size: 13px;
+    }
+
+    .hd-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.28em;
+      font-size: 22px;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      transition: color 0.2s ease;
+      color: #00B8D4;
+      font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
+      text-decoration: none;
+      transition: color 0.25s ease, opacity 0.25s ease;
+      flex: none;
     }
 
-    .hd-back:hover {
+    .hd-phone:hover {
+      opacity: 0.8;
+    }
+
+    .hd-phone-label {
+      font-family: inherit;
+      font-weight: 600;
+    }
+
+    .hd-main {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 14px 24px;
+      background: var(--hd-bg);
+      transition: background 0.25s ease;
+    }
+
+    .hd-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+    }
+
+    .hd-nav-link {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--hd-nav);
+      text-decoration: none;
+      padding-bottom: 4px;
+      border-bottom: 1px solid transparent;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .hd-nav-link:hover,
+    .hd-nav-link.is-active {
+      color: var(--hd-ink);
+      border-bottom-color: var(--hd-cyan);
+    }
+
+    .hd-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .hd-lang {
+      display: block;
+      position: relative;
+      z-index: 5;
+    }
+
+    .hd-lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      border: 1px solid var(--hd-lang-border);
+      padding: 7px 10px 7px 12px;
+      cursor: pointer;
+      font-family: var(--hd-sans);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--hd-ink);
+      min-width: 64px;
+      transition: border-color 0.15s ease, color 0.25s ease;
+    }
+
+    .hd-lang-toggle:hover {
+      border-color: var(--hd-ink);
+    }
+
+    .hd-lang-caret {
+      font-size: 12px;
+      color: var(--hd-muted);
+      line-height: 1;
+    }
+
+    .hd-lang-menu {
+      position: absolute;
+      top: calc(100% + 4px);
+      right: 0;
+      min-width: 148px;
+      background: var(--hd-lang-menu-bg);
+      border: 1px solid var(--hd-lang-menu-border);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+      display: flex;
+      flex-direction: column;
+      padding: 4px 0;
+    }
+
+    .hd-lang-item {
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 9px 14px;
+      cursor: pointer;
+      font-family: var(--hd-sans);
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--hd-muted);
+      text-decoration: none;
+      display: block;
+    }
+
+    .hd-lang-item:hover {
+      background: var(--hd-lang-item-hover);
+      color: var(--hd-ink);
+    }
+
+    .hd-lang-item.is-active {
+      color: var(--hd-cyan);
+      font-weight: 700;
+    }
+
+    .hd-burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 28px;
+      height: 28px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      flex-shrink: 0;
+    }
+
+    .hd-burger span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background: var(--hd-ink);
+      transition: background 0.25s ease;
+    }
+
+    .hd-drawer {
+      position: fixed;
+      inset: 0;
+      background: #0f0f0f;
+      z-index: 60;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hd-drawer-top {
+      max-width: 1440px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--hd-line);
+      box-sizing: border-box;
+    }
+
+    .hd-brand--drawer {
+      font-family: var(--hd-display);
+      font-size: 24px;
+      letter-spacing: 0.02em;
       color: #fff;
+      text-decoration: none;
     }
 
-    /* ── Hero / Intro (matching main page style with injector background) ── */
+    .hd-drawer-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 30px;
+      line-height: 1;
+      color: #ffffff;
+      padding: 0;
+    }
+
+    .hd-drawer-nav {
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      gap: 0;
+    }
+
+    .hd-drawer-link {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--hd-line);
+    }
+
+    .hd-drawer-link:hover {
+      color: var(--hd-cyan);
+    }
+
+    .hd-drawer-foot {
+      margin-top: auto;
+      padding: 24px;
+      border-top: 1px solid var(--hd-line);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hd-drawer-phone {
+      font-family: var(--hd-display);
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--hd-cyan);
+      text-decoration: none;
+    }
+
+    .hd-drawer-meta {
+      font-size: 16px;
+      color: var(--hd-muted);
+      font-family: var(--hd-mono);
+    }
+
+    @media (max-width: 767px) {
+      .hd-phone {
+        font-size: 17px;
+      }
+
+      .hd-main {
+        display: none !important;
+      }
+
+      .hd-burger {
+        display: flex !important;
+        margin-right: 24px;
+        align-self: center;
+      }
+
+      .hd-utility-addr {
+        display: none !important;
+      }
+    }
+
+    /* ── Hero / Intro (reference layout with 2 columns + 4 stats) ── */
     .hero {
       position: relative;
       overflow: hidden;
       background: #0d0d0d;
-      min-height: clamp(520px, 72vh, 720px);
+      min-height: auto;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
       color: #ffffff;
-      padding: clamp(64px, 8vw, 108px) 24px clamp(60px, 7vw, 96px);
+      padding: clamp(64px, 8vw, 100px) 24px clamp(56px, 7vw, 84px);
       box-sizing: border-box;
-      text-align: center;
     }
 
     .hero-bg {
@@ -162,111 +423,135 @@
       object-position: center center;
     }
 
-
-
     .hero-shell {
       position: relative;
       z-index: 2;
-      max-width: 1040px;
-      width: 100%;
-      margin: 0 auto;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .hero-main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: 20px;
-      max-width: 900px;
+      max-width: 1240px;
       width: 100%;
       margin: 0 auto;
     }
 
-    .hero-badge {
-      display: inline-flex;
-      align-self: center;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: clamp(32px, 5vw, 64px);
       align-items: center;
-      gap: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.32);
-      padding: 7px 18px;
-      background: rgba(0, 0, 0, 0.55);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
     }
 
-    .hero-badge-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--red);
+    .hero-badge-solid {
       display: inline-block;
-      flex-shrink: 0;
-    }
-
-    .hero-badge-text {
-      font-size: 13px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.95);
+      background: var(--red, #EC0000);
+      color: #ffffff;
+      padding: 5px 12px 4px;
       font-family: var(--mono);
-      font-weight: 600;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
     }
 
-    .hero-title {
+    .hero-title-ref {
       margin: 0;
       font-family: var(--display);
-      font-size: clamp(32px, 4.8vw, 62px);
+      font-size: clamp(32px, 4.4vw, 54px);
       font-weight: 400;
       letter-spacing: -0.01em;
       text-transform: uppercase;
       color: #ffffff;
       line-height: 1.08;
-      text-align: center;
-      text-shadow: 0 4px 32px rgba(0, 0, 0, 0.85);
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.85);
     }
 
-    .hero-lead-wrap {
+    .hero-rule-red {
+      width: 64px;
+      height: 3px;
+      background: var(--red, #EC0000);
+      margin-top: 24px;
+    }
+
+    .hero-copy-ref {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      max-width: 780px;
-      margin: 4px auto 0;
+      gap: 18px;
     }
 
-    .hero-lead {
+    .hero-copy-p {
       margin: 0;
-      font-size: clamp(16px, 1.35vw, 18px);
-      line-height: 1.7;
+      font-size: clamp(15px, 1.25vw, 17px);
+      line-height: 1.65;
       color: rgba(255, 255, 255, 0.88);
-      font-weight: 400;
-      text-align: center;
-      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.75);
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
     }
 
-    .hero-lead strong {
+    .hero-copy-p strong {
       color: #ffffff;
       font-weight: 700;
     }
 
-    @media (max-width: 639px) {
-      .hero {
-        padding: 54px 18px 48px;
-        min-height: auto;
+    /* 4-item stats row */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(20px, 4vw, 40px);
+      margin-top: clamp(48px, 6vw, 72px);
+      padding-top: clamp(36px, 5vw, 48px);
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .hero-stat-num {
+      font-family: var(--display);
+      font-size: clamp(36px, 4vw, 48px);
+      font-weight: 400;
+      color: #ffffff;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      text-shadow: 0 3px 18px rgba(0, 0, 0, 0.85);
+    }
+
+    .hero-stat-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.72);
+      line-height: 1.45;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
       }
 
-      .hero-title {
-        font-size: clamp(26px, 7.5vw, 36px);
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px 20px;
+        margin-top: 40px;
+        padding-top: 32px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px 16px;
       }
 
-      .hero-lead {
-        font-size: 15px;
-        line-height: 1.6;
+      .hero-stat-num {
+        font-size: 32px;
+      }
+
+      .hero-stat-label {
+        font-size: 11px;
       }
     }
 
@@ -351,105 +636,532 @@
       }
     }
 
-    /* ── Closing / CTA band ── */
-    .closing {
-      background: #F5F5F4;
-      padding: 64px 24px;
-      border-top: 1px solid var(--line);
+    /* ── Story / Closing section with timeline (matching reference) ── */
+    .story {
+      background: #f4f5f7;
+      border-top: 1px solid #e2e5ea;
+      padding: clamp(64px, 7vw, 92px) 24px;
     }
 
-    .closing-inner {
-      max-width: 760px;
+    .story-inner {
+      max-width: 1240px;
       margin: 0 auto;
-      text-align: center;
     }
 
-    .closing-text {
-      font-size: 16.5px;
-      line-height: 1.7;
-      color: var(--muted);
-      margin: 0 0 22px;
-    }
-
-    .closing-tagline {
-      font-family: var(--sans);
-      font-weight: 800;
-      font-size: clamp(19px, 2.4vw, 25px);
-      line-height: 1.4;
-      letter-spacing: -0.005em;
-      color: var(--ink);
-      margin: 0 0 36px;
-    }
-
-    .closing-actions {
-      display: flex;
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(40px, 6vw, 76px);
       align-items: center;
-      justify-content: center;
-      gap: 16px;
+    }
+
+    .story-col-copy {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .story-lead {
+      margin: 0 0 20px;
+      font-size: 16.5px;
+      line-height: 1.72;
+      color: #4b5563;
+    }
+
+    .story-claim {
+      margin: 0 0 32px;
+      font-family: var(--sans);
+      font-size: clamp(20px, 2.2vw, 24px);
+      line-height: 1.4;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: #111827;
+    }
+
+    .story-ctas {
+      display: flex;
       flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
       font-family: var(--sans);
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       text-decoration: none;
       padding: 15px 30px;
-      border: none;
       cursor: pointer;
+      white-space: nowrap;
       transition: filter 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     }
 
     .btn--red {
-      background: var(--red);
+      background: var(--red, #EC0000);
       color: #fff;
+      border: 1.5px solid var(--red, #EC0000);
     }
 
     .btn--red:hover {
-      filter: brightness(1.08);
+      background: #c80000;
+      border-color: #c80000;
+      color: #fff;
     }
 
     .btn--ghost {
       background: transparent;
-      color: var(--ink);
-      border: 1.5px solid var(--ink);
+      color: #111827;
+      border: 1.5px solid #111827;
     }
 
     .btn--ghost:hover {
-      background: var(--ink);
+      background: #111827;
       color: #fff;
     }
 
-    /* ── Footer ── */
-    .ft {
-      background: var(--dark-deep);
-      color: rgba(255, 255, 255, 0.65);
-      padding: 28px 24px;
+    /* Timeline */
+    .story-timeline {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .story-tl {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 24px;
+      padding: 24px 0;
+      border-top: 1px solid #d8dce3;
+      align-items: start;
+      text-align: left;
+    }
+
+    .story-tl-year {
+      font-family: var(--mono);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--red, #EC0000);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding-top: 2px;
+    }
+
+    .story-tl-text {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #374151;
+    }
+
+    @media (max-width: 860px) {
+      .story-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* === Footer (.ft-premium) — Light Swiss (matching main page) === */
+    .ft-premium {
+      --ft-bg: #FFFFFF;
+      --ft-surface: #FFFFFF;
+      --ft-line: #E5E7EB;
+      --ft-line-mid: #D1D5DB;
+      --ft-muted: #737373;
+      --ft-dim: #8a8a8a;
+      --ft-text: #404040;
+      --ft-white: #171717;
+      --ft-ink: #171717;
+      --ft-red: #EC0000;
+      --ft-red-bright: #EC0000;
+      --ft-red-deep: #8B1520;
+      --ft-red-metal: linear-gradient(145deg, #6e1219 0%, #EC0000 28%, #EC0000 48%, #9a1a24 72%, #4a0c11 100%);
+      --ft-mono: 'SF Mono', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+      position: relative;
+      --jo-sans: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
+      color: var(--ft-text);
+      font-family: var(--ft-sans);
+      overflow: hidden;
+      background-color: var(--ft-bg);
+      background-image: none;
+      isolation: isolate;
+      border-top: 1px solid var(--ft-line);
+    }
+
+    .ft-premium::before,
+    .ft-premium::after {
+      display: none;
+    }
+
+    .ft-pattern-defs {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .ft-pattern-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .ft-pattern-bg svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .ft-pattern-bg--diamond {
+      opacity: 0.04;
+    }
+
+    .ft-pattern-bg--crosshair {
+      opacity: 0.03;
+      mix-blend-mode: multiply;
     }
 
     .ft-inner {
+      position: relative;
+      z-index: 1;
       max-width: 1240px;
       margin: 0 auto;
+      border-left: none;
+      border-right: none;
+      padding: 0 24px;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .ft-ticks {
+      display: flex;
+      gap: 0;
+      padding-top: 44px;
+      opacity: 0.55;
+    }
+
+    .ft-tick {
+      width: 1px;
+      height: 10px;
+      background: linear-gradient(180deg, rgba(23, 23, 23, 0.35) 0%, rgba(23, 23, 23, 0.08) 100%);
+      margin-right: calc((100% - 28px) / 27);
+      box-shadow: none;
+    }
+
+    .ft-tick:nth-child(7n) {
+      height: 14px;
+      background: linear-gradient(180deg, rgba(23, 23, 23, 0.5) 0%, rgba(23, 23, 23, 0.1) 100%);
+    }
+
+    .ft-main {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      padding-top: 36px;
+      align-items: stretch;
+    }
+
+    @media (min-width: 800px) {
+      .ft-main {
+        grid-template-columns: minmax(0, 0.48fr) minmax(0, 0.52fr);
+        gap: 32px 40px;
+        align-items: stretch;
+        padding-top: 44px;
+      }
+    }
+
+    .ft-info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      min-width: 0;
+      justify-content: center;
+    }
+
+    .ft-info-address {
+      margin: 0;
+      font-size: clamp(18px, 1.8vw, 24px);
+      font-weight: 400;
+      font-family: var(--jo-sans);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--ft-ink);
+      line-height: 1.3;
+    }
+
+    .ft-info-rule {
+      width: 40px;
+      height: 2px;
+      background: var(--ft-red-bright);
+      flex: none;
+    }
+
+    .ft-map-grid {
+      display: block;
+      margin: 0;
+      position: relative;
+      border: 1px solid var(--ft-line-mid);
+      box-shadow: none;
+      min-width: 0;
+      height: 100%;
+    }
+
+    .ft-map-cell {
+      background: #e8e8e8;
+      aspect-ratio: 4/3;
+      position: relative;
+      min-height: 240px;
+      max-height: none;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .ft-map-cell iframe {
+      border: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      pointer-events: auto;
+    }
+
+    .ft-contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      background: transparent;
+      margin-top: 0;
+      border: none;
+      box-shadow: none;
+    }
+
+    @media (min-width: 560px) {
+      .ft-contact-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 16px 20px;
+      }
+    }
+
+    .ft-col {
+      background: transparent;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      overflow: visible;
+      min-width: 0;
+    }
+
+    .ft-phone {
+      font-size: 17px;
+      font-weight: 700;
+      font-family: var(--ft-mono);
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      color: #00B8D4;
+      position: relative;
+      z-index: 1;
+      transition: color 0.15s ease;
+    }
+
+    .ft-phone:hover {
+      color: #0096b0;
+    }
+
+    .ft-email {
+      font-size: 13px;
+      color: var(--ft-dim);
+      text-decoration: none;
+      word-break: break-word;
+      position: relative;
+      z-index: 1;
+      letter-spacing: 0.01em;
+      transition: color 0.15s ease;
+    }
+
+    .ft-email:hover {
+      color: var(--ft-ink);
+    }
+
+    .ft-hours-main {
+      font-size: 15.5px;
+      font-weight: 700;
+      color: var(--ft-ink);
+      font-family: var(--ft-mono);
+      letter-spacing: 0.04em;
+    }
+
+    .ft-hours-sub {
+      font-size: 13px;
+      color: var(--ft-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: var(--ft-mono);
+    }
+
+    .ft-company {
+      font-size: 15.5px;
+      font-weight: 700;
+      color: var(--ft-ink);
+      letter-spacing: 0.01em;
+    }
+
+    .ft-reg {
+      font-size: 13px;
+      color: var(--ft-muted);
+      font-family: var(--ft-mono);
+      letter-spacing: 0.06em;
+      margin: 0;
+    }
+
+    /* Bottom panel */
+    .ft-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 28px 0 36px;
+      border-top: 1px solid var(--ft-line);
+      margin-top: 36px;
+    }
+
+    .ft-micro {
+      font-size: 10.5px;
+      font-family: var(--ft-mono);
+      letter-spacing: 0.14em;
+      color: var(--ft-muted);
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    .ft-micro-link {
+      font-size: 10.5px;
+      font-family: var(--ft-mono);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ft-muted);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .ft-micro-link:hover {
+      color: var(--ft-ink);
+    }
+
+    .ft-lang {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      font-size: 13px;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      font-family: var(--ft-mono);
     }
 
-    .ft-inner a {
+    .ft-lang a,
+    .ft-lang button {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      font: inherit;
+      letter-spacing: inherit;
       text-decoration: none;
-      color: rgba(255, 255, 255, 0.65);
+      transition: color 0.15s ease;
     }
 
-    .ft-inner a:hover {
-      color: #fff;
+    .ft-lang-sep {
+      color: var(--ft-line-mid);
+      font-weight: 400;
+    }
+
+    .ft-lang-active {
+      color: var(--ft-red-bright) !important;
+    }
+
+    .ft-lang-muted {
+      color: var(--ft-muted) !important;
+    }
+
+    .ft-totop {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      font-family: var(--ft-mono);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ft-muted);
+      transition: opacity 0.15s ease, color 0.15s ease;
+    }
+
+    .ft-totop:hover {
+      color: var(--ft-ink);
+    }
+
+    .ft-totop-arrow {
+      width: 0;
+      height: 0;
+      border-left: 3.5px solid transparent;
+      border-right: 3.5px solid transparent;
+      border-bottom: 5px solid #525252;
+    }
+
+    .ft-totop-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--ft-red-bright);
+    }
+
+    .ft-totop-label {
+      margin-top: 2px;
+    }
+
+    @media (max-width: 640px) {
+      .ft-inner {
+        padding: 0 16px;
+      }
+
+      .ft-main {
+        padding-top: 28px;
+        gap: 22px;
+      }
+
+      .ft-info {
+        gap: 18px;
+      }
+
+      .ft-info-address {
+        font-size: 17px;
+      }
+
+      .ft-contact-grid {
+        gap: 18px;
+      }
+
+      .ft-map-cell {
+        aspect-ratio: 16/10;
+        min-height: 200px;
+      }
+
+      .ft-ticks {
+        padding-top: 28px;
+      }
     }
 
     @media (max-width: 640px) {
@@ -483,32 +1195,94 @@
 
 <body>
 
+  <!-- ══ Header (.hd) — 2-line header matching main page ══ -->
   <header class="hd">
+    <!-- Utility bar: address + hours + phone + burger -->
     <div class="hd-utility">
       <div class="hd-utility-inner">
-        <a href="tel:+37256702700" aria-label="Helista +372 567 02 700">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            stroke-linecap="round" stroke-linejoin="round">
+        <div class="hd-utility-left">
+          <span class="hd-utility-addr">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            Paavli 4, 10412 Tallinn
+          </span>
+          <span class="hd-utility-hours" style="margin-left: 12px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            Avatud E–R 9–18
+          </span>
+        </div>
+
+        <a href="tel:+37256702700" class="hd-phone hd-phone--right" aria-label="Call +372 567 02 700">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px; vertical-align:text-bottom;">
             <path
               d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
             </path>
           </svg>
-          +372 567 02 700
+          <span class="hd-phone-label">Tel.</span>
+          <span>+372 567 02 700</span>
         </a>
-        <span>Paavli 4, 10412 Tallinn</span>
-        <span>Avatud E–R 9–18</span>
+
+        <button type="button" aria-label="Menu" class="hd-burger" id="hdBurgerBtn" onclick="toggleMobileDrawer()">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
+
+    <!-- Main bar: Navigation + language -->
     <div class="hd-main">
-      <a href="index.html" class="hd-brand">AUTO DIISLIKESKUS</a>
-      <a href="index.html" class="hd-back">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path d="M19 12H5"></path>
-          <path d="M12 19l-7-7 7-7"></path>
-        </svg>
-        Tagasi avalehele
-      </a>
+      <nav class="hd-nav" aria-label="Primary">
+        <a href="index.html#teenused" class="hd-nav-link">Teenused</a>
+        <a href="index.html#hinnakiri" class="hd-nav-link">Hinnakiri</a>
+        <a href="meist.html" class="hd-nav-link is-active">Meist</a>
+        <a href="index.html#kontakt" class="hd-nav-link">Küsi hinnapakkumist</a>
+        <a href="https://rvae.ee/renoveeritud_pihustid.pdf" target="_blank" class="hd-nav-link">E-pood</a>
+        <a href="index.html#kontakt" class="hd-nav-link">Kontakt</a>
+      </nav>
+
+      <div class="hd-actions">
+        <div class="hd-lang">
+          <button type="button" class="hd-lang-toggle" id="hdLangToggle" aria-haspopup="listbox" aria-label="Language"
+            onclick="toggleLangMenu(event)">
+            <span>EE</span>
+            <span class="hd-lang-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="hd-lang-menu" id="hdLangMenu" role="listbox" style="display:none;">
+            <a href="meist.html" class="hd-lang-item is-active" role="option">EE — Eesti</a>
+            <a href="meist.html?lang=ru" class="hd-lang-item" role="option">RU — Русский</a>
+            <a href="meist.html?lang=en" class="hd-lang-item" role="option">EN — English</a>
+            <a href="meist.html?lang=fi" class="hd-lang-item" role="option">FI — Suomi</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="hd-drawer" id="hdDrawer" style="display:none;">
+      <div class="hd-drawer-top">
+        <a href="index.html" class="hd-brand--drawer">AUTO DIISLIKESKUS</a>
+        <button type="button" onclick="toggleMobileDrawer()" aria-label="Close" class="hd-drawer-close">&times;</button>
+      </div>
+      <nav class="hd-drawer-nav" aria-label="Mobile">
+        <a href="index.html#teenused" class="hd-drawer-link" onclick="toggleMobileDrawer()">Teenused</a>
+        <a href="index.html#hinnakiri" class="hd-drawer-link" onclick="toggleMobileDrawer()">Hinnakiri</a>
+        <a href="meist.html" class="hd-drawer-link" onclick="toggleMobileDrawer()">Meist</a>
+        <a href="index.html#kontakt" class="hd-drawer-link" onclick="toggleMobileDrawer()">Küsi hinnapakkumist</a>
+        <a href="https://rvae.ee/renoveeritud_pihustid.pdf" target="_blank" class="hd-drawer-link">E-pood</a>
+        <a href="index.html#kontakt" class="hd-drawer-link" onclick="toggleMobileDrawer()">Kontakt</a>
+      </nav>
+      <div class="hd-drawer-foot">
+        <a href="tel:+37256702700" class="hd-drawer-phone">Tel. +372 567 02 700</a>
+        <span class="hd-drawer-meta">Paavli 4, 10412 Tallinn</span>
+        <span class="hd-drawer-meta">Avatud E–R 9–18</span>
+      </div>
     </div>
   </header>
 
@@ -517,19 +1291,48 @@
       <img src="./ad-img-hero-1.jpg" alt="Auto Diislikeskus taustapilt" />
     </div>
     <div class="hero-shell">
-      <div class="hero-main">
-        <div class="hero-badge">
-          <span class="hero-badge-dot" aria-hidden="true"></span>
-          <span class="hero-badge-text">MEIST</span>
+      <div class="hero-grid">
+        <div class="hero-col-left">
+          <div class="hero-badge-solid">MEIST</div>
+          <h1 class="hero-title-ref">
+            AUTO DIISLIKESKUS<br>
+            — PROFESSIONAALNE<br>
+            LAHENDUS<br>
+            KÜTUSESÜSTEEMIDE<br>
+            REMONDIKS
+          </h1>
+          <div class="hero-rule-red" aria-hidden="true"></div>
         </div>
-        <h1 class="hero-title">Auto Diislikeskus — professionaalne lahendus kütusesüsteemide remondiks</h1>
-        <div class="hero-lead-wrap">
-          <p class="hero-lead">Auto Diislikeskus alustas tegevust <strong>2012. aastal</strong> ning alates
+
+        <div class="hero-copy-ref">
+          <p class="hero-copy-p">
+            Auto Diislikeskus alustas tegevust <strong>2012. aastal</strong> ning alates
             <strong>2017. aastast</strong> tegutseme eraldiseisva ettevõttena, mille põhivaldkonnaks on diislikütuse
             süsteemide diagnostika ja remont.
           </p>
-          <p class="hero-lead">Meie eesmärk ei ole lihtsalt parandada ühte detaili, vaid leida rikke tegelik põhjus ja
-            pakkuda kliendile toimiv ning usaldusväärne lahendus.</p>
+          <p class="hero-copy-p">
+            Meie eesmärk ei ole lihtsalt parandada ühte detaili, vaid leida rikke tegelik põhjus ja
+            pakkuda kliendile toimiv ning usaldusväärne lahendus.
+          </p>
+        </div>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">2012</div>
+          <div class="hero-stat-label">TEGEVUSE ALGUS</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">5</div>
+          <div class="hero-stat-label">RIIKI: EESTI, SOOME, ROOTSI, LÄTI, LEEDU</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">CR</div>
+          <div class="hero-stat-label">COMMON RAIL SPETSIALISEERUMINE</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">1</div>
+          <div class="hero-stat-label">KÕIK TÖÖD ÜHEST KOHAST</div>
         </div>
       </div>
     </div>
@@ -544,7 +1347,7 @@
       <div class="feats-grid">
 
         <article class="feat">
-          <span class="feat-num">01</span>
+          <!-- <span class="feat-num">01</span> -->
           <h3 class="feat-title">Täpne diagnostika ja professionaalne remont</h3>
           <p class="feat-text">Meie spetsialistid on läbinud erialased koolitused kütusesüsteemide diagnostika ja
             remondi alal. Kasutame professionaalset diagnostika- ja remonditehnikat, et leida võimalikult täpselt
@@ -552,14 +1355,14 @@
         </article>
 
         <article class="feat">
-          <span class="feat-num">02</span>
+          <!-- <span class="feat-num">02</span> -->
           <h3 class="feat-title">Teenindus ka väljastpoolt Eestit</h3>
           <p class="feat-text">Meie poole pöörduvad kliendid lisaks Eestile ka Soomest, Rootsist, Lätist ja Leedust.
             Kui kliendil ei ole võimalik ise kohale tulla, saab näiteks pihustid meile remonti saata.</p>
         </article>
 
         <article class="feat">
-          <span class="feat-num">03</span>
+          <!-- <span class="feat-num">03</span> -->
           <h3 class="feat-title">Mugav saatmine Omniva ja DPD kaudu</h3>
           <p class="feat-text">Teeme koostööd Omniva ja DPD-ga, mis võimaldab saata pihusteid ja teisi komponente
             meile remonti ka teisest linnast või riigist. Pärast remonti saadame valmis detailid kliendile tagasi.
@@ -567,7 +1370,7 @@
         </article>
 
         <article class="feat">
-          <span class="feat-num">04</span>
+          <!-- <span class="feat-num">04</span> -->
           <h3 class="feat-title">Kõik vajalik ühest kohast</h3>
           <p class="feat-text">Meie teenuste valik ei piirdu ainult kütuseaparatuuri remondiga. Tegeleme autode
             diagnostika ja erinevate remonditöödega, sealhulgas mootorite diagnostika ja remondiga. See annab
@@ -576,7 +1379,7 @@
         </article>
 
         <article class="feat">
-          <span class="feat-num">05</span>
+          <!-- <span class="feat-num">05</span> -->
           <h3 class="feat-title">Vajalikud varuosad ja komponendid</h3>
           <p class="feat-text">Käime regulaarselt rahvusvahelistel autotööstuse ja tehnika messidel, kus tutvume
             uute tehnoloogiate, seadmete ja lahendustega. Samuti teeme koostööd erinevate tarnijatega ning sõlmime
@@ -602,27 +1405,172 @@
     </div>
   </section>
 
-  <section class="closing">
-    <div class="closing-inner">
-      <p class="closing-text">Auto rike tähendab kliendile sageli lisakulu, ajakadu ja ebamugavust. Seetõttu
-        püüame muuta kogu remondiprotsessi võimalikult lihtsaks — alates diagnostikast ja detaili saatmisest kuni
-        remondi ning valmis detaili tagastamiseni.</p>
-      <p class="closing-tagline">Auto Diislikeskus — professionaalne diagnostika, kvaliteetne remont ja mugav
-        teenindus ühest kohast.</p>
-      <div class="closing-actions">
-        <a href="tel:+37256702700" class="btn btn--ghost">Helista +372 567 02 700</a>
-        <a href="index.html#kontakt" class="btn btn--red">Küsi hinnapakkumist</a>
+  <section class="story" id="lugu">
+    <div class="story-inner">
+      <div class="story-grid">
+        <div class="story-col-copy">
+          <p class="story-lead">Auto rike tähendab kliendile sageli lisakulu, ajakadu ja ebamugavust. Seetõttu
+            püüame muuta kogu remondiprotsessi võimalikult lihtsaks — alates diagnostikast ja detaili saatmisest kuni
+            remondi ning valmis detaili tagastamiseni.</p>
+          <h2 class="story-claim">Auto Diislikeskus — professionaalne diagnostika, kvaliteetne remont ja mugav
+            teenindus ühest kohast.</h2>
+          <div class="story-ctas">
+            <a href="tel:+37256702700" class="btn btn--ghost">HELISTA +372 567 02 700</a>
+            <a href="index.html#kontakt" class="btn btn--red">KÜSI HINNAPAKKUMIST</a>
+          </div>
+        </div>
+
+        <div class="story-timeline">
+          <div class="story-tl">
+            <span class="story-tl-year">2012</span>
+            <p class="story-tl-text">Alustasime tegevust diislikütuse süsteemide diagnostika ja remondiga.</p>
+          </div>
+          <div class="story-tl">
+            <span class="story-tl-year">2017</span>
+            <p class="story-tl-text">Tegutseme eraldiseisva ettevõttena, mille põhivaldkonnaks on diisikütuse süsteemide
+              diagnostika ja remont.</p>
+          </div>
+          <div class="story-tl">
+            <span class="story-tl-year">TÄNA</span>
+            <p class="story-tl-text">Professionaalne diagnostika, kvaliteetne remont ja mugav teenindus ühest kohast —
+              klientidele Eestist ja naaberriikidest.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <footer class="ft">
+  <!-- ══ Footer (.ft-premium) — Light Swiss (matching main page) ══ -->
+  <footer class="ft-premium" id="kontakt">
+    <!-- TEXTURE-01 pattern registry -->
+    <svg class="ft-pattern-defs" aria-hidden="true" focusable="false">
+      <defs>
+        <pattern id="ft-diamond-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+          <rect x="10" y="10" width="20" height="20" fill="none" stroke="rgba(23,23,23,0.08)" stroke-width="1"
+            transform="rotate(45 20 20)"></rect>
+        </pattern>
+        <pattern id="ft-crosshair" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="30" x2="60" y2="30" stroke="rgba(23,23,23,0.05)" stroke-width="1"></line>
+          <line x1="30" y1="0" x2="30" y2="60" stroke="rgba(23,23,23,0.05)" stroke-width="1"></line>
+          <circle cx="30" cy="30" r="2" fill="rgba(23,23,23,0.08)"></circle>
+        </pattern>
+      </defs>
+    </svg>
+
+    <!-- Full-bleed texture layers under content -->
+    <div class="ft-pattern-bg ft-pattern-bg--diamond" aria-hidden="true">
+      <svg preserveAspectRatio="none">
+        <rect width="100%" height="100%" fill="url(#ft-diamond-grid)"></rect>
+      </svg>
+    </div>
+    <div class="ft-pattern-bg ft-pattern-bg--crosshair" aria-hidden="true">
+      <svg preserveAspectRatio="none">
+        <rect width="100%" height="100%" fill="url(#ft-crosshair)"></rect>
+      </svg>
+    </div>
+
     <div class="ft-inner">
-      <span>© Auto Diislikeskus · Paavli 4, 10412 Tallinn</span>
-      <a href="index.html">Tagasi avalehele</a>
+      <!-- Gauge Ticks rail -->
+      <div class="ft-ticks" aria-hidden="true">
+        <span class="ft-tick"></span><span class="ft-tick"></span><span class="ft-tick"></span><span
+          class="ft-tick"></span><span class="ft-tick"></span><span class="ft-tick"></span><span class="ft-tick"></span>
+        <span class="ft-tick"></span><span class="ft-tick"></span><span class="ft-tick"></span><span
+          class="ft-tick"></span><span class="ft-tick"></span><span class="ft-tick"></span><span class="ft-tick"></span>
+        <span class="ft-tick"></span><span class="ft-tick"></span><span class="ft-tick"></span><span
+          class="ft-tick"></span><span class="ft-tick"></span><span class="ft-tick"></span><span class="ft-tick"></span>
+        <span class="ft-tick"></span><span class="ft-tick"></span><span class="ft-tick"></span><span
+          class="ft-tick"></span><span class="ft-tick"></span><span class="ft-tick"></span><span class="ft-tick"></span>
+      </div>
+
+      <!-- Map left (~48%) + address & contacts right -->
+      <div class="ft-main">
+        <div class="ft-map-grid map-grid">
+          <div class="ft-map-cell">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d507.0133513142244!2d24.704905181993897!3d59.44886073191653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x469293866c8cfc59%3A0xea1d19e1c6322cbd!2sPaavli%20tn%204%2F1%2C%2010412%20Tallinn!5e0!3m2!1sen!2see!4v1785347591408!5m2!1sen!2see"
+              title="Paavli 4, 10412 Tallinn — AUTO DIISLIKESKUS" width="100%" height="450" allowfullscreen=""
+              loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+        </div>
+
+        <div class="ft-info">
+          <h2 class="ft-info-address">AUTO DIISLIKESKUS</h2>
+          <p class="ft-reg">Paavli 4, Tallinn, Eesti 10412</p>
+          <span class="ft-info-rule" aria-hidden="true"></span>
+
+          <div class="ft-contact-grid contact-grid">
+            <div class="ft-col">
+              <a href="tel:+37256702700" class="ft-phone">+372 567 02 700</a>
+              <a href="tel:+37256653772" class="ft-phone">+372 566 53 772</a>
+              <a href="mailto:autodiislikeskus@gmail.com" class="ft-email">autodiislikeskus@gmail.com</a>
+            </div>
+            <div class="ft-col">
+              <span class="ft-hours-main">E–R: 09:00 – 18:00</span>
+              <span class="ft-hours-sub">L–P: SULETUD</span>
+            </div>
+            <div class="ft-col">
+              <span class="ft-company">AUTO DIISLIKESKUS OÜ</span>
+              <span class="ft-reg">REG. NR: 14379726</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ft-bottom">
+        <!-- First line: copyright + nav links -->
+        <div
+          style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 12px;">
+          <span class="ft-micro">© 2026 AUTO DIISLIKESKUS. KÕIK ÕIGUSED KAITSTUD.</span>
+          <div class="ft-bottom-nav" style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: flex-end;">
+            <a href="index.html#teenused" class="ft-micro-link">Teenused</a>
+            <a href="index.html#hinnakiri" class="ft-micro-link">Hinnakiri</a>
+            <a href="meist.html" class="ft-micro-link" style="color:var(--ft-ink); font-weight:700;">Meist</a>
+            <a href="index.html#kontakt" class="ft-micro-link">Küsi hinnapakkumist</a>
+            <a href="https://rvae.ee/renoveeritud_pihustid.pdf" target="_blank" class="ft-micro-link">E-pood</a>
+            <a href="index.html#kontakt" class="ft-micro-link">Kontakt</a>
+          </div>
+        </div>
+
+        <!-- Second line: language switcher + scroll to top -->
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+          <div class="ft-lang" role="group" aria-label="Language">
+            <a href="meist.html" class="ft-lang-active" style="text-decoration:none;">EE</a>
+            <span class="ft-lang-sep">|</span>
+            <a href="meist.html?lang=ru" class="ft-lang-muted" style="text-decoration:none;">RU</a>
+            <span class="ft-lang-sep">|</span>
+            <a href="meist.html?lang=en" class="ft-lang-muted" style="text-decoration:none;">EN</a>
+            <span class="ft-lang-sep">|</span>
+            <a href="meist.html?lang=fi" class="ft-lang-muted" style="text-decoration:none;">FI</a>
+          </div>
+
+          <button type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="ft-totop"
+            aria-label="Tagasi üles" style="margin-left: 0;">
+            <span class="ft-totop-arrow"></span>
+            <span class="ft-totop-dot"></span>
+            <span class="ft-totop-label">TAGASI ÜLES</span>
+          </button>
+        </div>
+      </div>
     </div>
   </footer>
-
+  <script>
+    function toggleMobileDrawer() {
+      var d = document.getElementById('hdDrawer');
+      if (d) d.style.display = (d.style.display === 'none' || !d.style.display) ? 'flex' : 'none';
+    }
+    function toggleLangMenu(e) {
+      if (e) e.stopPropagation();
+      var m = document.getElementById('hdLangMenu');
+      if (m) m.style.display = (m.style.display === 'none' || !m.style.display) ? 'flex' : 'none';
+    }
+    document.addEventListener('click', function (e) {
+      var menu = document.getElementById('hdLangMenu');
+      var btn = document.getElementById('hdLangToggle');
+      if (menu && btn && !btn.contains(e.target) && !menu.contains(e.target)) {
+        menu.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 
 </html>
