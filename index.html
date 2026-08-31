@@ -6714,7 +6714,12 @@
 
           <h1 class="hero-title">AUTO DIISLIKESKUS</h1>
 
-          <p class="hero-lead">DIISELMOOTORITE DIAGNOSTIKA- JA REMONDIKESKUS</p>
+          <sc-if value="{{ isRU }}">
+            <p class="hero-lead">ЦЕНТР ДИАГНОСТИКИ И РЕМОНТА ДИЗЕЛЬНЫХ ДВИГАТЕЛЕЙ</p>
+          </sc-if>
+          <sc-if value="{{ isNotRU }}">
+            <p class="hero-lead">DIISELMOOTORITE DIAGNOSTIKA- JA REMONDIKESKUS</p>
+          </sc-if>
 
           <div class="hero-cta-row">
             <button type="button" onClick="{{ openFullForm }}" class="ft-maps-btn">
@@ -6736,8 +6741,12 @@
     <section class="ph motion-reveal" id="teenused" aria-labelledby="ph-heading">
       <div class="ph-inner">
         <header class="ph-header">
-
-          <h2 class="ph-title" id="ph-heading">Common Rail pihustite testimine<br />ja remont Tallinnas</h2>
+          <sc-if value="{{ isRU }}">
+            <h2 class="ph-title" id="ph-heading">Тестирование и ремонт форсунок<br />Common Rail в Таллинне</h2>
+          </sc-if>
+          <sc-if value="{{ isNotRU }}">
+            <h2 class="ph-title" id="ph-heading">Common Rail pihustite testimine<br />ja remont Tallinnas</h2>
+          </sc-if>
           <div class="ph-rule" aria-hidden="true"></div>
         </header>
 
@@ -6766,7 +6775,8 @@
               <div class="ph-panel ph-panel--bosch ph-fade">
                 <h3 class="ph-brand-title">
                   <img src="./img/Bosch-logo.svg.webp" alt="BOSCH" class="ph-title-logo ph-title-logo--bosch" />
-                  <span>PIHUSTID</span>
+                  <sc-if value="{{ isRU }}"><span>ФОРСУНКИ</span></sc-if>
+                  <sc-if value="{{ isNotRU }}"><span>PIHUSTID</span></sc-if>
                 </h3>
                 <ul class="ph-list">
                   <sc-for list="{{ pointsBosch }}" as="point" hint-placeholder-count="9">
@@ -6782,7 +6792,8 @@
               <div class="ph-panel ph-panel--denso ph-fade">
                 <h3 class="ph-brand-title">
                   <img src="./img/DENSO-Logo.png" alt="DENSO" class="ph-title-logo ph-title-logo--denso" />
-                  <span>PIHUSTID</span>
+                  <sc-if value="{{ isRU }}"><span>ФОРСУНКИ</span></sc-if>
+                  <sc-if value="{{ isNotRU }}"><span>PIHUSTID</span></sc-if>
                 </h3>
                 <ul class="ph-list">
                   <sc-for list="{{ pointsDenso }}" as="point" hint-placeholder-count="9">
@@ -6798,7 +6809,9 @@
               <div class="ph-panel ph-panel--delphi ph-fade">
                 <h3 class="ph-brand-title">
                   <img src="./img/logo delphi_Монтажна область 1.png" alt="DELPHI"
-                    class="ph-title-logo ph-title-logo--delphi" /> <span>PIHUSTID</span>
+                    class="ph-title-logo ph-title-logo--delphi" />
+                  <sc-if value="{{ isRU }}"><span>ФОРСУНКИ</span></sc-if>
+                  <sc-if value="{{ isNotRU }}"><span>PIHUSTID</span></sc-if>
                 </h3>
                 <ul class="ph-list">
                   <sc-for list="{{ pointsDelphi }}" as="point" hint-placeholder-count="9">
@@ -6814,7 +6827,8 @@
               <div class="ph-panel ph-panel--siemens ph-fade">
                 <h3 class="ph-brand-title">
                   <img src="./img/Siemens-logo.svg.webp" alt="SIEMENS" class="ph-title-logo ph-title-logo--siemens" />
-                  <span>PIHUSTID</span>
+                  <sc-if value="{{ isRU }}"><span>ФОРСУНКИ</span></sc-if>
+                  <sc-if value="{{ isNotRU }}"><span>PIHUSTID</span></sc-if>
                 </h3>
                 <ul class="ph-list">
                   <sc-for list="{{ pointsSiemens }}" as="point" hint-placeholder-count="7">
@@ -6848,31 +6862,48 @@
     </section>
 
 
-    <!-- ══ Pihustite Müük Blokk — taastatud pihustite müük (PLACEHOLDER: lõplik tekst ja PDF-link tulevad kliendilt) ══ -->
+    <!-- ══ Pihustite Müük Blokk — taastatud pihustite müük ══ -->
     <section class="pm motion-reveal" id="pihustite-muuk" aria-labelledby="pm-heading">
       <div class="pm-inner">
         <div class="pm-copy" style="text-align: left;">
           <header class="pm-header">
-            <h2 class="pm-title" id="pm-heading">Taastatud pihustid – taskukohased hinnad</h2>
-            <div class="pm-rule" aria-hidden="true" style="margin-left: 0;"></div>
-            <p class="pm-lead">
-              Uute ja renoveeritud DENSO, DELPHI, BOSCH ja SEIEMENS pihustite müük
-            </p>
+            <sc-if value="{{ isRU }}">
+              <h2 class="pm-title" id="pm-heading">Восстановленные форсунки – доступные цены</h2>
+              <div class="pm-rule" aria-hidden="true" style="margin-left: 0;"></div>
+              <p class="pm-lead">
+                Продажа новых и восстановленных форсунок DENSO, DELPHI, BOSCH и SIEMENS
+              </p>
+            </sc-if>
+            <sc-if value="{{ isNotRU }}">
+              <h2 class="pm-title" id="pm-heading">Taastatud pihustid – taskukohased hinnad</h2>
+              <div class="pm-rule" aria-hidden="true" style="margin-left: 0;"></div>
+              <p class="pm-lead">
+                Uute ja renoveeritud DENSO, DELPHI, BOSCH ja SEIEMENS pihustite müük
+              </p>
+            </sc-if>
           </header>
 
           <div class="pm-ask" style="margin-left: 0; text-align: left;">
-            <button type="button" class="pm-ask-btn" onClick="{{ openForm }}">
-              Küsi hinda
-            </button>
-            <p class="pm-ask-text">Lisa päringule pihusti kood. Kui kood ei ole teada, märgi auto
-              registreerimisnumber. Välismaal registreeritud auto puhul lisa auto mark, mudel, aasta ja mootori
-              andmed.</p>
+            <sc-if value="{{ isRU }}">
+              <button type="button" class="pm-ask-btn" onClick="{{ openForm }}">
+                Узнать цену
+              </button>
+              <p class="pm-ask-text">Укажите в запросе код форсунки. Если код неизвестен, укажите регистрационный номер авто. Для авто с иностранной регистрацией укажите марку, модель, год и данные двигателя.</p>
+            </sc-if>
+            <sc-if value="{{ isNotRU }}">
+              <button type="button" class="pm-ask-btn" onClick="{{ openForm }}">
+                Küsi hinda
+              </button>
+              <p class="pm-ask-text">Lisa päringule pihusti kood. Kui kood ei ole teada, märgi auto
+                registreerimisnumber. Välismaal registreeritud auto puhul lisa auto mark, mudel, aasta ja mootori
+                andmed.</p>
+            </sc-if>
           </div>
 
           <div class="pm-actions" style="justify-content: flex-start; text-align: left;">
             <a class="pm-btn ft-maps-btn" href="http://rvae.ee/renoveeritud_pihustid.pdf" target="_blank"
-              title="Vaata PDF nimekirja">
-              Vaata pihustite nimekirja (PDF)
+              title="{{ pmPdfTitle }}">
+              {{ pmPdfBtn }}
             </a>
           </div>
         </div>
@@ -6888,13 +6919,22 @@
     <section class="su motion-reveal" id="uslugi" aria-labelledby="su-heading">
       <div class="su-inner">
         <header class="su-header">
-
-          <h2 class="su-title" id="su-heading">
-            Pakkumine on aktuaalne diisel autoomanikele,<br />
-            kelle sõidukitel esineb järgmiseid probleeme
-          </h2>
-          <div class="su-rule" aria-hidden="true"></div>
-          <p class="su-lead">Vali oma auto probleemid — saad kohe teada, kas vajad kontrolli.</p>
+          <sc-if value="{{ isRU }}">
+            <h2 class="su-title" id="su-heading">
+              Предложение актуально для владельцев дизельных авто,<br />
+              у которых наблюдаются следующие симптомы
+            </h2>
+            <div class="su-rule" aria-hidden="true"></div>
+            <p class="su-lead">Выберите симптомы вашего авто — и сразу узнайте, требуется ли диагностика.</p>
+          </sc-if>
+          <sc-if value="{{ isNotRU }}">
+            <h2 class="su-title" id="su-heading">
+              Pakkumine on aktuaalne diisel autoomanikele,<br />
+              kelle sõidukitel esineb järgmiseid probleeme
+            </h2>
+            <div class="su-rule" aria-hidden="true"></div>
+            <p class="su-lead">Vali oma auto probleemid — saad kohe teada, kas vajad kontrolli.</p>
+          </sc-if>
         </header>
 
         <div class="su-grid motion-stagger" role="group" aria-label="Sümptomid">
@@ -6919,7 +6959,8 @@
             Tel. +372 567 02 700
           </a>
           <button type="button" class="ft-maps-btn" onClick="{{ openForm }}">
-            PANGE AEG KINNI · E-POST
+            <sc-if value="{{ isRU }}">ЗАПИСАТЬСЯ · ЭЛ. ПОЧТА</sc-if>
+            <sc-if value="{{ isNotRU }}">PANGE AEG KINNI · E-POST</sc-if>
           </button>
         </div>
 
@@ -6935,19 +6976,22 @@
             <img class="dg-img" src="./img/IMG_DIAGNOST.JPG" alt="Auto kompuuterdiagnostika" width="960" height="720" />
           </div>
           <div class="dg-copy">
-
-
-            <h2 class="dg-title" id="dg-heading">Auto<br />kompuuterdiagnostika</h2>
-            <span class="dg-rule" aria-hidden="true"></span>
-            <p class="dg-text">
-              See on auto erinevate elektrooniliste süsteemide ja täitemehhanismide testimine eesmärgiga
-              välja selgitada rikked. Kompuuterdiagnostika tulemuste põhjal võtab meister vastu otsuse
-              selle kohta, millistele süsteemidele/sõlmedele on vajalik remont ja milline.
-            </p>
-
-            <!-- <div class="dg-meta">
-              <span>Hind: 67 €</span>
-            </div> -->
+            <sc-if value="{{ isRU }}">
+              <h2 class="dg-title" id="dg-heading">Компьютерная<br />диагностика авто</h2>
+              <span class="dg-rule" aria-hidden="true"></span>
+              <p class="dg-text">
+                Это тестирование различных электронных систем и исполнительных механизмов автомобиля с целью выявления неисправностей. На основе результатов компьютерной диагностики мастер принимает решение о том, какие узлы и системы требуют ремонта и в каком объеме.
+              </p>
+            </sc-if>
+            <sc-if value="{{ isNotRU }}">
+              <h2 class="dg-title" id="dg-heading">Auto<br />kompuuterdiagnostika</h2>
+              <span class="dg-rule" aria-hidden="true"></span>
+              <p class="dg-text">
+                See on auto erinevate elektrooniliste süsteemide ja täitemehhanismide testimine eesmärgiga
+                välja selgitada rikked. Kompuuterdiagnostika tulemuste põhjal võtab meister vastu otsuse
+                selle kohta, millistele süsteemidele/sõlmedele on vajalik remont ja milline.
+              </p>
+            </sc-if>
 
             <div class="dg-actions">
               <a href="tel:+37256702700" class="dg-phone" aria-label="Call +372 567 02 700">
@@ -6955,7 +6999,8 @@
                 <span>+372 567 02 700</span>
               </a>
               <button type="button" class="ft-maps-btn" onClick="{{ openForm }}">
-                PANGE AEG KINNI
+                <sc-if value="{{ isRU }}">ЗАПИСАТЬСЯ НА ДИАГНОСТИКУ</sc-if>
+                <sc-if value="{{ isNotRU }}">PANGE AEG KINNI</sc-if>
               </button>
             </div>
           </div>
@@ -7048,79 +7093,158 @@
           <sc-if value="{{ isMiniForm }}" hint-placeholder-val="{{ true }}">
             <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
               <div class="rf-mini-success">
-                <h2 class="rf-mini-success-title" id="rf-modal-title">Aitäh!</h2>
-                <p class="rf-mini-success-text">Päring saadetud — võtame Sinuga ühendust ühe tööpäeva jooksul.</p>
-                <button type="button" class="rf-mini-dismiss" onClick="{{ closeForm }}">Sulge</button>
+                <sc-if value="{{ isRU }}">
+                  <h2 class="rf-mini-success-title" id="rf-modal-title">Спасибо!</h2>
+                  <p class="rf-mini-success-text">Запрос отправлен — свяжемся с вами в течение одного рабочего дня.</p>
+                  <button type="button" class="rf-mini-dismiss" onClick="{{ closeForm }}">Закрыть</button>
+                </sc-if>
+                <sc-if value="{{ isNotRU }}">
+                  <h2 class="rf-mini-success-title" id="rf-modal-title">Aitäh!</h2>
+                  <p class="rf-mini-success-text">Päring saadetud — võtame Sinuga ühendust ühe tööpäeva jooksul.</p>
+                  <button type="button" class="rf-mini-dismiss" onClick="{{ closeForm }}">Sulge</button>
+                </sc-if>
               </div>
             </sc-if>
 
             <sc-if value="{{ isFormVisible }}" hint-placeholder-val="{{ true }}">
               <form class="rf-mini" id="request-form-mini" onSubmit="{{ handleSubmit }}">
-                <header class="rf-header" style="padding-top: 0; padding-bottom: 24px; margin-bottom: 24px;">
-                  <div class="rf-header-row">
-                    <div class="rf-header-copy">
-                      <h2 class="rf-title" id="rf-modal-title">Broneeri aeg</h2>
-                      <p class="rf-lead">
-                        Täida väljad ja vajuta saatmisnupule — võtame Sinuga ühendust ühe tööpäeva jooksul.
-                      </p>
+                <!-- RU MINI -->
+                <sc-if value="{{ isRU }}">
+                  <header class="rf-header" style="padding-top: 0; padding-bottom: 24px; margin-bottom: 24px;">
+                    <div class="rf-header-row">
+                      <div class="rf-header-copy">
+                        <h2 class="rf-title" id="rf-modal-title">Забронировать время</h2>
+                        <p class="rf-lead">
+                          Заполните поля и нажмите кнопку отправки — мы свяжемся с вами в течение одного рабочего дня.
+                        </p>
+                      </div>
+                    </div>
+                  </header>
+
+                  <div class="rf-mini-grid">
+                    <div class="rf-mini-field">
+                      <label class="rf-mini-label" for="rf-name-mini-ru">Имя*</label>
+                      <input id="rf-name-mini-ru" class="rf-mini-input" type="text" name="name" value="{{ name }}"
+                        onChange="{{ onNameChange }}" placeholder="" required="{{ true }}" autocomplete="name" />
+                    </div>
+
+                    <div class="rf-mini-field">
+                      <label class="rf-mini-label" for="rf-phone-mini-ru">Телефон*</label>
+                      <input id="rf-phone-mini-ru" class="rf-mini-input" type="tel" name="phone" value="{{ phone }}"
+                        onChange="{{ onPhoneChange }}" placeholder="" required="{{ true }}" autocomplete="tel" />
+                    </div>
+
+                    <div class="rf-mini-field">
+                      <label class="rf-mini-label" for="rf-email-mini-ru">Эл. адрес*</label>
+                      <input id="rf-email-mini-ru" class="rf-mini-input" type="email" name="email" value="{{ email }}"
+                        onChange="{{ onEmailChange }}" placeholder="" required="{{ true }}" autocomplete="email"
+                        inputmode="email" />
+                    </div>
+
+                    <div class="rf-mini-field">
+                      <label class="rf-mini-label" for="rf-plate-mini-ru">Рег. номер авто*</label>
+                      <input id="rf-plate-mini-ru" class="rf-mini-input" type="text" name="plate" value="{{ plate }}"
+                        onChange="{{ onPlateChange }}" placeholder="" required="{{ true }}" autocomplete="off"
+                        spellcheck="false" />
                     </div>
                   </div>
-                </header>
 
-                <div class="rf-mini-grid">
-                  <div class="rf-mini-field">
-                    <label class="rf-mini-label" for="rf-name-mini">Nimi*</label>
-                    <input id="rf-name-mini" class="rf-mini-input" type="text" name="name" value="{{ name }}"
-                      onChange="{{ onNameChange }}" placeholder="" required="{{ true }}" autocomplete="name" />
+                  <div class="rf-mini-field rf-mini-field--full">
+                    <label class="rf-mini-label" for="rf-desc-mini-ru">Описание проблемы</label>
+                    <textarea id="rf-desc-mini-ru" class="rf-mini-input" style="resize: vertical;" name="description"
+                      value="{{ description }}" onChange="{{ onDescriptionChange }}" rows="3" placeholder=""></textarea>
                   </div>
 
-                  <div class="rf-mini-field">
-                    <label class="rf-mini-label" for="rf-phone-mini">Telefon*</label>
-                    <input id="rf-phone-mini" class="rf-mini-input" type="tel" name="phone" value="{{ phone }}"
-                      onChange="{{ onPhoneChange }}" placeholder="" required="{{ true }}" autocomplete="tel" />
-                  </div>
+                  <p class="rf-mini-lead" style="margin-top: -8px;">
+                    Хотите оплатить заранее банковским переводом? Укажите это в описании — мы сообщим вам о скидке и
+                    отправим счет по электронной почте.
+                  </p>
 
-                  <div class="rf-mini-field">
-                    <label class="rf-mini-label" for="rf-email-mini">E-post*</label>
-                    <input id="rf-email-mini" class="rf-mini-input" type="email" name="email" value="{{ email }}"
-                      onChange="{{ onEmailChange }}" placeholder="" required="{{ true }}" autocomplete="email"
-                      inputmode="email" />
-                  </div>
+                  <sc-if value="{{ isError }}" hint-placeholder-val="{{ false }}">
+                    <span class="rf-mini-error">Пожалуйста, корректно заполните все обязательные поля (*).</span>
+                  </sc-if>
 
-                  <div class="rf-mini-field">
-                    <label class="rf-mini-label" for="rf-plate-mini">Auto reg. number*</label>
-                    <input id="rf-plate-mini" class="rf-mini-input" type="text" name="plate" value="{{ plate }}"
-                      onChange="{{ onPlateChange }}" placeholder="" required="{{ true }}" autocomplete="off"
-                      spellcheck="false" />
-                  </div>
-                </div>
+                  <button type="submit" class="rf-mini-submit" disabled="{{ isSubmitting }}">
+                    <svg class="rf-mini-submit-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3.5 11.5 L20 4 L13 20.5 L11 13 L3.5 11.5 Z" stroke="currentColor" stroke-width="1.7"
+                        stroke-linejoin="round" stroke-linecap="round" />
+                      <path d="M11 13 L20 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                    </svg>
+                    <span>{{ submitLabel }}</span>
+                  </button>
 
-                <div class="rf-mini-field rf-mini-field--full">
-                  <label class="rf-mini-label" for="rf-desc-mini">Probleemi kirjeldus</label>
-                  <textarea id="rf-desc-mini" class="rf-mini-input" style="resize: vertical;" name="description"
-                    value="{{ description }}" onChange="{{ onDescriptionChange }}" rows="3" placeholder=""></textarea>
-                </div>
-
-                <p class="rf-mini-lead" style="margin-top: -8px;">
-                  Soovid tasuda ette pangaülekandega? Kirjuta see kirjeldusse — teatame Sulle sooduspakkumise ja
-                  arve saadame meili teel.
-                </p>
-
-                <sc-if value="{{ isError }}" hint-placeholder-val="{{ false }}">
-                  <span class="rf-mini-error">Palun täida kõik kohustuslikud väljad (*) korrektselt.</span>
+                  <button type="button" class="rf-mini-dismiss" onClick="{{ closeForm }}">Закрыть</button>
                 </sc-if>
 
-                <button type="submit" class="rf-mini-submit" disabled="{{ isSubmitting }}">
-                  <svg class="rf-mini-submit-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3.5 11.5 L20 4 L13 20.5 L11 13 L3.5 11.5 Z" stroke="currentColor" stroke-width="1.7"
-                      stroke-linejoin="round" stroke-linecap="round" />
-                    <path d="M11 13 L20 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
-                  </svg>
-                  <span>{{ submitLabel }}</span>
-                </button>
+                <!-- EE MINI -->
+                <sc-if value="{{ isNotRU }}">
+                  <header class="rf-header" style="padding-top: 0; padding-bottom: 24px; margin-bottom: 24px;">
+                    <div class="rf-header-row">
+                      <div class="rf-header-copy">
+                        <h2 class="rf-title" id="rf-modal-title">Broneeri aeg</h2>
+                        <p class="rf-lead">
+                          Täida väljad ja vajuta saatmisnupule — võtame Sinuga ühendust ühe tööpäeva jooksul.
+                        </p>
+                      </div>
+                    </div>
+                  </header>
 
-                <button type="button" class="rf-mini-dismiss" onClick="{{ closeForm }}">Sulge</button>
+                  <div class="rf-mini-grid">
+                    <div class="rf-mini-field">
+                      <label class="rf-mini-label" for="rf-name-mini">Nimi*</label>
+                      <input id="rf-name-mini" class="rf-mini-input" type="text" name="name" value="{{ name }}"
+                        onChange="{{ onNameChange }}" placeholder="" required="{{ true }}" autocomplete="name" />
+                    </div>
+
+                    <div class="rf-mini-field">
+                      <label class="rf-mini-label" for="rf-phone-mini">Telefon*</label>
+                      <input id="rf-phone-mini" class="rf-mini-input" type="tel" name="phone" value="{{ phone }}"
+                        onChange="{{ onPhoneChange }}" placeholder="" required="{{ true }}" autocomplete="tel" />
+                    </div>
+
+                    <div class="rf-mini-field">
+                      <label class="rf-mini-label" for="rf-email-mini">E-post*</label>
+                      <input id="rf-email-mini" class="rf-mini-input" type="email" name="email" value="{{ email }}"
+                        onChange="{{ onEmailChange }}" placeholder="" required="{{ true }}" autocomplete="email"
+                        inputmode="email" />
+                    </div>
+
+                    <div class="rf-mini-field">
+                      <label class="rf-mini-label" for="rf-plate-mini">Auto reg. number*</label>
+                      <input id="rf-plate-mini" class="rf-mini-input" type="text" name="plate" value="{{ plate }}"
+                        onChange="{{ onPlateChange }}" placeholder="" required="{{ true }}" autocomplete="off"
+                        spellcheck="false" />
+                    </div>
+                  </div>
+
+                  <div class="rf-mini-field rf-mini-field--full">
+                    <label class="rf-mini-label" for="rf-desc-mini">Probleemi kirjeldus</label>
+                    <textarea id="rf-desc-mini" class="rf-mini-input" style="resize: vertical;" name="description"
+                      value="{{ description }}" onChange="{{ onDescriptionChange }}" rows="3" placeholder=""></textarea>
+                  </div>
+
+                  <p class="rf-mini-lead" style="margin-top: -8px;">
+                    Soovid tasuda ette pangaülekandega? Kirjuta see kirjeldusse — teatame Sulle sooduspakkumise ja
+                    arve saadame meili teel.
+                  </p>
+
+                  <sc-if value="{{ isError }}" hint-placeholder-val="{{ false }}">
+                    <span class="rf-mini-error">Palun täida kõik kohustuslikud väljad (*) korrektselt.</span>
+                  </sc-if>
+
+                  <button type="submit" class="rf-mini-submit" disabled="{{ isSubmitting }}">
+                    <svg class="rf-mini-submit-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3.5 11.5 L20 4 L13 20.5 L11 13 L3.5 11.5 Z" stroke="currentColor" stroke-width="1.7"
+                        stroke-linejoin="round" stroke-linecap="round" />
+                      <path d="M11 13 L20 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                    </svg>
+                    <span>{{ submitLabel }}</span>
+                  </button>
+
+                  <button type="button" class="rf-mini-dismiss" onClick="{{ closeForm }}">Sulge</button>
+                </sc-if>
               </form>
             </sc-if>
           </sc-if>
@@ -7412,14 +7536,18 @@
             aria-label="Sulge">&times;</button>
 
           <section class="hk-block" id="hinnakiri" aria-labelledby="hk-heading">
-            <div class="hk-header">
-
-              <h2 class="hk-title" id="hk-heading">HINNAKIRI</h2>
-              <div class="hk-rule" aria-hidden="true"></div>
-              <p class="hk-lead">Kuna iga sõiduk ja mootor on erinev, soovitame täpse hinnapakkumise saamiseks võtta
-                ühendust
-                meie meistriga.</p>
-            </div>
+            <header class="hk-header">
+              <sc-if value="{{ isRU }}">
+                <h2 class="hk-title" id="hk-heading">ПРАЙС-ЛИСТ</h2>
+                <div class="hk-rule" aria-hidden="true"></div>
+                <p class="hk-lead">Поскольку каждый автомобиль и двигатель индивидуальны, для получения точного расчета стоимости рекомендуем связаться с нашим мастером.</p>
+              </sc-if>
+              <sc-if value="{{ isNotRU }}">
+                <h2 class="hk-title" id="hk-heading">HINNAKIRI</h2>
+                <div class="hk-rule" aria-hidden="true"></div>
+                <p class="hk-lead">Kuna iga sõiduk ja mootor on erinev, soovitame täpse hinnapakkumise saamiseks võtta ühendust meie meistriga.</p>
+              </sc-if>
+            </header>
 
             <div class="hk-table-wrap">
               <sc-for list="{{ rows }}" as="row" hint-placeholder-count="8">
@@ -7431,19 +7559,14 @@
             </div>
 
             <div class="hk-notes">
-              <p class="hk-note-item">* Kui tellite meilt ka pihustite demonteerimise ja paigaldamise, kehtib pihustite
-                testimisele 10% soodustus.</p>
-              <p class="hk-note-item">** Remondi maksumusele lisandub pihustite demonteerimise ja paigaldamise töö. Töö
-                arvestus toimub hinnaga 55,90 €/tund. Täpse maksumuse saamiseks palume võtta ühendust meie meistriga
-                e-posti
-                teel: <a href="mailto:autodiislikeskus@gmail.com"
-                  style="color:#00B8D4;text-decoration:underline;">autodiislikeskus@gmail.com</a>.</p>
-              <!-- <div class="hk-vat-wrap">
-                <div class="hk-vat-badge">
-                  <span class="hk-vat-badge-dot" aria-hidden="true"></span>
-                  <span class="hk-vat-badge-text">HINNAD EI SISALDA KÄIBEMAKSU</span>
-                </div>
-              </div> -->
+              <sc-if value="{{ isRU }}">
+                <p class="hk-note-item">* При заказе у нас также демонтажа и монтажа форсунок действует скидка 10% на тестирование форсунок.</p>
+                <p class="hk-note-item">** К стоимости ремонта добавляется работа по снятию и установке форсунок. Расчет работы производится по тарифу 55,90 €/час. Для получения точной стоимости свяжитесь с нашим мастером по электронной почте: <a href="mailto:autodiislikeskus@gmail.com" style="color:#00B8D4;text-decoration:underline;">autodiislikeskus@gmail.com</a>.</p>
+              </sc-if>
+              <sc-if value="{{ isNotRU }}">
+                <p class="hk-note-item">* Kui tellite meilt ka pihustite demonteerimise ja paigaldamise, kehtib pihustite testimisele 10% soodustus.</p>
+                <p class="hk-note-item">** Remondi maksumusele lisandub pihustite demonteerimise ja paigaldamise töö. Töö arvestus toimub hinnaga 55,90 €/tund. Täpse maksumuse saamiseks palume võtta ühendust meie meistriga e-posti teel: <a href="mailto:autodiislikeskus@gmail.com" style="color:#00B8D4;text-decoration:underline;">autodiislikeskus@gmail.com</a>.</p>
+              </sc-if>
             </div>
           </section>
         </div>
@@ -7507,12 +7630,22 @@
             </svg>
           </div>
 
-          <h2 class="etb-title" id="etb-heading">
-            MEIST JA MEESKOND
-          </h2>
-          <p class="etb-lead">
-            Professionaalne diagnostika, sertifitseeritud meistrid ja usaldusväärne koostöö partneritega üle Eesti.
-          </p>
+          <sc-if value="{{ isRU }}">
+            <h2 class="etb-title" id="etb-heading">
+              О НАС И НАША КОМАНДА
+            </h2>
+            <p class="etb-lead">
+              Профессиональная диагностика, сертифицированные мастера и надежное сотрудничество с партнерами по всей Эстонии.
+            </p>
+          </sc-if>
+          <sc-if value="{{ isNotRU }}">
+            <h2 class="etb-title" id="etb-heading">
+              MEIST JA MEESKOND
+            </h2>
+            <p class="etb-lead">
+              Professionaalne diagnostika, sertifitseeritud meistrid ja usaldusväärne koostöö partneritega üle Eesti.
+            </p>
+          </sc-if>
         </header>
 
         <!-- Personal / team — full-bleed photo, type + SVG accents integrated into image -->
@@ -7550,48 +7683,33 @@
 
             <div class="etb-personal-overlay">
               <div class="etb-personal-copy">
-                <h3 class="etb-personal-headline" id="personal-heading">
-                  <span class="etb-personal-check" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.75" />
-                      <path d="M7.2 12.4 L10.4 15.5 L16.8 8.6" stroke="currentColor" stroke-width="2.1"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                  </span>
-                  <span class="etb-personal-headline-text">Diplomeeritud spetsialistid</span>
-                </h3>
-                <p class="etb-personal-text">Meie spetsialistid on läbinud koolituse. Bosch sertifikaadid kinnitavad
-                  kõrget kvalifikatsiooni.</p>
-                <!-- <p class="etb-personal-text">Bosch sertifikaadid kinnitavad kõrget kvalifikatsiooni.</p> -->
-                <!-- <div class="etb-personal-badges">
-                  <span class="etb-personal-badge">
-                    <span class="etb-personal-badge-icon" aria-hidden="true">
-                      <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2.2 6.2 L4.7 8.6 L9.8 3.4" stroke="currentColor" stroke-width="1.7"
+                <sc-if value="{{ isRU }}">
+                  <h3 class="etb-personal-headline" id="personal-heading">
+                    <span class="etb-personal-check" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.75" />
+                        <path d="M7.2 12.4 L10.4 15.5 L16.8 8.6" stroke="currentColor" stroke-width="2.1"
                           stroke-linecap="round" stroke-linejoin="round" />
                       </svg>
                     </span>
-                    Bosch certified
-                  </span>
-                  <span class="etb-personal-badge">
-                    <span class="etb-personal-badge-icon" aria-hidden="true">
-                      <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2.2 6.2 L4.7 8.6 L9.8 3.4" stroke="currentColor" stroke-width="1.7"
+                    <span class="etb-personal-headline-text">Дипломированные специалисты</span>
+                  </h3>
+                  <p class="etb-personal-text">Наши специалисты прошли обучение. Сертификаты Bosch подтверждают высокую квалификацию.</p>
+                </sc-if>
+                <sc-if value="{{ isNotRU }}">
+                  <h3 class="etb-personal-headline" id="personal-heading">
+                    <span class="etb-personal-check" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.75" />
+                        <path d="M7.2 12.4 L10.4 15.5 L16.8 8.6" stroke="currentColor" stroke-width="2.1"
                           stroke-linecap="round" stroke-linejoin="round" />
                       </svg>
                     </span>
-                    Common Rail
-                  </span>
-                  <span class="etb-personal-badge">
-                    <span class="etb-personal-badge-icon" aria-hidden="true">
-                      <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2.2 6.2 L4.7 8.6 L9.8 3.4" stroke="currentColor" stroke-width="1.7"
-                          stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
-                    </span>
-                    TNVD
-                  </span>
-                </div> -->
+                    <span class="etb-personal-headline-text">Diplomeeritud spetsialistid</span>
+                  </h3>
+                  <p class="etb-personal-text">Meie spetsialistid on läbinud koolituse. Bosch sertifikaadid kinnitavad
+                    kõrget kvalifikatsiooni.</p>
+                </sc-if>
               </div>
             </div>
           </div>
@@ -7610,33 +7728,62 @@
 
         <!-- About us teaser — links out to the full Meist page -->
         <div class="etb-block">
-          <div class="etb-block-label">
-            <span class="etb-block-title">MEIST</span>
-          </div>
-          <div class="etb-about-panel">
-            <div class="etb-about-copy">
-              <h3 class="etb-about-heading">Alustasime 2012. aastal — kütusesüsteemide diagnostika ja remont on meie
-                põhivaldkond</h3>
-              <p class="etb-about-text">Alates 2017. aastast tegutseme eraldiseisva ettevõttena. Meie eesmärk ei ole
-                lihtsalt parandada ühte detaili, vaid leida rikke tegelik põhjus ja pakkuda usaldusväärne lahendus.
-              </p>
-              <a href="meist.html" class="etb-about-btn">Loe lähemalt meist →</a>
+          <sc-if value="{{ isRU }}">
+            <div class="etb-block-label">
+              <span class="etb-block-title">О НАС</span>
             </div>
-            <div class="etb-about-facts">
-              <div class="etb-about-fact">
-                <span class="etb-card-spec-num">01</span>
-                <span>Kliendid ka Soomest, Rootsist, Lätist ja Leedust</span>
+            <div class="etb-about-panel">
+              <div class="etb-about-copy">
+                <h3 class="etb-about-heading">Начали деятельность в 2012 году — диагностика и ремонт топливных систем наш основной профиль</h3>
+                <p class="etb-about-text">С 2017 года работаем как самостоятельное предприятие. Наша цель — не просто отремонтировать деталь, а найти истинную причину неисправности и предложить надежное решение.
+                </p>
+                <a href="meist.html" class="etb-about-btn">Подробнее о нас →</a>
               </div>
-              <div class="etb-about-fact">
-                <span class="etb-card-spec-num">02</span>
-                <span>Pihustite saatmine remonti Omniva ja DPD kaudu</span>
-              </div>
-              <div class="etb-about-fact">
-                <span class="etb-card-spec-num">03</span>
-                <span>Kvalifitseeritud spetsialistid, regulaarne täienduskoolitus</span>
+              <div class="etb-about-facts">
+                <div class="etb-about-fact">
+                  <span class="etb-card-spec-num">01</span>
+                  <span>Клиенты также из Финляндии, Швеции, Латвии и Литвы</span>
+                </div>
+                <div class="etb-about-fact">
+                  <span class="etb-card-spec-num">02</span>
+                  <span>Отправка форсунок на ремонт через Omniva и DPD</span>
+                </div>
+                <div class="etb-about-fact">
+                  <span class="etb-card-spec-num">03</span>
+                  <span>Квалифицированные специалисты, регулярное обучение</span>
+                </div>
               </div>
             </div>
-          </div>
+          </sc-if>
+          <sc-if value="{{ isNotRU }}">
+            <div class="etb-block-label">
+              <span class="etb-block-title">MEIST</span>
+            </div>
+            <div class="etb-about-panel">
+              <div class="etb-about-copy">
+                <h3 class="etb-about-heading">Alustasime 2012. aastal — kütusesüsteemide diagnostika ja remont on meie
+                  põhivaldkond</h3>
+                <p class="etb-about-text">Alates 2017. aastast tegutseme eraldiseisva ettevõttena. Meie eesmärk ei ole
+                  lihtsalt parandada ühte detaili, vaid leida rikke tegelik põhjus ja pakkuda usaldusväärne lahendus.
+                </p>
+                <a href="meist.html" class="etb-about-btn">Loe lähemalt meist →</a>
+              </div>
+              <div class="etb-about-facts">
+                <div class="etb-about-fact">
+                  <span class="etb-card-spec-num">01</span>
+                  <span>Kliendid ka Soomest, Rootsist, Lätist ja Leedust</span>
+                </div>
+                <div class="etb-about-fact">
+                  <span class="etb-card-spec-num">02</span>
+                  <span>Pihustite saatmine remonti Omniva ja DPD kaudu</span>
+                </div>
+                <div class="etb-about-fact">
+                  <span class="etb-card-spec-num">03</span>
+                  <span>Kvalifitseeritud spetsialistid, regulaarne täienduskoolitus</span>
+                </div>
+              </div>
+            </div>
+          </sc-if>
         </div>
 
 
@@ -7657,12 +7804,22 @@
             <div class="etb-b2b-tint" style="opacity: 0.3;"></div>
           </div>
           <div class="etb-b2b-content">
-            <h3 class="etb-b2b-title" id="etb-b2b-heading">
-              Pakkumised autoremondifirmadele
-            </h3>
-            <div class="etb-b2b-rule" aria-hidden="true"></div>
-            <a href="./Pakkumine_firmadele.pdf" target="_blank" rel="noopener noreferrer"
-              class="etb-btn-ghost">Rohkem</a>
+            <sc-if value="{{ isRU }}">
+              <h3 class="etb-b2b-title" id="etb-b2b-heading">
+                Предложения для автосервисов
+              </h3>
+              <div class="etb-b2b-rule" aria-hidden="true"></div>
+              <a href="./Pakkumine_firmadele.pdf" target="_blank" rel="noopener noreferrer"
+                class="etb-btn-ghost">Подробнее</a>
+            </sc-if>
+            <sc-if value="{{ isNotRU }}">
+              <h3 class="etb-b2b-title" id="etb-b2b-heading">
+                Pakkumised autoremondifirmadele
+              </h3>
+              <div class="etb-b2b-rule" aria-hidden="true"></div>
+              <a href="./Pakkumine_firmadele.pdf" target="_blank" rel="noopener noreferrer"
+                class="etb-btn-ghost">Rohkem</a>
+            </sc-if>
           </div>
         </aside>
 
@@ -7907,6 +8064,12 @@ class Component extends DCLogic {
     { num: '03', label: 'GARANTII', detail: 'Kõikidele töödele / На все виды работ' },
   ];
 
+  specsRU = [
+    { num: '01', label: 'COMMON RAIL', detail: 'Диагностика и ремонт форсунок' },
+    { num: '02', label: 'ТНВД', detail: 'Стенды высокой точности' },
+    { num: '03', label: 'ГАРАНТИЯ', detail: 'На все виды работ' },
+  ];
+
   /* --- from Pihustite Blokk.dc.html --- */
   injectorBrandsData = [
     {
@@ -7969,6 +8132,67 @@ class Component extends DCLogic {
     },
   ];
 
+  injectorBrandsDataRU = [
+    {
+      name: 'BOSCH',
+      imageId: 'img-bosch',
+      points: [
+        'Снятие форсунок с автомобиля',
+        'Ультразвуковая чистка и тестирование на стенде',
+        'Ремонт форсунок',
+        'Кодирование форсунок',
+        'Установка форсунок',
+        'Предлагаем новые форсунки',
+        'Предлагаем восстановленные форсунки',
+        'Монтаж форсунок на автомобиль',
+        'Сопутствующие работы для правильной работы форсунок (промывка топливной системы, замена топливного фильтра и др.)',
+      ],
+    },
+    {
+      name: 'DENSO',
+      imageId: 'img-denso',
+      points: [
+        'Снятие форсунок с автомобиля',
+        'Ультразвуковая чистка и тестирование на стенде',
+        'Ремонт форсунок',
+        'Кодирование форсунок',
+        'Установка форсунок',
+        'Предлагаем новые форсунки',
+        'Предлагаем восстановленные форсунки',
+        'Монтаж форсунок на автомобиль',
+        'Сопутствующие работы для правильной работы форсунок (промывка топливной системы, замена топливного фильтра и др.)',
+      ],
+    },
+    {
+      name: 'DELPHI',
+      imageId: 'img-delphi',
+      points: [
+        'Снятие форсунок с автомобиля',
+        'Ультразвуковая чистка и тестирование на стенде',
+        'Ремонт форсунок',
+        'Кодирование форсунок',
+        'Установка форсунок',
+        'Предлагаем новые форсунки',
+        'Предлагаем восстановленные форсунки',
+        'Монтаж форсунок на автомобиль',
+        'Сопутствующие работы для правильной работы форсунок (промывка топливной системы, замена топливного фильтра и др.)',
+      ],
+    },
+    {
+      name: 'SIEMENS',
+      imageId: 'img-siemens',
+      points: [
+        'Снятие форсунок с автомобиля',
+        'Ультразвуковая чистка и тестирование на стенде',
+        'Ремонт форсунок',
+        'Установка форсунок',
+        'Предлагаем новые форсунки',
+        'Монтаж форсунок на автомобиль',
+        'Сопутствующие работы для правильной работы форсунок (промывка топливной системы, замена топливного фильтра и др.)',
+      ],
+    },
+  ];
+
   selectBrand0 = () => this.setState({ activeBrandIndex: 0 });
   selectBrand1 = () => this.setState({ activeBrandIndex: 1 });
   selectBrand2 = () => this.setState({ activeBrandIndex: 2 });
@@ -7989,9 +8213,24 @@ class Component extends DCLogic {
     'tühikäigul esineb väntvõlli pöörete sageduse kõikumist;',
   ];
 
+  symptomListRU = [
+    'затрудненный запуск двигателя;',
+    'падение мощности двигателя;',
+    'повышенный расход топлива;',
+    'черный дым из выхлопной трубы;',
+    'серый или белый дым из выхлопной трубы;',
+    'неустойчивая работа двигателя;',
+    'двигатель не развивает полную мощность;',
+    'повышенный шум и детонация двигателя;',
+    'перебои в работе двигателя на холостом ходу;',
+    'внезапная остановка двигателя;',
+    'колебания частоты оборотов на холостом ходу;',
+  ];
+
   toggleSymptom = (i) => {
     this.setState((s) => {
-      const list = this.symptomList || [];
+      const isRu = s.lang === 'RU';
+      const list = isRu ? this.symptomListRU : (this.symptomList || []);
       const prev = Array.isArray(s.symptomSelected) ? s.symptomSelected : [];
       const next = list.map((_, j) => (j === i ? !prev[j] : !!prev[j]));
       return { symptomSelected: next };
@@ -8094,11 +8333,25 @@ class Component extends DCLogic {
     { num: '04', title: 'KÜTUSESÜSTEEMI PESU JA REMONT / ПРОМЫВКА ТОПЛИВНОЙ СИСТЕМЫ', desc: 'Süsteemi täielik pesu, paagi puhastus, metallilaastude eemaldamine pumba rikke järel, komponentide paigaldus.' },
   ];
 
+  servicesRU = [
+    { num: '01', title: 'КОМПЛЕКСНАЯ ДИАГНОСТИКА ДИЗЕЛЬНЫХ СИСТЕМ', desc: 'Компьютерная диагностика, анализ параметров в реальном времени, тест на слив в обратку, контроль давления.' },
+    { num: '02', title: 'РЕМОНТ И ТЕСТИРОВАНИЕ ФОРСУНОК', desc: 'Тестирование Common Rail (Bosch, Delphi, Denso, Continental) на сертифицированных стендах, генерация нового кода.' },
+    { num: '03', title: 'РЕМОНТ ТНВД (НАСОСОВ ВЫСОКОГО ДАВЛЕНИЯ)', desc: 'Восстановление ТНВД, проверка регулятора давления, дефектовка.' },
+    { num: '04', title: 'ПРОМЫВКА И РЕМОНТ ТОПЛИВНОЙ СИСТЕМЫ', desc: 'Полная промывка системы, очистка бака, удаление металлической стружки после поломки насоса, установка компонентов.' },
+  ];
+
   symptoms = [
     { num: '01', title: 'MOOTOR EI KÄIVITU VÕI KÄIVITUB RASKEVÕITU', ru: 'Машина плохо заводится на холодную или на горячую.' },
     { num: '02', title: 'MUST VÕI VALGE SUITS VÄLJALASKETORUST', ru: 'Густой черный или белый дым из выхлопной трубы при ускорении.' },
     { num: '03', title: 'EBAÜHTLANE TÖÖ JA VÕIMSUSE KADU', ru: 'Двигатель троит, плавают обороты, пропала тяга.' },
     { num: '04', title: 'SUURENENUD KÜTUSEKULU', ru: 'Значительно вырос расход дизельного топлива.' },
+  ];
+
+  symptomsRU = [
+    { num: '01', title: 'ДВИГАТЕЛЬ НЕ ЗАВОДИТСЯ ИЛИ ПЛОХО ЗАВОДИТСЯ', ru: 'Машина плохо заводится на холодную или на горячую.' },
+    { num: '02', title: 'ЧЕРНЫЙ ИЛИ БЕЛЫЙ ДЫМ ИЗ ВЫХЛОПНОЙ ТРУБЫ', ru: 'Густой черный или белый дым при ускорении.' },
+    { num: '03', title: 'НЕРАВНОМЕРНАЯ РАБОТА И ПОТЕРЯ ТЯГИ', ru: 'Двигатель троит, плавают обороты, пропала мощность.' },
+    { num: '04', title: 'ПОВЫШЕННЫЙ РАСХОД ТОПЛИВА', ru: 'Значительно вырос расход дизельного топлива.' },
   ];
 
   /* ticks → unified */
@@ -8115,6 +8368,17 @@ class Component extends DCLogic {
     { name: 'Lukkseppatööd sõiduautodel ja kaubikutel', price: '55.90 eur/tund' },
     { name: 'DPF pesu sõiduautodel ja kaubikutel**', price: '199 eur/tk' },
     { name: 'Elektritööd sõiduautodel ja kaubikutel', price: '59.90 eur/tund' },
+  ];
+
+  priceRowsRU = [
+    { name: 'Компьютерная диагностика', price: '67 eur' },
+    { name: 'Тестирование форсунок Common Rail*', price: '22 eur/шт' },
+    { name: 'Ремонт форсунок Common Rail, от', price: '65 eur/шт' },
+    { name: 'Проверка механических форсунок*', price: '12 eur/шт' },
+    { name: 'Ремонт механических форсунок, от', price: '25 eur/шт' },
+    { name: 'Слесарные работы для легковых авто и микроавтобусов', price: '55.90 eur/час' },
+    { name: 'Мойка DPF для легковых авто и микроавтобусов**', price: '199 eur/шт' },
+    { name: 'Электроработы для легковых авто и микроавтобусов', price: '59.90 eur/час' },
   ];
 
   /* --- from EquipmentTeamB2B.dc.html --- */
@@ -8147,6 +8411,36 @@ class Component extends DCLogic {
       name: 'INJECTOR REGULEERIMISSTEND',
       spec1: 'Rõhuklapi ja nõela peenhäälestus',
       spec2: 'Manomeetrid ja kalibreerimine töölaual',
+    },
+  ];
+
+  equipmentRU = [
+    {
+      slotId: 'equip-1',
+      tag: '[ ДИАГНОСТИКА ]',
+      placeholder: 'Фото: мобильный стенд',
+      src: './ad-img-1.jpg',
+      name: 'МОБИЛЬНЫЙ ДИАГНОСТИЧЕСКИЙ СТЕНД',
+      spec1: 'Ноутбук и дополнительный экран, прямое подключение к проводке',
+      spec2: 'Компьютерная диагностика непосредственно у автомобиля',
+    },
+    {
+      slotId: 'equip-2',
+      tag: '[ ТЕСТИРОВАНИЕ ]',
+      placeholder: 'Фото: стенд Common Rail',
+      src: './ad-img-2.jpg',
+      name: 'ТЕСТОВЫЙ СТЕНД CR-JET',
+      spec1: 'Контроль расхода и формы факела распыла форсунок',
+      spec2: 'Тестирование дизельных форсунок Common Rail',
+    },
+    {
+      slotId: 'equip-3',
+      tag: '[ РЕГУЛИРОВКА ]',
+      placeholder: 'Фото: регулировочный стенд',
+      src: './ad-img-3.jpg',
+      name: 'РЕГУЛИРОВОЧНЫЙ СТЕНД ДЛЯ ФОРСУНОК',
+      spec1: 'Точная настройка клапана давления и иглы',
+      spec2: 'Манометры и высокоточная калибровка на рабочем столе',
     },
   ];
 
@@ -8192,6 +8486,21 @@ class Component extends DCLogic {
     },
   ];
 
+  b2bPointsRU = [
+    {
+      num: '01',
+      text: 'Принимаем снятые форсунки и насосы курьером (Cargobus / DPD) со всей Эстонии.',
+    },
+    {
+      num: '02',
+      text: 'Быстрая диагностика и ремонт в течение 24–48 часов.',
+    },
+    {
+      num: '03',
+      text: 'Специальные условия для автосервисов и официальная гарантия.',
+    },
+  ];
+
   /* scrollToForm → unified */
   /* renderVals → unified */
 
@@ -8212,16 +8521,16 @@ class Component extends DCLogic {
       labelContacts: '[ КОНТАКТЫ ]',
       labelHours: '[ ВРЕМЯ РАБОТЫ ]',
       hoursMain: 'ПН–ПТ: 09:00 – 18:00',
-      hoursSub: 'СБ–ВС: ЗАКРЫТО',
+      hoursSub: 'СБ–ВС: ВЫХОДНОЙ',
       labelCompany: '[ РЕКВИЗИТЫ ]',
-      regNr: 'РЕГ. НОМЕР: XXXXXXXX',
-      vatNr: 'НДС / VAT: EE XXXXXXXX',
+      regNr: 'Рег. код: 14379726',
+      vatNr: 'НДС / VAT: EE -',
       copyright: '© 2026 AUTO DIISLIKESKUS. ВСЕ ПРАВА ЗАЩИЩЕНЫ.',
       privacy: 'Политика конфиденциальности',
       terms: 'Условия использования',
-      toTop: 'Наверх',
+      toTop: 'НАВЕРХ',
       phCtaTitle: 'Запишитесь на диагностику',
-      phCtaHint: 'Проверим Common Rail / TNVD и подготовим предложение',
+      phCtaHint: 'Проверим Common Rail / ТНВД и подготовим предложение',
       phCtaBtn: 'Записаться',
     },
     EE: {
@@ -8500,35 +8809,49 @@ class Component extends DCLogic {
       FI: 'Ma–Pe 9–18',
     };
 
+    const isRu = lang === 'RU';
+
     // Footer i18n map if present (Footer.dc.html)
     const footerI18n =
       (this.i18n && (this.i18n[lang] || this.i18n.EE || this.i18n.RU)) || {};
 
     // Pihustite brands — only one panel active at a time
-    const brands = this.injectorBrandsData || [];
+    const brands = (isRu ? this.injectorBrandsDataRU : this.injectorBrandsData) || [];
     const brandIdx = Math.min(
       Math.max(0, Number(s.activeBrandIndex) || 0),
       Math.max(0, brands.length - 1)
     );
 
     // Sümptomid / Uslugi
-    const symptomList = this.symptomList || [];
+    const symptomList = (isRu ? this.symptomListRU : this.symptomList) || [];
     const symptomSelected = Array.isArray(s.symptomSelected) ? s.symptomSelected : [];
     const selectedCount = symptomSelected.filter(Boolean).length;
     let bannerText = '';
-    if (selectedCount === 1) {
-      bannerText = 'probleem tuvastatud — soovitame lasta pihustid üle kontrollida.';
-    } else if (selectedCount > 1 && selectedCount <= 3) {
-      bannerText = 'probleemi tuvastatud — soovitame lasta pihustid üle kontrollida.';
-    } else if (selectedCount > 3) {
-      bannerText = 'probleemi tuvastatud — teie pihustid vajavad tõenäoliselt kiiret kontrolli!';
+    if (isRu) {
+      if (selectedCount === 1) {
+        bannerText = 'проблема обнаружена — рекомендуем проверить форсунки.';
+      } else if (selectedCount > 1 && selectedCount <= 3) {
+        bannerText = 'проблемы обнаружены — рекомендуем проверить форсунки.';
+      } else if (selectedCount > 3) {
+        bannerText = 'проблемы обнаружены — ваши форсунки требуют срочной проверки!';
+      }
+    } else {
+      if (selectedCount === 1) {
+        bannerText = 'probleem tuvastatud — soovitame lasta pihustid üle kontrollida.';
+      } else if (selectedCount > 1 && selectedCount <= 3) {
+        bannerText = 'probleemi tuvastatud — soovitame lasta pihustid üle kontrollida.';
+      } else if (selectedCount > 3) {
+        bannerText = 'probleemi tuvastatud — teie pihustid vajavad tõenäoliselt kiiret kontrolli!';
+      }
     }
     const toggleSymptom =
       this.toggleSymptom ||
       ((i) =>
         this.setState((st) => {
+          const isR = st.lang === 'RU';
+          const list = isR ? this.symptomListRU : (this.symptomList || []);
           const prev = Array.isArray(st.symptomSelected) ? st.symptomSelected : [];
-          const next = symptomList.map((_, j) => (j === i ? !prev[j] : !!prev[j]));
+          const next = list.map((_, j) => (j === i ? !prev[j] : !!prev[j]));
           return { symptomSelected: next };
         }));
     const symptomItems = symptomList.map((text, i) => ({
@@ -8543,6 +8866,18 @@ class Component extends DCLogic {
     const heroBookLabelsByLang = { EE: 'Broneeri aeg', RU: 'Бронирование', EN: 'Book time', FI: 'Varaa aika' };
     const currentHeroBookLabel = heroBookLabelsByLang[lang] || 'Broneeri aeg';
     const heroShopLink = resolvedNavLinks.find((l) => l.isExternal) || {};
+    const ctaText = isRu ? 'ЗАПРОСИТЬ СТОИМОСТЬ' : this.ctaText;
+    const subtitleText = isRu
+      ? 'Профессиональная диагностика и комплексный ремонт топливных систем дизельных двигателей (Common Rail и ТНВД) в Таллинне.'
+      : this.subtitleText;
+    const specs = isRu ? (this.specsRU || this.specs) : this.specs;
+    const services = isRu ? (this.servicesRU || this.services) : this.services;
+    const symptoms = isRu ? (this.symptomsRU || this.symptoms) : this.symptoms;
+    const priceRows = isRu ? (this.priceRowsRU || this.priceRows) : this.priceRows;
+    const equipment = isRu ? (this.equipmentRU || this.equipment) : this.equipment;
+    const b2bPoints = isRu ? (this.b2bPointsRU || this.b2bPoints) : this.b2bPoints;
+    const pmPdfBtn = isRu ? 'Список форсунок (PDF)' : 'Vaata pihustite nimekirja (PDF)';
+    const pmPdfTitle = isRu ? 'Посмотреть список в PDF' : 'Vaata PDF nimekirja';
 
     return {
       // Header
@@ -8570,13 +8905,13 @@ class Component extends DCLogic {
       isNotRU: lang !== 'RU',
 
       // Hero
-      subtitleText: this.subtitleText,
-      ctaText: this.ctaText,
+      subtitleText,
+      ctaText,
       heroBookLabel: currentHeroBookLabel,
       heroBookHref: 'broneeri.html',
       heroShopLabel: heroShopLink.label,
       heroShopHref: heroShopLink.href,
-      specs: this.specs,
+      specs,
       openForm: this.openForm,
       openFullForm: this.openFullForm,
       closeForm: this.closeForm,
@@ -8595,10 +8930,14 @@ class Component extends DCLogic {
       isBrand1: brandIdx === 1,
       isBrand2: brandIdx === 2,
       isBrand3: brandIdx === 3,
-      pointsDenso: (brands[0] && brands[0].points) || [],
-      pointsBosch: (brands[1] && brands[1].points) || [],
-      pointsDelphi: (brands[2] && brands[2].points) || [],
-      pointsSiemens: (brands[3] && brands[3].points) || [],
+      pointsBosch: ((brands.find(b => b.name === 'BOSCH') || brands[0]) || {}).points || [],
+      pointsDenso: ((brands.find(b => b.name === 'DENSO') || brands[1]) || {}).points || [],
+      pointsDelphi: ((brands.find(b => b.name === 'DELPHI') || brands[2]) || {}).points || [],
+      pointsSiemens: ((brands.find(b => b.name === 'SIEMENS') || brands[3]) || {}).points || [],
+
+      // Pihustite Müük
+      pmPdfBtn,
+      pmPdfTitle,
 
       // Uslugi / Sümptomid block
       symptomItems,
@@ -8645,20 +8984,21 @@ class Component extends DCLogic {
       handleSubmit: this.handleSubmit,
 
       // ServicesSymptoms
-      services: this.services,
-      symptoms: this.symptoms,
+      services,
+      symptoms,
       ticks: this.ticks,
 
       // Hinnakiri / Pricing
       isPriceListModalOpen: !!s.isPriceListModalOpen,
       openPriceListModal: this.openPriceListModal,
       closePriceListModal: this.closePriceListModal,
-      priceRows: this.priceRows,
-      rows: this.priceRows,
+      priceRows,
+      rows: priceRows,
 
       // Equipment / Team / B2B
+      equipment,
       team: this.team,
-      b2bPoints: this.b2bPoints,
+      b2bPoints,
 
       // Footer
       scrollToTop: this.scrollToTop,
