@@ -4357,21 +4357,22 @@
         }
 
         /* Soft darken from bottom-left → clear (keeps faces readable, lifts white type) */
+        /* Soft darken behind type (keeps faces readable, lifts white type) */
         .etb-personal-shade {
           position: absolute;
           inset: 0;
           z-index: 1;
           pointer-events: none;
           background:
-            linear-gradient(105deg,
+            radial-gradient(ellipse at center,
               rgba(8, 16, 32, 0.78) 0%,
-              rgba(10, 22, 40, 0.55) 28%,
-              rgba(10, 22, 40, 0.18) 52%,
-              transparent 72%),
+              rgba(10, 22, 40, 0.55) 50%,
+              rgba(10, 22, 40, 0.25) 80%,
+              transparent 100%),
             linear-gradient(0deg,
-              rgba(8, 16, 32, 0.55) 0%,
-              rgba(8, 16, 32, 0.22) 38%,
-              transparent 68%);
+              rgba(8, 16, 32, 0.6) 0%,
+              rgba(8, 16, 32, 0.25) 45%,
+              transparent 70%);
         }
 
         /* SVG accent layer — red corner / diagonal / soft geometry (TurnKey-style) */
@@ -4396,10 +4397,11 @@
         }
 
         .etb-personal-decor-blob {
-          left: 4%;
-          top: 18%;
-          width: min(280px, 48%);
-          height: min(280px, 55%);
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: min(320px, 55%);
+          height: min(320px, 55%);
           opacity: 0.22;
         }
 
@@ -4415,8 +4417,8 @@
           position: relative;
           z-index: 3;
           display: flex;
-          align-items: flex-end;
-          justify-content: flex-start;
+          align-items: center;
+          justify-content: center;
           width: 100%;
           padding: clamp(28px, 4vw, 48px) clamp(20px, 3.5vw, 44px);
           min-height: inherit;
@@ -4425,24 +4427,27 @@
         .etb-personal-copy {
           display: flex;
           flex-direction: column;
-          align-items: flex-start;
+          align-items: center;
+          text-align: center;
           gap: 12px;
-          max-width: min(560px, 92%);
+          max-width: min(640px, 92%);
           width: 100%;
+          margin: 0 auto;
         }
 
         .etb-personal-headline {
           margin: 0;
           display: flex;
-          align-items: flex-start;
+          align-items: center;
+          justify-content: center;
           gap: 12px;
           font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
           font-size: clamp(24px, 4.4vw, 62px);
           font-weight: 400;
           letter-spacing: -0.015em;
-          text-transform: uppercase;
           color: #FFFFFF;
-          line-height: 1.05;
+          line-height: 0.85;
+          text-align: center;
           text-shadow:
             0 1px 0 rgba(255, 255, 255, 0.12),
             0 2px 18px rgba(0, 0, 0, 0.55),
@@ -4470,13 +4475,13 @@
         }
 
         .etb-personal-text {
-          margin: 0;
-          margin-left: calc(clamp(22px, 2.4vw, 28px) + 12px);
+          margin: 0 auto;
+          text-align: center;
           font-size: clamp(16px, 1.5vw, 19px);
           line-height: 1.55;
           color: rgba(255, 255, 255, 0.92);
           font-weight: 500;
-          max-width: 440px;
+          max-width: 520px;
           text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
         }
 
@@ -4488,6 +4493,7 @@
           display: flex;
           flex-wrap: wrap;
           align-items: center;
+          justify-content: center;
           gap: 8px;
           margin-top: 8px;
         }
@@ -4530,22 +4536,31 @@
           }
 
           .etb-personal-overlay {
-            align-items: flex-end;
+            align-items: center;
+            justify-content: center;
             padding: 24px 16px 22px;
           }
 
           .etb-personal-headline {
             font-size: clamp(17px, 6vw, 34px);
             gap: 8px;
+            justify-content: center;
+          }
+
+          .etb-personal-headline-text {
+            white-space: normal;
           }
 
           .etb-personal-text {
             font-size: 16px;
             max-width: 100%;
+            text-align: center;
+            margin: 0 auto;
           }
 
           .etb-personal-badges {
             gap: 6px;
+            justify-content: center;
           }
 
           .etb-personal-badge {
@@ -4556,11 +4571,11 @@
 
           .etb-personal-shade {
             background:
-              linear-gradient(115deg,
-                rgba(8, 16, 32, 0.82) 0%,
-                rgba(10, 22, 40, 0.62) 42%,
-                rgba(10, 22, 40, 0.28) 68%,
-                transparent 88%),
+              radial-gradient(ellipse at center,
+                rgba(8, 16, 32, 0.85) 0%,
+                rgba(10, 22, 40, 0.65) 55%,
+                rgba(10, 22, 40, 0.35) 85%,
+                transparent 100%),
               linear-gradient(0deg,
                 rgba(8, 16, 32, 0.65) 0%,
                 rgba(8, 16, 32, 0.28) 42%,
@@ -4570,14 +4585,14 @@
 
         @media (min-width: 900px) {
           .etb-personal-overlay {
-            /* Center-left on sky/wall zone — type becomes part of the photo */
             align-items: center;
+            justify-content: center;
             padding-top: clamp(36px, 4vw, 56px);
             padding-bottom: clamp(40px, 5vw, 64px);
           }
 
           .etb-personal-copy {
-            max-width: 540px;
+            max-width: 640px;
           }
 
           .etb-personal-img {

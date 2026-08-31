@@ -92,7 +92,7 @@
           align-items: center;
           justify-content: space-between;
           gap: 24px;
-          padding: 8px 24px;
+          padding: 0;
           flex-wrap: wrap;
         }
 
@@ -183,7 +183,7 @@
         }
 
         .hd-nav-link {
-          font-size: 16px;
+          font-size: 22px;
           font-weight: 600;
           letter-spacing: 0.06em;
           text-transform: uppercase;
@@ -228,6 +228,14 @@
         .hd-phone-label {
           font-family: inherit;
           font-weight: 600;
+        }
+
+        /* Phone standing in for the removed Broneeri aeg button — bigger, carries the same weight.
+           Compound selector so it wins over the mobile .hd-phone{font-size:17px} override below. */
+        .hd-phone.hd-phone--right {
+          font-size: 22px;
+          font-weight: 700;
+          flex: none;
         }
 
         /* Language dropdown */
@@ -452,7 +460,7 @@
 
           .hd-utility-addr,
           .hd-utility-hours,
-          .hd-utility-inner > button.broneeri-btn,
+          .hd-utility-inner>button.broneeri-btn,
           .hd-lang {
             display: none !important;
           }
@@ -636,11 +644,15 @@
         /* Broneeri aeg — filled with the brand's second accent (same cyan used for the phone number),
            so "book directly" reads as a distinct, deliberate action rather than a weaker red */
         .hero-cta-btn--blue {
-          border: none;
-          color: #f5fdff;
-          background:
+          border: 1.5px solid #00b8d4;
+          background: transparent;
+          /* color: #ffffff; */
+
+          /* border: 1.5px solid rgba(255, 255, 255, 0.75); */
+          color: #00b8d4;
+          /* background:
             linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, transparent 40%),
-            var(--hd-cyan, #00B8D4);
+            var(--hd-cyan, #00B8D4); */
           box-shadow:
             0 0 0 1px rgba(0, 0, 0, 0.55),
             inset 0 1px 0 rgba(255, 255, 255, 0.35),
@@ -654,9 +666,9 @@
         .hero-cta-btn--blue:hover {
           filter: brightness(1.08);
           box-shadow:
-            0 0 0 1px rgba(0, 0, 0, 0.55),
+            0 0 0 1px #00b8d4,
             inset 0 1px 0 rgba(255, 255, 255, 0.4),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+            inset 0 -1px 0 #00b8d4,
             0 3px 10px rgba(0, 0, 0, 0.5),
             0 0 22px rgba(0, 184, 212, 0.35);
         }
@@ -1306,12 +1318,12 @@
           text-transform: uppercase;
           font-family: var(--ph-sans);
           text-decoration: none;
+          cursor: pointer;
+          white-space: nowrap;
+          transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
           color: #ffffff;
           background: var(--ph-accent);
           border: 1px solid var(--ph-accent);
-          cursor: pointer;
-          transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-          white-space: nowrap;
         }
 
         .ph-cta-btn:hover {
@@ -1824,8 +1836,20 @@
         }
 
         .su .ft-maps-btn {
-          min-width: min(100%, 340px);
+          display: inline-flex;
+          align-items: center;
           justify-content: center;
+          margin-top: 4px;
+          padding: 14px 22px;
+          font-size: 16px;
+          font-weight: 700;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          font-family: var(--ph-sans);
+          text-decoration: none;
+          cursor: pointer;
+          white-space: nowrap;
+          transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
         }
 
         .su-foot {
@@ -4640,22 +4664,22 @@
           z-index: 0;
         }
 
-        /* Soft darken from bottom-left → clear (keeps faces readable, lifts white type) */
+        /* Soft darken behind type (keeps faces readable, lifts white type) */
         .etb-personal-shade {
           position: absolute;
           inset: 0;
           z-index: 1;
           pointer-events: none;
           background:
-            linear-gradient(105deg,
+            radial-gradient(ellipse at center,
               rgba(8, 16, 32, 0.78) 0%,
-              rgba(10, 22, 40, 0.55) 28%,
-              rgba(10, 22, 40, 0.18) 52%,
-              transparent 72%),
+              rgba(10, 22, 40, 0.55) 50%,
+              rgba(10, 22, 40, 0.25) 80%,
+              transparent 100%),
             linear-gradient(0deg,
-              rgba(8, 16, 32, 0.55) 0%,
-              rgba(8, 16, 32, 0.22) 38%,
-              transparent 68%);
+              rgba(8, 16, 32, 0.6) 0%,
+              rgba(8, 16, 32, 0.25) 45%,
+              transparent 70%);
         }
 
         /* SVG accent layer — red corner / diagonal / soft geometry (TurnKey-style) */
@@ -4680,10 +4704,11 @@
         }
 
         .etb-personal-decor-blob {
-          left: 4%;
-          top: 18%;
-          width: min(280px, 48%);
-          height: min(280px, 55%);
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: min(320px, 55%);
+          height: min(320px, 55%);
           opacity: 0.22;
         }
 
@@ -4699,8 +4724,8 @@
           position: relative;
           z-index: 3;
           display: flex;
-          align-items: flex-end;
-          justify-content: flex-start;
+          align-items: center;
+          justify-content: center;
           width: 100%;
           padding: clamp(28px, 4vw, 48px) clamp(20px, 3.5vw, 44px);
           min-height: inherit;
@@ -4709,16 +4734,19 @@
         .etb-personal-copy {
           display: flex;
           flex-direction: column;
-          align-items: flex-start;
+          align-items: center;
+          text-align: center;
           gap: 12px;
-          max-width: min(560px, 92%);
+          max-width: min(640px, 92%);
           width: 100%;
+          margin: 0 auto;
         }
 
         .etb-personal-headline {
           margin: 0;
           display: flex;
-          align-items: flex-start;
+          align-items: center;
+          justify-content: center;
           gap: 12px;
           font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
           font-size: clamp(24px, 4.4vw, 62px);
@@ -4727,6 +4755,7 @@
           /* text-transform: uppercase; */
           color: #FFFFFF;
           line-height: 0.85;
+          text-align: center;
           text-shadow:
             0 1px 0 rgba(255, 255, 255, 0.12),
             0 2px 18px rgba(0, 0, 0, 0.55),
@@ -4754,13 +4783,13 @@
         }
 
         .etb-personal-text {
-          margin: 0;
-          margin-left: calc(clamp(22px, 2.4vw, 28px) + 12px);
+          margin: 0 auto;
+          text-align: center;
           font-size: clamp(16px, 1.5vw, 19px);
           line-height: 1.55;
           color: rgba(255, 255, 255, 0.92);
           font-weight: 500;
-          max-width: 440px;
+          max-width: 520px;
           text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
         }
 
@@ -4772,6 +4801,7 @@
           display: flex;
           flex-wrap: wrap;
           align-items: center;
+          justify-content: center;
           gap: 8px;
           margin-top: 8px;
         }
@@ -4814,22 +4844,31 @@
           }
 
           .etb-personal-overlay {
-            align-items: flex-end;
+            align-items: center;
+            justify-content: center;
             padding: 24px 16px 22px;
           }
 
           .etb-personal-headline {
             font-size: clamp(17px, 6vw, 34px);
             gap: 8px;
+            justify-content: center;
+          }
+
+          .etb-personal-headline-text {
+            white-space: normal;
           }
 
           .etb-personal-text {
             font-size: 16px;
             max-width: 100%;
+            text-align: center;
+            margin: 0 auto;
           }
 
           .etb-personal-badges {
             gap: 6px;
+            justify-content: center;
           }
 
           .etb-personal-badge {
@@ -4840,11 +4879,11 @@
 
           .etb-personal-shade {
             background:
-              linear-gradient(115deg,
-                rgba(8, 16, 32, 0.82) 0%,
-                rgba(10, 22, 40, 0.62) 42%,
-                rgba(10, 22, 40, 0.28) 68%,
-                transparent 88%),
+              radial-gradient(ellipse at center,
+                rgba(8, 16, 32, 0.85) 0%,
+                rgba(10, 22, 40, 0.65) 55%,
+                rgba(10, 22, 40, 0.35) 85%,
+                transparent 100%),
               linear-gradient(0deg,
                 rgba(8, 16, 32, 0.65) 0%,
                 rgba(8, 16, 32, 0.28) 42%,
@@ -4854,14 +4893,14 @@
 
         @media (min-width: 900px) {
           .etb-personal-overlay {
-            /* Center-left on sky/wall zone — type becomes part of the photo */
             align-items: center;
+            justify-content: center;
             padding-top: clamp(36px, 4vw, 56px);
             padding-bottom: clamp(40px, 5vw, 64px);
           }
 
           .etb-personal-copy {
-            max-width: 540px;
+            max-width: 640px;
           }
 
           .etb-personal-img {
@@ -6044,11 +6083,12 @@
         /* Display headings — Fjalla One (single weight; avoid faux-bold) */
         h1,
         h2,
-        h3,
+        /* h3, */
         h4,
         h5,
         h6,
         .hero-title,
+        .ft-info-address,
         .rf-title,
         .ss-title,
         .ss-card-title,
@@ -6061,8 +6101,8 @@
         .su-title,
         .dg-title,
         .hk-title,
-        .etb-b2b-title,
-        /* .ft-info-address, */
+
+
         .pm-title {
           font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
           font-weight: 400;
@@ -6494,19 +6534,9 @@
     <header class="hd {{ hdThemeClass }}">
       <!-- Utility bar: phone + address + hours -->
       <div class="hd-utility">
-        <div class="hd-utility-inner" style="padding: 0 0 0 24px;">
+        <div class="hd-utility-inner">
           <div class="hd-utility-left" style="padding: 10px 0;">
-            <a href="tel:+37256702700" class="hd-phone" aria-label="Call +372 567 02 700" style="color: #00B8D4;">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px; vertical-align:text-bottom;">
-                <path
-                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                </path>
-              </svg>
-              <span class="hd-phone-label">Tel.</span>
-              <span>+372 567 02 700</span>
-            </a>
-            <span class="hd-utility-addr" style="display:inline-flex; align-items:center; margin-left: 12px;">
+            <span class="hd-utility-addr" style="display:inline-flex; align-items:center;">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                 stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
@@ -6523,11 +6553,28 @@
               {{ hoursText }}
             </span>
           </div>
+
+          <!-- Broneeri aeg button — removed per client request (prototype, easy to bring back).
           <button type="button" onClick="{{ openForm }}" class="broneeri-btn"
             style="background-color: #EC0000; color: #FFF; border: none; align-self: stretch; display: flex; align-items: center; justify-content: center; padding: 0 32px; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: filter 0.15s; margin: 0;"
             onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter='none'">
             Broneeri aeg
           </button>
+          -->
+
+          <!-- Phone moved here from hd-utility-left, in the button's old slot — bigger, standalone -->
+          <a href="tel:+37256702700" class="hd-phone hd-phone--right" aria-label="Call +372 567 02 700"
+            style="color: #00B8D4;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px; vertical-align:text-bottom;">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+              </path>
+            </svg>
+            <span class="hd-phone-label">Tel.</span>
+            <span>+372 567 02 700</span>
+          </a>
+
           <button type="button" onClick="{{ toggleMenu }}" aria-label="Menu" class="hd-burger hamburger">
             <span></span><span></span><span></span>
           </button>
@@ -6991,7 +7038,7 @@
                 <header class="rf-header" style="padding-top: 0; padding-bottom: 24px; margin-bottom: 24px;">
                   <div class="rf-header-row">
                     <div class="rf-header-copy">
-                      <h2 class="rf-title" id="rf-modal-title">Забронировать время</h2>
+                      <h2 class="rf-title" id="rf-modal-title">Broneeri aeg</h2>
                       <p class="rf-lead">
                         Täida väljad ja vajuta saatmisnupule — võtame Sinuga ühendust ühe tööpäeva jooksul.
                       </p>
@@ -7239,12 +7286,12 @@
                 e-posti
                 teel: <a href="mailto:autodiislikeskus@gmail.com"
                   style="color:#00B8D4;text-decoration:underline;">autodiislikeskus@gmail.com</a>.</p>
-              <div class="hk-vat-wrap">
+              <!-- <div class="hk-vat-wrap">
                 <div class="hk-vat-badge">
                   <span class="hk-vat-badge-dot" aria-hidden="true"></span>
                   <span class="hk-vat-badge-text">HINNAD EI SISALDA KÄIBEMAKSU</span>
                 </div>
-              </div>
+              </div> -->
             </div>
           </section>
         </div>
@@ -7458,8 +7505,8 @@
               Pakkumised autoremondifirmadele
             </h3>
             <div class="etb-b2b-rule" aria-hidden="true"></div>
-            <a href="./Pakkumine_firmadele.pdf" target="_blank" rel="noopener noreferrer" class="etb-btn-ghost">Rohkem
-              teavet</a>
+            <a href="./Pakkumine_firmadele.pdf" target="_blank" rel="noopener noreferrer"
+              class="etb-btn-ghost">Rohkem</a>
           </div>
         </aside>
 
