@@ -17,6 +17,8 @@
   <x-dc>
     <helmet>
       <script src="./image-slot.js"></script>
+      <!-- EmailJS browser SDK v4 — used by the "Hinnapakkumise päring" quote form -->
+      <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
       <style>
         html {
           scroll-behavior: smooth;
@@ -7877,6 +7879,87 @@
   <script type="text/x-dc" data-dc-script
     data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:5600}}">
 class Component extends DCLogic {
+  /* ─────────────────────────────────────────────────────────────
+     EmailJS — hinnapakkumise / booking päringute saatmine
+     Täida templateId ja publicKey väärtused EmailJS töölaualt:
+       Account → General → Public Key
+       Email Templates → (sinu mall) → Template ID
+     ───────────────────────────────────────────────────────────── */
+  emailjsConfig = {
+    serviceId: 'service_dys8wcn',
+    templateId: 'template_bic5oxu',
+    publicKey: '0-BdEGe03LgFibZCN',
+    // kuhu kirjad jõuavad (info malli jaoks; tegelik saaja on määratud EmailJS mallis)
+    toEmail: 'autodiislikeskus@gmail.com',
+  };
+
+  // Kokkupandud sõiduki kirjeldus ühe reana (EmailJS muutuja {{car}})
+  buildCarSummary = (s) => [
+    (s.make || '').trim() && `${s.make.trim()}`,
+    (s.year || '').trim() && `${s.year.trim()}`,
+    (s.displacement || '').trim() && `${s.displacement.trim()} maht`,
+    (s.power || '').trim() && `${s.power.trim()} võimsus`,
+    (s.vin || '').trim() && `VIN ${s.vin.trim()}`,
+    (s.plate || '').trim() && `reg ${s.plate.trim()}`,
+  ].filter(Boolean).join(', ');
+
+  // Kogu päringu tekst ühes plokis (EmailJS muutuja {{full_summary}})
+  buildFullSummary = (s, mode) => {
+    const L = [];
+    L.push(`Vormi tüüp: ${mode === 'full' ? 'Hinnapakkumise päring (täisvorm)' : 'Kiire broneering (lühivorm)'}`);
+    L.push(`Saadetud: ${new Date().toLocaleString('et-EE')}`);
+    L.push('');
+    L.push('— Sõiduki andmed —');
+    L.push(`Reg. number: ${(s.plate || '').trim() || '-'}`);
+    L.push(`Mark ja mudel: ${(s.make || '').trim() || '-'}`);
+    L.push(`Väljalaskeaasta: ${(s.year || '').trim() || '-'}`);
+    L.push(`Mootori maht: ${(s.displacement || '').trim() || '-'}`);
+    L.push(`Võimsus: ${(s.power || '').trim() || '-'}`);
+    L.push(`Tehasetähis (VIN-kood): ${(s.vin || '').trim() || '-'}`);
+    L.push('');
+    L.push('— Kontaktandmed —');
+    L.push(`Ees- ja perekonnanimi: ${(s.name || '').trim() || '-'}`);
+    L.push(`E-posti aadress: ${(s.email || '').trim() || '-'}`);
+    L.push(`Telefoninumber: ${(s.phone || '').trim() || '-'}`);
+    L.push('');
+    L.push('— Probleemi kirjeldus —');
+    L.push((s.description || '').trim() || '-');
+    return L.join('\n');
+  };
+
+  // Parameetrite objekt — võtmed peavad TÄPSELT kattuma EmailJS malli {{...}} muutujatega.
+  // Iga väli, mille kasutaja saab vormi sisestada, saadetakse eraldi muutujana.
+  buildEmailParams = (s, mode) => ({
+    // --- Kontaktandmed ---
+    name: (s.name || '').trim(),                 // Ees- ja perekonnanimi
+    email: (s.email || '').trim(),               // E-posti aadress
+    phone: (s.phone || '').trim(),               // Telefoninumber
+    // --- Sõiduki / tehnilise passi andmed ---
+    reg_number: (s.plate || '').trim(),          // Reg. number
+    make_model: (s.make || '').trim(),           // Mark ja mudel
+    year: (s.year || '').trim(),                 // Väljalaskeaasta
+    engine_volume: (s.displacement || '').trim(),// Mootori maht
+    power: (s.power || '').trim(),               // Võimsus
+    vin: (s.vin || '').trim(),                   // Tehasetähis (VIN-kood)
+    // --- Probleemi kirjeldus ---
+    message: (s.description || '').trim(),        // Probleemi kirjeldus (kasutaja tekst)
+    // --- Tuletatud / abiväljad ---
+    car: this.buildCarSummary(s) || (s.plate || '').trim(), // sõiduk ühe reana
+    full_summary: this.buildFullSummary(s, mode),           // kogu päring ühes plokis
+    request_type: mode === 'full' ? 'Hinnapakkumise päring' : 'Kiire broneering',
+    to_email: this.emailjsConfig.toEmail,
+    reply_to: (s.email || '').trim(),
+  });
+
+  sendEmailJS = (params) => {
+    const ej = (typeof window !== 'undefined') && window.emailjs;
+    if (!ej || typeof ej.send !== 'function') {
+      return Promise.reject(new Error('EmailJS SDK ei ole laetud'));
+    }
+    const { serviceId, templateId, publicKey } = this.emailjsConfig;
+    return ej.send(serviceId, templateId, params, { publicKey });
+  };
+
   /* --- from Header.dc.html --- */
   /* state → unified */
 
@@ -8180,25 +8263,17 @@ class Component extends DCLogic {
         return;
       }
       this.setState({ isSubmitting: true, isError: false });
-      const payload = {
-        type: 'full-quote-request',
-        plate: s.plate,
-        make: s.make,
-        year: s.year,
-        displacement: s.displacement,
-        power: s.power,
-        vin: s.vin,
-        description: s.description,
-        name: s.name,
-        phone: s.phone,
-        email: s.email,
-        timestamp: new Date().toISOString(),
-        recipient: 'autodiislikeskus@gmail.com',
-      };
-      setTimeout(() => {
-        console.log('Full quote request payload', payload);
-        this.setState({ isSubmitting: false, isSuccess: true });
-      }, 900);
+      const params = this.buildEmailParams(s, 'full');
+      console.log('EmailJS send (full quote)', params);
+      this.sendEmailJS(params)
+        .then((res) => {
+          console.log('EmailJS OK', res && res.status, res && res.text);
+          this.setState({ isSubmitting: false, isSuccess: true });
+        })
+        .catch((err) => {
+          console.error('EmailJS FAILED', err);
+          this.setState({ isSubmitting: false, isError: true });
+        });
       return;
     }
 
@@ -8210,20 +8285,17 @@ class Component extends DCLogic {
       return;
     }
     this.setState({ isSubmitting: true, isError: false });
-    const payload = {
-      name: s.name,
-      phone: s.phone,
-      email,
-      plate: s.plate,
-      description: s.description,
-      type: 'quick-booking-request',
-      timestamp: new Date().toISOString(),
-      recipient: 'autodiislikeskus@gmail.com',
-    };
-    setTimeout(() => {
-      console.log('Quick booking request payload', payload);
-      this.setState({ isSubmitting: false, isSuccess: true });
-    }, 700);
+    const params = this.buildEmailParams(s, 'mini');
+    console.log('EmailJS send (mini booking)', params);
+    this.sendEmailJS(params)
+      .then((res) => {
+        console.log('EmailJS OK', res && res.status, res && res.text);
+        this.setState({ isSubmitting: false, isSuccess: true });
+      })
+      .catch((err) => {
+        console.error('EmailJS FAILED', err);
+        this.setState({ isSubmitting: false, isError: true });
+      });
   };
 
   /* renderVals → unified */
