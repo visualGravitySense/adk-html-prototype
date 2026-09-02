@@ -631,7 +631,7 @@
           font-weight: 700;
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          font-family: var(--h-mono, 'Open Sans', sans-serif);
+          font-family: var(--ph-sans);
           text-decoration: none;
           padding: 14px 22px 13px;
           white-space: nowrap;
@@ -862,7 +862,7 @@
           font-weight: 700;
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          font-family: var(--h-mono, 'Open Sans', sans-serif);
+          font-family: var(--ph-sans);
           text-decoration: none;
           color: #fff5f5;
           padding: 14px 22px 13px;
@@ -3575,7 +3575,7 @@
           font-weight: 700;
           letter-spacing: 0.16em;
           text-transform: uppercase;
-          font-family: var(--rf-mono);
+          font-family: var(--ph-sans);
           text-decoration: none;
           color: #fff5f5;
           padding: 16px 44px 15px;
@@ -4231,7 +4231,7 @@
           font-weight: 700;
           letter-spacing: 0.14em;
           text-transform: uppercase;
-          font-family: var(--ss-mono);
+          font-family: var(--ph-sans);
           text-decoration: none;
           color: #fff5f5;
           padding: 10px 16px 9px;
@@ -5036,9 +5036,9 @@
 
         .etb-b2b-title {
           margin: 0;
-          font-size: clamp(22px, 2.7vw, 32px);
+          font-size: clamp(22px, 2.7vw, 22px);
           letter-spacing: 0.01em;
-          text-transform: uppercase;
+          /* text-transform: uppercase; */
           line-height: 1.2;
           color: rgba(255, 255, 255, 0.96);
           text-shadow: 0 1px 14px rgba(0, 0, 0, 0.35);
@@ -5457,7 +5457,7 @@
           font-weight: 700;
           letter-spacing: 0.14em;
           text-transform: uppercase;
-          font-family: var(--ft-mono);
+          font-family: var(--ph-sans);
           text-decoration: none;
           color: #fff5f5;
           padding: 10px 16px 9px;
@@ -6631,7 +6631,7 @@
             <button type="button" onClick="{{ openFullForm }}" class="ft-maps-btn">
               {{ ctaText }}
             </button>
-            <button type="button" onClick="{{ openForm }}" class="hero-cta-btn hero-cta-btn--blue">
+            <button type="button" onClick="{{ openForm }}" class="ft-maps-btn">
               {{ heroBookLabel }}
             </button>
             <a href="{{ heroShopHref }}" target="_blank" rel="noopener" class="hero-cta-btn hero-cta-btn--ghost">
@@ -6791,14 +6791,14 @@
 
           <div class="pm-ask" style="margin-left: 0; text-align: left;">
             <sc-if value="{{ isRU }}">
-              <button type="button" class="pm-ask-btn" onClick="{{ openForm }}">
+              <button type="button" class="pm-ask-btn" onClick="{{ openFullForm }}">
                 Узнать цену
               </button>
               <p class="pm-ask-text">Укажите в запросе код форсунки. Если код неизвестен, укажите регистрационный номер
                 авто. Для авто с иностранной регистрацией укажите марку, модель, год и данные двигателя.</p>
             </sc-if>
             <sc-if value="{{ isNotRU }}">
-              <button type="button" class="pm-ask-btn" onClick="{{ openForm }}">
+              <button type="button" class="pm-ask-btn" onClick="{{ openFullForm }}">
                 Küsi hinda
               </button>
               <p class="pm-ask-text">Lisa päringule pihusti kood. Kui kood ei ole teada, märgi auto
@@ -7465,7 +7465,7 @@
                 <h2 class="hk-title" id="hk-heading">HINNAKIRI</h2>
                 <div class="hk-rule" aria-hidden="true"></div>
                 <p class="hk-lead">Kuna iga sõiduk ja mootor on erinev, soovitame täpse hinnapakkumise saamiseks võtta
-                  ühendust meie meistriga.</p>
+                  ühendust meie meistriga</p>
               </sc-if>
             </header>
 
@@ -8982,6 +8982,39 @@ class Component extends DCLogic {
       filter: none !important;
       background: #EC0000 !important;
       box-shadow: none !important;
+    }
+
+    /* Hero CTA buttons — equalize heights and alignment */
+    .hero-cta-row .ft-maps-btn,
+    .hero-cta-row .hero-cta-btn {
+      height: 46px !important;
+      box-sizing: border-box !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 0 24px !important;
+      font-size: 16px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.12em !important;
+      text-transform: uppercase !important;
+      text-decoration: none !important;
+      margin: 0 !important;
+      line-height: 1 !important;
+      vertical-align: middle !important;
+    }
+
+    .hero-cta-row .hero-cta-btn--ghost {
+      box-sizing: border-box !important;
+      height: 46px !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.75) !important;
+      background: transparent !important;
+      color: #ffffff !important;
+    }
+
+    .hero-cta-row .hero-cta-btn--ghost:hover {
+      border-color: #ffffff !important;
+      background: rgba(255, 255, 255, 0.1) !important;
+      opacity: 1 !important;
     }
   </style>
 </body>

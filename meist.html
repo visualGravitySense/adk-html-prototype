@@ -1202,6 +1202,7 @@
       padding: 20px 16px;
       box-sizing: border-box;
     }
+
     .rf-modal-backdrop {
       position: absolute;
       inset: 0;
@@ -1210,6 +1211,7 @@
       -webkit-backdrop-filter: blur(4px);
       cursor: pointer;
     }
+
     .rf-modal-panel {
       position: relative;
       z-index: 1;
@@ -1224,12 +1226,14 @@
       -webkit-overflow-scrolling: touch;
       font-family: var(--sans);
     }
+
     @media (max-width: 640px) {
       .rf-modal-panel {
         padding: 24px 20px 28px;
         max-height: 94vh;
       }
     }
+
     .rf-modal-close {
       position: sticky;
       top: 0;
@@ -1250,16 +1254,19 @@
       margin: -8px -8px 0 0;
       transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
     }
+
     .rf-modal-close:hover {
       background: #171717;
       border-color: #171717;
       color: #FFFFFF;
     }
+
     .rf-header {
       margin-bottom: 24px;
       padding-bottom: 20px;
       border-bottom: 1px solid #E5E7EB;
     }
+
     .rf-title {
       margin: 0 0 10px;
       font-family: var(--display);
@@ -1269,43 +1276,51 @@
       color: #171717;
       line-height: 1.15;
     }
+
     .rf-lead {
       margin: 0;
       font-size: 15px;
       line-height: 1.6;
       color: #525252;
     }
+
     .rf-section-title {
       margin-top: 24px;
       margin-bottom: 14px;
     }
+
     .rf-panel-name {
       font-size: 17px;
       font-weight: 700;
       color: #171717;
       letter-spacing: -0.01em;
     }
+
     .rf-panel-desc {
       font-size: 13.5px;
       color: #737373;
       margin: 4px 0 8px;
     }
+
     .rf-grid-2col {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px 20px;
     }
+
     @media (max-width: 640px) {
       .rf-grid-2col {
         grid-template-columns: 1fr;
         gap: 12px;
       }
     }
+
     .rf-field {
       display: flex;
       flex-direction: column;
       gap: 6px;
     }
+
     .rf-mini-label {
       display: block;
       font-size: 12px;
@@ -1314,6 +1329,7 @@
       text-transform: uppercase;
       color: var(--red);
     }
+
     .rf-input {
       width: 100%;
       box-sizing: border-box;
@@ -1327,31 +1343,37 @@
       font-family: inherit;
       transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
     }
+
     .rf-input:focus {
       background: #FFFFFF;
       border-color: var(--red);
       box-shadow: 0 0 0 3px rgba(236, 0, 0, 0.12);
     }
+
     .rf-input--area {
       resize: vertical;
       min-height: 100px;
       line-height: 1.5;
     }
+
     .rf-submit {
       margin-top: 28px;
       padding-top: 20px;
       border-top: 1px solid #E5E7EB;
     }
+
     .rf-submit-actions {
       display: flex;
       gap: 16px;
       align-items: stretch;
     }
+
     @media (max-width: 580px) {
       .rf-submit-actions {
         flex-direction: column;
       }
     }
+
     .rf-cta-phone {
       flex: 1;
       display: inline-flex;
@@ -1370,10 +1392,12 @@
       border-radius: 6px;
       transition: background 0.15s ease, color 0.15s ease;
     }
+
     .rf-cta-phone:hover {
       background: #171717;
       color: #FFFFFF;
     }
+
     .rf-btn-submit {
       flex: 1;
       display: inline-flex;
@@ -1392,13 +1416,16 @@
       cursor: pointer;
       transition: background 0.15s ease, transform 0.15s ease;
     }
+
     .rf-btn-submit:hover:not(:disabled) {
       background: #c80000;
     }
+
     .rf-btn-submit:disabled {
       opacity: 0.6;
       cursor: wait;
     }
+
     .rf-error {
       display: block;
       margin-top: 10px;
@@ -1406,10 +1433,12 @@
       font-weight: 600;
       color: var(--red);
     }
+
     .rf-success {
       text-align: center;
       padding: 36px 16px;
     }
+
     .rf-success-code {
       font-family: var(--mono);
       font-size: 13px;
@@ -1418,17 +1447,20 @@
       display: block;
       margin-bottom: 12px;
     }
+
     .rf-success-title {
       font-family: var(--display);
       font-size: 28px;
       color: #171717;
       margin: 0 0 10px;
     }
+
     .rf-success-text {
       font-size: 16px;
       color: #525252;
       margin: 0 0 24px;
     }
+
     /* ── Hinnakiri Blokk / Modal ── */
     .hk-modal {
       position: fixed;
@@ -1440,6 +1472,7 @@
       padding: 20px 16px;
       box-sizing: border-box;
     }
+
     .hk-modal-backdrop {
       position: fixed;
       inset: 0;
@@ -1449,6 +1482,7 @@
       z-index: 1;
       cursor: pointer;
     }
+
     .hk-modal-container {
       position: relative;
       z-index: 2;
@@ -1464,6 +1498,7 @@
       -webkit-overflow-scrolling: touch;
       box-sizing: border-box;
     }
+
     @media (max-width: 640px) {
       .hk-modal-container {
         padding: 24px 16px 28px;
@@ -1471,16 +1506,19 @@
         border-radius: 12px;
       }
     }
+
     @keyframes hkModalFadeIn {
       from {
         opacity: 0;
         transform: scale(0.96) translateY(10px);
       }
+
       to {
         opacity: 1;
         transform: scale(1) translateY(0);
       }
     }
+
     .hk-modal-close {
       position: absolute;
       top: 16px;
@@ -1500,11 +1538,13 @@
       transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
       z-index: 10;
     }
+
     .hk-modal-close:hover {
       background: #171717;
       border-color: #171717;
       color: #ffffff;
     }
+
     .hk-block {
       max-width: 1100px;
       margin: 0 auto;
@@ -1513,10 +1553,12 @@
       color: #171717;
       box-sizing: border-box;
     }
+
     .hk-header {
       text-align: center;
       margin-bottom: 20px;
     }
+
     .hk-title {
       font-family: var(--display);
       font-size: clamp(26px, 3vw, 36px);
@@ -1526,12 +1568,14 @@
       color: #171717;
       text-transform: uppercase;
     }
+
     .hk-rule {
       width: 56px;
       height: 3px;
       background: #00B8D4;
       margin: 0 auto 10px;
     }
+
     .hk-lead {
       font-size: 16px;
       line-height: 1.5;
@@ -1539,6 +1583,7 @@
       max-width: 680px;
       margin: 0 auto;
     }
+
     .hk-table-wrap {
       border: 1px solid #e5e5e5;
       border-radius: 8px;
@@ -1546,6 +1591,7 @@
       background: #ffffff;
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
     }
+
     .hk-row {
       display: flex;
       justify-content: space-between;
@@ -1554,18 +1600,22 @@
       border-bottom: 1px solid #f0f0f0;
       gap: 20px;
     }
+
     .hk-row:last-child {
       border-bottom: none;
     }
+
     .hk-row:nth-child(even) {
       background: #fafafa;
     }
+
     .hk-name {
       font-size: 16px;
       font-weight: 700;
       color: #171717;
       line-height: 1.4;
     }
+
     .hk-price {
       font-size: 16px;
       font-weight: 400;
@@ -1573,6 +1623,7 @@
       white-space: nowrap;
       text-align: right;
     }
+
     @media (max-width: 600px) {
       .hk-row {
         flex-direction: column;
@@ -1580,12 +1631,14 @@
         gap: 6px;
         padding: 14px 18px;
       }
+
       .hk-price {
         text-align: left;
         color: #525252;
         font-weight: 500;
       }
     }
+
     .hk-notes {
       margin: 20px auto 0;
       width: 100%;
@@ -1598,6 +1651,7 @@
       gap: 6px;
       box-sizing: border-box;
     }
+
     .hk-note-item {
       margin: 0 auto;
       width: 100%;
@@ -1607,6 +1661,7 @@
       color: #666666;
       text-align: center;
     }
+
     .hk-vat-wrap {
       margin-top: 14px;
       display: flex;
@@ -1614,6 +1669,7 @@
       align-items: center;
       width: 100%;
     }
+
     .hk-vat-badge {
       display: inline-flex;
       align-items: center;
@@ -1623,6 +1679,7 @@
       background: #141414;
       border-radius: 4px;
     }
+
     .hk-vat-badge-dot {
       width: 6px;
       height: 6px;
@@ -1630,6 +1687,7 @@
       display: inline-block;
       border-radius: 50%;
     }
+
     .hk-vat-badge-text {
       font-size: 12px;
       letter-spacing: 0.12em;
@@ -1638,6 +1696,7 @@
       font-weight: 500;
       text-transform: uppercase;
     }
+
     #kontakt {
       scroll-margin-top: 80px;
     }
@@ -1723,9 +1782,11 @@
       </div>
       <nav class="hd-drawer-nav" aria-label="Mobile">
         <a href="index.html#teenused" class="hd-drawer-link" onclick="toggleMobileDrawer()">Teenused</a>
-        <a href="javascript:void(0)" class="hd-drawer-link" onclick="toggleMobileDrawer(); openPriceListModal(event);">Hinnakiri</a>
+        <a href="javascript:void(0)" class="hd-drawer-link"
+          onclick="toggleMobileDrawer(); openPriceListModal(event);">Hinnakiri</a>
         <a href="meist.html" class="hd-drawer-link" onclick="toggleMobileDrawer()">Meist</a>
-        <a href="javascript:void(0)" class="hd-drawer-link" onclick="toggleMobileDrawer(); openQuoteModal(event);">Küsi hinnapakkumist</a>
+        <a href="javascript:void(0)" class="hd-drawer-link" onclick="toggleMobileDrawer(); openQuoteModal(event);">Küsi
+          hinnapakkumist</a>
         <a href="https://rvae.ee/renoveeritud_pihustid.pdf" target="_blank" class="hd-drawer-link">E-pood</a>
         <a href="#kontakt" class="hd-drawer-link" onclick="toggleMobileDrawer()">Kontakt</a>
       </nav>
@@ -2006,7 +2067,8 @@
   </footer>
 
   <!-- ══ Quote Request Modal: Hinnapakkumise päring ══ -->
-  <div id="quoteModal" class="rf-modal" role="dialog" aria-modal="true" aria-labelledby="rf-modal-title" style="display:none;">
+  <div id="quoteModal" class="rf-modal" role="dialog" aria-modal="true" aria-labelledby="rf-modal-title"
+    style="display:none;">
     <div class="rf-modal-backdrop" onclick="closeQuoteModal(event)" aria-hidden="true"></div>
     <div class="rf-modal-panel">
       <button type="button" class="rf-modal-close" onclick="closeQuoteModal(event)" aria-label="Sulge">&times;</button>
@@ -2014,7 +2076,8 @@
       <header class="rf-header">
         <h2 class="rf-title" id="rf-modal-title">Hinnapakkumise päring</h2>
         <p class="rf-lead">
-          Täitke allolev vorm, et saata hinnapäring. Tavaliselt vastame pöördumistele ühe tööpäeva jooksul. Palun täitke kõik kohustuslikud väljad (tähistatud *), et saaksime koostada võimalikult täpse pakkumise.
+          Täitke allolev vorm, et saata hinnapäring. Tavaliselt vastame pöördumistele ühe tööpäeva jooksul. Palun täitke
+          kõik kohustuslikud väljad (tähistatud *), et saaksime koostada võimalikult täpse pakkumise.
         </p>
       </header>
 
@@ -2022,7 +2085,8 @@
         <span class="rf-success-code">[ OK · 200 ]</span>
         <h3 class="rf-success-title">PÄRING SAADETUD!</h3>
         <p class="rf-success-text">Võtame teiega ühendust ühe tööpäeva jooksul.</p>
-        <button type="button" class="btn btn--red" onclick="closeQuoteModal(event)" style="display:inline-block; width:auto; padding:12px 28px; margin:0 auto;">Sulge</button>
+        <button type="button" class="btn btn--red" onclick="closeQuoteModal(event)"
+          style="display:inline-block; width:auto; padding:12px 28px; margin:0 auto;">Sulge</button>
       </div>
 
       <div id="quoteFormWrapper">
@@ -2061,7 +2125,8 @@
               </div>
               <div class="rf-field" style="grid-column: 1 / -1;">
                 <label class="rf-mini-label" for="rf-vin">Tehasetähis (VIN-kood)</label>
-                <input id="rf-vin" class="rf-input" placeholder="17-kohaline VIN kood" autocomplete="off" spellcheck="false" />
+                <input id="rf-vin" class="rf-input" placeholder="17-kohaline VIN kood" autocomplete="off"
+                  spellcheck="false" />
               </div>
             </div>
           </section>
@@ -2112,16 +2177,19 @@
   </div>
 
   <!-- ══ Hinnakiri Blokk (Pop-up Modal) ══ -->
-  <div id="priceListModal" class="hk-modal" role="dialog" aria-modal="true" aria-labelledby="hk-heading" style="display:none;">
+  <div id="priceListModal" class="hk-modal" role="dialog" aria-modal="true" aria-labelledby="hk-heading"
+    style="display:none;">
     <div class="hk-modal-backdrop" onclick="closePriceListModal(event)" aria-hidden="true"></div>
     <div class="hk-modal-container">
-      <button type="button" onclick="closePriceListModal(event)" class="hk-modal-close" aria-label="Sulge">&times;</button>
+      <button type="button" onclick="closePriceListModal(event)" class="hk-modal-close"
+        aria-label="Sulge">&times;</button>
 
       <section class="hk-block" id="hinnakiri-content" aria-labelledby="hk-heading">
         <header class="hk-header">
           <h2 class="hk-title" id="hk-heading">HINNAKIRI</h2>
           <div class="hk-rule" aria-hidden="true"></div>
-          <p class="hk-lead" id="hk-lead">Kuna iga sõiduk ja mootor on erinev, soovitame täpse hinnapakkumise saamiseks võtta ühendust meie meistriga.</p>
+          <p class="hk-lead" id="hk-lead">Kuna iga sõiduk ja mootor on erinev, soovitame täpse hinnapakkumise saamiseks
+            võtta ühendust meie meistriga</p>
         </header>
 
         <div class="hk-table-wrap" id="hk-table-wrap">
@@ -2160,8 +2228,12 @@
         </div>
 
         <div class="hk-notes">
-          <p class="hk-note-item" id="hk-note-1">* Kui tellite meilt ka pihustite demonteerimise ja paigaldamise, kehtib pihustite testimisele 10% soodustus.</p>
-          <p class="hk-note-item" id="hk-note-2">** Remondi maksumusele lisandub pihustite demonteerimise ja paigaldamise töö. Töö arvestus toimub hinnaga 55,90 €/tund. Täpse maksumuse saamiseks palume võtta ühendust meie meistriga e-posti teel: <a href="mailto:autodiislikeskus@gmail.com" style="color:#00B8D4;text-decoration:underline;">autodiislikeskus@gmail.com</a>.</p>
+          <p class="hk-note-item" id="hk-note-1">* Kui tellite meilt ka pihustite demonteerimise ja paigaldamise, kehtib
+            pihustite testimisele 10% soodustus.</p>
+          <p class="hk-note-item" id="hk-note-2">** Remondi maksumusele lisandub pihustite demonteerimise ja
+            paigaldamise töö. Töö arvestus toimub hinnaga 55,90 €/tund. Täpse maksumuse saamiseks palume võtta ühendust
+            meie meistriga e-posti teel: <a href="mailto:autodiislikeskus@gmail.com"
+              style="color:#00B8D4;text-decoration:underline;">autodiislikeskus@gmail.com</a>.</p>
           <div class="hk-vat-wrap">
             <div class="hk-vat-badge">
               <span class="hk-vat-badge-dot" aria-hidden="true"></span>
@@ -2214,7 +2286,7 @@
     var priceDataByLang = {
       ee: {
         title: 'HINNAKIRI',
-        lead: 'Kuna iga sõiduk ja mootor on erinev, soovitame täpse hinnapakkumise saamiseks võtta ühendust meie meistriga.',
+        lead: 'Kuna iga sõiduk ja mootor on erinev, soovitame täpse hinnapakkumise saamiseks võtta ühendust meie meistriga',
         rows: [
           { name: 'Arvutidiagnostika', price: '67 eur' },
           { name: 'Common Rail pihustite test*', price: '22 eur/tk' },
@@ -2304,7 +2376,7 @@
       if (vatEl) vatEl.innerText = data.vat;
 
       if (tableWrap) {
-        tableWrap.innerHTML = data.rows.map(function(r) {
+        tableWrap.innerHTML = data.rows.map(function (r) {
           return '<div class="hk-row">' +
             '<span class="hk-name">' + r.name + '</span>' +
             '<span class="hk-price">' + r.price + '</span>' +
@@ -2332,7 +2404,7 @@
       }
     }
 
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
         closeQuoteModal();
         closePriceListModal();
@@ -2365,7 +2437,7 @@
         submitBtn.innerText = 'SAATMINE...';
       }
 
-      setTimeout(function() {
+      setTimeout(function () {
         var formWrapper = document.getElementById('quoteFormWrapper');
         var successWrapper = document.getElementById('quoteSuccessWrapper');
         if (formWrapper) formWrapper.style.display = 'none';
