@@ -4661,110 +4661,24 @@
           aspect-ratio: 3/4;
         }
 
-        /* Personal / team — full-bleed photo with integrated typography overlay */
+        /* Personal / team — natural photo with clean header */
         .etb-personal {
           margin-top: 8px;
-          gap: 0;
+          gap: 16px;
         }
 
-        .etb-personal-banner {
-          position: relative;
-          overflow: hidden;
-          border: none;
-          border-radius: 0;
-          background: #0a1628;
-          min-height: clamp(280px, 35vw, 400px);
-          display: flex;
-          align-items: stretch;
-        }
-
-        .etb-personal-img {
-          position: absolute;
-          inset: 0;
-          display: block;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center 28%;
-          z-index: 0;
-        }
-
-        /* Soft darken behind type (keeps faces readable, lifts white type) */
-        .etb-personal-shade {
-          position: absolute;
-          inset: 0;
-          z-index: 1;
-          pointer-events: none;
-          background:
-            radial-gradient(ellipse at center,
-              rgba(8, 16, 32, 0.78) 0%,
-              rgba(10, 22, 40, 0.55) 50%,
-              rgba(10, 22, 40, 0.25) 80%,
-              transparent 100%),
-            linear-gradient(0deg,
-              rgba(8, 16, 32, 0.6) 0%,
-              rgba(8, 16, 32, 0.25) 45%,
-              transparent 70%);
-        }
-
-        /* SVG accent layer — red corner / diagonal / soft geometry (TurnKey-style) */
-        .etb-personal-decor {
+        .etb-personal-head {
           position: absolute;
           inset: 0;
           z-index: 2;
-          pointer-events: none;
-          overflow: hidden;
-        }
-
-        .etb-personal-decor svg {
-          position: absolute;
-          display: block;
-        }
-
-        .etb-personal-decor-corner {
-          left: 0;
-          top: 0;
-          width: min(220px, 42%);
-          height: min(180px, 40%);
-        }
-
-        .etb-personal-decor-blob {
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          width: min(320px, 55%);
-          height: min(320px, 55%);
-          opacity: 0.22;
-        }
-
-        .etb-personal-decor-slash {
-          right: 0;
-          bottom: 0;
-          width: min(160px, 28%);
-          height: min(140px, 32%);
-          opacity: 0.85;
-        }
-
-        .etb-personal-overlay {
-          position: relative;
-          z-index: 3;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          padding: clamp(28px, 4vw, 48px) clamp(20px, 3.5vw, 44px);
-          min-height: inherit;
-        }
-
-        .etb-personal-copy {
           display: flex;
           flex-direction: column;
           align-items: center;
+          justify-content: center;
           text-align: center;
           gap: 12px;
-          max-width: min(640px, 92%);
-          width: 100%;
-          margin: 0 auto;
+          padding: 24px 20px;
+          pointer-events: none;
         }
 
         .etb-personal-headline {
@@ -4774,31 +4688,25 @@
           justify-content: center;
           gap: 12px;
           font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
-          font-size: clamp(24px, 4.4vw, 62px);
+          font-size: clamp(28px, 4vw, 50px);
           font-weight: 400;
-          letter-spacing: -0.015em;
-          /* text-transform: uppercase; */
+          letter-spacing: 0.01em;
           color: #FFFFFF;
-          line-height: 0.85;
+          line-height: 1.15;
           text-align: center;
-          text-shadow:
-            0 1px 0 rgba(255, 255, 255, 0.12),
-            0 2px 18px rgba(0, 0, 0, 0.55),
-            0 0 2px rgba(0, 0, 0, 0.65);
+          text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8), 0 1px 4px rgba(0, 0, 0, 0.95);
         }
 
         .etb-personal-headline-text {
-          display: block;
-          white-space: nowrap;
+          display: inline-block;
         }
 
         .etb-personal-check {
           flex: none;
-          width: clamp(22px, 2.4vw, 28px);
-          height: clamp(22px, 2.4vw, 28px);
-          margin-top: 0.18em;
+          width: clamp(24px, 2.5vw, 32px);
+          height: clamp(24px, 2.5vw, 32px);
           color: #EC0000;
-          filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.45));
+          filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7));
         }
 
         .etb-personal-check svg {
@@ -4810,16 +4718,32 @@
         .etb-personal-text {
           margin: 0 auto;
           text-align: center;
-          font-size: clamp(16px, 1.5vw, 19px);
+          font-size: clamp(15px, 1.3vw, 18px);
           line-height: 1.55;
-          color: rgba(255, 255, 255, 0.92);
+          color: #FFFFFF;
           font-weight: 500;
-          max-width: 520px;
-          text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+          max-width: 640px;
+          text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85), 0 1px 3px rgba(0, 0, 0, 0.95);
         }
 
-        .etb-personal-text+.etb-personal-text {
-          margin-top: -4px;
+        .etb-personal-banner {
+          position: relative;
+          overflow: hidden;
+          border: 1px solid #E5E7EB;
+          border-radius: 4px;
+          background: #111111;
+          width: 100%;
+          height: clamp(300px, 32vw, 420px);
+          display: block;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .etb-personal-img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center 38%;
         }
 
         .etb-personal-badges {
@@ -4865,7 +4789,7 @@
 
         @media (max-width: 639px) {
           .etb-personal-banner {
-            min-height: 360px;
+            height: clamp(280px, 60vw, 360px);
           }
 
           .etb-personal-overlay {
@@ -4875,7 +4799,7 @@
           }
 
           .etb-personal-headline {
-            font-size: clamp(17px, 6vw, 34px);
+            font-size: clamp(20px, 5.5vw, 28px);
             gap: 8px;
             justify-content: center;
           }
@@ -4885,7 +4809,7 @@
           }
 
           .etb-personal-text {
-            font-size: 16px;
+            font-size: 14px;
             max-width: 100%;
             text-align: center;
             margin: 0 auto;
@@ -4902,31 +4826,12 @@
             letter-spacing: 0.1em;
           }
 
-          .etb-personal-shade {
-            background:
-              radial-gradient(ellipse at center,
-                rgba(8, 16, 32, 0.85) 0%,
-                rgba(10, 22, 40, 0.65) 55%,
-                rgba(10, 22, 40, 0.35) 85%,
-                transparent 100%),
-              linear-gradient(0deg,
-                rgba(8, 16, 32, 0.65) 0%,
-                rgba(8, 16, 32, 0.28) 42%,
-                transparent 72%);
+          .etb-personal-head {
+            padding: 4px 0 8px;
           }
         }
 
         @media (min-width: 900px) {
-          .etb-personal-overlay {
-            align-items: center;
-            justify-content: center;
-            padding-top: clamp(36px, 4vw, 56px);
-            padding-bottom: clamp(40px, 5vw, 64px);
-          }
-
-          .etb-personal-copy {
-            max-width: 640px;
-          }
 
           .etb-personal-img {
             object-position: center 22%;
@@ -5137,6 +5042,7 @@
           line-height: 1.2;
           color: rgba(255, 255, 255, 0.96);
           text-shadow: 0 1px 14px rgba(0, 0, 0, 0.35);
+          font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
         }
 
         .etb-b2b-rule {
@@ -6888,7 +6794,8 @@
               <button type="button" class="pm-ask-btn" onClick="{{ openForm }}">
                 Узнать цену
               </button>
-              <p class="pm-ask-text">Укажите в запросе код форсунки. Если код неизвестен, укажите регистрационный номер авто. Для авто с иностранной регистрацией укажите марку, модель, год и данные двигателя.</p>
+              <p class="pm-ask-text">Укажите в запросе код форсунки. Если код неизвестен, укажите регистрационный номер
+                авто. Для авто с иностранной регистрацией укажите марку, модель, год и данные двигателя.</p>
             </sc-if>
             <sc-if value="{{ isNotRU }}">
               <button type="button" class="pm-ask-btn" onClick="{{ openForm }}">
@@ -6980,7 +6887,9 @@
               <h2 class="dg-title" id="dg-heading">Компьютерная<br />диагностика авто</h2>
               <span class="dg-rule" aria-hidden="true"></span>
               <p class="dg-text">
-                Это тестирование различных электронных систем и исполнительных механизмов автомобиля с целью выявления неисправностей. На основе результатов компьютерной диагностики мастер принимает решение о том, какие узлы и системы требуют ремонта и в каком объеме.
+                Это тестирование различных электронных систем и исполнительных механизмов автомобиля с целью выявления
+                неисправностей. На основе результатов компьютерной диагностики мастер принимает решение о том, какие
+                узлы и системы требуют ремонта и в каком объеме.
               </p>
             </sc-if>
             <sc-if value="{{ isNotRU }}">
@@ -7036,7 +6945,7 @@
 
           <h2 class="hk-title" id="hk-heading">Hinnakiri</h2>
           <p class="hk-lead">
-            Kuna iga sõiduk ja mootor on erinev, soovitame täpse hinnapakkumise saamiseks võtta ühendust meie meistriga.
+            Kuna iga sõiduk ja mootor on erinev, soovitame täpse hinnapakkumise saamiseks võtta ühendust meie meistriga
           </p>
         </header>
 
@@ -7184,7 +7093,7 @@
                       <div class="rf-header-copy">
                         <h2 class="rf-title" id="rf-modal-title">Broneeri aeg</h2>
                         <p class="rf-lead">
-                          Täida väljad ja vajuta saatmisnupule — võtame Sinuga ühendust ühe tööpäeva jooksul.
+                          Täida väljad ja vajuta saatmisnupule — võtame Sinuga ühendust ühe tööpäeva jooksul
                         </p>
                       </div>
                     </div>
@@ -7224,10 +7133,10 @@
                       value="{{ description }}" onChange="{{ onDescriptionChange }}" rows="3" placeholder=""></textarea>
                   </div>
 
-                  <p class="rf-mini-lead" style="margin-top: -8px;">
+                  <!-- <p class="rf-mini-lead" style="margin-top: -8px;">
                     Soovid tasuda ette pangaülekandega? Kirjuta see kirjeldusse — teatame Sulle sooduspakkumise ja
                     arve saadame meili teel.
-                  </p>
+                  </p> -->
 
                   <sc-if value="{{ isError }}" hint-placeholder-val="{{ false }}">
                     <span class="rf-mini-error">Palun täida kõik kohustuslikud väljad (*) korrektselt.</span>
@@ -7261,7 +7170,8 @@
                       <div class="rf-header-copy">
                         <h2 class="rf-title" id="rf-modal-title">Запрос ценового предложения</h2>
                         <p class="rf-lead">Заполните форму ниже, чтобы отправить запрос на расчет стоимости. Мы обычно
-                          отвечаем на обращения в течение одного рабочего дня. Пожалуйста, заполните все обязательные поля
+                          отвечаем на обращения в течение одного рабочего дня. Пожалуйста, заполните все обязательные
+                          поля
                           (отмечены *), чтобы мы могли подготовить для Вас максимально точное ценовое предложение.</p>
                       </div>
                     </div>
@@ -7270,8 +7180,8 @@
                   <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
                     <div class="rf-success">
                       <span class="rf-success-code">[ OK · 200 ]</span>
-                      <p class="rf-success-text">ЗАПРОС ОТПРАВЛЕН!<br /><span
-                          class="rf-success-ru">Мы свяжемся с вами в течение одного рабочего дня.</span></p>
+                      <p class="rf-success-text">ЗАПРОС ОТПРАВЛЕН!<br /><span class="rf-success-ru">Мы свяжемся с вами в
+                          течение одного рабочего дня.</span></p>
                     </div>
                   </sc-if>
 
@@ -7317,7 +7227,8 @@
                             </div>
                             <div class="rf-field">
                               <label class="rf-mini-label" for="rf-power">Мощность</label>
-                              <input id="rf-power" class="rf-input" value="{{ power }}" onChange="{{ onPowerChange }}" />
+                              <input id="rf-power" class="rf-input" value="{{ power }}"
+                                onChange="{{ onPowerChange }}" />
                             </div>
                             <div class="rf-field">
                               <label class="rf-mini-label" for="rf-vin">Идентификационный код</label>
@@ -7380,7 +7291,8 @@
                             {{ submitLabel }}
                           </button>
                           <sc-if value="{{ isError }}" hint-placeholder-val="{{ false }}">
-                            <span class="rf-error" style="position: absolute; bottom: -20px;">[ ОШИБКА — ПОЖАЛУЙСТА, ЗАПОЛНИТЕ ОБЯЗАТЕЛЬНЫЕ ПОЛЯ ]</span>
+                            <span class="rf-error" style="position: absolute; bottom: -20px;">[ ОШИБКА — ПОЖАЛУЙСТА,
+                              ЗАПОЛНИТЕ ОБЯЗАТЕЛЬНЫЕ ПОЛЯ ]</span>
                           </sc-if>
                         </div>
                       </div>
@@ -7394,7 +7306,9 @@
                     <div class="rf-header-row">
                       <div class="rf-header-copy">
                         <h2 class="rf-title" id="rf-modal-title">Hinnapakkumise päring</h2>
-                        <p class="rf-lead">Täitke allolev vorm, et saata hinnapäring. Tavaliselt vastame pöördumistele ühe tööpäeva jooksul. Palun täitke kõik kohustuslikud väljad (tähistatud *), et saaksime koostada võimalikult täpse pakkumise.</p>
+                        <p class="rf-lead">Täitke allolev vorm, et saata hinnapäring. Tavaliselt vastame pöördumistele
+                          ühe tööpäeva jooksul. Palun täitke kõik kohustuslikud väljad (tähistatud *), et saaksime
+                          koostada võimalikult täpse pakkumise.</p>
                       </div>
                     </div>
                   </header>
@@ -7402,8 +7316,8 @@
                   <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
                     <div class="rf-success">
                       <span class="rf-success-code">[ OK · 200 ]</span>
-                      <p class="rf-success-text">PÄRING SAADETUD!<br /><span
-                          class="rf-success-ru">Võtame teiega ühendust ühe tööpäeva jooksul.</span></p>
+                      <p class="rf-success-text">PÄRING SAADETUD!<br /><span class="rf-success-ru">Võtame teiega
+                          ühendust ühe tööpäeva jooksul.</span></p>
                     </div>
                   </sc-if>
 
@@ -7420,8 +7334,8 @@
                                 style="font-size: 16px; color: #666; margin-top: 4px; margin-bottom: 0;">
                                 Palun sisestage täpsed andmed</p>
                               <label class="rf-mini-label" for="rf-plate-ee">Reg. number</label>
-                              <input id="rf-plate-ee" class="rf-input" value="{{ plate }}" onChange="{{ onPlateChange }}"
-                                autocomplete="off" spellcheck="false" />
+                              <input id="rf-plate-ee" class="rf-input" value="{{ plate }}"
+                                onChange="{{ onPlateChange }}" autocomplete="off" spellcheck="false" />
                               <p class="rf-panel-desc"
                                 style="font-size: 16px; color: #666; margin-top: 4px; margin-bottom: 0;">
                                 Kui sõidukil puudub registreerimisnumber, märkige sõiduki tehnilised andmed</p>
@@ -7434,7 +7348,8 @@
                           <div class="rf-grid-2col">
                             <div class="rf-field">
                               <label class="rf-mini-label" for="rf-make-ee">Mark ja mudel</label>
-                              <input id="rf-make-ee" class="rf-input" value="{{ make }}" onChange="{{ onMakeChange }}" />
+                              <input id="rf-make-ee" class="rf-input" value="{{ make }}"
+                                onChange="{{ onMakeChange }}" />
                             </div>
                             <div class="rf-field">
                               <label class="rf-mini-label" for="rf-year-ee">Väljalaskeaasta</label>
@@ -7448,7 +7363,8 @@
                             </div>
                             <div class="rf-field">
                               <label class="rf-mini-label" for="rf-power-ee">Võimsus</label>
-                              <input id="rf-power-ee" class="rf-input" value="{{ power }}" onChange="{{ onPowerChange }}" />
+                              <input id="rf-power-ee" class="rf-input" value="{{ power }}"
+                                onChange="{{ onPowerChange }}" />
                             </div>
                             <div class="rf-field">
                               <label class="rf-mini-label" for="rf-vin-ee">Tehasetähis (VIN-kood)</label>
@@ -7491,7 +7407,8 @@
                           </div>
                           <div class="rf-field" style="flex:1;">
                             <p class="rf-panel-desc"
-                              style="font-size: 16px; color: #666; margin-top: 4px; margin-bottom: 0;">Märkige soovitud tööd või kirjeldage sümptomeid võimalikult täpselt</p>
+                              style="font-size: 16px; color: #666; margin-top: 4px; margin-bottom: 0;">Märkige soovitud
+                              tööd või kirjeldage sümptomeid võimalikult täpselt</p>
                             <textarea id="rf-desc-ee" class="rf-input rf-input--area" value="{{ description }}"
                               onChange="{{ onDescriptionChange }}" rows="5"></textarea>
                           </div>
@@ -7510,7 +7427,8 @@
                             {{ submitLabel }}
                           </button>
                           <sc-if value="{{ isError }}" hint-placeholder-val="{{ false }}">
-                            <span class="rf-error" style="position: absolute; bottom: -20px;">[ VIGA — PALUN TÄITKE NÕUTUD VÄLJAD ]</span>
+                            <span class="rf-error" style="position: absolute; bottom: -20px;">[ VIGA — PALUN TÄITKE
+                              NÕUTUD VÄLJAD ]</span>
                           </sc-if>
                         </div>
                       </div>
@@ -7540,12 +7458,14 @@
               <sc-if value="{{ isRU }}">
                 <h2 class="hk-title" id="hk-heading">ПРАЙС-ЛИСТ</h2>
                 <div class="hk-rule" aria-hidden="true"></div>
-                <p class="hk-lead">Поскольку каждый автомобиль и двигатель индивидуальны, для получения точного расчета стоимости рекомендуем связаться с нашим мастером.</p>
+                <p class="hk-lead">Поскольку каждый автомобиль и двигатель индивидуальны, для получения точного расчета
+                  стоимости рекомендуем связаться с нашим мастером.</p>
               </sc-if>
               <sc-if value="{{ isNotRU }}">
                 <h2 class="hk-title" id="hk-heading">HINNAKIRI</h2>
                 <div class="hk-rule" aria-hidden="true"></div>
-                <p class="hk-lead">Kuna iga sõiduk ja mootor on erinev, soovitame täpse hinnapakkumise saamiseks võtta ühendust meie meistriga.</p>
+                <p class="hk-lead">Kuna iga sõiduk ja mootor on erinev, soovitame täpse hinnapakkumise saamiseks võtta
+                  ühendust meie meistriga.</p>
               </sc-if>
             </header>
 
@@ -7560,12 +7480,20 @@
 
             <div class="hk-notes">
               <sc-if value="{{ isRU }}">
-                <p class="hk-note-item">* При заказе у нас также демонтажа и монтажа форсунок действует скидка 10% на тестирование форсунок.</p>
-                <p class="hk-note-item">** К стоимости ремонта добавляется работа по снятию и установке форсунок. Расчет работы производится по тарифу 55,90 €/час. Для получения точной стоимости свяжитесь с нашим мастером по электронной почте: <a href="mailto:autodiislikeskus@gmail.com" style="color:#00B8D4;text-decoration:underline;">autodiislikeskus@gmail.com</a>.</p>
+                <p class="hk-note-item">* При заказе у нас также демонтажа и монтажа форсунок действует скидка 10% на
+                  тестирование форсунок.</p>
+                <p class="hk-note-item">** К стоимости ремонта добавляется работа по снятию и установке форсунок. Расчет
+                  работы производится по тарифу 55,90 €/час. Для получения точной стоимости свяжитесь с нашим мастером
+                  по электронной почте: <a href="mailto:autodiislikeskus@gmail.com"
+                    style="color:#00B8D4;text-decoration:underline;">autodiislikeskus@gmail.com</a>.</p>
               </sc-if>
               <sc-if value="{{ isNotRU }}">
-                <p class="hk-note-item">* Kui tellite meilt ka pihustite demonteerimise ja paigaldamise, kehtib pihustite testimisele 10% soodustus.</p>
-                <p class="hk-note-item">** Remondi maksumusele lisandub pihustite demonteerimise ja paigaldamise töö. Töö arvestus toimub hinnaga 55,90 €/tund. Täpse maksumuse saamiseks palume võtta ühendust meie meistriga e-posti teel: <a href="mailto:autodiislikeskus@gmail.com" style="color:#00B8D4;text-decoration:underline;">autodiislikeskus@gmail.com</a>.</p>
+                <p class="hk-note-item">* Kui tellite meilt ka pihustite demonteerimise ja paigaldamise, kehtib
+                  pihustite testimisele 10% soodustus.</p>
+                <p class="hk-note-item">** Remondi maksumusele lisandub pihustite demonteerimise ja paigaldamise töö.
+                  Töö arvestus toimub hinnaga 55,90 €/tund. Täpse maksumuse saamiseks palume võtta ühendust meie
+                  meistriga e-posti teel: <a href="mailto:autodiislikeskus@gmail.com"
+                    style="color:#00B8D4;text-decoration:underline;">autodiislikeskus@gmail.com</a>.</p>
               </sc-if>
             </div>
           </section>
@@ -7635,7 +7563,8 @@
               О НАС И НАША КОМАНДА
             </h2>
             <p class="etb-lead">
-              Профессиональная диагностика, сертифицированные мастера и надежное сотрудничество с партнерами по всей Эстонии.
+              Профессиональная диагностика, сертифицированные мастера и надежное сотрудничество с партнерами по всей
+              Эстонии.
             </p>
           </sc-if>
           <sc-if value="{{ isNotRU }}">
@@ -7648,69 +7577,41 @@
           </sc-if>
         </header>
 
-        <!-- Personal / team — full-bleed photo, type + SVG accents integrated into image -->
-        <div class="etb-block etb-personal motion-reveal" style="padding-top:32px;" id="personal"
+        <!-- Personal / team — natural photo with text on top of image -->
+        <div class="etb-block etb-personal motion-reveal" style="padding-top:24px;" id="personal"
           aria-labelledby="personal-heading">
           <div class="etb-personal-banner">
             <img class="etb-personal-img" src="./ad-img-stuff-4.jpg" alt="Auto Diislikeskus meeskond" width="1400"
               height="700" />
-
-            <div class="etb-personal-shade" aria-hidden="true"></div>
-
-            <div class="etb-personal-decor" aria-hidden="true">
-              <!-- Soft red circle behind type (accent layer, low opacity) -->
-              <svg class="etb-personal-decor-blob" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="110" cy="140" r="108" fill="#EC0000" fill-opacity="0.55" />
-                <circle cx="110" cy="140" r="108" fill="none" stroke="#EC0000" stroke-opacity="0.35"
-                  stroke-width="1.5" />
-              </svg>
-              <!-- Thin red corner / diagonal — top-left accent like reference -->
-              <svg class="etb-personal-decor-corner" viewBox="0 0 220 180" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 0 H148" stroke="#EC0000" stroke-width="3" />
-                <path d="M0 0 V118" stroke="#EC0000" stroke-width="3" />
-                <path d="M0 0 L92 92" stroke="#EC0000" stroke-width="1.5" stroke-opacity="0.85" />
-                <path d="M18 0 L18 42" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.35" />
-              </svg>
-              <!-- Bottom-right slash accent -->
-              <svg class="etb-personal-decor-slash" viewBox="0 0 160 140" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M160 140 H48" stroke="#EC0000" stroke-width="2.5" />
-                <path d="M160 140 V38" stroke="#EC0000" stroke-width="2.5" />
-                <path d="M160 140 L78 58" stroke="#EC0000" stroke-width="1.25" stroke-opacity="0.7" />
-              </svg>
-            </div>
-
-            <div class="etb-personal-overlay">
-              <div class="etb-personal-copy">
-                <sc-if value="{{ isRU }}">
-                  <h3 class="etb-personal-headline" id="personal-heading">
-                    <span class="etb-personal-check" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.75" />
-                        <path d="M7.2 12.4 L10.4 15.5 L16.8 8.6" stroke="currentColor" stroke-width="2.1"
-                          stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
-                    </span>
-                    <span class="etb-personal-headline-text">Дипломированные специалисты</span>
-                  </h3>
-                  <p class="etb-personal-text">Наши специалисты прошли обучение. Сертификаты Bosch подтверждают высокую квалификацию.</p>
-                </sc-if>
-                <sc-if value="{{ isNotRU }}">
-                  <h3 class="etb-personal-headline" id="personal-heading">
-                    <span class="etb-personal-check" aria-hidden="true">
-                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.75" />
-                        <path d="M7.2 12.4 L10.4 15.5 L16.8 8.6" stroke="currentColor" stroke-width="2.1"
-                          stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
-                    </span>
-                    <span class="etb-personal-headline-text">Diplomeeritud spetsialistid</span>
-                  </h3>
-                  <p class="etb-personal-text">Meie spetsialistid on läbinud koolituse. Bosch sertifikaadid kinnitavad
-                    kõrget kvalifikatsiooni.</p>
-                </sc-if>
-              </div>
+            <div class="etb-personal-head">
+              <sc-if value="{{ isRU }}">
+                <h3 class="etb-personal-headline" id="personal-heading">
+                  <span class="etb-personal-check" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.75" />
+                      <path d="M7.2 12.4 L10.4 15.5 L16.8 8.6" stroke="currentColor" stroke-width="2.1"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                  <span class="etb-personal-headline-text">Дипломированные специалисты</span>
+                </h3>
+                <p class="etb-personal-text">Наши специалисты прошли обучение. Сертификаты Bosch подтверждают высокую
+                  квалификацию.</p>
+              </sc-if>
+              <sc-if value="{{ isNotRU }}">
+                <h3 class="etb-personal-headline" id="personal-heading">
+                  <span class="etb-personal-check" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.75" />
+                      <path d="M7.2 12.4 L10.4 15.5 L16.8 8.6" stroke="currentColor" stroke-width="2.1"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                  <span class="etb-personal-headline-text">Diplomeeritud spetsialistid</span>
+                </h3>
+                <p class="etb-personal-text">Meie spetsialistid on läbinud koolituse. Bosch sertifikaadid kinnitavad
+                  kõrget kvalifikatsiooni.</p>
+              </sc-if>
             </div>
           </div>
         </div>
@@ -7734,8 +7635,10 @@
             </div>
             <div class="etb-about-panel">
               <div class="etb-about-copy">
-                <h3 class="etb-about-heading">Начали деятельность в 2012 году — диагностика и ремонт топливных систем наш основной профиль</h3>
-                <p class="etb-about-text">С 2017 года работаем как самостоятельное предприятие. Наша цель — не просто отремонтировать деталь, а найти истинную причину неисправности и предложить надежное решение.
+                <h3 class="etb-about-heading">Начали деятельность в 2012 году — диагностика и ремонт топливных систем
+                  наш основной профиль</h3>
+                <p class="etb-about-text">С 2017 года работаем как самостоятельное предприятие. Наша цель — не просто
+                  отремонтировать деталь, а найти истинную причину неисправности и предложить надежное решение.
                 </p>
                 <a href="meist.html" class="etb-about-btn">Подробнее о нас →</a>
               </div>
@@ -7814,7 +7717,7 @@
             </sc-if>
             <sc-if value="{{ isNotRU }}">
               <h3 class="etb-b2b-title" id="etb-b2b-heading">
-                Pakkumised autoremondifirmadele
+                Pakkumine autoteeninduse ettevõtete jaoks
               </h3>
               <div class="etb-b2b-rule" aria-hidden="true"></div>
               <a href="./Pakkumine_firmadele.pdf" target="_blank" rel="noopener noreferrer"
@@ -8695,6 +8598,9 @@ class Component extends DCLogic {
       requestAnimationFrame(() => {
         this.updateHeaderTheme();
         this.initMotion();
+        if (window.location.hash === '#request-form' || window.location.search.includes('quote')) {
+          this.openFullForm();
+        }
       });
     } catch (_) {}
   }

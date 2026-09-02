@@ -4328,111 +4328,19 @@
           aspect-ratio: 3/4;
         }
 
-        /* Personal / team — full-bleed photo with integrated typography overlay */
+        /* Personal / team — natural photo with clean header */
         .etb-personal {
           margin-top: 8px;
-          gap: 0;
+          gap: 16px;
         }
 
-        .etb-personal-banner {
-          position: relative;
-          overflow: hidden;
-          border: none;
-          border-radius: 0;
-          background: #0a1628;
-          min-height: clamp(280px, 35vw, 400px);
-          display: flex;
-          align-items: stretch;
-        }
-
-        .etb-personal-img {
-          position: absolute;
-          inset: 0;
-          display: block;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center 28%;
-          z-index: 0;
-        }
-
-        /* Soft darken from bottom-left → clear (keeps faces readable, lifts white type) */
-        /* Soft darken behind type (keeps faces readable, lifts white type) */
-        .etb-personal-shade {
-          position: absolute;
-          inset: 0;
-          z-index: 1;
-          pointer-events: none;
-          background:
-            radial-gradient(ellipse at center,
-              rgba(8, 16, 32, 0.78) 0%,
-              rgba(10, 22, 40, 0.55) 50%,
-              rgba(10, 22, 40, 0.25) 80%,
-              transparent 100%),
-            linear-gradient(0deg,
-              rgba(8, 16, 32, 0.6) 0%,
-              rgba(8, 16, 32, 0.25) 45%,
-              transparent 70%);
-        }
-
-        /* SVG accent layer — red corner / diagonal / soft geometry (TurnKey-style) */
-        .etb-personal-decor {
-          position: absolute;
-          inset: 0;
-          z-index: 2;
-          pointer-events: none;
-          overflow: hidden;
-        }
-
-        .etb-personal-decor svg {
-          position: absolute;
-          display: block;
-        }
-
-        .etb-personal-decor-corner {
-          left: 0;
-          top: 0;
-          width: min(220px, 42%);
-          height: min(180px, 40%);
-        }
-
-        .etb-personal-decor-blob {
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          width: min(320px, 55%);
-          height: min(320px, 55%);
-          opacity: 0.22;
-        }
-
-        .etb-personal-decor-slash {
-          right: 0;
-          bottom: 0;
-          width: min(160px, 28%);
-          height: min(140px, 32%);
-          opacity: 0.85;
-        }
-
-        .etb-personal-overlay {
-          position: relative;
-          z-index: 3;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          padding: clamp(28px, 4vw, 48px) clamp(20px, 3.5vw, 44px);
-          min-height: inherit;
-        }
-
-        .etb-personal-copy {
+        .etb-personal-head {
           display: flex;
           flex-direction: column;
           align-items: center;
           text-align: center;
-          gap: 12px;
-          max-width: min(640px, 92%);
-          width: 100%;
-          margin: 0 auto;
+          gap: 8px;
+          padding: 8px 0 12px;
         }
 
         .etb-personal-headline {
@@ -4440,32 +4348,25 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 12px;
+          gap: 10px;
           font-family: 'Fjalla One', Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
-          font-size: clamp(24px, 4.4vw, 62px);
+          font-size: clamp(26px, 3.4vw, 44px);
           font-weight: 400;
-          letter-spacing: -0.015em;
-          color: #FFFFFF;
-          line-height: 0.85;
+          letter-spacing: -0.01em;
+          color: #171717;
+          line-height: 1.15;
           text-align: center;
-          text-shadow:
-            0 1px 0 rgba(255, 255, 255, 0.12),
-            0 2px 18px rgba(0, 0, 0, 0.55),
-            0 0 2px rgba(0, 0, 0, 0.65);
         }
 
         .etb-personal-headline-text {
-          display: block;
-          white-space: nowrap;
+          display: inline-block;
         }
 
         .etb-personal-check {
           flex: none;
-          width: clamp(22px, 2.4vw, 28px);
-          height: clamp(22px, 2.4vw, 28px);
-          margin-top: 0.18em;
+          width: clamp(22px, 2.2vw, 28px);
+          height: clamp(22px, 2.2vw, 28px);
           color: #EC0000;
-          filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.45));
         }
 
         .etb-personal-check svg {
@@ -4477,16 +4378,31 @@
         .etb-personal-text {
           margin: 0 auto;
           text-align: center;
-          font-size: clamp(16px, 1.5vw, 19px);
+          font-size: clamp(15px, 1.3vw, 17px);
           line-height: 1.55;
-          color: rgba(255, 255, 255, 0.92);
+          color: #525252;
           font-weight: 500;
-          max-width: 520px;
-          text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+          max-width: 600px;
         }
 
-        .etb-personal-text+.etb-personal-text {
-          margin-top: -4px;
+        .etb-personal-banner {
+          position: relative;
+          overflow: hidden;
+          border: 1px solid #E5E7EB;
+          border-radius: 4px;
+          background: #f5f5f5;
+          width: 100%;
+          display: block;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .etb-personal-img {
+          display: block;
+          width: 100%;
+          height: auto;
+          max-height: 640px;
+          object-fit: cover;
+          object-position: center 30%;
         }
 
         .etb-personal-badges {
@@ -4569,31 +4485,12 @@
             letter-spacing: 0.1em;
           }
 
-          .etb-personal-shade {
-            background:
-              radial-gradient(ellipse at center,
-                rgba(8, 16, 32, 0.85) 0%,
-                rgba(10, 22, 40, 0.65) 55%,
-                rgba(10, 22, 40, 0.35) 85%,
-                transparent 100%),
-              linear-gradient(0deg,
-                rgba(8, 16, 32, 0.65) 0%,
-                rgba(8, 16, 32, 0.28) 42%,
-                transparent 72%);
+          .etb-personal-head {
+            padding: 4px 0 8px;
           }
         }
 
         @media (min-width: 900px) {
-          .etb-personal-overlay {
-            align-items: center;
-            justify-content: center;
-            padding-top: clamp(36px, 4vw, 56px);
-            padding-bottom: clamp(40px, 5vw, 64px);
-          }
-
-          .etb-personal-copy {
-            max-width: 640px;
-          }
 
           .etb-personal-img {
             object-position: center 22%;
@@ -7041,84 +6938,27 @@
           </div>
         </div>
 
-        <!-- Personal / team — full-bleed photo, type + SVG accents integrated into image -->
-        <div class="etb-block etb-personal motion-reveal" style="padding-top:32px;" id="personal"
+        <!-- Personal / team — natural photo with clean header -->
+        <div class="etb-block etb-personal motion-reveal" style="padding-top:24px;" id="personal"
           aria-labelledby="personal-heading">
+          <div class="etb-personal-head">
+            <h3 class="etb-personal-headline" id="personal-heading">
+              <span class="etb-personal-check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.75" />
+                  <path d="M7.2 12.4 L10.4 15.5 L16.8 8.6" stroke="currentColor" stroke-width="2.1"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span class="etb-personal-headline-text">Diplomeeritud spetsialistid</span>
+            </h3>
+            <p class="etb-personal-text">Meie spetsialistid on läbinud koolituse. Bosch sertifikaadid kinnitavad
+              kõrget kvalifikatsiooni.</p>
+          </div>
+
           <div class="etb-personal-banner">
             <img class="etb-personal-img" src="./ad-img-stuff-4.jpg" alt="Auto Diislikeskus meeskond" width="1400"
               height="700" />
-
-            <div class="etb-personal-shade" aria-hidden="true"></div>
-
-            <div class="etb-personal-decor" aria-hidden="true">
-              <!-- Soft red circle behind type (accent layer, low opacity) -->
-              <svg class="etb-personal-decor-blob" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="110" cy="140" r="108" fill="#EC0000" fill-opacity="0.55" />
-                <circle cx="110" cy="140" r="108" fill="none" stroke="#EC0000" stroke-opacity="0.35"
-                  stroke-width="1.5" />
-              </svg>
-              <!-- Thin red corner / diagonal — top-left accent like reference -->
-              <svg class="etb-personal-decor-corner" viewBox="0 0 220 180" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 0 H148" stroke="#EC0000" stroke-width="3" />
-                <path d="M0 0 V118" stroke="#EC0000" stroke-width="3" />
-                <path d="M0 0 L92 92" stroke="#EC0000" stroke-width="1.5" stroke-opacity="0.85" />
-                <path d="M18 0 L18 42" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.35" />
-              </svg>
-              <!-- Bottom-right slash accent -->
-              <svg class="etb-personal-decor-slash" viewBox="0 0 160 140" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M160 140 H48" stroke="#EC0000" stroke-width="2.5" />
-                <path d="M160 140 V38" stroke="#EC0000" stroke-width="2.5" />
-                <path d="M160 140 L78 58" stroke="#EC0000" stroke-width="1.25" stroke-opacity="0.7" />
-              </svg>
-            </div>
-
-            <div class="etb-personal-overlay">
-              <div class="etb-personal-copy">
-                <h3 class="etb-personal-headline" id="personal-heading">
-                  <span class="etb-personal-check" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.75" />
-                      <path d="M7.2 12.4 L10.4 15.5 L16.8 8.6" stroke="currentColor" stroke-width="2.1"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                  </span>
-                  <span class="etb-personal-headline-text">Diplomeeritud spetsialistid</span>
-                </h3>
-                <p class="etb-personal-text">Meie spetsialistid on läbinud koolituse.</p>
-                <p class="etb-personal-text">Bosch sertifikaadid kinnitavad kõrget kvalifikatsiooni.</p>
-                <div class="etb-personal-badges">
-                  <span class="etb-personal-badge">
-                    <span class="etb-personal-badge-icon" aria-hidden="true">
-                      <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2.2 6.2 L4.7 8.6 L9.8 3.4" stroke="currentColor" stroke-width="1.7"
-                          stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
-                    </span>
-                    Bosch certified
-                  </span>
-                  <span class="etb-personal-badge">
-                    <span class="etb-personal-badge-icon" aria-hidden="true">
-                      <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2.2 6.2 L4.7 8.6 L9.8 3.4" stroke="currentColor" stroke-width="1.7"
-                          stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
-                    </span>
-                    Common Rail
-                  </span>
-                  <span class="etb-personal-badge">
-                    <span class="etb-personal-badge-icon" aria-hidden="true">
-                      <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2.2 6.2 L4.7 8.6 L9.8 3.4" stroke="currentColor" stroke-width="1.7"
-                          stroke-linecap="round" stroke-linejoin="round" />
-                      </svg>
-                    </span>
-                    TNVD
-                  </span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
