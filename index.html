@@ -2550,8 +2550,9 @@
         /* Mini email capture */
         .rf-modal-panel--mini {
           width: min(720px, 100%);
-          max-height: none;
-          overflow: visible;
+          max-height: calc(100dvh - 40px);
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
           border-radius: 16px;
           box-shadow:
             0 4px 16px rgba(15, 23, 42, 0.08),
@@ -2699,6 +2700,53 @@
           background: #FFFFFF;
           border-color: #EC0000;
           box-shadow: 0 0 0 3px rgba(236, 0, 0, 0.12);
+        }
+
+        .rf-mini-hint {
+          margin: -12px 0 18px;
+          font-size: 13px;
+          line-height: 1.5;
+          color: #737373;
+        }
+
+        .rf-mini-services {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          margin: 0 0 18px;
+        }
+
+        .rf-mini-radio {
+          display: flex;
+          align-items: flex-start;
+          gap: 10px;
+          padding: 12px 14px;
+          font-size: 15px;
+          line-height: 1.4;
+          color: #171717;
+          background: #F8F9FA;
+          border: 1px solid #E5E7EB;
+          border-radius: 10px;
+          cursor: pointer;
+          transition: border-color 0.15s ease, background 0.15s ease;
+        }
+
+        .rf-mini-radio:hover {
+          border-color: #D1D5DB;
+        }
+
+        .rf-mini-radio input {
+          margin: 2px 0 0;
+          width: 17px;
+          height: 17px;
+          accent-color: #EC0000;
+          flex-shrink: 0;
+        }
+
+        .rf-mini-radio:has(input:checked) {
+          border-color: #EC0000;
+          background: #FFFFFF;
+          box-shadow: 0 0 0 3px rgba(236, 0, 0, 0.10);
         }
 
         .rf-mini-submit {
@@ -7053,10 +7101,40 @@
                     </div>
 
                     <div class="rf-mini-field">
-                      <label class="rf-mini-label" for="rf-plate-mini-ru">Рег. номер авто*</label>
+                      <label class="rf-mini-label" for="rf-plate-mini-ru">Рег. номер авто</label>
                       <input id="rf-plate-mini-ru" class="rf-mini-input" type="text" name="plate" value="{{ plate }}"
-                        onChange="{{ onPlateChange }}" placeholder="" required="{{ true }}" autocomplete="off"
+                        onChange="{{ onPlateChange }}" placeholder="" autocomplete="off"
                         spellcheck="false" />
+                    </div>
+                  </div>
+
+                  <p class="rf-mini-hint">
+                    Рег. номер указывать необязательно — если Вы привозите только форсунки, оставьте поле пустым.
+                  </p>
+
+                  <div class="rf-mini-field rf-mini-field--full">
+                    <span class="rf-mini-label">Услуга*</span>
+                    <div class="rf-mini-services">
+                      <label class="rf-mini-radio">
+                        <input type="radio" name="rf-service-ru" value="Arvutidiagnostika"
+                          checked="{{ serviceIsDiag }}" onChange="{{ onServiceChange }}" />
+                        <span>Компьютерная диагностика</span>
+                      </label>
+                      <label class="rf-mini-radio">
+                        <input type="radio" name="rf-service-ru" value="Pihustite kontroll/remont – pihustid autolt eemaldatud"
+                          checked="{{ serviceIsInjOff }}" onChange="{{ onServiceChange }}" />
+                        <span>Проверка/ремонт форсунок — форсунки сняты с авто</span>
+                      </label>
+                      <label class="rf-mini-radio">
+                        <input type="radio" name="rf-service-ru" value="Pihustite kontroll/remont koos autolt eemaldamisega"
+                          checked="{{ serviceIsInjFull }}" onChange="{{ onServiceChange }}" />
+                        <span>Проверка/ремонт форсунок со снятием с авто</span>
+                      </label>
+                      <label class="rf-mini-radio">
+                        <input type="radio" name="rf-service-ru" value="DPF pesu sõiduautodel ja kaubikutel"
+                          checked="{{ serviceIsDpf }}" onChange="{{ onServiceChange }}" />
+                        <span>Мойка DPF (легковые авто и микроавтобусы)</span>
+                      </label>
                     </div>
                   </div>
 
@@ -7122,10 +7200,40 @@
                     </div>
 
                     <div class="rf-mini-field">
-                      <label class="rf-mini-label" for="rf-plate-mini">Auto reg. number*</label>
+                      <label class="rf-mini-label" for="rf-plate-mini">Auto reg. number</label>
                       <input id="rf-plate-mini" class="rf-mini-input" type="text" name="plate" value="{{ plate }}"
-                        onChange="{{ onPlateChange }}" placeholder="" required="{{ true }}" autocomplete="off"
+                        onChange="{{ onPlateChange }}" placeholder="" autocomplete="off"
                         spellcheck="false" />
+                    </div>
+                  </div>
+
+                  <p class="rf-mini-hint">
+                    Reg. number ei ole kohustuslik — kui tood ainult pihustid, jäta väli tühjaks.
+                  </p>
+
+                  <div class="rf-mini-field rf-mini-field--full">
+                    <span class="rf-mini-label">Teenus*</span>
+                    <div class="rf-mini-services">
+                      <label class="rf-mini-radio">
+                        <input type="radio" name="rf-service-ee" value="Arvutidiagnostika"
+                          checked="{{ serviceIsDiag }}" onChange="{{ onServiceChange }}" />
+                        <span>Arvutidiagnostika</span>
+                      </label>
+                      <label class="rf-mini-radio">
+                        <input type="radio" name="rf-service-ee" value="Pihustite kontroll/remont – pihustid autolt eemaldatud"
+                          checked="{{ serviceIsInjOff }}" onChange="{{ onServiceChange }}" />
+                        <span>Pihustite kontroll/remont – pihustid autolt eemaldatud</span>
+                      </label>
+                      <label class="rf-mini-radio">
+                        <input type="radio" name="rf-service-ee" value="Pihustite kontroll/remont koos autolt eemaldamisega"
+                          checked="{{ serviceIsInjFull }}" onChange="{{ onServiceChange }}" />
+                        <span>Pihustite kontroll/remont koos autolt eemaldamisega</span>
+                      </label>
+                      <label class="rf-mini-radio">
+                        <input type="radio" name="rf-service-ee" value="DPF pesu sõiduautodel ja kaubikutel"
+                          checked="{{ serviceIsDpf }}" onChange="{{ onServiceChange }}" />
+                        <span>DPF pesu sõiduautodel ja kaubikutel</span>
+                      </label>
                     </div>
                   </div>
 
@@ -7908,6 +8016,7 @@ class Component extends DCLogic {
     const L = [];
     L.push(`Vormi tüüp: ${mode === 'full' ? 'Hinnapakkumise päring (täisvorm)' : 'Kiire broneering (lühivorm)'}`);
     L.push(`Saadetud: ${new Date().toLocaleString('et-EE')}`);
+    if ((s.service || '').trim()) L.push(`Teenus: ${s.service.trim()}`);
     L.push('');
     L.push('— Sõiduki andmed —');
     L.push(`Reg. number: ${(s.plate || '').trim() || '-'}`);
@@ -7934,6 +8043,8 @@ class Component extends DCLogic {
     name: (s.name || '').trim(),                 // Ees- ja perekonnanimi
     email: (s.email || '').trim(),               // E-posti aadress
     phone: (s.phone || '').trim(),               // Telefoninumber
+    // --- Broneeringu teenus (mini-vorm) ---
+    service: (s.service || '').trim(),           // Valitud teenus
     // --- Sõiduki / tehnilise passi andmed ---
     reg_number: (s.plate || '').trim(),          // Reg. number
     make_model: (s.make || '').trim(),           // Mark ja mudel
@@ -8237,6 +8348,7 @@ class Component extends DCLogic {
   onPowerChange = (e) => this.setState({ power: e.target.value });
   onVinChange = (e) => this.setState({ vin: e.target.value });
   onDescriptionChange = (e) => this.setState({ description: e.target.value });
+  onServiceChange = (e) => this.setState({ service: e.target.value });
   onNameChange = (e) => this.setState({ name: e.target.value });
   onPhoneChange = (e) => this.setState({ phone: e.target.value });
   onEmailChange = (e) => this.setState({ email: e.target.value });
@@ -8277,10 +8389,11 @@ class Component extends DCLogic {
       return;
     }
 
-    // Mini booking request
+    // Mini booking request — sõiduki reg. number EI ole kohustuslik
+    // (kliendid toovad sageli ainult pihustid). Kohustuslik: nimi, telefon, e-post, teenus.
     const email = (s.email || '').trim();
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if (!emailOk || !(s.name || '').trim() || !(s.phone || '').trim() || !(s.plate || '').trim()) {
+    if (!emailOk || !(s.name || '').trim() || !(s.phone || '').trim() || !(s.service || '').trim()) {
       this.setState({ isError: true });
       return;
     }
@@ -8589,6 +8702,7 @@ class Component extends DCLogic {
     // RequestForm
     plate: '', make: '', year: '', displacement: '', power: '', vin: '',
     description: '',
+    service: '', // mini-broneering: valitud teenus
     name: '', phone: '', email: '',
     isSubmitting: false, isSuccess: false, isError: false,
   };
@@ -8703,6 +8817,7 @@ class Component extends DCLogic {
       isSuccess: false,
       isError: false,
       isSubmitting: false,
+      service: '',
     });
     try { document.body.style.overflow = 'hidden'; } catch (_) {}
   };
@@ -8960,6 +9075,14 @@ class Component extends DCLogic {
       onPhoneChange: this.onPhoneChange,
       onEmailChange: this.onEmailChange,
       handleSubmit: this.handleSubmit,
+
+      // Mini-broneering: teenuse valik
+      service: s.service,
+      onServiceChange: this.onServiceChange,
+      serviceIsDiag: s.service === 'Arvutidiagnostika',
+      serviceIsInjOff: s.service === 'Pihustite kontroll/remont – pihustid autolt eemaldatud',
+      serviceIsInjFull: s.service === 'Pihustite kontroll/remont koos autolt eemaldamisega',
+      serviceIsDpf: s.service === 'DPF pesu sõiduautodel ja kaubikutel',
 
       // ServicesSymptoms
       services,
